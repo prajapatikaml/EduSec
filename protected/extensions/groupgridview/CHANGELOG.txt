@@ -1,0 +1,15 @@
+Groupgridview changelog
+=============================
+
+Version 1.2 Dec 16, 2012
+----------------------------
+[enh #1]: Compability with Yii-Bootstrap 1.0 and above (@Yiivgeny)
+
+Version 1.1 Apr 3, 2012
+----------------------------
+[bug] fixed 'name' issue with CLinkColumn & CButtonColumn (@vitalets)
+[enh] added support of Bootstrap gridview (@vitalets)
+
+Version 1.0 Apr 1, 2012
+----------------------------
+Initial release

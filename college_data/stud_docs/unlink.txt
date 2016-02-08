@@ -1,0 +1,42 @@
+************************************
+you'll have to use the path on your server to delete the image, not the url.
+
+unlink('/var/www/test/folder/images/image_name.jpeg'); // correct
+
+you should remove the @ before unlink(), in that case you would have seen the error-message saying "file not found" or something like that.
+************************************
+
+
+
+
+whenever you select the your code in delete link. like:<a href=addproduct.php?action=delete&pid=$get_info[pid]>Delete</a> then you have to check the condition using cuurent select item.
+
+if(isset($_GET['action']) && $_GET['action']=='delete' && isset($_GET['pid']))
+{
+  $query1=("select * from tablename where id='".$_GET['id']."'");
+                                   $result1=mysql_query($query1);
+                                while($data=mysql_fetch_array($result1))
+                                {
+                                    $delete=$data['file'];
+                                    unlink("../upload/$delete");
+
+                                }
+                                $query=("delete from tablename where id='".$_GET['id']."'");
+                                $result=mysql_query($query) or die("not inserted". mysql_error());
+                                    if($result==TRUE)
+                                    {
+
+                                        $_SESSION['msg']="product successfully deleted";
+                                        header("Location:addproduct.php");
+                                        exit;
+
+                                    }
+                                    else
+                                    {
+                                        $_SESSION['msg']="error in deleting product";
+                                        header("Location:addproduct.php");
+                                        exit;
+                                    }
+                            }
+
+

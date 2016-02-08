@@ -1,0 +1,4 @@
+- improved cached images manipulations
+- fix frame and iframe processing 
+- fix pcre problem for html2xhtml converter
+- url fetcher functionality improved, add "simplify" functionality for fetcher

@@ -1,0 +1,157 @@
+body {
+  color: #222222;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 75%;
+  margin: 1px 0 0 0;
+}
+
+div.container {
+  float: left;
+  width: 100%;
+}
+.content {
+  background: none repeat scroll 0 0 #FFF;
+  color: black;
+  position: relative;
+}
+
+.header h1 {
+  color: #FFF;
+  font-size: 17px;
+  font-weight: normal;
+  padding-left: 10px;
+}
+.header {
+  background: none repeat scroll 0 0 #92C46B;
+  color: #FFFFFF;
+  float: left;
+  width: 100%;
+}
+
+ul h1.title {
+  color: #555555;
+  font-size: 22px;
+  font-weight: normal;
+  text-align: center;
+}
+
+ul.error-list li {
+  color: red;
+  font-size: 14px;
+}
+
+.require-note {
+  float: left;
+  min-height: 300px;
+  width: 100%;
+  overflow: hidden;
+}
+.header .app-logo {
+  float: left;
+  margin-right: 15px;
+}
+.row label {
+  float: left;
+  font-size: 15px;
+  font-weight: normal;
+  color: #717173;
+  width: 120px;
+}
+.row {
+  float: left;
+  height: 50px;
+  width: 100%;
+}
+.content #db-form-box {
+  float: left;
+  margin-top: 20px;
+}
+input[type="text"], input[type="password"], input[type="file"] {
+  border: 1px solid #DDDDDD;
+  border-radius: 0 0 0 0;
+  height: 30px !important;
+  float: left;
+  width: 140px !important; 
+}
+
+.btnblue {
+  background-color: #4D90FE;
+  color: #FFFFFF;
+  float: left;
+  line-height: 17px;
+  margin: 0 10px 10px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  width: 70px;
+  border: 0px;	
+}
+
+.check-db-status {
+  color: red;
+  float: left;
+  font-size: 15px;
+  margin-left: 40px;
+}
+.header span {
+  font-size: 15px;
+}
+
+.form .error .status {
+  background: url("../images/error.png") no-repeat scroll right center transparent !important;
+  float: left;
+  height: 20px;
+  padding-left: 5px;
+  padding-top: 30px;
+  width: 20px;
+}
+.form .success .status {
+  background:url("../images/success.png") no-repeat center right !important;
+  height: 20px;
+  width: 20px;
+  float:left;
+  padding-left: 5px;
+  padding-top: 30px;
+
+}
+span.required {
+  color: red;
+}
+img {
+  border: none;
+}
+.notes {
+  color: #555555;
+  float: left;
+  font-size: 15px;
+  font-weight: normal;
+  margin-top: 15px;
+}
+.install-header {
+  background: none repeat scroll 0 0 #FFFFFF;
+  clear: both;
+  float: left;
+  height: 70px;
+  line-height: 90px;
+  width: 100%;
+}
+.install-instruct {
+  float: left;
+  padding: 15px;
+  font-size: 14px;
+}
+
+#Organization_address_line1, #Organization_address_line2 {
+  width:  400px !important;
+}
+
+#User_user_organization_email_id,  #User_user_password {
+  width: 200px !important;
+}
+
+.row .row-right,
+.row .row-left {
+  float: left;
+  width: 50%;
+}
+

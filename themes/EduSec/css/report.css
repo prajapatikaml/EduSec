@@ -1,0 +1,61 @@
+.dynamic-report-form {
+  float: left;
+  height: 100%;
+  width: 100%;
+  margin-top:20px;
+}
+
+.dynamic-report-form form label {
+  display: block;
+  float: left;
+  font-size: 0.9em;
+  font-weight: bold;
+  line-height: 20px;
+  width: 96px !important;
+}
+
+.dynamic-report-form form .row {
+  width: 26% !important;
+}
+
+.dynamic-report-form form .buttons {
+  margin-top: 10px !important;
+}
+
+.dynamic-report-form form select,
+.dynamic-report-form form label {
+  margin-bottom: 10px !important;
+}
+#studentinfo-form1 {
+  margin-top:10px;
+}
+
+#employee-form1 {
+  margin-top:10px;
+}
+
+
+.dynamic-report-form form {
+  float:left;
+  width:100%;
+}
+
+.row {
+    width: 25% !important;
+}
+.row-new {
+    width: 100% !important;
+}
+
+.div
+{
+	width: 200px !important;
+}
+
+h1 {
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 1;
+  margin-bottom: 0.5em;
+  font-family: Arial,Helvetica,sans-serif;
+}

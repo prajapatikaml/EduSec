@@ -1,0 +1,23 @@
+<style>
+	table{
+		display: table;
+		border-collapse: collapse;
+		border:1.5px solid #74b9f0;
+		font-size: 10px;
+		font-style:VarelaRound-Regular;
+		width:100%;
+	}
+	table tr:nth-child(even) { /*(even) or (2n 0)*/
+		background: #f1f6ff;
+	}
+	table tr:nth-child(odd) { /*(odd) or (2n 1)*/
+		background: white;
+	}
+	th{text-align:left;font-weight:bold;color:#990a10;width:110px;border:0.4px solid #74b9f0;height:24px;background:#C3D9ff;text-align:center;}
+	.title{color:seagreen;}
+	td{border:0.4px solid #74b9f0;height:24px;text-align:center;}
+	
+	
+</style>
+
+

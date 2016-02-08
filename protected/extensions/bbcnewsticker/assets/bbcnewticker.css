@@ -1,0 +1,22 @@
+ul.ticker-items {
+ list-style-type: none;
+}
+
+ul.ticker-items a {
+  /* text-decoration: none; */
+}
+
+
+ul.ticker-controls {
+ list-style-type: none;
+}
+
+ul.ticker-controls li {
+ display: inline;
+ padding: 0.3em;
+}
+
+
+ul.ticker-controls a {
+  /* text-decoration: none; */
+}
