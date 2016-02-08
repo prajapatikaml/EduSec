@@ -1,10 +1,6 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
-class StateController extends RController
+class StateController extends EduSecCustom
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -40,12 +36,15 @@ class StateController extends RController
 	public function actionCreate()
 	{
 		$model=new State;
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['State']))
 		{
 			$model->attributes=$_POST['State'];
 			if($model->save())
+				//$this->redirect(array('view','id'=>$model->state_id));
 				$this->redirect(array('admin'));
 		}
 
@@ -62,7 +61,9 @@ class StateController extends RController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['State']))
 		{
@@ -83,36 +84,24 @@ class StateController extends RController
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			$this->loadModel($id)->delete();
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		// we only allow deletion via POST request
+		try{
+		    $this->loadModel($id)->delete();
+		    if(!isset($_GET['ajax']))
+			    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}catch (CDbException $e){
+			throw new CHttpException(400,'You can not delete this record because it is used in another table.');
 		}
-		else if(!Yii::app()->request->isPostRequest) {
-			$emp_tran = EmployeeAddress::model()->findAll(array('condition'=>'employee_address_c_state='.$id));
-			$stud_tran = StudentAddress::model()->findAll(array('condition'=>'student_address_c_state='.$id));
-			$organization=Organization::model()->findAll(array('condition'=>'state='.$id));
-			$city=City::model()->findAll(array('condition'=>'state_id='.$id));
-			if(!empty($emp_tran) || !empty($stud_tran) || !empty($city) || !empty($organization))
-			{
-				throw new CHttpException(400,'You can not delete this record because it is used in another table.');
-			}
-			else
-			{
-				$this->loadModel($id)->delete();
-				$this->redirect( array('admin'));
-			}
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
-
 	/**
 	 * Lists all models.
 	 */
 	public function actionIndex()
 	{
+/*		$dataProvider=new CActiveDataProvider('State');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		)); */
 		$model=new State('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['State']))

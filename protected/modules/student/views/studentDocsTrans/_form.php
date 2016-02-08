@@ -1,14 +1,8 @@
-<style>
-#StudentDocs_student_docs_path {
-  width: 209px;
-}
-</style>
 <div class="portlet box blue">
-<i class="icon-reorder"></i>
- <div class="portlet-title">Add Document
- </div>
+ <div class="portlet-title"><i class="fa fa-plus"></i><span class="box-title">Fill Details</span>
+</div>
 
-<div class="ui-tabs-panel form">
+<div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'student-docs-trans-form',
@@ -18,7 +12,6 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 
-	<?php // echo $form->errorSummary($model); ?>
 	<div class="row">
 		<?php echo $form->labelEx($stud_doc,'doc_category_id'); ?>
 		<?php echo $form->dropDownList($stud_doc,'doc_category_id',CHtml::listData(DocumentCategoryMaster::model()->findAll(),'doc_category_id','doc_category_name'),array('empty' => 'Select Category')); ?><span class="status">&nbsp;</span>
@@ -42,13 +35,12 @@
 	<div class="row">
 		<?php echo $form->labelEx($stud_doc,'student_docs_submit_date'); ?>
 		<?php 
-			    $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+			    $this->widget('CustomDatePicker', array(
 			    'model'=>$stud_doc,
 			    'attribute'=>'student_docs_submit_date',
 			    'options'=>array(
 			    'dateFormat'=>'dd-mm-yy',
 			    'changeYear'=>'true',
-			    'maxDate'=>0,
 			    'changeMonth'=>'true',
 			    'showAnim' =>'slide',
 			    'yearRange'=>'1900:'.(date('Y')+1),	
@@ -73,12 +65,11 @@
 	</div>
 	<div class="hint"><b>Hint:-</b>&nbsp;Upload Only Jpeg, Jpg, Pdf, Txt, Doc, Gif, Png Type Document</div>
 	 <div>&nbsp;</div>
-
+</div><!-- form -->
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Add' : 'Save', array('class'=>'submit')); ?>
+ 		<?php echo CHtml::link('Cancel', Yii::app()->request->urlReferrer , array('class'=>'btnCan')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->
 </div>

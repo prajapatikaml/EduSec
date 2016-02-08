@@ -1,10 +1,6 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
-class NationalityController extends RController
+class NationalityController extends EduSecCustom
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -35,17 +31,18 @@ class NationalityController extends RController
 
 	/**
 	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'admin' page.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
 		$model=new Nationality;
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Nationality']))
 		{
 			$model->attributes=$_POST['Nationality'];
-			$model->nationality_organization_id = Yii::app()->user->getState('org_id');
 			$model->nationality_created_by=Yii::app()->user->id;
 			$model->nationality_created_date=new CDbExpression('NOW()');
 			if($model->save())
@@ -65,13 +62,15 @@ class NationalityController extends RController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Nationality']))
 		{
 			$model->attributes=$_POST['Nationality'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('admin'));//$this->redirect(array('view','id'=>$model->nationality_id));
 		}
 
 		$this->render('update',array(
@@ -86,45 +85,16 @@ class NationalityController extends RController
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			$this->loadModel($id)->delete();
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		// we only allow deletion via POST request
+		try{
+		    $this->loadModel($id)->delete();
+		    if(!isset($_GET['ajax']))
+			    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}catch (CDbException $e){
+			throw new CHttpException(400,'You can not delete this record because it is used in another table.');
 		}
-		else if(!Yii::app()->request->isPostRequest) {
-			$emp_tran = EmployeeTransaction::model()->findAll(array('condition'=>'employee_transaction_nationality_id='.$id));
-			$stud_tran = StudentTransaction::model()->findAll(array('condition'=>'student_transaction_nationality_id='.$id));
-			if(!empty($emp_tran) || !empty($stud_tran))
-			{
-				throw new CHttpException(400,'You can not delete this record because it is used in another table.');
-			}
-			else
-			{
-				$this->loadModel($id)->delete();
-				$this->redirect( array('admin'));
-			}
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model=new Nationality('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Nationality']))
-			$model->attributes=$_GET['Nationality'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-
-	}
-
+	
 	/**
 	 * Manages all models.
 	 */
@@ -165,5 +135,7 @@ class NationalityController extends RController
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-	}   
+	}
+	
+	    
 }

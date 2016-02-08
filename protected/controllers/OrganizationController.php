@@ -1,8 +1,4 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 class OrganizationController extends RController
 {
@@ -22,6 +18,33 @@ class OrganizationController extends RController
 		);
 	}
 
+
+	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	
+	public function accessRules()
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'users'=>array('sadmin@hansaba.com'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('create','update'),
+				'users'=>array('sadmin@hansaba.com'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('sadmin@hansaba.com'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
+		);
+	}
+
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -35,12 +58,14 @@ class OrganizationController extends RController
 
 	/**
 	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'admin' page.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
-		$model=new Organization;		
-		$this->performAjaxValidation($model);
+		$model=new Organization;
+		
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(!empty($_POST['Organization']['organization_name']) && !empty($_POST['Organization']['address_line1']) && !empty($_POST['Organization']['city']) && !empty($_POST['Organization']['state']) && !empty($_POST['Organization']['country']) && !empty($_POST['Organization']['pin']) && !empty($_POST['Organization']['phone']) && !empty($_POST['Organization']['no_of_semester']) && !empty($_POST['Organization']['email']))
 		{
@@ -62,12 +87,12 @@ class OrganizationController extends RController
 				fclose($fp);
 				if($model->file_type == "image/png") {
 				$src_img = imagecreatefrompng($file->tempName);
-                                $dst_img = imagecreatetruecolor(200, 170);
+                                $dst_img = imagecreatetruecolor(90, 70);
 				imagealphablending($dst_img, false);
- imagesavealpha($dst_img,true);
- $transparent = imagecolorallocatealpha($dst_img, 255, 255, 255, 127);
- imagefilledrectangle($dst_img, 0, 0, 200, 170, $transparent);
-                                imagecopyresampled($dst_img, $src_img, 0,0,0,0, 200,170, imagesx($src_img), imagesy($src_img));
+				imagesavealpha($dst_img,true);
+				$transparent = imagecolorallocatealpha($dst_img, 255, 255, 255, 127);
+				imagefilledrectangle($dst_img, 0, 0, 90, 70, $transparent);
+                                imagecopyresampled($dst_img, $src_img, 0,0,0,0, 90, 70, imagesx($src_img), imagesy($src_img));
                                 imagepng($dst_img);                                
                                 ob_start();
                                 imagepng($dst_img);
@@ -76,12 +101,12 @@ class OrganizationController extends RController
 			}
 			if($model->file_type == "image/jpg" || $model->file_type == "image/jpeg") {
 				$src_img = imagecreatefromjpeg($file->tempName);
-                                $dst_img = imagecreatetruecolor(200, 170);
+                                $dst_img = imagecreatetruecolor(90, 70);
 				imagealphablending($dst_img, false);
- imagesavealpha($dst_img,true);
- $transparent = imagecolorallocatealpha($dst_img, 255, 255, 255, 127);
- imagefilledrectangle($dst_img, 0, 0, 200, 170, $transparent);
-                                imagecopyresampled($dst_img, $src_img, 0,0,0,0, 200,170, imagesx($src_img), imagesy($src_img));
+				imagesavealpha($dst_img,true);
+				$transparent = imagecolorallocatealpha($dst_img, 255, 255, 255, 127);
+				imagefilledrectangle($dst_img, 0, 0, 90, 70, $transparent);
+                                imagecopyresampled($dst_img, $src_img, 0,0,0,0, 90, 70, imagesx($src_img), imagesy($src_img));
                                 imagejpeg($dst_img);                                
                                 ob_start();
                                 imagepng($dst_img);
@@ -90,12 +115,12 @@ class OrganizationController extends RController
 			}
 			if($model->file_type == "image/gif") {
 				$src_img = imagecreatefromgif($file->tempName);
-                                $dst_img = imagecreatetruecolor(200, 170);
+                                $dst_img = imagecreatetruecolor(90, 70);
 				imagealphablending($dst_img, false);
- imagesavealpha($dst_img,true);
- $transparent = imagecolorallocatealpha($dst_img, 255, 255, 255, 127);
- imagefilledrectangle($dst_img, 0, 0, 200, 170, $transparent);
-                                imagecopyresampled($dst_img, $src_img, 0,0,0,0, 200,170, imagesx($src_img), imagesy($src_img));
+				imagesavealpha($dst_img,true);
+				$transparent = imagecolorallocatealpha($dst_img, 255, 255, 255, 127);
+				imagefilledrectangle($dst_img, 0, 0, 90, 70, $transparent);
+                                imagecopyresampled($dst_img, $src_img, 0,0,0,0, 90, 70, imagesx($src_img), imagesy($src_img));
                                 imagepng($dst_img);                                
                                 ob_start();
                                 imagecreatefromgif($dst_img);
@@ -108,6 +133,7 @@ class OrganizationController extends RController
 			
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->organization_id));
+				//$this->redirect(array('admin'));
 		}
 
 		$this->render('create',array(
@@ -115,7 +141,10 @@ class OrganizationController extends RController
 		));
 	}
 
-	/**
+
+	
+	/**+
+
 	 * Updates a particular model.
 	 * If update is successful, the browser will be redirected to the 'view' page.
 	 * @param integer $id the ID of the model to be updated
@@ -158,12 +187,12 @@ class OrganizationController extends RController
 				
 			if($model->file_type == "image/png") {
 				$src_img = imagecreatefrompng($file->tempName);
-                                $dst_img = imagecreatetruecolor(200, 170);
+                                $dst_img = imagecreatetruecolor(90, 70);
 				imagealphablending($dst_img, false);
- imagesavealpha($dst_img,true);
- $transparent = imagecolorallocatealpha($dst_img, 255, 255, 255, 127);
- imagefilledrectangle($dst_img, 0, 0, 200, 170, $transparent);
-                                imagecopyresampled($dst_img, $src_img, 0,0,0,0, 200,170, imagesx($src_img), imagesy($src_img));
+				imagesavealpha($dst_img,true);
+				$transparent = imagecolorallocatealpha($dst_img, 255, 255, 255, 127);
+				imagefilledrectangle($dst_img, 0, 0, 90, 70, $transparent);
+				imagecopyresampled($dst_img, $src_img, 0,0,0,0, 90, 70, imagesx($src_img), imagesy($src_img));
                                 imagepng($dst_img);                                
                                 ob_start();
                                 imagepng($dst_img);
@@ -172,12 +201,12 @@ class OrganizationController extends RController
 			}
 			if($model->file_type == "image/jpeg" || $model->file_type =="image/jpg") {
 				$src_img = imagecreatefromjpeg($file->tempName);
-                                $dst_img = imagecreatetruecolor(200, 170);
+                                $dst_img = imagecreatetruecolor(90, 70);
 				imagealphablending($dst_img, false);
- imagesavealpha($dst_img,true);
- $transparent = imagecolorallocatealpha($dst_img, 255, 255, 255, 127);
- imagefilledrectangle($dst_img, 0, 0, 200, 170, $transparent);
-                                imagecopyresampled($dst_img, $src_img, 0,0,0,0, 200,170, imagesx($src_img), imagesy($src_img));
+				imagesavealpha($dst_img,true);
+				$transparent = imagecolorallocatealpha($dst_img, 255, 255, 255, 127);
+				imagefilledrectangle($dst_img, 0, 0, 90, 70, $transparent);
+                                imagecopyresampled($dst_img, $src_img, 0,0,0,0, 90, 70, imagesx($src_img), imagesy($src_img));
                                 imagejpeg($dst_img);                                
                                 ob_start();
                                 imagejpeg($dst_img);
@@ -186,12 +215,12 @@ class OrganizationController extends RController
 			}
 			if($model->file_type == "image/gif") {
 				$src_img = imagecreatefromgif($file->tempName);
-                                $dst_img = imagecreatetruecolor(200, 170);
+                                $dst_img = imagecreatetruecolor(90, 70);
 				imagealphablending($dst_img, false);
- imagesavealpha($dst_img,true);
- $transparent = imagecolorallocatealpha($dst_img, 255, 255, 255, 127);
- imagefilledrectangle($dst_img, 0, 0, 200, 170, $transparent);
-                                imagecopyresampled($dst_img, $src_img, 0,0,0,0, 200,170, imagesx($src_img), imagesy($src_img));
+				imagesavealpha($dst_img,true);
+				$transparent = imagecolorallocatealpha($dst_img, 255, 255, 255, 127);
+				imagefilledrectangle($dst_img, 0, 0, 90, 70, $transparent);
+                                imagecopyresampled($dst_img, $src_img, 0,0,0,0, 90, 70, imagesx($src_img), imagesy($src_img));
                                 imagegif($dst_img);                                
                                 ob_start();
                                 imagegif($dst_img);
@@ -204,7 +233,7 @@ class OrganizationController extends RController
 
 		}
 			$model->save(false);
-			$this->redirect(array('view', 'id'=>$model->organization_id));
+			$this->redirect(array('admin'));
 		}
 		$this->render('update',array(
 			'model'=>$model,
@@ -227,10 +256,6 @@ class OrganizationController extends RController
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 		}
-		else if(!Yii::app()->request->isPostRequest) {
-			$this->loadModel($id)->delete();
-			$this->redirect(array('admin'));
-		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
@@ -240,6 +265,12 @@ class OrganizationController extends RController
 	 */
 	public function actionIndex()
 	{
+		/*
+		$dataProvider=new CActiveDataProvider('Organization');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));
+		*/
 		$model=new Organization('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Organization']))
@@ -291,30 +322,26 @@ class OrganizationController extends RController
 			Yii::app()->end();
 		}
 	}
-
-	/**
-	 * Return state array for state dependent dropdown based on country.
-	 */
-	public function actionUpdateStates()
-	{
-	    $data = State::model()->findAll(array('condition'=>'country_id='.(int) $_REQUEST['Organization']['country']));
-	    $data = CHtml::listData($data,'state_id','state_name');
-	    echo "<option value=''>Select State</option>";
-	    foreach($data as $value=>$name)
-		{
-	        echo CHtml::tag('option', 
-			array('value'=>$value),CHtml::encode($name),true);
- 		}
-	}
-	
-	/**
-	 * Return cities array for city dependent dropdown based on state & country.
-	 */ 
-	public function actionUpdateCities()
-	{
+	 public function actionUpdateStates()
+	    {
+		    
+		    $data = State::model()->findAll(array('condition'=>'country_id='.(int) $_REQUEST['Organization']['country']));
+		    $data = CHtml::listData($data,'state_id','state_name');
+		    echo "<option value=''>Select State</option>";
+		    foreach($data as $value=>$name)
+			{
+		        echo CHtml::tag('option', 
+				array('value'=>$value),CHtml::encode($name),true);
+	 		}
+		    
+	    }
+	 
+	    public function actionUpdateCities()
+	    {
 		    $data = City::model()->findAll('state_id=:state_id', array(':state_id'=>(int) $_REQUEST['Organization']['state']));
 		    $data = CHtml::listData($data,'city_id','city_name');
+		    //echo "<option value=''>Select City</option>";
 		    foreach($data as $value=>$name)
 			echo CHtml::tag('option', array('value'=>$value),CHtml::encode($name),true);
-	}
+	    }
 }

@@ -1,14 +1,15 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 /**
  * This is the model class for table "languages_known".
- * @package EduSec.models
+ *
+ * The followings are the available columns in table 'languages_known':
+ * @property integer $languages_known_id
+ * @property integer $languages_known1
+ * @property integer $languages_known2
+ * @property integer $languages_known3
+ * @property integer $languages_known4
  */
-
 class LanguagesKnown extends CActiveRecord
 {
 	/**
@@ -34,8 +35,15 @@ class LanguagesKnown extends CActiveRecord
 	 */
 	public function rules()
 	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
 		return array(
-			array('languages_known1, languages_known2, languages_known3, languages_known4', 'numerical', 'integerOnly'=>true),
+			//array('languages_known1', 'required','message'=>''),
+			//array('languages_known1, languages_known2, languages_known3, languages_known4','required','message'=>'','on'=>'Update'),
+			array(' languages_known2, languages_known3, languages_known4', 'numerical', 'integerOnly'=>true),
+			array('languages_known1','safe'),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
 			array('languages_known_id, languages_known1, languages_known2, languages_known3, languages_known4', 'safe', 'on'=>'search'),
 		);
 	}
@@ -45,6 +53,8 @@ class LanguagesKnown extends CActiveRecord
 	 */
 	public function relations()
 	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
 		return array(
 
 		'Rel_Langs1'=>array(self::BELONGS_TO, 'Languages', 'languages_known1'),

@@ -1,3 +1,7 @@
+<div class="portlet box blue">
+<i class="icon-reorder"></i>
+ <div class="portlet-title"><span class="box-title">Change Password</span>
+</div>        
 
 <div class="form">
 
@@ -38,3 +42,4 @@
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+</div>

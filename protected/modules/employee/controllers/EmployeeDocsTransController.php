@@ -1,10 +1,6 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
-class EmployeeDocsTransController extends RController
+class EmployeeDocsTransController extends EduSecCustom
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -22,6 +18,7 @@ class EmployeeDocsTransController extends RController
 		);
 	}
 
+
 	/**
 	 * Displays a particular model.
 	 * @param integer $id the ID of the model to be displayed
@@ -35,18 +32,27 @@ class EmployeeDocsTransController extends RController
 
 	/**
 	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'employeeTransaction/employeedocs' page.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
 		$model=new EmployeeDocsTrans;
 		$emp_doc=new EmployeeDocs;
+
+		
+
+		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation(array($model,$emp_doc));
 
+//		$docs = CUploadedFile::getInstancesByName('employee_docs_path');
 		if(isset($_POST['EmployeeDocs']))
 		{
+			//var_dump($emp_doc->employee_docs_path);
+			//exit;
 			 $emp_doc->attributes=$_POST['EmployeeDocs'];
 	  		 $emp_doc->employee_docs_path = CUploadedFile::getInstance($emp_doc,'employee_docs_path');
+			//var_dump($emp_doc->employee_docs_path);
+			//exit;
 			$valid = $emp_doc->validate();
 			if($valid) 
 			{
@@ -78,7 +84,9 @@ class EmployeeDocsTransController extends RController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
+		
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 		$emp_doc->employee_docs_submit_date = date("d-m-Y", strtotime($model->employee_docs_submit_date));
 		if(isset($_POST['EmployeeDocsTrans']))
 		{
@@ -99,30 +107,11 @@ class EmployeeDocsTransController extends RController
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			$this->loadModel($id)->delete();
+		$this->loadModel($id)->delete();
 
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model=new EmployeeDocsTrans('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['EmployeeDocsTrans']))
-			$model->attributes=$_GET['EmployeeDocsTrans'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**
@@ -141,8 +130,8 @@ class EmployeeDocsTransController extends RController
 	}
 
 	/**
-	 * Return list of employee document list.
-	 */
+	* This action returns the list of documents of the employee.
+	*/
 	public function actionEmployeedocs()
 	{
 		$model=new EmployeeDocsTrans('mysearch');
@@ -154,7 +143,6 @@ class EmployeeDocsTransController extends RController
 			'employeedocs'=>$model,
 		));
 	}
-
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

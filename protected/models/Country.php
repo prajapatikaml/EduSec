@@ -1,14 +1,9 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 /**
  * This is the model class for table "country".
  * @package EduSec.models
  */
-
 class Country extends CActiveRecord
 {
 	/**
@@ -27,10 +22,6 @@ class Country extends CActiveRecord
 	{
 		return 'country';
 	}
-
-	/**
-	 * @return default scope to get data from table in order to country "name".
-	 */
 	public function defaultScope() 
 	{
        		return array(
@@ -42,11 +33,15 @@ class Country extends CActiveRecord
 	 */
 	public function rules()
 	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
 		return array(
 			array('name', 'required','message'=>''),
 			array('name', 'length', 'max'=>60),
 			array('name', 'unique','message'=>'Already Exists.'),
-			array('name','CRegularExpressionValidator','pattern'=>'/^([A-Za-z  ]+)$/','message'=>''),
+			//array('name','CRegularExpressionValidator','pattern'=>'/^([A-Za-z  ]+)$/','message'=>''),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
 			array('id, name', 'safe', 'on'=>'search'),
 		);
 	}
@@ -90,36 +85,33 @@ class Country extends CActiveRecord
 		$country_data = new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
 		));
-		$_SESSION['country_data']=$country_data;
+				unset($_SESSION['exportData']);
+		$_SESSION['exportData'] = $country_data;
 		return $country_data;
 	}
 
 	/**
-	 * @return array for create dropdown for country.
+	*For Export to PDF & Excel
+	*Field written in attributes are exported in excel
+	*For pdf pdfFile will be render to export
 	*/
-
-        private static $_items=array();
-
-        public static function items()
-        {
-            if(isset(self::$_items))
-                self::loadItems();
-            return self::$_items;
+	public static function getExportData() {
+	      $data = array('data'=>$_SESSION['exportData'],'attributes'=>array(
+			'name',
+        		),
+		'filename'=>'Country-List', 'pdfFile'=>'/country/CountryExportPdf');
+              return $data;
         }
 
-        public static function item($code)
-        {
-          if(!isset(self::$_items))
-            self::loadItems();
-          return isset(self::$_items[$code]) ? self::$_items[$code] : false;
-        }
+	private static $_items=array();
 
-        private static function loadItems()
-        {
-           self::$_items=array();
-           $models=self::model()->findAll();
-           foreach($models as $model)
-            self::$_items[$model->id]=$model->name;
-        }
-
+	/**
+	* Generate array for dropdown list to use in child form.
+	* @return array $_items
+	*/
+	public static function items()
+	{
+	    self::$_items = CHtml::listData(self::model()->findAll(), 'id', 'name');
+	    return self::$_items;
+	}
 }

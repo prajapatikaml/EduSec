@@ -1,5 +1,13 @@
-<div class="form">
-
+<div class="portlet box blue">
+<i class="icon-reorder"></i>
+<?php if($model->scenario=="insert") { ?>
+ <div class="portlet-title"><span class="box-title">Add Employee Experience</span>
+<?php }
+ else {?>
+ <div class="portlet-title"><span class="box-title">Edit Employee Experience</span>
+<?php }?>
+</div>
+<div class="form two-coloumn">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'employee-experience-trans-form',
 	'enableAjaxValidation'=>true,
@@ -29,14 +37,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($emp_exp,'employee_experience_from'); ?>
-		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+		<?php $this->widget('CustomDatePicker', array(
 		    'model'=>$emp_exp, 
 		    'attribute'=>'employee_experience_from',
 		    'options'=>array(
 			'dateFormat'=>'dd-mm-yy',
 			'changeYear'=>'true',
 			'changeMonth'=>'true',
-			'maxDate'=>0,
 			'showAnim' =>'slide',
 			'yearRange'=>'1900:'.(date('Y')+1),
 			'buttonImage'=>Yii::app()->request->baseUrl.'/images/calendar.png',			
@@ -55,14 +62,13 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($emp_exp,'employee_experience_to'); ?>
-		<?php $this->widget('zii.widgets.jui.CJuiDatePicker', array(
+		<?php $this->widget('CustomDatePicker', array(
 		    'model'=>$emp_exp, 
 		    'attribute'=>'employee_experience_to',
 		    'options'=>array(
 			'dateFormat'=>'dd-mm-yy',
 			'changeYear'=>'true',
 			'changeMonth'=>'true',
-			'maxDate'=>0,
 			'showAnim' =>'slide',
 			'yearRange'=>'1900:'.(date('Y')+1),
 			'buttonImage'=>Yii::app()->request->baseUrl.'/images/calendar.png',			
@@ -85,4 +91,4 @@
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->
+</div><!-- form --></div>

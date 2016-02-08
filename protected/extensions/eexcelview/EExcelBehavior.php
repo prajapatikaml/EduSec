@@ -46,11 +46,12 @@ class EExcelBehavior extends CBehavior
 	 */
 	public function toExcel($model=null, $columns=array(), $title=null, $documentDetails=array(), $exportType='Excel2007')
 	{
+		//print_r($this->controller->eexcelview); exit;
 		// Be sure to be attached to an instance of CController
-		if(! $this->owner instanceof CController){
+		/*if(! $this->controller->eexcelview instanceof CController) {
 			Yii::log('EExcelBehavior can only be attached to an instance of CControler', 'error', 'system.base.CBehavior');
 			return;
-		}
+		}*/
 		
 		/**
 		 * We need a data provider in order to create a CGridView. Actually we could pass a CActiveDataProvider instance or
@@ -60,7 +61,7 @@ class EExcelBehavior extends CBehavior
 		if(!isset($model))
 		{
 			// Get the controller name as the model
-			$model = ucfirst($this->owner->id);
+			$model = ucfirst($this->controller->eexcelview->id);
 			$dataProvider = new CActiveDataProvider($model);
 		}
 		// Next, check if is string
@@ -133,7 +134,7 @@ class EExcelBehavior extends CBehavior
 
 		$arg = CMap::mergeArray($config, $documentDetails);
 		
-		$this->owner->widget('ext.eexcelview.EExcelView', $arg);
+		$this->controller->widget('ext.eexcelview.EExcelView', $arg);
 		
 		Yii::app()->end();
 	}

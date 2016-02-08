@@ -1,8 +1,4 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 class AcademicTermController extends RController
 {
@@ -21,11 +17,6 @@ class AcademicTermController extends RController
 			'rights', // perform access control for CRUD operations
 		);
 	}
-
-	/**
-	 * Get behaviors from eexcelview extension to export data.
-	 */
-
 	 public function behaviors()
 	    {
 		return array(
@@ -34,6 +25,32 @@ class AcademicTermController extends RController
 		    ),
 		);
 	    }
+
+	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	
+	public function accessRules()
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view','toggle','switch'),
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('create','update'),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('@'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
+		);
+	}
 
 	/**
 	 * Displays a particular model.
@@ -46,10 +63,15 @@ class AcademicTermController extends RController
 			'model'=>$this->loadModel($id),
 		));
 	}
-
+	public function actionReqTest($id) {
+	echo date('H:i:s');
+	Yii::app()->end();
+}
 	/**
-	 * Use Jtoggle extension to switch active inactive semester.
+	 * Creates a new model.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
+
 	public function actions()
 	{
 		return array(
@@ -58,33 +80,27 @@ class AcademicTermController extends RController
 		);
     	}
 
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'admin' page.
-	 */
 	public function actionCreate()
 	{
 		$model=new AcademicTerm;
+
+		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['AcademicTerm']) && !empty($_POST['AcademicTerm']['academic_term_start_date']) && !empty($_POST['AcademicTerm']['academic_term_end_date']))
 		{
 			$model->attributes=$_POST['AcademicTerm'];
 			
-			$new_start = $_POST['AcademicTerm']['academic_term_start_date'];
-			$new_end = $_POST['AcademicTerm']['academic_term_end_date'];
 			
-			$start = date("Y-m-d", strtotime($new_start));
-			$end = date("Y-m-d", strtotime($new_end));
-			
-
 			$sem=$_POST['AcademicTerm']['current_sem'];
 			$model->current_sem=$sem;
-			$model->academic_term_start_date=$start;
-			$model->academic_term_end_date=$end;
-			$model->academic_term_organization_id = Yii::app()->user->getState('org_id');
+			$model->academic_term_start_date=$_POST['AcademicTerm']['academic_term_start_date'];
+			//$model->academic_term_start_date=$start;
+			$model->academic_term_end_date=$_POST['AcademicTerm']['academic_term_end_date'];
+			//$model->academic_term_organization_id = Yii::app()->user->getState('org_id');
 			if($model->save())
 				$this->redirect(array('admin'));
+				//$this->redirect(array('view','id'=>$model->academic_term_id));
 		}
 
 		$this->render('create',array(
@@ -100,24 +116,16 @@ class AcademicTermController extends RController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
-		$model->academic_term_start_date = date("d-m-Y", strtotime($model->academic_term_start_date));
-		$model->academic_term_end_date = date("d-m-Y", strtotime($model->academic_term_end_date));
+		
 
 		if(isset($_POST['AcademicTerm']))
 		{
 			$model->attributes=$_POST['AcademicTerm'];
 			$sem=$_POST['AcademicTerm']['current_sem'];
 
-			$new_start = $_POST['AcademicTerm']['academic_term_start_date'];
-			$new_end = $_POST['AcademicTerm']['academic_term_end_date'];
-
-			
-			$start = date("Y-m-d", strtotime($new_start));
-			$end = date("Y-m-d", strtotime($new_end));
-			
-			$model->academic_term_start_date=$start;
-			$model->academic_term_end_date=$end;
 			$model->current_sem=$sem;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->academic_term_id));
@@ -135,28 +143,19 @@ class AcademicTermController extends RController
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
+		$academic_term = AcademicTerm::model()->findAll(array('condition'=>'academic_term_id='.$id));
+		if(!empty($academic_term))
 		{
-			$this->loadModel($id)->delete();
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else if(!Yii::app()->request->isPostRequest) {
-			$stud_tran = StudentTransaction::model()->findAll(array('condition'=>'student_academic_term_name_id='.$id));
-			
-			if(!empty($stud_tran))
-			{
+			try{
+			    $this->loadModel($id)->delete();
+			    if(!isset($_GET['ajax']))
+				    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			    }catch (CDbException $e){
 				throw new CHttpException(400,'You can not delete this record because it is used in another table.');
-			}
-			else
-			{
-				$this->loadModel($id)->delete();
-				$this->redirect( array('admin'));
-			}
+			    }
 		}
 		else
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-
 	}
 
 	/**
@@ -164,6 +163,10 @@ class AcademicTermController extends RController
 	 */
 	public function actionIndex()
 	{
+/*		$dataProvider=new CActiveDataProvider('AcademicTerm');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));*/
 		$model=new AcademicTerm('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['AcademicTerm']))
@@ -214,10 +217,6 @@ class AcademicTermController extends RController
 			Yii::app()->end();
 		}
 	}
-
-	/**
-	 * Export Data in Excel
-	*/
 	public function actionAcademicTermExportExcel()
 	{
 	
@@ -238,13 +237,8 @@ class AcademicTermController extends RController
 		'Excel2007'
 	    );
 	}
-
-	/**
-	 * Export Data in PDF
-	 */
-
-	public function actionAcademicTermGeneratePdf() 
-	{
+	    public function actionAcademicTermGeneratePdf() 
+	    {
 	   $session=new CHttpSession;
 	   $session->open();
 		Yii::import('application.extensions.tcpdf.*');
@@ -253,6 +247,7 @@ class AcademicTermController extends RController
 		
              if(isset($session['academic_term_records']))
                {
+                //$model=$session['City_records'];
 		 $d = $_SESSION['academic_term_records'];
 		 $model = array();
 
@@ -267,7 +262,9 @@ class AcademicTermController extends RController
 		$html = $this->renderPartial('/academicTerm/academicTermGeneratePdf', array(
 			'model'=>$model
 		), true);
-
+		//$session->close();
+		
+		//die($html);
 		ob_clean();
 		$pdf = new TCPDF();
 		$pdf->SetCreator(PDF_CREATOR);
@@ -276,6 +273,7 @@ class AcademicTermController extends RController
 		$pdf->SetSubject('Student Report');
 		$pdf->SetKeywords('example, text, report');
 		$pdf->SetHeaderData('', 0, "Report", '');
+		//$pdf->SetHeaderData(PDF_HEADER_LOGO, PDF_HEADER_LOGO_WIDTH, "Example Report by ".Yii::app()->name, "");
 		$pdf->setHeaderFont(Array('helvetica', '', 8));
 		$pdf->setFooterFont(Array('helvetica', '', 6));
 		$pdf->SetMargins(15, 18, 15);

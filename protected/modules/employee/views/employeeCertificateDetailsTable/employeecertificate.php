@@ -1,7 +1,5 @@
 
 <div id="form8" class="info-form">
-<fieldset>
-	<legend>Certificates</legend>
 <?php 
 
 $this->widget('zii.widgets.grid.CGridView', array(
@@ -20,12 +18,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 
 		array('name'=>'employee_certificate_type_id',
 			'value'=>'Certificate::model()->findByPk($data->employee_certificate_type_id)->certificate_title',
-			'filter' =>CHtml::listData(Certificate::model()->findAll(array('condition'=>'certificate_organization_id='.Yii::app()->user->getState('org_id'))),'certificate_id','certificate_title'),
+			'filter' =>CHtml::listData(Certificate::model()->findAll(),'certificate_id','certificate_title'),
 
-		),
-		array('name'=>'Organization',
-			'value'=>'Organization::model()->findByPk($data->employee_certificate_org_id)->organization_name',
-			'filter' => false,
 		),
 		array(
 			'class'=>'CButtonColumn',
@@ -39,10 +33,8 @@ $this->widget('zii.widgets.grid.CGridView', array(
 	'pager'=>array(
 		'class'=>'AjaxList',
 		'maxButtonCount'=>$employeecertificate->count(),
-//		'maxButtonCount'=>25,
 		'header'=>''
 	    ),
 )); ?>
-</fieldset>
 </div>
 

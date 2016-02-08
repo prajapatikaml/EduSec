@@ -2,8 +2,8 @@
 
 class MessageController extends Controller
 {
-	public $layout='//layouts/column2';
 	public $defaultAction = 'inbox';
+	public $layout = "column2";	
 	public $buttons = array( // Ex output: {count} messages have been {value}
 				'default'=>array('delete'=>'deleted','read'=>'marked read','unread'=>'marked unread'),
 				'trash'=>array('delete'=>'permanently deleted','restore'=>'restored')
@@ -35,9 +35,8 @@ class MessageController extends Controller
 	public function actionInbox($ajax=null)
 	{
 		$this->module->registerConfig($this->getAction()->getId());
-		$cs = $this->module->getClientScript();
+		$cs =& $this->module->getClientScript();
 		$cs->registerScriptFile($this->module->getAssetsUrl().'/js/mailbox.js',CClientScript::POS_END);
-
 		//$js = '$("#mailbox-list").yiiMailboxList('.$this->module->getOptions().');console.log(1)';
 
 		//$cs->registerScript('mailbox-js',$js,CClientScript::POS_READY);
@@ -56,6 +55,25 @@ class MessageController extends Controller
 				
 			$this->render('mailbox',array('dataProvider'=>$dataProvider));
 		}
+	}
+	
+	public function actionMyInbox($ajax=null)
+	{
+		$this->layout = "timetable_layout";
+		$this->module->registerConfig($this->getAction()->getId());
+		$cs = $this->module->getClientScript();
+		$cs->registerScriptFile($this->module->getAssetsUrl().'/js/mailbox.js',CClientScript::POS_END);
+		
+		if(isset($_POST['convs']))
+		{
+			$this->buttonAction('inbox');
+		}
+		$dataProvider = new CActiveDataProvider( Mailbox::model()->inbox($this->module->getUserId()) );
+		
+		if(!isset($_GET['Mailbox_sort']))
+			$_GET['Mailbox_sort'] = 'modified.desc';
+			
+		$this->render('mailboxdashboard',array('dataProvider'=>$dataProvider));
 	}
 	
 	public function actionSent()
@@ -103,7 +121,6 @@ class MessageController extends Controller
 	
 	public function actionNew()
 	{
-		$core = Yii::app()->clientScript;
 		$this->module->registerConfig($this->getAction()->getId());
 		$cs =& $this->module->getClientScript();
 		$cs->registerScriptFile($this->module->getAssetsUrl().'/js/compose.js');
@@ -112,15 +129,15 @@ class MessageController extends Controller
 		$cs->registerScript('mailbox-js',$js,CClientScript::POS_READY);
 		if(!$this->module->authManager && (!$this->module->sendMsgs  || ($this->module->readOnly && !$this->module->isAdmin()) ))
 			$this->redirect(array('message/inbox'));
-		
+	
 		if(isset($_POST['Mailbox']['to']))
 		{
+			//print_r($_POST['Mailbox']['to']);exit;
 			$t = time();
 			$conv = new Mailbox();
 			$conv->subject = ($_POST['Mailbox']['subject'])? $_POST['Mailbox']['subject'] : $this->module->defaultSubject;
 			$conv->to = $_POST['Mailbox']['to'];
 			$conv->initiator_id = $this->module->getUserId();
-
 
 			// Check if username exist
 			if(strlen($_POST['Mailbox']['to'])>1)

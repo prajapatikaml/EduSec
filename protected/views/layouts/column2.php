@@ -1,25 +1,28 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-<head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta name="language" content="en" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" media="print,screen" />
-</head>
-<body oncontextmenu="return false;" >
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-		    'homeLink'=>CHtml::link('Home', array('/dashboard/dashboard'), array('class'=>'home')),
-		    'links'=>$this->breadcrumbs,
-		    'separator'=>'',
-		)); ?>
-	<?php endif?>
+<?php $this->beginContent('//layouts/main'); ?>
 <div class="container">
 	<div class="span-19">
-		<div id="content">
+	  <div class='module-links'>
+	   <?php 
+		
+		if(!empty($_REQUEST['page'])) {
+		  $hasPortlets =  $_REQUEST['page'];
+		  Yii::app()->user->setState('loadPortlets', $hasPortlets);
+		}
+		else
+		  $hasPortlets = Yii::app()->user->getState('loadPortlets');
+	     if(isset($hasPortlets)) {
+		echo '<span class="module-title">'.CHtml::link(ucfirst(Yii::app()->user->getState('loadPortlets')), Yii::app()->baseUrl.'/dashboard/index.indexPage/page/'.Yii::app()->user->getState('loadPortlets')).'</span>'; 
+		$this->widget('application.components.views.ModulePages.Portlets.'.Yii::app()->user->getState('loadPortlets') , array());
+	    }
+	   ?>
+	  </div>
+	  <div class='main-link'>
+	     <a href="#"><?php echo ucfirst(Yii::app()->user->getState('loadPortlets')); ?></a>
+	  </div>
+
+	<div id="content">
 			<?php echo $content; ?>
 		</div><!-- content -->
 	</div>
 </div>
-
-</body>
-</html>
+<?php $this->endContent(); ?>

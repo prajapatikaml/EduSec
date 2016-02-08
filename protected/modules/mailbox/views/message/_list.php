@@ -1,6 +1,6 @@
 <?php
 
-$userid = $this->module->getUserId();
+$userid =& $this->module->getUserId();
 
 if($this->getAction()->getId()=='sent') {
 	$counterUserId = $data->recipient_id;
@@ -15,13 +15,14 @@ $username = $this->module->getFromLabel($counterUserId);
 
 if($username && ($this->module->isAdmin() || $this->module->linkUser)) {
 	$url = $this->module->getUrl($counterUserId);
+	$viewLink = $this->createUrl('message/view',array('id'=>$data->conversation_id));
 	if($url)
-		$username = '<a href="'.$url.'">'.$username.'</a>';
+		$username = '<a href="'.$viewLink.'">'.$username.'</a>';
 }
 elseif(!$username)
 	$username = '<span class="mailbox-deleted-user">'.$this->module->deletedUser.'</span>';
 
-$viewLink = $this->createUrl('message/view',array('id'=>$data->conversation_id));
+//$viewLink = $this->createUrl('message/view',array('id'=>$data->conversation_id));
 
 if($this->getAction()->getId()=='sent') {
 	$received = $this->module->getDate($data->created);

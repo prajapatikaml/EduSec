@@ -28,6 +28,8 @@ th, td, caption {
 		
 		<th align="center" >
 		    User Ip Address</th>
+		<th align="center" >
+		    Organization</th>
 		
  	</tr>
 	<?php foreach($model as $m=>$v)
@@ -57,6 +59,9 @@ th, td, caption {
 		      <?php echo $v['user_ip_address']; ?>	
 		</td>			
  	
+		<td>	
+			<?php echo Organization::model()->findByPk($v['login_organization_id'])->organization_name;?> 	
+		</td>  
   	</tr>
 	<?php $k++;?>
 	 <?php  }// end if

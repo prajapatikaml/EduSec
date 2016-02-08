@@ -1,8 +1,4 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 class EmployeeDocsController extends Controller
 {
@@ -66,7 +62,9 @@ class EmployeeDocsController extends Controller
 	public function actionCreate()
 	{
 		$model=new EmployeeDocs;
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['EmployeeDocs']))
 		{
@@ -88,7 +86,9 @@ class EmployeeDocsController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['EmployeeDocs']))
 		{
@@ -111,7 +111,10 @@ class EmployeeDocsController extends Controller
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
+			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
+
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 		}
@@ -124,6 +127,10 @@ class EmployeeDocsController extends Controller
 	 */
 	public function actionIndex()
 	{
+/*		$dataProvider=new CActiveDataProvider('EmployeeDocs');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));*/
 		$model=new EmployeeDocs('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['EmployeeDocs']))

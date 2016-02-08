@@ -1,10 +1,6 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
-class StudentstatusmasterController extends RController
+class StudentstatusmasterController extends EduSecCustom
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -22,13 +18,14 @@ class StudentstatusmasterController extends RController
 		);
 	}
 	 public function behaviors()
-	 {
+	    {
 		return array(
 		    'eexcelview'=>array(
 		        'class'=>'ext.eexcelview.EExcelBehavior',
 		    ),
 		);
-	 }
+	    }
+
 
 	/**
 	 * Displays a particular model.
@@ -43,20 +40,20 @@ class StudentstatusmasterController extends RController
 
 	/**
 	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'admin' page.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
 		$model=new Studentstatusmaster;
+
+		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['Studentstatusmaster']))
 		{
 			$model->attributes=$_POST['Studentstatusmaster'];
-			$model->organization_id = Yii::app()->user->getState('org_id');
-			$model->created_by = Yii::app()->user->id;
-			$model->creation_date = new CDbExpression('NOW()');
 			if($model->save())
+				//$this->redirect(array('view','id'=>$model->id));
 				$this->redirect(array('admin'));
 		}
 
@@ -73,7 +70,9 @@ class StudentstatusmasterController extends RController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Studentstatusmaster']))
 		{
@@ -94,28 +93,15 @@ class StudentstatusmasterController extends RController
 	 */
 	public function actionDelete($id)
 	{
-		if(!Yii::app()->request->isPostRequest)
-		{
-			throw new CHttpException(400,'You can not delete this record because it is used in another table.');
-			
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model=new Studentstatusmaster('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Studentstatusmaster']))
-			$model->attributes=$_GET['Studentstatusmaster'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+		
+			// we only allow deletion via POST request
+			try{
+			    $this->loadModel($id)->delete();
+			    if(!isset($_GET['ajax']))
+				    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			}catch (CDbException $e){
+				throw new CHttpException(400,'You can not delete this record because it is used in another table.');
+			}
 	}
 
 	/**
@@ -157,5 +143,7 @@ class StudentstatusmasterController extends RController
 			echo CActiveForm::validate($model);
 			Yii::app()->end();
 		}
-	}	
+	}
+
+	
 }

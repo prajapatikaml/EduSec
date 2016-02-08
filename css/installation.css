@@ -2,6 +2,7 @@ body {
   color: #222222;
   font-family: Arial,Helvetica,sans-serif;
   font-size: 75%;
+  margin: 1px 0 0 0;
 }
 
 div.container {
@@ -9,23 +10,20 @@ div.container {
   width: 100%;
 }
 .content {
-  background: none repeat scroll 0 0 #EAEAEA;
-  border-radius: 6px 6px 6px 6px;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  background: none repeat scroll 0 0 #FFF;
   color: black;
-  margin: 25px auto;
-  min-height: 500px;
-  padding: 20px 40px 0;
   position: relative;
-  width: 600px;
 }
 
 .header h1 {
-  color: #555555;
+  color: #FFF;
   font-size: 17px;
   font-weight: normal;
+  padding-left: 10px;
 }
 .header {
+  background: none repeat scroll 0 0 #92C46B;
+  color: #FFFFFF;
   float: left;
   width: 100%;
 }
@@ -44,12 +42,8 @@ ul.error-list li {
 
 .require-note {
   float: left;
-  margin-top: 30px;
   min-height: 300px;
   width: 100%;
-  background: none repeat scroll 0 0 #F8F8F8;
-  border: 1px solid #DDDDDD;
-  border-radius: 4px 4px 4px 4px;
   overflow: hidden;
 }
 .header .app-logo {
@@ -60,11 +54,12 @@ ul.error-list li {
   float: left;
   font-size: 15px;
   font-weight: normal;
-  width: 130px;
+  color: #717173;
+  width: 120px;
 }
 .row {
   float: left;
-  height: 40px;
+  height: 50px;
   width: 100%;
 }
 .content #db-form-box {
@@ -74,8 +69,9 @@ ul.error-list li {
 input[type="text"], input[type="password"], input[type="file"] {
   border: 1px solid #DDDDDD;
   border-radius: 0 0 0 0;
-  height: 30px;
+  height: 30px !important;
   float: left;
+  width: 140px !important; 
 }
 
 .btnblue {
@@ -91,29 +87,22 @@ input[type="text"], input[type="password"], input[type="file"] {
   border: 0px;	
 }
 
-
 .check-db-status {
   color: red;
   float: left;
+  font-size: 15px;
   margin-left: 40px;
-  margin-top: 15px;
 }
 .header span {
   font-size: 15px;
 }
 
-.req-finish {
-  float: left;
-  font-size: 14px;
-  margin-top: 20px;
-  color: green;
-}
 .form .error .status {
   background: url("../images/error.png") no-repeat scroll right center transparent !important;
   float: left;
   height: 20px;
   padding-left: 5px;
-  padding-top: 5px;
+  padding-top: 30px;
   width: 20px;
 }
 .form .success .status {
@@ -122,7 +111,7 @@ input[type="text"], input[type="password"], input[type="file"] {
   width: 20px;
   float:left;
   padding-left: 5px;
-  padding-top: 5px;
+  padding-top: 30px;
 
 }
 span.required {
@@ -138,3 +127,31 @@ img {
   font-weight: normal;
   margin-top: 15px;
 }
+.install-header {
+  background: none repeat scroll 0 0 #FFFFFF;
+  clear: both;
+  float: left;
+  height: 70px;
+  line-height: 90px;
+  width: 100%;
+}
+.install-instruct {
+  float: left;
+  padding: 15px;
+  font-size: 14px;
+}
+
+#Organization_address_line1, #Organization_address_line2 {
+  width:  400px !important;
+}
+
+#User_user_organization_email_id,  #User_user_password {
+  width: 200px !important;
+}
+
+.row .row-right,
+.row .row-left {
+  float: left;
+  width: 50%;
+}
+

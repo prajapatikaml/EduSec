@@ -1,8 +1,4 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 class LanguagesKnownController extends Controller
 {
@@ -67,6 +63,9 @@ class LanguagesKnownController extends Controller
 	{
 		$model=new LanguagesKnown;
 
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
 		if(isset($_POST['LanguagesKnown']))
 		{
 			$model->attributes=$_POST['LanguagesKnown'];
@@ -87,6 +86,9 @@ class LanguagesKnownController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['LanguagesKnown']))
 		{
@@ -109,8 +111,10 @@ class LanguagesKnownController extends Controller
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
+			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
 
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 		}

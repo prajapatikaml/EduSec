@@ -1,37 +1,11 @@
-<?php
-$this->breadcrumbs=array(
-	'Student'=>array('update', 'id'=>$_REQUEST['id']),
-	'Documents',
-);?>
-<div class="portlet box blue">
-<i class="icon-reorder"></i>
- <div class="portlet-title">Documents
- </div>
-
-<div class="profile-tab profile-edit ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-collapsible">
-
-<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-<li class="ui-state-default ui-corner-top">
-  <?php echo CHtml::link('Personal Profile', array('updateprofiletab1', 'id'=>$_REQUEST['id'])); ?></li>
-<li class="ui-state-default ui-corner-top">
-  <?php echo CHtml::link('Gaurdian Info', array('updateprofiletab2', 'id'=>$_REQUEST['id'])); ?></li>
-<li class="ui-state-default ui-corner-top">
-   <?php echo CHtml::link('Address Info', array('updateprofiletab3', 'id'=>$_REQUEST['id'])); ?></li>
-<li class="ui-state-default ui-corner-top">
-   <?php echo CHtml::link('Academic Record', array('studentacademicrecord', 'id'=>$_REQUEST['id'])); ?></li>
-<li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active">
-   <?php echo CHtml::link('Document', array('Studentdocs', 'id'=>$_REQUEST['id'])); ?></li>
-</ul>
-
-<div class="ui-tabs-panel form">
-
 <?php  if(Yii::app()->user->checkAccess('StudentTransaction.UpdateStudentData')  && (Yii::app()->user->getState('stud_id') == $_REQUEST['id']) || Yii::app()->user->checkAccess('StudentTransaction.UpdateAllStudentData')) {
 
-echo CHtml::link('Add New+',array('StudentDocsTrans/Create','id'=>$_REQUEST['id']),array('class'=>'btn green'));
+echo CHtml::link('<i class="fa fa-plus-square"></i> Add',array('StudentDocsTrans/Create','id'=>$_REQUEST['id']),array('id'=>'docid','class'=>'submit btn btn-add', 'style'=>'float: right; font-weight: 600;'));
 }
 ?>
 
-	
+<div id="form">
+<?php $visible=Yii::app()->user->checkAccess("StudentDocsTrans.Delete")? true : false; ?>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'student-docs-final_view',
 	'dataProvider'=>$studentdocstrans->mysearch(),
@@ -67,13 +41,28 @@ echo CHtml::link('Add New+',array('StudentDocsTrans/Create','id'=>$_REQUEST['id'
 	        'value'=>'date_format(new DateTime($data->Rel_Stud_doc->student_docs_submit_date), "d-m-Y")',
           	),
 
+		array(
+			'class'=>'MyCButtonColumn',
+			'template' => '{delete}',
+			'buttons'=>array(
+			     
+                        'delete' => array(
+				'url'=>'Yii::app()->createUrl("student/studentDocsTrans/delete", array("id"=>$data->student_docs_trans_id))',
+                        ),
+			'update' => array(
+				'label'=>'',
+				'url'=>'',
+                        ),
+		),
+			'visible'=>$visible,	
+	    ),
+		
 	),
 	'pager'=>array(
 		'class'=>'AjaxList',
+	//	'maxButtonCount'=>25,
 		'maxButtonCount'=>$studentdocstrans->count(),
 		'header'=>''
 	    ),
-	
 )); ?>
-</fieldset>
 </div>

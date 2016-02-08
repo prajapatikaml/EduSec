@@ -66,6 +66,7 @@ class ExportToPDFExcelController extends RController
 			'academic_term_end_date',
 			'academicTermPeriod.academic_term_period',
 			'current_sem::Current Sem',
+			'Rel_org.organization_name',
 			
 		),
 		'Semester',
@@ -111,7 +112,9 @@ class ExportToPDFExcelController extends RController
 			//'academic_terms_period_id',
 			'academic_term_period',
 			'Rel_user.user_organization_email_id::Created By',
-		
+			//'Rel_org.organization_name',
+			'Rel_user.user_organization_email_id',
+			
 		),
 		'Academic Year',
 		array(
@@ -434,8 +437,10 @@ class ExportToPDFExcelController extends RController
 	{
 		$this->toExcel($_SESSION['department_records'],
 		array(
+			
 			'department_name::Department Name',
 			'Rel_user.user_organization_email_id:Created By',
+			'Rel_org.organization_name',	
 		),
 		'Department',
 		array(
@@ -481,6 +486,8 @@ class ExportToPDFExcelController extends RController
 			'employee_designation_name::Designation Name',		
 			'employee_designation_level',
 			'Rel_user.user_organization_email_id:Created By',
+			'Rel_org.organization_name',	
+			
 		),
 		'Designation',
 		array(
@@ -1008,7 +1015,7 @@ class ExportToPDFExcelController extends RController
 			'model'=>$model
 		), true);
 		
-		$this->exporttopdf('Qualification Report','Qualification.pdf',$html);
+		$this->exporttopdf('Course Report','Qualification.pdf',$html);
 	}
 	public function actionQualificationExportToExcel()
 	{
@@ -1019,7 +1026,7 @@ class ExportToPDFExcelController extends RController
 			//'Rel_org.organization_name',
 			'Rel_user.user_organization_email_id:Created By',	
 		),
-		'Qualification',
+		'Course',
 		array(
 		    'creator' => 'RudraSoftech',
 		),
@@ -2796,6 +2803,7 @@ class ExportToPDFExcelController extends RController
 			'log_in_time',
 			'log_out_time', 	
 			'user_ip_address', 
+			'login_org.organization_name',
 		),
 		'Login user',
 		array(
@@ -3854,248 +3862,6 @@ class ExportToPDFExcelController extends RController
 		$this->exporttopdf('Trust Members Report','TrustMemberDetails.pdf',$html);
 
 	}
-	  public function actionEventMasterGenerateExcel()
-	{
-            $session=new CHttpSession;
-            $session->open();		
-            
-              if(isset($session['EventMaster_records']))
-               {
-                $d=$_SESSION['EventMaster_records'];
-		 $model = array();
-
-		if($d->data)
-			$model[]=array_keys($d->data[0]->attributes);//headers: cols name
-			else
-			{
-				$this->render('no_data_found',array('last_page'=>$_SERVER['HTTP_REFERER'],));
-				exit;			
-			}
-
-		foreach ($d->data as $item) {
-		    $model[] = $item->attributes;
-		}
-		//print_r($model);exit;
-               }
-              
-		
-		Yii::app()->request->sendFile("EventMaster.xls",
-			$this->renderPartial('/eventMaster/exportGridtoReport', array(
-				'model'=>$model
-			), true)
-		);
-	}
-        public function actionEventMasterGeneratePdf() 
-	{
-           $session=new CHttpSession;
-           $session->open();
-		Yii::import('application.extensions.tcpdf.*');
-		require_once('tcpdf/tcpdf.php');
-		require_once('tcpdf/config/lang/eng.php');	
-             if(isset($session['EventMaster_records']))
-               {
-                $d=$_SESSION['EventMaster_records'];
-		 $model = array();
-
-		if($d->data)
-			$model[]=array_keys($d->data[0]->attributes);//headers: cols name
-			else
-			{
-				$this->render('no_data_found',array('last_page'=>$_SERVER['HTTP_REFERER'],));
-				exit;			
-			}
-
-		foreach ($d->data as $item) {
-		    $model[] = $item->attributes;
-		}
-		//print_r($model);exit;
-               }
-              
-
-
-		$html = $this->renderPartial('/eventMaster/exportGridtoReport', array(
-			'model'=>$model
-		), true);
-		$this->exporttopdf('Events Report','EventMaster.pdf',$html);
-
-	}
-	  public function actionSubEventGenerateExcel()
-	{
-            $session=new CHttpSession;
-            $session->open();		
-            
-              if(isset($session['SubEvent_records']))
-               {
-                $d=$_SESSION['SubEvent_records'];
-		 $model = array();
-
-		if($d->data)
-			$model[]=array_keys($d->data[0]->attributes);//headers: cols name
-			else
-			{
-				$this->render('no_data_found',array('last_page'=>$_SERVER['HTTP_REFERER'],));
-				exit;			
-			}
-
-		foreach ($d->data as $item) {
-		    $model[] = $item->attributes;
-		}
-		//print_r($model);exit;
-               }
-              
-		
-		Yii::app()->request->sendFile("SubEvent.xls",
-			$this->renderPartial('/subEvent/exportGridtoReport', array(
-				'model'=>$model
-			), true)
-		);
-	}
-        public function actionSubEventGeneratePdf() 
-	{
-           $session=new CHttpSession;
-           $session->open();
-		Yii::import('application.extensions.tcpdf.*');
-		require_once('tcpdf/tcpdf.php');
-		require_once('tcpdf/config/lang/eng.php');	
-             if(isset($session['SubEvent_records']))
-               {
-                $d=$_SESSION['SubEvent_records'];
-		 $model = array();
-
-		if($d->data)
-			$model[]=array_keys($d->data[0]->attributes);//headers: cols name
-			else
-			{
-				$this->render('no_data_found',array('last_page'=>$_SERVER['HTTP_REFERER'],));
-				exit;			
-			}
-
-		foreach ($d->data as $item) {
-		    $model[] = $item->attributes;
-		}
-		//print_r($model);exit;
-               }
-              
-
-
-		$html = $this->renderPartial('/subEvent/exportGridtoReport', array(
-			'model'=>$model
-		), true);
-		$this->exporttopdf('Sub Events Report','SubEventMaster.pdf',$html);
-	}
-	public function actionEventParticipantsGenerateExcel()
-	{
-            $session=new CHttpSession;
-            $session->open();		
-            
-              if(isset($session['EventParticipants_records']))
-               {
-                $d=$_SESSION['EventParticipants_records'];
-		 $model = array();
-
-		if($d->data)
-			$model[]=array_keys($d->data[0]->attributes);//headers: cols name
-			else
-			{
-				$this->render('no_data_found',array('last_page'=>$_SERVER['HTTP_REFERER'],));
-				exit;			
-			}
-
-		foreach ($d->data as $item) {
-		    $model[] = $item->attributes;
-		}
-		//print_r($model);exit;
-               }
-              
-		
-		Yii::app()->request->sendFile("EventParticipants.xls",
-			$this->renderPartial('/eventParticipants/exportGridtoReport', array(
-				'model'=>$model
-			), true)
-		);
-	}
-        public function actionEventParticipantsGeneratePdf() 
-	{
-           $session=new CHttpSession;
-           $session->open();
-		Yii::import('application.extensions.tcpdf.*');
-		require_once('tcpdf/tcpdf.php');
-		require_once('tcpdf/config/lang/eng.php');	
-             if(isset($session['EventParticipants_records']))
-               {
-                $d=$_SESSION['EventParticipants_records'];
-		 $model = array();
-
-		if($d->data)
-			$model[]=array_keys($d->data[0]->attributes);//headers: cols name
-			else
-			{
-				$this->render('no_data_found',array('last_page'=>$_SERVER['HTTP_REFERER'],));
-				exit;			
-			}
-
-		foreach ($d->data as $item) {
-		    $model[] = $item->attributes;
-		}
-		//print_r($model);exit;
-               }
-              
-
-
-		$html = $this->renderPartial('/eventParticipants/exportGridtoReport', array(
-			'model'=>$model
-		), true);
-		$this->exporttopdf('Event Participants Report','EventParticipants.pdf',$html);
-	}
-	public function actionCourseExportToPdf() 
-	{
-             	if(isset($_SESSION['course_records']))
-               	{
-		 	$d = $_SESSION['course_records'];
-		 	$model = array();
-
-			if($d->data)
-			$model[]=array_keys($d->data[0]->attributes);//headers: cols name
-			else
-			{
-				$this->render('no_data_found',array('last_page'=>$_SERVER['HTTP_REFERER'],));
-				exit;			
-			}
-
-			foreach ($d->data as $item) {
-		    	$model[] = $item->attributes;
-			}
-               }
-              
-		$html = $this->renderPartial('/courseMaster/course_export_pdf', array(
-			'model'=>$model
-		), true);
-		
-		$this->exporttopdf('Course Report','Course.pdf',$html);
-		
-	}
-	public function actionCourseExportToExcel()
-	{
-		$this->toExcel($_SESSION['course_records'],
-		array(
-		//'id',
-		'course_name',
-		'relCat.qualification_type_name::Category Name',
-		'course_level',
-		'course_completion_hours',
-		'course_code',
-		'course_cost',
-		'course_desc',
-		'Rel_user.user_organization_email_id::Created By',
-		),
-		'Course',
-		array(
-		    'creator' => 'RudraSoftech',
-		),
-		'Excel5'
-	    );
-	}	    
-
 	protected function exporttopdf($title,$filename,$html)
 	{
 		Yii::import('application.extensions.tcpdf.*');

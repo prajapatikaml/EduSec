@@ -9,18 +9,25 @@ class MyCButtonColumn extends CButtonColumn
 
 	protected function initDefaultButtons()
 	{
+		if($this->template == '{view} {update} {delete}')
+		   $this->template = '{update} {delete}'; 
+		$this->updateButtonOptions=array('title'=>'update', 'class'=>'update');
+		$this->deleteButtonOptions=array('title'=>'delete', 'class'=>'delete');
 		if($this->viewButtonLabel===null)
 			$this->viewButtonLabel=Yii::t('zii','View');
 		if($this->updateButtonLabel===null)
-			$this->updateButtonLabel=Yii::t('zii','Edit');
+			$this->updateButtonLabel=Yii::t('zii','<i class="fa fa-wrench"></i>
+');
 		if($this->deleteButtonLabel===null)
-			$this->deleteButtonLabel=Yii::t('zii','Delete');
+			$this->deleteButtonLabel=Yii::t('zii','<i class="fa fa-trash-o"></i>
+');
 		if($this->viewButtonImageUrl===null)
 			$this->viewButtonImageUrl=$this->grid->baseScriptUrl.'/view.png';
 		if($this->updateButtonImageUrl===null)
 			$this->updateButtonImageUrl=$this->grid->baseScriptUrl.'/update.png';
 		if($this->deleteButtonImageUrl===null)
 			$this->deleteButtonImageUrl=$this->grid->baseScriptUrl.'/delete.png';
+		
 		if($this->deleteConfirmation===null)
 			$this->deleteConfirmation=Yii::t('zii','Are you sure you want to delete this item?');
 
@@ -29,7 +36,7 @@ class MyCButtonColumn extends CButtonColumn
 			$button=array(
 				'label'=>$this->{$id.'ButtonLabel'},
 				'url'=>$this->{$id.'ButtonUrl'},
-				'imageUrl'=>$this->{$id.'ButtonImageUrl'},
+				//'imageUrl'=>$this->{$id.'ButtonImageUrl'},
 				'options'=>$this->{$id.'ButtonOptions'},
 			);
 			if(isset($this->buttons[$id]))

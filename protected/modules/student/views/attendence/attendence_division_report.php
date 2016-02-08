@@ -10,6 +10,10 @@ $('#sem').change(function() {
 			});
 });
 </script>
+<div class="portlet box blue">
+<i class="icon-reorder"></i>
+ <div class="portlet-title"><span class="box-title">Select Criterias</span>
+</div>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -22,9 +26,10 @@ $('#sem').change(function() {
 	$acd = Yii::app()->db->createCommand()
 		->select('*')
 		->from('academic_term')
-		->where('current_sem=1 and academic_term_organization_id='.$org_id)
+		->where('current_sem=1 ')
 		->queryAll();
 	$acdterm=CHtml::listData($acd,'academic_term_id','academic_term_name');
+	//echo $acdterm;
 	$period=array();
 	if(!empty($acdterm)){	
 	$pe_data = AcademicTermPeriod::model()->findByPk($acd[0]['academic_term_period_id']);
@@ -46,7 +51,7 @@ $('#sem').change(function() {
 	</div>
 	<div class="row">
 		<?php echo $form->labelEx($model,'branch_id'); ?>
-		<?php echo $form->dropDownList($model,'branch_id', CHtml::listData(Branch::model()->findAll(array('condition'=>'branch_organization_id='.$org_id)),'branch_id','branch_name'), array(
+		<?php echo $form->dropDownList($model,'branch_id', CHtml::listData(Branch::model()->findAll(),'branch_id','branch_name'), array(
 			'tabindex'=>3,'empty' => 'Select Branch',
 			'ajax' => array(
 			'type'=>'POST', 
@@ -70,4 +75,4 @@ $('#sem').change(function() {
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
-
+</div>

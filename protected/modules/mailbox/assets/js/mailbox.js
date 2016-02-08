@@ -270,7 +270,8 @@
 					.css({'background':'none'});
 				$('.mailbox-new-msgs').text('');
 			}
-			else{
+			else
+			{
 				$('.mailbox-new-msgs').text('('+count+')');
 			}
 		}
@@ -296,7 +297,7 @@
 		// gather input
 		var convs = $.yiimailbox.getConversations();
 		if(convs.length == 0) {
-			//alert('no items selected!');
+			alert('no items selected!');
 			return false;
 		}
 		
@@ -444,7 +445,7 @@
 		var buttons;
 		
 		if($.yiimailbox.getConversations().length == 0) {
-			//alert('no items selected!');
+			alert('no items selected!');
 			return false;
 		}
 		

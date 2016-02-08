@@ -1,10 +1,5 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
-
-class EmployeeExperienceTransController extends RController
+class EmployeeExperienceTransController extends EduSecCustom
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -35,13 +30,15 @@ class EmployeeExperienceTransController extends RController
 
 	/**
 	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'employeeTransaction/employeeExperience' page.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
 		$model=new EmployeeExperienceTrans;
 		$emp_exp=new EmployeeExperience;
+		$this->layout='no-portlet';
 
+		// Uncomment the following line if AJAX validation is needed
 		$this->performAjaxValidation(array($model,$emp_exp));
 
 		if(isset($_POST['EmployeeExperience']))
@@ -74,6 +71,7 @@ class EmployeeExperienceTransController extends RController
 				
 				$this->redirect(array('employeeTransaction/employeeExperience','id'=>$model->employee_experience_trans_user_id));
 			}
+			
 		}
 
 		$this->render('create',array(
@@ -89,9 +87,11 @@ class EmployeeExperienceTransController extends RController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+		$this->layout='no-portlet';
 		$emp_exp = EmployeeExperience::model()->findByPk($model->employee_experience_trans_emp_experience_id);
 
-		$this->performAjaxValidation($emp_exp);
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($emp_exp);
 		$emp_exp->employee_experience_to = date("d-m-Y", strtotime($emp_exp->employee_experience_to));
 		$emp_exp->employee_experience_from = date("d-m-Y", strtotime($emp_exp->employee_experience_from));
 		
@@ -122,7 +122,7 @@ class EmployeeExperienceTransController extends RController
 				
 				$this->redirect(array('employeeTransaction/employeeExperience','id'=>$model->employee_experience_trans_user_id));
 			}
-				
+				//$this->redirect(array('view','id'=>$model->employee_experience_trans_id));
 		}
 
 		$this->render('update',array(
@@ -137,30 +137,10 @@ class EmployeeExperienceTransController extends RController
 	 */
 	public function actionDelete($id)
 	{
-	//$emp_exp = EmployeeExperience;	
-		if(Yii::app()->request->isPostRequest)
-		{
-			$this->loadModel($id)->delete();
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model=new EmployeeExperienceTrans('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['EmployeeExperienceTrans']))
-			$model->attributes=$_GET['EmployeeExperienceTrans'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+		$this->loadModel($id)->delete();
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**
@@ -179,8 +159,8 @@ class EmployeeExperienceTransController extends RController
 	}
 
 	/**
-	 * Retune employee experience details list.
-	 */
+	* This action display date of the employee experience data.
+	*/
 	public function actionEmployeeExperience()
 	{
 		$model=new EmployeeExperienceTrans('mysearch');
@@ -192,6 +172,7 @@ class EmployeeExperienceTransController extends RController
 			'employeeexperience'=>$model,
 		));
 	}
+
 	/**
 	 * Returns the data model based on the primary key given in the GET variable.
 	 * If the data model is not found, an HTTP exception will be raised.

@@ -1,17 +1,33 @@
+<style>
+	table{
+		display: table;
+		border-collapse: collapse;
+		border:1.5px solid #74b9f0;
+		font-size: 12.5px;
+		width:100%;
+	}
+	.no_border tr,td{
+		border:none;
+		border:hidden;
+		border:1.5px solid white; 
+	}
+	table tr:nth-child(even) { /*(even) or (2n 0)*/
+		background: #f1f6ff;
+	}
+	table tr:nth-child(odd) { /*(odd) or (2n 1)*/
+		background: white;
+	}
+	th{text-align:left;font-weight:normal;color:#990a10;width:110px;border:0.4px solid #74b9f0;height:24px;}
+	.title{color:seagreen;}
+	td{border:0.4px solid #74b9f0;height:24px;}
+	.label{text-align:left;font-weight:normal;color:#990a10;width:110px;height:24px;}
+	
+	
+</style>
+
+
 <?php 
 $EmployeeInfo = EmployeeInfo::model()->findByPk($employee_transaction[0]->employee_transaction_employee_id);
-
-if($employee_transaction[0]->employee_transaction_category_id != null)
-$Category = Category::model()->findByPk($employee_transaction[0]->employee_transaction_category_id);
-else
-$Category = new Category;
-
-if($employee_transaction[0]->employee_transaction_religion_id != null)
-$Religion = Religion::model()->findByPk($employee_transaction[0]->employee_transaction_religion_id);
-else
-$Religion = new Religion;
-
-$Shift = Shift::model()->findByPk($employee_transaction[0]->employee_transaction_shift_id);
 
 $EmployeeDesignation = EmployeeDesignation::model()->findByPk($employee_transaction[0]->employee_transaction_designation_id);
 
@@ -25,7 +41,6 @@ $Department = Department::model()->findByPk($employee_transaction[0]->employee_t
 if($employee_transaction[0]->employee_transaction_languages_known_id != null)
 $LanguagesKnown = LanguagesKnown::model()->findByPk($employee_transaction[0]->employee_transaction_languages_known_id);
 
-$Organization = Organization::model()->findByPk($employee_transaction[0]->employee_transaction_organization_id);
 
 if($employee_transaction[0]->employee_transaction_emp_address_id != null)
 $EmployeeAddress = EmployeeAddress::model()->findByPk($employee_transaction[0]->employee_transaction_emp_address_id);
@@ -33,512 +48,255 @@ else
 $EmployeeAddress = new EmployeeAddress;
 
 ?>
-<h3>Employee Detail</h3>
-<h4>Personal Info</h4>
-<table border="1" width="200px">
-<tr>
-	<td>
-	<label> Employee ID   </label>
-	</td>
-	<td>
-		<?php echo $EmployeeInfo->employee_no;?>
-	</td>
-</tr>
-<tr>
-	<td>
-	<label> Employee AICTE Id </label></td>
-	<td><?php echo $EmployeeInfo->employee_aicte_id;?>
-	</td>
-</tr>
-<tr>
-	<td>
-	<label> Employee GTU Id  </label></td>
-	<td><?php echo $EmployeeInfo->employee_gtu_id;?>
-	</td>
-</tr>
 
+<h3 class="title">Employee Detail</h3>
+
+<table class="no_border">
+
+	<tr>
+
+		<td rowspan='4' width="135px" align="center" style="border:1px solid #74b9f0;">
+<img src="college_data/emp_images/<?php echo EmployeePhotos::model()->findBypk($employee_transaction[0]-> employee_transaction_emp_photos_id)->employee_photos_path; ?>" height="147px" width="129px"/>
+		</td>
+
+		<td class="label" width="130px;" style="border:1.5px solid white;"><b>Name</b></td><td><?php echo $EmployeeInfo->employee_first_name." ".$EmployeeInfo->employee_middle_name." ".$EmployeeInfo->employee_last_name;?></td>
+		
+	</tr>
+	<tr style="background:none">
+		<td class="label" style="border:1.5px solid white;"><b>Attendance Card Id<b/></td><td><?php echo $EmployeeInfo->employee_attendance_card_id;?></td>
+	</tr>
+	<tr>
+		<td class="label" style="border:1.5px solid white;"><b>Designation</b></td><td><?php echo $EmployeeDesignation->employee_designation_name;?></td>
+	</tr>
+	<tr style="background:none">
+		<td class="label" style="border:1.5px solid white;"><b>Department</b></td><td><?php echo $Department->department_name;?></td>
+	</tr>
+
+</table>
+<br/>
+
+<h4 class="title">Personal Profile</h4>
+<table>
 <tr>
-	<td>
-	<label> Name </label></td>
-	<td><?php echo $EmployeeInfo->employee_first_name;?>
-	</td>
-</tr>	
-<tr>
-	<td>
-	<label> Husband/Father Name</label></td>
-	<td><?php echo $EmployeeInfo->employee_middle_name;?>
-	</td>
-</tr>	
-<tr>
-	<td>
-	<label> Surname</label></td>
-	<td><?php echo $EmployeeInfo->employee_last_name;?>
-	</td>
-</tr>	
-<tr>
-	<td>
-	<label> Mother Name</label></td>
-	<td><?php echo $EmployeeInfo->employee_mother_name;?>
-	</td>
-</tr>	
-<tr>
-	<td>
-	<label> Alias Name</label></td>
-	<td><?php echo $EmployeeInfo->employee_name_alias;?>
-	</td>
-</tr>	
-<tr>
-	<td>
-	<label> DOB</label></td>
-	<td><?php 
-	if($EmployeeInfo->employee_dob != NULL)
-		echo date('d-m-Y',strtotime($EmployeeInfo->employee_dob));?>
-	</td>
-</tr>	
-<tr>
-	<td>
-	<label> Birthplace</label></td>
-	<td><?php echo $EmployeeInfo->employee_birthplace;?>
-	</td>
-</tr>	
-<tr>
-	<td>
-	<label> Gender</label></td>
-	<td><?php echo $EmployeeInfo->employee_gender;?>
-	</td>
+	<td class="label" width="140px">Employee No</td><td><?php echo $EmployeeInfo->employee_no;?></td>
+	<td class="label" width="140px">Employee Unique Id</td><td><?php echo $EmployeeInfo->employee_unique_id;?></td>
 </tr>
 <tr>
-	<td>
-	<label>Bloodgroup</label></td><td><?php echo $EmployeeInfo->employee_bloodgroup;?>
-	</td>
+	<td class="label">Name Alias</td><td><?php echo $EmployeeInfo->employee_name_alias;?></td>
+	<td class="label">Private Email</td><td><?php echo $EmployeeInfo->employee_private_email;?></td>
 </tr>
 <tr>
-	<td>
-	<label>Marital Status</label></td><td><?php echo $EmployeeInfo->employee_marital_status;?>
-	</td>
+	<td class="label">Mother Name</td><td><?php echo $EmployeeInfo->employee_mother_name;?></td>
+	<td class="label">Gender</td>	<td><?php echo $EmployeeInfo->employee_gender;?></td>
 </tr>
-<tr>
-	<td>
-	<label>Private Mobile</label></td><td><?php echo $EmployeeInfo->employee_private_mobile;?>
-	</td>
+<tr>	
+	<td class="label">Joining Date</td>
+	<td><?php echo date('d-m-Y',strtotime($EmployeeInfo->employee_joining_date));?></td>
+	<td class="label">Probation Period</td><td><?php echo $EmployeeInfo->employee_probation_period;?></td>
 </tr>	
-<tr>
-	<td>
-	<label>Pancard No</label></td><td><?php echo $EmployeeInfo->employee_pancard_no;?>
-	</td>
+
+<tr>		
+	<td class="label">Date of Birth</td>
+	<td><?php if($EmployeeInfo->employee_dob != NULL)
+		echo date('d-m-Y',strtotime($EmployeeInfo->employee_dob));?></td>
+	<td class="label">Birth Place</td><td><?php echo $EmployeeInfo->employee_birthplace;?></td>
 </tr>
-<tr>
-	<td>
-	<label> Account No</label></td><td><?php echo $EmployeeInfo->employee_account_no;?>
-	</td>
+<tr>		
+	<td class="label">Blood Group</td><td><?php echo $EmployeeInfo->employee_bloodgroup;?></td>
+	<td class="label">Nationality</td><td><?php echo $Nationality->nationality_name;?></td>
 </tr>	
-<tr>
-	<td>
-	<label> Joining Date</label></td>
-	<td><?php 
-		echo date('d-m-Y',strtotime($EmployeeInfo->employee_joining_date));?>
-	</td>
-</tr>
-<tr>
-	<td>
-	<label> Probation Period</label></td><td><?php echo $EmployeeInfo->employee_probation_period;?>
-	</td>
+<tr>		
+	<td class="label">Marital Status</td><td><?php echo $EmployeeInfo->employee_marital_status;?></td>
+	<td class="label">Bank Account No</td><td><?php echo $EmployeeInfo->employee_account_no;?></td>
 </tr>	
-<tr>
-	<td>
-	<label> Private Email</label></td><td><?php echo $EmployeeInfo->employee_private_email;?>
-	</td>
-</tr>	
-<tr>
-	<td>
-	<label> Category</label></td><td><?php 
-		echo $Category->category_name;
-		?>
-	</td>
-</tr>	
-<tr>
-	<td>
-	<label> Employee Type</label></td><td><?php  
+<tr>		
+	<td class="label">Type</td>
+	<td><?php  
 		if($EmployeeInfo->employee_type==1)
 			echo "Teaching";
 		else 
-			echo "Non-Teaching";?>
-	</td>
-</tr>	
-<tr>
-	<td>
-	<label> Religion </label></td><td><?php 
-		echo $Religion->religion_name;
-		?>
-	</td>
-</tr>	
-<tr>
-	<td>
-	<label> Shift</label></td><td><?php echo $Shift->shift_type;?>
-	</td>
-</tr>	
-<tr>
-	<td>
-	<label> Designation</label></td><td><?php echo $EmployeeDesignation->employee_designation_name;?>
-	</td>
-</tr>	
-		
-<tr>
-	<td>
-	<label> Nationality</label></td><td><?php 
-		echo $Nationality->nationality_name;
-		?>
-	</td>
-</tr>	
-
-<tr>
-	<td>
-	<label> Department</label></td><td><?php echo $Department->department_name;?>
-	</td>
-</tr>	
-
-<tr>
-	<td>
-	<label> Organization Mobile</label></td><td><?php echo $EmployeeInfo->employee_organization_mobile;?>
-	</td>
-</tr>	
+			echo "Non-Teaching";?></td>
+	<td class="label">Institute Mobile</td><td><?php echo $EmployeeInfo->employee_organization_mobile;?></td>
+</tr>
+<tr>		
+	<td class="label">Private Mobile No</td><td colspan="3"><?php echo $EmployeeInfo->employee_private_mobile;?></td>
+</tr>		
 </table>
 </br></br>
 
 
-<h4>Guardian Info</h4>
-<table border="1" width="200px">
+<h4 class="title">Guardian Info</h4>
+<table>
 <tr>
-	<td>
-	<label> Guardian Name </label></td><td><?php echo $EmployeeInfo->employee_guardian_name;?>
-	</td>
+	<td class="label">Name</td><td width="40%"><?php echo $EmployeeInfo->employee_guardian_name;?></td>
+	<td class="label">Relation</td><td width="40%"><?php echo $EmployeeInfo->employee_guardian_relation;?></td>
 </tr>
 <tr>
-	<td>
-	<label> Relation </label></td><td><?php echo $EmployeeInfo->employee_guardian_relation;?>
-	</td>
+	<td class="label">Qualification</td><td><?php echo $EmployeeInfo->employee_guardian_qualification;?></td>
+	<td class="label">Occupation</td><td><?php echo $EmployeeInfo->employee_guardian_occupation;?></td>
 </tr>
 <tr>
-	<td>
-	<label> Qualification </label></td><td><?php echo $EmployeeInfo->employee_guardian_qualification;?>
-	</td>
+	<td class="label">Annual Income</td><td><?php echo $EmployeeInfo->employee_guardian_income;?></td>
+	<td class="label">Home Address</td><td><?php echo $EmployeeInfo->employee_guardian_home_address;?></td>
 </tr>
 <tr>
-	<td>
-	<label> Occupation </label></td><td><?php echo $EmployeeInfo->employee_guardian_occupation;?>
-	</td>
-</tr>
-<tr>
-	<td>
-	<label> Income </label></td><td><?php echo $EmployeeInfo->employee_guardian_income;?>
-	</td>
-</tr>
-
-<tr>
-	<td>
-	<label> Home Address </label></td><td><?php echo $EmployeeInfo->employee_guardian_home_address;?>
-	</td>
-</tr>
-<tr>
-	<td>
-	<label> Occupation Address </label></td><td><?php echo $EmployeeInfo->employee_guardian_occupation_address;?>
-	</td>
-</tr>
-<tr>
-	<td>
-	<label> Occupation City </label></td><td>
-<?php 
+	<td class="label">Occupation Address</td><td><?php echo $EmployeeInfo->employee_guardian_occupation_address;?></td>
+	<td class="label">Occupation City</td>
+	<td><?php 
 		if($EmployeeInfo->employee_guardian_occupation_city !=0)
 		echo City::model()->findByPk($EmployeeInfo->employee_guardian_occupation_city)->city_name;
 		else
 		echo "";
-		
-		?>
-
-	</td>
+	    ?></td>
 </tr>
 <tr>
-	<td>
-	<label> City Pincode </label></td><td><?php echo $EmployeeInfo->employee_guardian_city_pin;?>
-	</td>
-</tr>
-
-<tr>
-	<td>
-	<label> Phone No </label></td><td><?php echo $EmployeeInfo->employee_guardian_phone_no;?>
-	</td>
+	<td class="label">City Pincode</td><td><?php echo $EmployeeInfo->employee_guardian_city_pin;?></td>
+	<td class="label">Mobile 1</td><td><?php echo $EmployeeInfo->employee_guardian_mobile1;?></td>
 </tr>
 <tr>
-	<td>
-	<label> Mobile 1 </label></td><td><?php echo $EmployeeInfo->employee_guardian_mobile1;?>
-	</td>
-</tr>
-<tr>
-	<td>
-	<label> Mobile 2  </label></td><td><?php echo $EmployeeInfo->employee_guardian_mobile2;?>
-	</td>
+	<td class="label">Mobile 2</td><td><?php echo $EmployeeInfo->employee_guardian_mobile2;?></td>
+	<td class="label">Phone No</td><td><?php echo $EmployeeInfo->employee_guardian_phone_no;?></td>
 </tr>
 
 </table>
 </br></br>
 
 
-<h4>Other Info</h4>
-<table border="1" width="200px">
+<h4 class="title">Other Info</h4>
+<table>
 <tr>
-	<td>
-	<label> Attendance Card Id  </label></td><td><?php echo $EmployeeInfo->employee_attendance_card_id;?>
-	</td>
-</tr>
-
-<tr>
-	<td>
-	<label> Course  </label></td><td><?php echo $EmployeeInfo->employee_faculty_of;?>
-	</td>
+	<td class="label">Attendance Card Id</td><td><?php echo $EmployeeInfo->employee_attendance_card_id;?></td>
+	<td class="label">Reference Designation</td><td><?php echo $EmployeeInfo->employee_refer_designation;?></td>
 </tr>
 <tr>
-	<td>
-	<label> Curricular </label></td><td><?php echo $EmployeeInfo->employee_curricular;?>
-	</td>
-</tr>
-
-<tr>
-	<td>
-	<label> Reference </label></td><td><?php echo $EmployeeInfo->employee_reference;?>
-	</td>
+	<td class="label">Curricular</td><td><?php echo $EmployeeInfo->employee_curricular;?></td>
+	<td class="label">Project Details</td><td><?php echo $EmployeeInfo->employee_project_details?></td>
 </tr>
 <tr>
-	<td>
-	<label> Refer Designation </label></td><td><?php echo $EmployeeInfo->employee_refer_designation;?>
-	</td>
+	<td class="label">Technical Skills</td><td><?php echo $EmployeeInfo->employee_technical_skills;?></td>
+	<td class="label">Hobbies</td><td><?php echo $EmployeeInfo->employee_hobbies;?></td>
 </tr>
 <tr>
-	<td>
-	<label> Hobbies </label></td><td><?php echo $EmployeeInfo->employee_hobbies;?>
-	</td>
-</tr>
-<tr>
-	<td>
-	<label> Technical Skills  </label></td><td><?php echo $EmployeeInfo->employee_technical_skills;?>
-	</td>
-</tr>
-<tr>
-	<td>
-	<label> Project Details  </label></td><td><?php echo $EmployeeInfo->employee_project_details?>
-	</td>
-</tr>
-<tr>
-	<td>
-	<label> Language 1  </label></td><td><?php 
-		if($LanguagesKnown->languages_known1 != 0)
-			echo Languages::model()->findByPk($LanguagesKnown->languages_known1)->languages_name;
+	<td class="label">Language Known</td>
+	<td colspan="3"><?php 
+		if(!empty($LanguagesKnown->languages_known1))
+			echo $LanguagesKnown->languages_known1;
 		else
 			echo "";
-		?>
-	</td>
+		?></td>
 </tr>
 <tr>
-	<td>
-	<label> Language 2  </label></td><td><?php 
-		if($LanguagesKnown->languages_known2 != 0)
-			echo Languages::model()->findByPk($LanguagesKnown->languages_known2)->languages_name;
-
-		else
-			echo "";
-		?>
-	</td>
+	<td class="label">Reference</td><td><?php echo $EmployeeInfo->employee_reference;?></td>
+	<td class="label">EPF Number</td><td><?php $EmployeeInfo->employee_pf_id;?></td>
 </tr>
-<tr>
-	<td>
-	<label> Language 3  </label></td><td><?php 
-		if($LanguagesKnown->languages_known3 != 0)
-			echo Languages::model()->findByPk($LanguagesKnown->languages_known3)->languages_name;
-		else
-			echo "";
-		?>
-	</td>
-</tr>
-<tr>
-	<td>
-	<label> Language 4  </label></td><td><?php 
-		if($LanguagesKnown->languages_known4 != 0)
-			echo Languages::model()->findByPk($LanguagesKnown->languages_known4)->languages_name;
-		else
-			echo "";
-		?>
-	</td>
-</tr>
-<tr>
-	<td>
-	<label> Organization  </label></td><td><?php echo $Organization->organization_name;?>
-	</td>
-</tr>
-
 </table>
 </br></br>
 
-<h4>Address Info</h4>
-<table border="1" width="200px">
+<h4  class="title">Address Info</h4>
+<table>
 <tr>
-<td colspan="2" align="center">Current Address</td>
+<td class="title" colspan="4" align="center"><b>Current Address</b></td>
 </tr>
 <tr>	
-	<td>
-	<label> Line1  </label></td><td><?php 
-		echo $EmployeeAddress->employee_address_c_line1;
-		?>
-	</td>
+	<td class="label">Street 1</td><td colspan="3"><?php echo $EmployeeAddress->employee_address_c_line1; ?></td>
 </tr>
 <tr>	
-	<td>
-	<label> Line2  </label></td><td><?php 
-		echo $EmployeeAddress->employee_address_c_line2;
-		?>
-	</td>
+	<td class="label">Street 2</td><td colspan="3"><?php echo $EmployeeAddress->employee_address_c_line2; ?></td>
 </tr>
 <tr>	
-	<td>
-	<label> Taluka  </label></td><td><?php 
-		echo $EmployeeAddress->employee_address_c_taluka;
-		?>
-	</td>
-</tr>
-<tr>	
-	<td>
-	<label> District  </label></td><td><?php 
-		echo $EmployeeAddress->employee_address_c_district;
-		?>
-	</td>
-</tr>
-<tr>	
-	<td>
-	<label> City </label></td><td><?php 
-		if($EmployeeAddress->employee_address_c_city !=0)
-		echo City::model()->findByPk($EmployeeAddress->employee_address_c_city)->city_name;
-		else
-		echo "";
-		
-		?>
-	</td>
-</tr>
-<tr>	
-	<td>
-	<label> Pincode </label></td><td><?php
-		echo $EmployeeAddress->employee_address_c_pincode;
-		?>
-	</td>
-</tr>
-<tr>	
-	<td>
-	<label> State </label></td><td><?php 
-		if($EmployeeAddress->employee_address_c_state != 0)
-		echo State::model()->findByPk($EmployeeAddress->employee_address_c_state)->state_name;
-		else
-		echo "";
-?>		
-	</td>
-</tr>
-<tr>	
-	<td>
-	<label> Country </label></td><td><?php 
+	<td class="label">Country</td><td><?php 
 		if($EmployeeAddress->employee_address_c_country !=0)
 		echo Country::model()->findByPk($EmployeeAddress->employee_address_c_country)->name;
 		else
 		echo "";
-		?>
-	</td>
+		?></td>
+	<td class="label">State/Province</td><td><?php 
+		if($EmployeeAddress->employee_address_c_state != 0)
+		echo State::model()->findByPk($EmployeeAddress->employee_address_c_state)->state_name;
+		else
+		echo "";
+		?></td>
+</tr>
+<tr>	
+	<td class="label">Town</td><td><?php 
+		if($EmployeeAddress->employee_address_c_city !=0)
+		echo City::model()->findByPk($EmployeeAddress->employee_address_c_city)->city_name;
+		else
+		echo "";
+		?></td>
+	<td class="label">Post Code</td><td><?php echo $EmployeeAddress->employee_address_c_pincode;?></td>
+</tr>
+<tr>
+	<td class="label">Phone</td><td><?php echo $EmployeeAddress->employee_address_c_phone;?></td>
+	<td class="label">Mobile</td><td><?php echo $EmployeeAddress->employee_address_c_mobile;?></td>
+</tr>
+<tr>
+	<td class="label">House No</td><td colspan="3"><?php echo $EmployeeAddress->employee_c_house_no;?></td>
 </tr>
 
 <tr>
-<td colspan="2" align="center">Permanent Address</td>
+<td class="title" colspan="4" align="center"><b>Permanent Address</b></td>
 </tr>
 <tr>	
-	<td>
-	<label> Line1  </label></td><td><?php 
-		echo $EmployeeAddress->employee_address_p_line1;
-		?>
-	</td>
+	<td class="label">Street 1</td><td colspan="3"><?php echo $EmployeeAddress->employee_address_p_line1;?></td>
 </tr>
 <tr>	
-	<td>
-	<label> Line2  </label></td><td><?php 
-		echo $EmployeeAddress->employee_address_p_line2;?>
-	</td>
+	<td class="label">Street 2</td><td colspan="3"><?php echo $EmployeeAddress->employee_address_p_line2;?></td>
 </tr>
 <tr>	
-	<td>
-	<label> Taluka  </label></td><td><?php 
-		echo $EmployeeAddress->employee_address_p_taluka;
-		?>
-	</td>
-</tr>
-<tr>	
-	<td>
-	<label> District  </label></td><td><?php 
-		echo $EmployeeAddress->employee_address_p_district;
-		?>
-	</td>
-</tr>
-<tr>	
-	<td>
-	<label> City </label></td><td><?php 
-		if($EmployeeAddress->employee_address_p_city !=0)
-		echo City::model()->findByPk($EmployeeAddress->employee_address_p_city)->city_name;
+	<td class="label">Country</td><td><?php 
+		if($EmployeeAddress->employee_address_p_country !=0)
+		echo Country::model()->findByPk($EmployeeAddress->employee_address_p_country)->name;
 		else
-		echo "";
-		
-		?>
-	</td>
-</tr>
-<tr>	
-	<td>
-	<label> Pincode </label></td><td><?php 
-		echo $EmployeeAddress->employee_address_p_pincode;
-		?>
-	</td>
-</tr>
-<tr>	
-	<td>
-	<label> State </label></td><td><?php 
+		echo "";	
+		?></td>
+	<td class="label">State/Province</td><td><?php 
 		if($EmployeeAddress->employee_address_p_state != 0)
 		echo State::model()->findByPk($EmployeeAddress->employee_address_p_state)->state_name;
 		else
 		echo "";
-		?>
-	</td>
+		?></td>
 </tr>
 <tr>	
-	<td>
-	<label> Country </label></td><td><?php 
-		if($EmployeeAddress->employee_address_p_country !=0)
-		echo Country::model()->findByPk($EmployeeAddress->employee_address_p_country)->name;
+	<td class="label">Town</td><td><?php 
+		if($EmployeeAddress->employee_address_p_city !=0)
+		echo City::model()->findByPk($EmployeeAddress->employee_address_p_city)->city_name;
 		else
 		echo "";
-		
 		?>
 	</td>
+	<td class="label">Post Code</td><td><?php echo $EmployeeAddress->employee_address_p_pincode;?></td>
 </tr>
+<tr>
+	<td class="label">Phone</td><td><?php echo $EmployeeAddress->employee_address_p_phone;?></td>
+	<td class="label">Mobile</td><td><?php echo $EmployeeAddress->employee_address_p_mobile;?></td>
+</tr>
+<tr>
+	<td class="label">House No</td><td colspan="3"><?php echo $EmployeeAddress->employee_p_house_no;?></td>
+</tr>
+
 </table>
 </br></br>
-<h3>Employee Attached Documents</h3>
+<h4 class="title">Documents</h4>
 
 <?php $k=0;
 if ($employee_docs != null){
 ?>
-<table border="1">
+<table>
 
 	<tr>
 		<th>
 		      SN.		
 		</th>
 		<th width="70px">
-		      Document Title		
+		      Title		
+		</th>
+		
+ 		<th width="70px">
+		       Document	Category	
 		</th>
 		<th width="70px">
 		       Document	Description	
-		</th>
- 		<th width="70px">
-		       Document	Category	
 		</th>
  		<th width="70px">
 		       Submit Date	
@@ -577,14 +335,14 @@ if ($employee_docs != null){
 		echo "No document available";
  ?>
 </br></br>
-<h3>Employee Certificate</h3>
+<h4 class="title">Certificates</h4>
 
 <?php $k=0;
 $certificate = EmployeeCertificateDetailsTable::model()->findAll("employee_certificate_details_table_emp_id=".$_REQUEST['id']);
 
 if ($certificate != null){
 ?>
-<table border="1">
+<table style="font-size:125%;">
 
 	<tr>
 		<th>
@@ -617,19 +375,19 @@ if ($certificate != null){
 	else
 		echo "No Certificate available";
  ?>
-<h3>Employee Qualification</h3>
+<h4 class="title">Qualification</h4>
 <?php $k=0;
 //print_r($model);exit;
 if ($employee_qual != null){
 ?>
-<table border="1">
+<table style="font-size:20;">
 
 	<tr>
 		<th>
 		      SN.		
 		</th>
 		<th>
-		     Qualification
+		     Course
 		</th>
 		<th>
 		     Eduboard
@@ -638,20 +396,20 @@ if ($employee_qual != null){
 		     Year
 		</th>
 		<th>
-		     Theory Mark Obtained
+		     Theory Mark Max
 		</th>
 		<th>
-		     Theory Mark Max
+		     Theory Mark Obtained
 		</th>
 		<th>
 		    Theory Percentage
 		</th>
-		<th><?php $date=date_create($EmployeeInfo->employee_dob);
-	echo date_format($date, 'd-m-Y');?>
-		    Practical Mark Obtained
-		</th>
 		<th>
 		    Practical Mark Max
+		</th>
+
+		<th>
+		    Practical Mark Obtained
 		</th>
 		<th>
 		   Practical Percentage
@@ -671,22 +429,24 @@ if ($employee_qual != null){
 			      <?php echo Eduboard::model()->findByPk($v['employee_academic_record_trans_eduboard_id'])->eduboard_name; ?>
 			</td>
 			<td>
-			      <?php echo Year::model()->findByPk($v['employee_academic_record_trans_year_id'])->year; ?>
-			</td>
-			<td>
-			      <?php echo $v['theory_mark_obtained']; ?>
+			      <?php echo $v['employee_academic_record_trans_year_id'];?>
 			</td>
 			<td>
 			      <?php echo $v['theory_mark_max']; ?>
+			</td>
+
+			<td>
+			      <?php echo $v['theory_mark_obtained']; ?>
 			</td>
 			<td>
 			      <?php echo $v['theory_percentage']; ?>
 			</td>
 			<td>
-			      <?php echo $v['practical_mark_obtained']; ?>
-			</td>
-			<td>
 			      <?php echo $v['practical_mark_max']; ?>
+			</td>
+
+			<td>
+			      <?php echo $v['practical_mark_obtained']; ?>
 			</td>
 			<td>
 			      <?php echo $v['practical_percentage']; ?>
@@ -699,73 +459,6 @@ if ($employee_qual != null){
 <?php }
 	else
 		echo "No data available";
- ?>
-<br></br>
-<h3>Employee Experiance</h3>
-
-<?php $k=0;
-
-if ($emp_exp != null){
-?>
-<table border="1">
-
-	<tr>
-		<th>
-		      SN.		
-		</th>
-		<th>
-		      Organization Name		
-		</th>
-		<th>
-		      Designation	
-		</th>
-		<th>
-		      From Date		
-		</th>
-		<th>
-		      To Date		
-		</th>
-		<th>
-		      Experience		
-		</th>	
- 		
- 	</tr>
-	<?php 
-	foreach($emp_exp as $m=>$v) {
-		$EmployeeExperience = EmployeeExperience::model()->findByPk($v['employee_experience_trans_emp_experience_id']);
-            ?>	<tr>
-			<td>
-			      <?php echo ++$k; ?>		
-			</td>
-			<td>
-			      <?php echo $EmployeeExperience->employee_experience_organization_name; ?>		
-			</td>
-			<td>
-			      <?php echo $EmployeeExperience->employee_experience_designation; ?>		
-			</td>
-			<td>
-				<?php $date=date_create($EmployeeExperience->employee_experience_from);
-	echo date_format($date, 'd-m-Y');?>
-			</td>
-			<td>
-				<?php $date=date_create($EmployeeExperience->employee_experience_to);
-	echo date_format($date, 'd-m-Y');?>
-			
-			</td>
-			<td>
-			      <?php echo $EmployeeExperience->employee_experience; ?>		
-			</td>
- 	
- 		</tr> 
-       <?php
-   
-     }// end for loop
-?>
-</table>
-<?php }
-	else
-		echo "No data available";
-
  ?>
 
 

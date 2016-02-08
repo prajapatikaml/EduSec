@@ -1,9 +1,8 @@
 <div class="portlet box blue">
-<i class="icon-reorder"></i>
- <div class="portlet-title">Fill Details
- </div>
-<div class="form">
 
+ <div class="portlet-title"><i class="fa fa-plus"></i><span class="box-title">Fill Details</span>
+</div>
+<div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'state-form',
 	'enableAjaxValidation'=>true,
@@ -16,8 +15,8 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'state_name'); ?>
-		<?php echo $form->error($model,'state_name'); ?>
-		<?php echo $form->textField($model,'state_name',array('size'=>22,'maxlength'=>60)); ?><span class="status">&nbsp;</span>
+		<?php echo $form->textField($model,'state_name',array('size'=>22,'maxlength'=>60)); ?> 
+		<span class="status">&nbsp;</span><?php echo $form->error($model,'state_name'); ?>
 	</div>
 
 	<div class="row">
@@ -26,14 +25,12 @@
 		<?php echo $form->dropDownList($model,'country_id', Country::items(), array('empty' => 'Select Country')); ?><span class="status">&nbsp;</span>
 		<?php echo $form->error($model,'country_id'); ?>
 	</div>
+</div><!-- form -->
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Add' : 'Save',array('class'=>'submit')); ?>
-		<?php echo CHtml::link('Cancel', array('admin'), array('class'=>'btnCan')); ?>
+		<?php echo CHtml::link('Cancel', array('admin'), array('class'=>'btnCan')); ?> 
 	</div>
 
 <?php $this->endWidget(); ?>
-
-</div><!-- form -->
-
 </div>

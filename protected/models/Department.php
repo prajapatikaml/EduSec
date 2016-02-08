@@ -1,14 +1,8 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
-
 /**
  * This is the model class for table "department".
  * @package EduSec.models
  */
-
 class Department extends CActiveRecord
 {
 	/**
@@ -19,10 +13,6 @@ class Department extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-
-	/**
-	 * @return default scope to get data from table in order to "department_name".
-	 */
 	public function defaultScope() 
 	{
        		return array(
@@ -43,14 +33,17 @@ class Department extends CActiveRecord
 	 */
 	public function rules()
 	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
 		return array(
-			array('department_name,  department_created_by, department_created_date', 'required','message'=>''),
-			array('department_organization_id, department_created_by', 'numerical', 'integerOnly'=>true),
+			array('department_name, department_created_by, department_created_date', 'required','message'=>''),
+			array('department_created_by', 'numerical', 'integerOnly'=>true),
 			array('department_name', 'length', 'max'=>60),
-			array('department_name', 'unique'),
-			
-			array('department_name','CRegularExpressionValidator','pattern'=>'/^[a-zA-Z& ]+([.][a-zA-Z ]+)*$/','message'=>''),
-			array('department_id, department_name, department_organization_id, department_created_by, department_created_date', 'safe', 'on'=>'search'),
+			array('department_name', 'unique', 'message'=>'Already Exists.'),
+			//array('department_name','CRegularExpressionValidator','pattern'=>'/^[a-zA-Z& ]+([.][a-zA-Z ]+)*$/','message'=>''),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
+			array('department_id, department_name, department_created_by, department_created_date', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -59,8 +52,9 @@ class Department extends CActiveRecord
 	 */
 	public function relations()
 	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
 		return array(
-			'Rel_org'=>array(self::BELONGS_TO, 'Organization','department_organization_id'),
 			'Rel_user' => array(self::BELONGS_TO, 'User','department_created_by'),
 		);
 	}
@@ -73,7 +67,6 @@ class Department extends CActiveRecord
 		return array(
 			'department_id' => 'Department',
 			'department_name' => 'Department',
-			'department_organization_id' => 'Department Organization',
 			'department_created_by' => 'Created By',
 			'department_created_date' => 'Creation Date',
 		);
@@ -91,42 +84,43 @@ class Department extends CActiveRecord
 		$criteria=new CDbCriteria;
 		$criteria->compare('department_id',$this->department_id);
 		$criteria->compare('department_name',$this->department_name,true);
-		$criteria->compare('department_organization_id',$this->department_organization_id);
 		$criteria->compare('department_created_by',$this->department_created_by);
 		$criteria->compare('department_created_date',$this->department_created_date,true);
 
 		$department_data = new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
 		));
-		$_SESSION['department_records']=$department_data;
+		unset($_SESSION['exportData']);
+		$_SESSION['exportData']=$department_data;
 		return $department_data;
 	}
-
+	
 	/**
-	 * @return array for create dropdown for city.
+	*For Export to PDF & Excel
+	*Field written in attributes are exported in excel
+	*For pdf pdfFile will be render to export
 	*/
+	public static function getExportData() {
+	
+	      $data = array('data'=>$_SESSION['exportData'],'attributes'=>array(
+			'department_name::Department Name',
+			'Rel_user.user_organization_email_id:Created By',
+        		),
+		'filename'=>'Department-List', 'pdfFile'=>'/department/departmentGeneratePdf');
+              return $data;
+        }
+
 	private static $_items=array();
 
-        public static function items()
-        {
-            if(isset(self::$_items))
-                self::loadItems();
-            return self::$_items;
-        }
+	/**
+	* Generate array for dropdown list to use in child form.
+	* @return array $_items
+	*/
+	public static function items()
+	{
+	    self::$_items = CHtml::listData(self::model()->findAll(), 'department_id', 'department_name');
+	    return self::$_items;
+	}
 
-        public static function item($code)
-        {
-           if(!isset(self::$_items))
-              self::loadItems();
-        return isset(self::$_items[$code]) ? self::$_items[$code] : false;
-        }
-
-        private static function loadItems()
-        {
-          self::$_items=array();
-          $models=self::model()->findAll();
-          foreach($models as $model)
-              self::$_items[$model->department_id]=$model->department_name;
-        }
 
 }

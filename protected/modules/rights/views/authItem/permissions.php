@@ -2,10 +2,15 @@
 	'Rights'=>Rights::getBaseUrl(),
 	Rights::t('core', 'Permissions'),
 ); ?>
+<div id="rights-menu">
+
+	<?php $this->renderPartial('/_menu'); ?>
+
+</div>
 
 <div id="permissions">
 
-	<h2><?php echo Rights::t('core', 'Permissions'); ?></h2>
+	<h2 style="color:#427FED;border-bottom:2px solid #ff503f;padding: 10px 1%;width: 98%;"><?php echo Rights::t('core', 'Permissions'); ?></h2>
 
 	<p>
 		<?php echo Rights::t('core', 'Here you can view and manage the permissions assigned to each role.'); ?><br />

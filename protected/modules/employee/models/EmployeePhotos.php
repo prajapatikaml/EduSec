@@ -1,14 +1,9 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 /**
  * This is the model class for table "employee_photos".
- * @package EduSec.models
+ * @package EduSec.Employee.models
  */
-
 class EmployeePhotos extends CActiveRecord
 {
 	/**
@@ -34,8 +29,12 @@ class EmployeePhotos extends CActiveRecord
 	 */
 	public function rules()
 	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
 		return array(
 			array('employee_photos_path', 'file','maxSize'=>1024*1024*2, 'tooLarge'=>'The Photo was larger than 2MB. Please upload a smaller photo.',  'types'=>'jpg, jpeg, gif, png, JPG', 'allowEmpty'=>true,'message'=>'File is not valid'),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
 			
 			array('employee_photos_id, employee_photos_desc, employee_photos_path', 'safe', 'on'=>'search'),
 		);
@@ -70,6 +69,9 @@ class EmployeePhotos extends CActiveRecord
 	 */
 	public function search()
 	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('employee_photos_id',$this->employee_photos_id);

@@ -3,13 +3,9 @@ $this->breadcrumbs=array(
 	'Reset Employee Password',
 	
 );?>
-<h1>Reset Employee Password</h1>
 <div class="portlet box blue">
-
-
- <div class="portlet-title"> Employee List
- </div>
-
+<div class="portlet-title"><i class="fa fa-key"></i><span class="box-title">Reset Employee Password</span>
+</div>
 <?php
 $dataProvider = $model->search();
 if(Yii::app()->user->getState("pageSize",@$_GET["pageSize"]))
@@ -21,7 +17,7 @@ $dataProvider->getPagination()->setPageSize($pageSize);
 
 <div class="block-error">
 		<?php echo Yii::app()->user->getFlash('resetemppassword'); ?>
-</div>
+	</div>
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'employee-transaction-grid',
 	'dataProvider'=>$dataProvider,
@@ -41,24 +37,26 @@ $dataProvider->getPagination()->setPageSize($pageSize);
 		array('name' => 'employee_first_name',
 	              'value' => '$data->Rel_Emp_Info->employee_first_name',
                      ),
-		
-		 array('name' => 'category_name',
-	              'value' => '($data->category_name == 0)? "Not Set" :$data->Rel_Category->category_name',
+		array('name' => 'employee_last_name',
+	              'value' => '$data->Rel_Emp_Info->employee_last_name',
                      ),
-
+		
 		 array('name'=>'employee_transaction_department_id',
 		'value'=>'Department::model()->findByPk($data->employee_transaction_department_id)->department_name',
 			'filter' =>CHtml::listData(Department::model()->findAll(),'department_id','department_name'),
 
 		), 
- 
+		array('name' => 'user_organization_email_id',
+			      'value' => '$data->Rel_user1->user_organization_email_id',
+                      ),
+
 		array('class'=>'CButtonColumn',
 			'template' => '{Reset Password}',
 	                'buttons'=>array(
                         'Reset Password' => array(
                                 'label'=>'Reset Password', 
 				 'url'=>'Yii::app()->createUrl("user/update_emp_password", array("id"=>$data->employee_transaction_user_id))',
-                                'imageUrl'=> Yii::app()->baseUrl.'/images/Reset Password.png',  // image URL of the button. If not set or false, a text link is used
+                                'imageUrl'=> Yii::app()->baseUrl.'/images/Reset Password.png',  
                               
                         ),
 		   ),
@@ -67,7 +65,6 @@ $dataProvider->getPagination()->setPageSize($pageSize);
 	),
 	'pager'=>array(
 		'class'=>'AjaxList',
-		//'maxButtonCount'=>25,
 		'maxButtonCount'=>$model->count(),
 		'header'=>''
 	    ),

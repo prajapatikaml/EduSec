@@ -1,10 +1,6 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
-class EmployeeDesignationController extends RController
+class EmployeeDesignationController extends EduSecCustom
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -36,17 +32,18 @@ class EmployeeDesignationController extends RController
 
 	/**
 	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'admin' page.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
 		$model=new EmployeeDesignation;
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['EmployeeDesignation']))
 		{
 			$model->attributes=$_POST['EmployeeDesignation'];
-			$model->employee_designation_organization_id = Yii::app()->user->getState('org_id');
 			$model->employee_designation_created_by=Yii::app()->user->id;
 			$model->employee_designation_created_date=new CDbExpression('NOW()');
 			if($model->save())
@@ -66,13 +63,15 @@ class EmployeeDesignationController extends RController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['EmployeeDesignation']))
 		{
 			$model->attributes=$_POST['EmployeeDesignation'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('admin'));//$this->redirect(array('view','id'=>$model->employee_designation_id));
 		}
 
 		$this->render('update',array(
@@ -87,42 +86,13 @@ class EmployeeDesignationController extends RController
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			$this->loadModel($id)->delete();
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else if(!Yii::app()->request->isPostRequest) {
-			$emp_tran = EmployeeTransaction::model()->findAll(array('condition'=>'employee_transaction_designation_id='.$id));
-			if(!empty($emp_tran))
-			{
-				throw new CHttpException(400,'You can not delete this record because it is used in another table.');
-			}
-			else
-			{
-				$this->loadModel($id)->delete();
-				$this->redirect( array('admin'));
-			}
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model=new EmployeeDesignation('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['EmployeeDesignation']))
-			$model->attributes=$_GET['EmployeeDesignation'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-
+		try{
+		    $this->loadModel($id)->delete();
+		    if(!isset($_GET['ajax']))
+			    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}catch (CDbException $e){
+			throw new CHttpException(400,'You can not delete this record because it is used in another table.');
+		}	
 	}
 
 	/**

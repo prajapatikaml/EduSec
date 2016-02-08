@@ -57,16 +57,20 @@ if(Yii::app()->user->hasFlash('photo-save')) { ?>
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
 	</div>-->
 	<div class="row">
+	  <div class="row-left">
 	      <?php echo $form->labelEx($model,'student_photos_path'); ?>
 	      <?php echo $form->fileField($model, 'student_photos_path',array('tabindex'=>1)); ?>
 	      <?php //echo $form->error($model,'student_photos_path'); ?>
-   	 </div>
+          </div>
+        </div>
+	<div class="row">
 	<div class="hint"><b>Hint:-</b>&nbsp;Upload Only Jpeg, Jpg, Gif, Png Type Image</div>
 	 <div class="row buttons">
 		<?php //echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save',array('class'=>'submit')); 
 		      echo CHtml::button('Update',array('class'=>'submit', 'submit'=>array('studentTransaction/update','id'=>$_REQUEST['id']), 'name'=>'photoupdate')); 
 		      echo CHtml::button('Go Back',array('class'=>'submit', 'submit'=>array('studentTransaction/update','id'=>$_REQUEST['id']))); 
 		?>
+	</div>
 	</div>
 <?php $this->endWidget(); ?>
 

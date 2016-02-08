@@ -3,9 +3,15 @@ $this->breadcrumbs=array(
 	'Holidays List',	
 );
 ?>
-
+<div class="portlet box blue">
+<div class="portlet-title"><i class="icon-reorder"></i> <span class="box-title"> Holidays List</span>
+<div class="operation">
+<?php echo CHtml::link('Back', $_SERVER['HTTP_REFERER'], array('class'=>'btnback'));?>
+</div>
+</div>
+<div class="portlet-body">
 <?php 
-	echo '<table class="table_data" >
+	echo '<table class="report-table" >
 	<tr class="table_header"><th>SI No.</th><th>Date</th><th>Name of Holiday</th></tr>';
 	$m = 0;
 	foreach($date_list as $list) { 
@@ -29,4 +35,6 @@ $this->breadcrumbs=array(
 		
    <?php } ?>
 </table>
+</div>
 
+</div>

@@ -1,10 +1,6 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
-class CityController extends RController
+class CityController extends EduSecCustom
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -35,12 +31,14 @@ class CityController extends RController
 
 	/**
 	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'admin' page.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
 		$model=new City;
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['City']))
 		{
@@ -62,7 +60,9 @@ class CityController extends RController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['City']))
 		{
@@ -83,46 +83,15 @@ class CityController extends RController
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			$this->loadModel($id)->delete();
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		try{
+		    $this->loadModel($id)->delete();
+		    if(!isset($_GET['ajax']))
+			    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}catch (CDbException $e){
+			throw new CHttpException(400,'You can not delete this record because it is used in another table.');
 		}
-		else if(!Yii::app()->request->isPostRequest) {
-			$emp_tran = EmployeeAddress::model()->findAll(array('condition'=>'employee_address_c_city='.$id));
-			$stud_tran = StudentAddress::model()->findAll(array('condition'=>'student_address_c_city='.$id));
-			$organization=Organization::model()->findAll(array('condition'=>'city='.$id));
-			if(!empty($emp_tran) || !empty($stud_tran) || !empty($organization))
-			{
-				throw new CHttpException(400,'You can not delete this record because it is used in another table.');
-			}
-			else
-			{
-				$this->loadModel($id)->delete();
-				$this->redirect( array('admin'));
-			}
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model=new City('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['City']))
-			$model->attributes=$_GET['City'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-
-	}
-
+	
 	/**
 	 * Manages all models.
 	 */

@@ -42,8 +42,9 @@ $this->menu=array(
 <?php echo ('&nbsp;');?>
 </div>
 <div class="view13">
-<?php echo '<lable><b>RollNo</b></lable>'; ?>
+<?php echo '<lable><b>Student Unique ID</b></lable>'; ?>
 </div>
+
 <div class="view13">
 <?php echo '<lable><b>Merit Number</b></lable>'; ?>
 </div>

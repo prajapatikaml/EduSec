@@ -13,7 +13,6 @@ class RWebUser extends CWebUser
 	* Overloads the parent method in order to mark superusers.
 	* @param boolean $fromCookie whether the login is based on cookie.
 	*/
-	public $user_id;
 	public function afterLogin($fromCookie)
 	{
 		parent::afterLogin($fromCookie);

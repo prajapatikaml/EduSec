@@ -1,3 +1,10 @@
+<div class="portlet box blue">
+<i class="icon-reorder"></i>
+<div class="portlet-title"><span class="box-title">Faculty Timetable</span>
+<div class="operation">
+<?php echo CHtml::link('Back',array('admin'), array('class'=>'btnback'));?>
+</div>
+</div>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -5,10 +12,8 @@
 	'enableAjaxValidation'=>false,
 	//'clientOptions'=>array('validateOnSubmit'=>true),
 )); ?>
-
+	
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php // echo $form->errorSummary($model); ?>
 
 	<div class="block-error">
 		<?php echo Yii::app()->user->getFlash('not-select-attendece'); ?>
@@ -24,6 +29,5 @@
 	</div>
 
 <?php $this->endWidget(); ?>
-
-
+</div>
 </div>

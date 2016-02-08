@@ -29,12 +29,12 @@
 */
 
 #rights .flashes {
-  float: left;
-  height: 10px;
-  left: 20px;
-  width: 910px;
+	width:910px;
+	height:40px;
+	position:absolute;
+	top:60px;
+	left:20px;
 }
-
 #rights .flash {
 	margin:0;
 	padding:8px 12px;

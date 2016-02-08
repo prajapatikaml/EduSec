@@ -1,10 +1,5 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
-
-class LanguagesController extends RController
+class LanguagesController extends EduSecCustom
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -35,21 +30,22 @@ class LanguagesController extends RController
 
 	/**
 	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'admin' page.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
 		$model=new Languages;
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Languages']))
 		{
 			$model->attributes=$_POST['Languages'];
-			$model->languages_organization_id = Yii::app()->user->getState('org_id');
 			$model->languages_created_by=Yii::app()->user->id;
 			$model->languages_created_date=new CDbExpression('NOW()');
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('admin'));//$this->redirect(array('view','id'=>$model->languages_id));
 		}
 
 		$this->render('create',array(
@@ -65,13 +61,15 @@ class LanguagesController extends RController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Languages']))
 		{
 			$model->attributes=$_POST['Languages'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('admin'));//$this->redirect(array('view','id'=>$model->languages_id));
 		}
 
 		$this->render('update',array(
@@ -86,44 +84,20 @@ class LanguagesController extends RController
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
+		$languae_known = LanguagesKnown::model()->findAll(array('condition'=>'languages_known1='.$id.' OR  languages_known2='.$id.' OR languages_known3='.$id.' OR languages_known4='.$id));
+
+		if(!empty($languae_known))
 		{
+			throw new CHttpException(400,'You can not delete this record because it is used in another table.');
+		}	
+        	else
+		{	
 			$this->loadModel($id)->delete();
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 		}
-		else if(!Yii::app()->request->isPostRequest) {
-			$languages_known1=LanguagesKnown::model()->findAll(array('condition'=>'languages_known1='.$id));
-			$languages_known2=LanguagesKnown::model()->findAll(array('condition'=>'languages_known2='.$id));
-
-			if(!empty($languages_known1) || !empty($languages_known2))
-			{
-				throw new CHttpException(400,'You can not delete this record because it is used in another table.');
-			}
-			else
-			{
-				$this->loadModel($id)->delete();
-				$this->redirect( array('admin'));
-			}
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model=new Languages('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Languages']))
-			$model->attributes=$_GET['Languages'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-
+			
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+		   $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));	
 	}
 
 	/**
@@ -166,4 +140,7 @@ class LanguagesController extends RController
 			Yii::app()->end();
 		}
 	}
+	
+	 
+
 }

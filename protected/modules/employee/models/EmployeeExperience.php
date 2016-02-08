@@ -1,15 +1,8 @@
 <?php
-
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
-
 /**
  * This is the model class for table "employee_experience".
- * @package EduSec.models
+* @package EduSec.Employee.models
  */
-
 class EmployeeExperience extends CActiveRecord
 {
 	/**
@@ -35,16 +28,23 @@ class EmployeeExperience extends CActiveRecord
 	 */
 	public function rules()
 	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
 		return array(
 			array('employee_experience_organization_name,employee_experience_designation, employee_experience_from, employee_experience_to', 'required', 'message'=>''),
 			array('employee_experience_organization_name', 'length', 'max'=>50),
 			array('employee_experience_designation', 'length', 'max'=>25),
-			array('employee_experience_organization_name, employee_experience_designation','CRegularExpressionValidator','pattern'=>'/^[a-zA-Z.& ]+([-][a-zA-Z ]+)*$/','message'=>''), 
+			//array('employee_experience_organization_name, employee_experience_designation','CRegularExpressionValidator','pattern'=>'/^[a-zA-Z.& ]+([-][a-zA-Z ]+)*$/','message'=>''), 
 			 
+		//array('employee_experience_from, employee_experience_to','unique','message'=>'Already Exists.'),
+			// call validdate function
 			array('employee_experience_to','validdate','message'=>'To Date Must be Greater Than From Date'),
 			array('employee_experience_from','checkdate_2','message'=>'From Date Must be Less Than Current Date'),
 			array('employee_experience_to','checkdate_1','message'=>'To Date Must be Less Than Current Date'),
 			array('employee_experience_to','comparedate','message'=>'Select Unique From Date and End Date'),
+			
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
 			array('employee_experience_id, employee_experience_organization_name, employee_experience_designation, employee_experience_from, employee_experience_to', 'safe', 'on'=>'search'),
 		);
 	}
@@ -60,9 +60,6 @@ class EmployeeExperience extends CActiveRecord
 		);
 	}
 
-	/*
-	 * @return boolean value, To date must be less then current data.
-	 */
 	public function checkdate_1($attribute,$params)
 	{
 		$my_date = date("d-m-Y");
@@ -77,25 +74,22 @@ class EmployeeExperience extends CActiveRecord
 		else
 			return true;
 	}
-
-	/*
-	 * @return boolean value, From date must be less then to date.
-	 */
-
 	public function checkdate_2($attribute,$params)
 	{
 		$my_date = date("d-m-Y");
+	//	$from_date = $this->employee_experience_from;
 		$from_date = strtotime($this->employee_experience_from);
 		
+
 		if($from_date > strtotime($my_date))
 		{
 			$this->addError('employee_experience_from','From Date Must be Less Than Current Date');
+			//$this->addError('employee_experience_to','To Date Must be Less Than Current Date'); 
 			return false;
 		}
 		else
 			return true;	
 	}
-
 	public function validdate($attribute,$params)
 	{
 		
@@ -104,11 +98,6 @@ class EmployeeExperience extends CActiveRecord
 				$this->addError('employee_experience_to','To Date Must be Greater Than From Date');
 		}
 	}
-
-	/*
-	 * Return an error if From and end date are same.
-	 */
-
 	public function comparedate($attribute,$params)
 	{
 		
@@ -137,6 +126,9 @@ class EmployeeExperience extends CActiveRecord
 	 */
 	public function search()
 	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('employee_experience_id',$this->employee_experience_id);

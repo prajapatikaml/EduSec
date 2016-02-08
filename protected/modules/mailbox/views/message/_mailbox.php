@@ -1,5 +1,13 @@
 <?php
 
+/*$mail_status = Yii::app()->db->createCommand()
+						->select('*')
+						->from('tbl_mailbox_conversation')
+						->where('bm_read=1 and 	interlocutor_id='.Yii::app()->user->id)
+						->queryAll();
+				
+$count = count($mail_status);*/
+
 if(isset($_GET['Message_sort']))
 	$sortby = $_GET['Message_sort'];
 elseif(isset($_GET['Mailbox_sort']))

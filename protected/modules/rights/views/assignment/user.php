@@ -4,6 +4,13 @@
 	$model->getName(),
 ); ?>
 
+<div id="rights-menu">
+
+	<?php $this->renderPartial('/_menu'); ?>
+
+</div>
+
+
 <div id="userAssignments">
 
 	<h2><?php echo Rights::t('core', 'Assignments for :username', array(

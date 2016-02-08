@@ -12,12 +12,22 @@ function valuealert2()
 	$('#months').attr("disabled",false);	
 }
 </script>
+<style>
+div.form label
+{
+	width:80px !important;
+}
+</style>
 <?php
 $this->breadcrumbs=array(
 	'Student Attendance Report',
 	
 );?>
-<div class="form">
+<div class="portlet box blue">
+<i class="icon-reorder"></i>
+ <div class="portlet-title"><span class="box-title">Select Criterias</span>
+</div>
+<div class="form" style="float:left;width:50%;margin-left:10px;">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'studentwise-form',
@@ -59,7 +69,7 @@ $this->breadcrumbs=array(
 		);
 	?>   
 		</div>
-		<div style=" float:left; margin-right:10px;">
+		<div style=" float:left;">
 		 <?php echo $form->labelEx($model,'end_date', array('style'=>'width: 60px;')); ?>
 		<?php
 		$this->widget('zii.widgets.jui.CJuiDatePicker',
@@ -105,10 +115,10 @@ $this->breadcrumbs=array(
 
 
 <div class="row buttons">
-	<?php echo CHtml::submitButton('Search', array('class'=>'submit','name'=>'search')); ?>
+	<?php echo CHtml::submitButton('Search', array('class'=>'submit','name'=>'search','style'=>'margin-bottom:30px;')); ?>
 </div>
 
 <?php $this->endWidget(); ?>
 </div>
-
+</div>
 

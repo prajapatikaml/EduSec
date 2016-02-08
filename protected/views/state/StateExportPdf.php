@@ -1,52 +1,20 @@
-<style>
-table, th, td {
-  vertical-align: middle;
-}
-th, td, caption {
-  padding: 4px 0 10px;
-  text-align: center;
-}
-
-</style>
-<?php 
-
-if ($model != null):
-$k=0;
-?>
-<table border="1">
-
-	<tr>
-		<th>
-		     SN.		
-		</th>
- 		<th>
-		     State	
-		</th>
-		<th>
-		     Country		
-		</th>
-		
- 	</tr>
-	<?php 
-	foreach($model as $m=>$v) {
-          if($m <> 0) {
-            ?>	<tr>
-		<td>
-		      <?php echo ++$k; ?>	
-		</td>
-		<td>
-		      <?php echo $v['state_name']; ?>	
-		</td>
-		<td>
-		     <?php echo Country::model()->findBypk($v['country_id'])->name; ?>		
-		</td>
-		
- 	   </tr> 
-       <?php
-    
-       }// end if
-     }// end for loop
+<?php $this->widget('zii.widgets.grid.CGridView', array(
+	'dataProvider'=>$model,
+	'summaryText'=>false,
+	'enableSorting'=>false,
+	'enablePagination' => false,
+	'columns'=>array(
+		array(
+		'header'=>'SI No',
+		'class'=>'IndexColumn',
+		),
 	
-?>
-</table>
-<?php endif; ?>
+		'state_name',           
+		array(
+            		'name'=>'country_id',
+            		'value'=>'Country::model()->findByPk($data->country_id)->name',
+            		'filter'=>Country::items(),
+        	),
+		
+	),
+)); ?>

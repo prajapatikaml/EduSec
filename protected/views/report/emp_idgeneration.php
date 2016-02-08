@@ -4,13 +4,11 @@ $this->breadcrumbs=array(
 	
 );
 
-$this->menu=array(
-	array('label'=>'', 'url'=>array('IdcardFieldFormat/EmployeeCardCreate'),'linkOptions'=>array('class'=>'Create','title'=>'Generate Id Format')),
-
-);
 ?>
-<h1>Generating Employee Identity Card</h1>
-
+<div class="portlet box blue">
+<i class="icon-reorder"></i>
+ <div class="portlet-title"><span class="box-title">Generating Employee Identity Card</span>
+</div>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -20,25 +18,9 @@ $this->menu=array(
 
 )); ?>
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
-	<!--<div class="row">
-		<?php echo CHtml::label('Term Period',''); ?>
-		<?php echo CHtml::dropDownList('acdm_period', null, AcademicTermPeriod::items(),
-		array(
-			'prompt' => '-----------Select-----------','tabindex'=>1,
-			'ajax' => array(
-			'type'=>'POST', 
-			'url'=>CController::createUrl('Report/getAcademicterm'), 
-			'update'=>'#acdm_name', //selector to update
-			
-			))); ?>
-	</div>
-	<div class="row">
-		<?php echo CHtml::label('Term Name',''); ?>
-		<?php echo CHtml::dropDownList('acdm_name', null, array('empty' => '---------------Select-------------','tabindex'=>2));?>
-	</div>-->
 	<div class="row">
 		<?php echo $form->labelEx($model,'template_name'); ?>
-<?php echo $form->dropDownList($model,'template_name',CHtml::listData(IdcardFieldFormat::model()->findAll(array('condition'=>'idcard_org_id='.Yii::app()->user->getState('org_id').' and stud_emp_type="Employee"','group'=>'idtemplate_name')),'idtemplate_name','idtemplate_name'), array('empty' => 'Select Template'));?>
+<?php echo $form->dropDownList($model,'template_name',CHtml::listData(IdcardFieldFormat::model()->findAll(array('condition'=>'stud_emp_type="Employee"','group'=>'idtemplate_name')),'idtemplate_name','idtemplate_name'), array('empty' => 'Select Template'));?>
 	<span class="status">&nbsp;</span>
 	<?php echo $form->error($model,'template_name'); ?>
 	</div>

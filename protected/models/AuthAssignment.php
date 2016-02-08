@@ -1,14 +1,17 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 /**
  * This is the model class for table "AuthAssignment".
- * @package EduSec.models
+ *
+ * The followings are the available columns in table 'AuthAssignment':
+ * @property string $itemname
+ * @property string $userid
+ * @property string $bizrule
+ * @property string $data
+ *
+ * The followings are the available model relations:
+ * @property AuthItem $itemname0
  */
-
 class AuthAssignment extends CActiveRecord
 {
 	/**
@@ -40,6 +43,8 @@ class AuthAssignment extends CActiveRecord
 			array('itemname, userid', 'required'),
 			array('itemname, userid', 'length', 'max'=>64),
 			array('bizrule, data', 'safe'),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
 			array('itemname, userid, bizrule, data', 'safe', 'on'=>'search'),
 		);
 	}
@@ -49,7 +54,9 @@ class AuthAssignment extends CActiveRecord
 	 */
 	public function relations()
 	{
-	   return array(
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
+		return array(
 			'itemname0' => array(self::BELONGS_TO, 'AuthItem', 'itemname'),
 		);
 	}

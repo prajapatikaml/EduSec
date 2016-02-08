@@ -1,10 +1,6 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
-class DocumentCategoryMasterController extends RController
+class DocumentCategoryMasterController extends EduSecCustom
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -35,12 +31,14 @@ class DocumentCategoryMasterController extends RController
 
 	/**
 	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'admin' page.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
 		$model=new DocumentCategoryMaster;
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['DocumentCategoryMaster']))
 		{
@@ -49,6 +47,7 @@ class DocumentCategoryMasterController extends RController
 			$model->creation_date = new CDbExpression('NOW()');
 			$model->docs_category_organization_id = Yii::app()->user->getState('org_id');
 			if($model->save())
+				//$this->redirect(array('view','id'=>$model->doc_category_id));
 				$this->redirect(array('admin'));
 		}
 
@@ -65,7 +64,9 @@ class DocumentCategoryMasterController extends RController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['DocumentCategoryMaster']))
 		{
@@ -86,42 +87,11 @@ class DocumentCategoryMasterController extends RController
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			$this->loadModel($id)->delete();
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else if(!Yii::app()->request->isPostRequest) {
-			$stud_docs = StudentDocs::model()->findAll(array('condition'=>'doc_category_id='.$id));
-			$emp_docs= EmployeeDocs::model()->findAll(array('condition'=>'doc_category_id='.$id));
-			if(!empty($stud_docs) || !empty($emp_docs))
-			{
-				throw new CHttpException(400,'You can not delete this record because it is used in another table.');
-			}
-			else
-			{
-				$this->loadModel($id)->delete();
-				$this->redirect( array('admin'));
-			}
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	}
+		throw new CHttpException(400,'You can not delete this record because it is used in another table.');
 
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model=new DocumentCategoryMaster('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['DocumentCategoryMaster']))
-			$model->attributes=$_GET['DocumentCategoryMaster'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**

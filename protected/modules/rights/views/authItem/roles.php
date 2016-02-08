@@ -2,10 +2,15 @@
 	'Rights'=>Rights::getBaseUrl(),
 	Rights::t('core', 'Roles'),
 ); ?>
+<div id="rights-menu">
+
+	<?php $this->renderPartial('/_menu'); ?>
+
+</div>
 
 <div id="roles">
 
-	<h2><?php echo Rights::t('core', 'Roles'); ?></h2>
+	<h2 style="color:#427FED;border-bottom:2px solid #ff503f;padding: 10px 1%;width: 98%;"><?php echo Rights::t('core', 'Roles'); ?></h2>
 
 	<p>
 		<?php echo Rights::t('core', 'A role is group of permissions to perform a variety of tasks and operations, for example the authenticated user.'); ?><br />
@@ -13,8 +18,7 @@
 	</p>
 
 	<p><?php echo CHtml::link(Rights::t('core', 'Create a new role'), array('authItem/create', 'type'=>CAuthItem::TYPE_ROLE), array(
-	   	'class'=>'add-role-link',
-	)); ?></p>
+	   	'class'=>'add-role-link','style'=>'background: none no-repeat scroll 0 50% #01cb99;border-radius: 3px 3px 3px 3px;color: #2A2A2A;padding: 5px 10px;font-size:20px')); ?></p>
 
 	<?php $this->widget('zii.widgets.grid.CGridView', array(
 	    'dataProvider'=>$dataProvider,

@@ -3,10 +3,11 @@ $this->breadcrumbs=array('Report',
 	'Employee Document Search',
 	
 );?>
-
+<div class="portlet box blue">
+ <div class="portlet-title"><i class="fa fa-plus"></i><span class="box-title">Select Criterias</span>
+</div>
 <div class="form">
 </br>
-<h1> Employee Document Search</h1></br>
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'document-search-emp',
 	'enableAjaxValidation'=>true,	
@@ -26,12 +27,13 @@ $this->breadcrumbs=array('Report',
 		<span class="status">&nbsp;</span>
 		<?php echo $form->error($model,'document_category'); ?>
 	</div>
-
+</div>
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton('Search', array('class'=>'submit','name'=>'search')); ?>
 	</div>	
 
 <?php $this->endWidget(); ?>	
+
 
 </div>

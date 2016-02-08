@@ -12,6 +12,10 @@ function valuealert2()
 	$('#months').attr("disabled",false);	
 }
 </script>
+<div class="portlet box blue">
+<i class="icon-reorder"></i>
+ <div class="portlet-title"><span class="box-title">Select Criterias</span>
+</div>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -24,15 +28,15 @@ function valuealert2()
 		<?php echo Yii::app()->user->getFlash('no_student_found'); ?>
 		
 	</div>
-	<p class="note">Select any radio-button to enable Date or Month criteria.<span class="required">*</span></p>
+<p class="note">Select any radio-button to enable Date or Month criteria.<span class="required">*</span></p>
 
-	<div class="row">
+	<div class="row" style="margin-top:20px;">
 		<?php echo $form->labelEx($model,'student_enroll_no'); ?>
 		<?php echo $form->textField($model,'student_enroll_no'); ?><span class="status">&nbsp;</span>
 		<?php echo $form->error($model,'student_enroll_no'); ?>
 	</div>
-
 	<div class="row">
+	<div class="row row-left">
 		<div  style=" float:left; margin-right:10px;">
 		<input type="radio" name="studentradio" id="btn1" value="1" onclick="valuealert1()"/>
 		<?php echo $form->labelEx($model,'start_date', array('style'=>'width: 126px;')); ?>
@@ -57,9 +61,8 @@ function valuealert2()
 			)
 		    )
 		);
-	?>   
-		</div>
-		<div style=" float:left; margin-right:10px;">
+	?>   <div class="row">
+		<div style=" float:left; margin-left:85px;margin-top:10px;">
 		 <?php echo $form->labelEx($model,'end_date', array('style'=>'width: 60px;')); ?>
 		<?php
 		$this->widget('zii.widgets.jui.CJuiDatePicker',
@@ -84,6 +87,7 @@ function valuealert2()
 		);
 	?>
 		</div>
+	</div>
 </div>
 
 
@@ -111,5 +115,5 @@ function valuealert2()
 
 <?php $this->endWidget(); ?>
 </div>
-
+</div>
 

@@ -96,7 +96,7 @@
 			},
 			error: function(XMLHttpRequest, textStatus, errorThrown) {
 				$('#'+id).removeClass(settings.loadingClass);
-				//alert(XMLHttpRequest.responseText);
+				alert(XMLHttpRequest.responseText);
 			}
 		}, options || {});
 

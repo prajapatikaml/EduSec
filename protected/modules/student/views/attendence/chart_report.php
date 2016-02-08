@@ -9,11 +9,12 @@ $(document).ready(function(){
 $this->breadcrumbs=array(
 	'Chart Report',
 );
-/*
-$this->menu=array(
-	array('label'=>'', 'url'=>array('studentwise_report'),'linkOptions'=>array('class'=>'Create','title'=>'Studentwise Report')),
-);*/
+
 ?>
+<div class="portlet box blue">
+<i class="icon-reorder"></i>
+ <div class="portlet-title"><span class="box-title">Select Criterias</span>
+</div>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -24,8 +25,7 @@ $this->menu=array(
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 	
-	<?php echo $form->errorSummary($model); ?>
-		
+	<?php echo $form->errorSummary($model); ?>		
 	
 	<div class="row">
 		<?php echo $form->labelEx($model,'sem_id'); ?>
@@ -39,5 +39,5 @@ $this->menu=array(
 
 </div><!-- form -->
 
-
+</div>
 

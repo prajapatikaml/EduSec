@@ -13,6 +13,10 @@
 	margin-bottom: 4px !important;
 }
 
+.mailbox-menu-newmsg{
+	padding:4px;
+	margin-bottom: 4px;
+}
 .mailbox-message-subject{
 	padding:10px;
 }

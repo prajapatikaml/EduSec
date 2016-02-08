@@ -3,23 +3,18 @@ $this->breadcrumbs=array(
 	'Chart Report',
 );
 
-echo CHtml::link('GO BACK',Yii::app()->createUrl('/student/attendence/ChartReport')); 
+
 ?>
 
 <?php 
 	
-	$acdm_name=AcademicTerm::model()->findAll(array('condition'=>'academic_term_period_id='.$acdm_period.' and  academic_term_organization_id='.Yii::app()->user->getState('org_id')));
+	$acdm_name=AcademicTerm::model()->findAll(array('condition'=>'academic_term_period_id='.$acdm_period));
 	//print_r($acdm_name);
 	//exit;
-	
-	
-	
-	
-	
 
 		$branch = Attendence::model()->findAll(array(
     				'select'=>'branch_id',
-				'condition'=>'sem_id='.$acdm_period.' and attendence_organization_id='.Yii::app()->user->getState('org_id'),
+				'condition'=>'sem_id='.$acdm_period,
  				'distinct'=>true,
 							));
 $m=1;	
@@ -27,7 +22,16 @@ if($branch)
 {
 ?>
 
-<table class="table_data" align=center border="1" style="width:960px; font-size:12px;">
+<div class="portlet box yellow" style="width:100%;margin-top:20px;">
+    <i class="icon-reorder"></i>
+    <div class="portlet-title"><span class="box-title"> Student Attendance Chart wise Report</span>
+    	<div class="operation">
+	  <?php echo CHtml::link('Back', array('/student/attendence/ChartReport'), array('class'=>'btnback'));?>	
+	  
+	</div>
+    </div>
+	<div class="portlet-body" >
+	<table class="report-table" border="2px" > 
 	
 <th colspan="11" style="font-size: 18px; color: rgb(255, 255, 255);">
 		Attendance Chart Table
@@ -35,7 +39,7 @@ if($branch)
 
         </th>	
 <tr class="table_header">
-<th>Branch Name\Semester</th>
+<th>Branch Name/Semester</th>
 <?php
 foreach($acdm_name as $ac){
 ?>

@@ -1,7 +1,11 @@
+
 <?php
 $newMsgs = $this->module->getNewMsgs();
+//$sentMsgs = $dataProvider->getItemCount();
+//echo $newMsgs;
+//echo Mailbox::newMsgs(Yii::app()->user->id);
 $action = $this->getAction()->getId();
-
+//echo $this->getAction()->getId();
 if($this->module->authManager)
 {
 	$authNew = Yii::app()->user->checkAccess("Mailbox.Message.New");
@@ -22,12 +26,13 @@ else
 		<?php
 		if($authInbox):?>
 		<div id="mailbox-inbox" class="mailbox-menu-item <?php echo ($action=='inbox')? 'mailbox-menu-current' : '' ; ?>">
-			<a href="<?php echo $this->createUrl('message/inbox'); ?>">Inbox <?php echo $newMsgs? '('.$newMsgs.')' : null ; ?></a>
+			<!--<a href="<?php echo $this->createUrl('message/inbox'); ?>" id="amsg-inbox">Inbox <span class="mailbox-new-msgs" id="msg-inbox"><?php echo $newMsgs ? '('.$newMsgs.')' : null ; ?></span></a>-->
+			<a href="<?php echo $this->createUrl('message/inbox'); ?>" id="amsg-inbox">Inbox <?php echo $newMsgs ? '('.$newMsgs.')' : null ; ?></a>
 		</div>
 		<?php endif;
 		if($authSent) : ?>
-		<div  id="mailbox-sent" class="mailbox-menu-item <?php if($action=='sent') echo 'mailbox-menu-current '; ?>">
-			<a href="<?php echo $this->createUrl('message/sent'); ?>">Sent Mail</a>
+		<div  id="mailbox-sent" class="mailbox-menu-item <?php if($action=='sent') //echo 'mailbox-menu-current '; ?>">
+			<a href="<?php echo $this->createUrl('message/sent'); ?>" id="amsg-sent">Sent Mail</a>
 		</div>
 		<?php endif;
 		if($authTrash) : ?>
@@ -39,7 +44,7 @@ else
 <?php
 if($authNew) :
 	?>
-	<div class="mailbox-menu-newmsg  ui-helper-clearfix mailbox-menu-item" align="center">
+	<div class="mailbox-menu-newmsg  ui-helper-clearfix" align="center">
 		<span><a href="<?php echo $this->createUrl('message/new'); ?>">New Message</a></span>
 	</div>
 <?php endif; ?>

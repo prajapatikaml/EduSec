@@ -1,21 +1,20 @@
-<div class="form">
+<div class="header">
+	<h1 class="title">Create User</h1>
+</div>
+<div class="form" style="margin-top: 15px; padding: 183px 145px;">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'user-form',
 	'enableAjaxValidation'=>true,
 	'clientOptions'=>array(
-         'validateOnSubmit'=>true
-	),
+		'validateOnSubmit'=>true,
+      ),
 )); ?>
-
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php //echo $form->errorSummary($model); ?>
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'user_organization_email_id'); ?>
-		<?php echo $form->error($model,'user_organization_email_id'); ?>
 		<?php echo $form->textField($model,'user_organization_email_id',array('size'=>35,'maxlength'=>60)); ?><span class="status">&nbsp;</span>
+		<?php echo $form->error($model,'user_organization_email_id'); ?>
 	</div>
 
 	<div class="row">
@@ -25,7 +24,7 @@
 	</div>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton('Add', array('class'=>'submit btnblue')); ?>
+		<?php echo CHtml::submitButton('Add', array('class'=>'submit', 'style'=>'float: left; margin-left: 11%;')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

@@ -1,14 +1,9 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 /**
  * This is the model class for table "student_info".
  * @package EduSec.models
  */
-
 class StudentInfo extends CActiveRecord
 {
 
@@ -30,6 +25,7 @@ class StudentInfo extends CActiveRecord
 	const TYPE_HOME='HOME';
 	const TYPE_REGULAR='Regular';
 	const TYPE_DTOD='DTOD';
+	const TYPE_TRANSFER='Transfer';
 
 	/**
 	 * Returns the static model of the specified AR class.
@@ -57,40 +53,34 @@ class StudentInfo extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('title,student_mobile_no, student_enroll_no, student_first_name, student_last_name ,student_adm_date, student_created_by, student_creation_date, student_email_id_1', 'required','message'=>''),
+			array('title,student_mobile_no, student_roll_no,student_first_name, student_last_name, student_adm_date, student_created_by, student_creation_date, student_email_id_1,visa_exp_date,emergency_cont_name,emergency_cont_no','safe','message'=>''),
+			array('student_first_name, student_last_name,passport_no,passport_exp_date,student_email_id_1','required','message'=>''),
+			array('student_guardian_occupation_city, student_guardian_city_pin, student_guardian_phoneno, student_guardian_mobile,  student_created_by,student_mobile_no,student_guardian_income', 'numerical', 'integerOnly'=>true,'message'=>''),
+			array('student_roll_no', 'length', 'max'=>15),
+			array('student_no','safe'),
+			//array('student_roll_no', 'CRegularExpressionValidator', 'pattern'=>'/^\w*[A-Za-z0-9\/_-]*[0-9]+$/','message'=>''),
 
-			array('student_gr_no, student_guardian_occupation_city, student_guardian_city_pin, student_guardian_phoneno, student_guardian_mobile,  student_created_by,student_mobile_no,student_guardian_income,student_merit_no', 'numerical', 'integerOnly'=>true,'message'=>''),
-			array('student_roll_no,student_gr_no', 'length', 'max'=>15),
-			array('student_roll_no', 'CRegularExpressionValidator', 'pattern'=>'/^\w*[A-Za-z0-9\/_-]*[0-9]+$/','message'=>''),
-			array('student_gr_no,student_merit_no', 'CRegularExpressionValidator', 'pattern'=>'/^\w*[0-9]+$/','message'=>''),
-
-			array('student_first_name, student_middle_name, student_last_name, student_father_name, student_mother_name, student_birthplace', 'length', 'max'=>25),
+			array('student_first_name, student_middle_name, student_last_name, student_birthplace', 'length', 'max'=>25),
 			array('student_guardian_name', 'length', 'max'=>100),
 			array('student_gender', 'length', 'max'=>6),
 			array('student_email_id_1, student_email_id_2', 'email','message'=>'Email shoud ne in E-mail format'),
-			array('student_email_id_1, student_email_id_2','unique', 'message'=>'email id must be unique'),
-			array('student_enroll_no','unique', 'message'=>'Enrollment number must be unique'),
+			array('student_email_id_1, student_email_id_2','unique', 'message'=>'Email id must be unique'),
 			array('student_guardian_relation', 'length', 'max'=>20),
 			array('student_guardian_mobile,student_mobile_no', 'length', 'max'=>10,'min'=>10),
 			
 			array('student_guardian_qualification, student_guardian_occupation', 'length', 'max'=>50),
 			array('student_guardian_occupation_address, student_guardian_home_address', 'length', 'max'=>100),
 
-			array('student_dob','chkbirthdate'),
+			//array('student_dob','chkbirthdate'),
 			array('student_adm_date','chkacpcdate'),
 
 			array('student_email_id_1, student_email_id_2', 'length', 'max'=>60, 'message'=>''),
 			array('student_bloodgroup', 'length', 'max'=>3),
 			
-			array('student_living_status', 'length', 'max'=>20),
-			
-			array('student_guardian_name,student_guardian_relation,student_birthplace', 
-				'CRegularExpressionValidator', 'pattern'=>'/^([A-Za-z  ]+)$/','message'=>''),
-			array('student_first_name,student_middle_name,student_last_name,
-                               student_father_name,student_mother_name', 
-				'CRegularExpressionValidator', 'pattern'=>'/^([A-Za-z]+)$/','message'=>''),
-			array('student_email_id_1, student_email_id_2','CRegularExpressionValidator','pattern'=>'/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]+)$/','message'=>''),
-			array('student_id, student_roll_no, student_merit_no, student_enroll_no, student_gr_no, student_first_name, student_middle_name, student_last_name, student_father_name, student_mother_name, student_adm_date, student_dob, student_birthplace, student_gender, student_guardian_name, student_guardian_relation, student_guardian_qualification, student_guardian_occupation, student_guardian_income, student_guardian_occupation_address, student_guardian_occupation_city, student_guardian_city_pin, student_guardian_home_address, student_guardian_phoneno, student_guardian_mobile, student_email_id_1, student_email_id_2, student_bloodgroup, student_created_by, student_creation_date,student_tally_ledger_name, student_dtod_regular_status', 'safe', 'on'=>'search'),
+			//array('student_first_name,student_middle_name,student_last_name', 'CRegularExpressionValidator', 'pattern'=>'/^([A-Za-z]+)$/','message'=>''),
+			//array('student_email_id_1, student_email_id_2','CRegularExpressionValidator','pattern'=>'/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]+)$/','message'=>''),
+
+			array('student_id, student_roll_no,student_no, student_first_name, student_middle_name, student_last_name, student_adm_date, student_dob, student_birthplace, student_gender, student_guardian_name, student_guardian_relation, student_guardian_qualification, student_guardian_occupation, student_guardian_income, student_guardian_occupation_address, student_guardian_occupation_city, student_guardian_city_pin, student_guardian_home_address, student_guardian_phoneno, student_guardian_mobile, student_email_id_1, student_email_id_2, student_bloodgroup, student_created_by, student_creation_date,visa_exp_date,passport_no,passport_exp_date,emergency_cont_name,emergency_cont_no', 'safe', 'on'=>'search'),
 
 		);
 	}
@@ -100,6 +90,8 @@ class StudentInfo extends CActiveRecord
 	 */
 	public function relations()
 	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
 		return array(
 		'Rel_gardian_city' => array(self::BELONGS_TO, 'City', 'student_guardian_occupation_city'),
 		
@@ -114,17 +106,12 @@ class StudentInfo extends CActiveRecord
 		return array(
 			'student_id' => 'Student',
 			'title' => 'Title',
-			'student_roll_no' => 'Roll No',
+			'student_roll_no' => 'Student Unique ID',
+			'student_no' => 'Student No',
 			'student_mobile_no' => 'Mobile No',
-			'student_merit_no' => 'Merit No',
-			'student_enroll_no' => 'Enrollment No',
-			'student_gr_no' => 'GR No',
 			'student_first_name' => 'First Name',
-			'student_middle_name' => 'Husband/Father Name',
+			'student_middle_name' => 'Middle Name',
 			'student_last_name' => 'Last Name',
-			'student_father_name' => 'Father Name',
-			'student_mother_name' => 'Mother Name',
-			'student_living_status' => 'Resident Status',
 			'student_adm_date' => 'Admission Date',
 			'student_dob' => 'Date of Birth',
 			'student_birthplace' => 'Birth / Native Place',
@@ -140,66 +127,20 @@ class StudentInfo extends CActiveRecord
 			'student_guardian_home_address' => 'Home Address',
 			'student_guardian_phoneno' => 'Guardian Phone',
 			'student_guardian_mobile' => 'Guardian Mobile',
-			'student_email_id_1' => 'Email',
+			'student_email_id_1' => 'Email ID',
 			'student_email_id_2' => 'Private Email ID',
 			'student_bloodgroup' => 'Blood Group',
 			'student_tally_ledger_name' => 'Tally',
 			'student_created_by' => 'Student Created By',
 			'student_creation_date' => 'Student Creation Date',
-			'student_dtod_regular_status'=>'DTOD/Regular Status',
+			'visa_exp_date'=>'Visa Expiry Date',
+			'passport_no'=>'Passport No.',
+			'emergency_cont_name'=>'Emergency Contact Name',
+			'emergency_cont_no'=>'Emergency Contact No.',
+			'passport_exp_date'=>'Passport Expiry Date',
 		);
 	}
 
-	/**
-	 * Retrieves a list of models based on the current search/filter conditions.
-	 * @return CActiveDataProvider the data provider that can return the models based on the search/filter conditions.
-	 */
-	public function search()
-	{
-
-		$criteria=new CDbCriteria;
-
-		$criteria->compare('student_id',$this->student_id);
-		$criteria->compare('title',$this->title,true);
-		$criteria->compare('student_roll_no',$this->student_roll_no,true);
-		$criteria->compare('student_mobile_no',$this->student_mobile_no,true);
-		$criteria->compare('student_merit_no',$this->student_merit_no,true);
-		$criteria->compare('student_enroll_no',$this->student_enroll_no,true);
-		$criteria->compare('student_gr_no',$this->student_gr_no);
-		$criteria->compare('student_first_name',$this->student_first_name,true);
-		$criteria->compare('student_middle_name',$this->student_middle_name,true);
-		$criteria->compare('student_last_name',$this->student_last_name,true);
-		$criteria->compare('student_father_name',$this->student_father_name,true);
-		$criteria->compare('student_mother_name',$this->student_mother_name,true);
-		$criteria->compare('student_living_status',$this->student_living_status,true);
-		$criteria->compare('student_adm_date',$this->student_adm_date,true);
-		$criteria->compare('student_dob',$this->student_dob,true);
-		$criteria->compare('student_birthplace',$this->student_birthplace,true);
-		$criteria->compare('student_gender',$this->student_gender,true);
-		$criteria->compare('student_guardian_name',$this->student_guardian_name,true);
-		$criteria->compare('student_guardian_relation',$this->student_guardian_relation,true);
-		$criteria->compare('student_guardian_qualification',$this->student_guardian_qualification,true);
-		$criteria->compare('student_guardian_occupation',$this->student_guardian_occupation,true);
-		$criteria->compare('student_guardian_income',$this->student_guardian_income,true);
-		$criteria->compare('student_guardian_occupation_address',$this->student_guardian_occupation_address,true);
-		$criteria->compare('student_guardian_occupation_city',$this->student_guardian_occupation_city);
-		$criteria->compare('student_guardian_city_pin',$this->student_guardian_city_pin);
-		$criteria->compare('student_guardian_home_address',$this->student_guardian_home_address,true);
-		$criteria->compare('student_guardian_phoneno',$this->student_guardian_phoneno);
-		$criteria->compare('student_guardian_mobile',$this->student_guardian_mobile);
-		$criteria->compare('student_email_id_1',$this->student_email_id_1,true);
-		$criteria->compare('student_email_id_2',$this->student_email_id_2,true);
-		$criteria->compare('student_bloodgroup',$this->student_bloodgroup,true);
-		$criteria->compare('student_dtod_regular_status',$this->student_dtod_regular_status,true);
-		$criteria->compare('student_tally_ledger_name',$this->student_tally_ledger_name);
-		$criteria->compare('student_created_by',$this->student_created_by);
-		$criteria->compare('student_creation_date',$this->student_creation_date,true);
-			
-
-		return new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-	}
 
     public function chkbirthdate()
     {
@@ -224,26 +165,20 @@ class StudentInfo extends CActiveRecord
 	}
      }
 
-	/**
-	 * $return boolean value. check admission date must be less then current date.
-	 */
-	public function chkacpcdate()
-	{
+    public function chkacpcdate()
+    {
 
-		$curr_date = date('d-m-Y');
+	$curr_date = date('d-m-Y');
 
-		if(strtotime($this->student_adm_date) > strtotime($curr_date))
-		{						
+	if(strtotime($this->student_adm_date) > strtotime($curr_date))
+	{					
 			$this->addError('student_adm_date',"Admission date must be less than current date.");	
 			 return false;	
-		}
-		else
-			return true;
 	}
+	else
+			return true;
+     }
 
-	/**
-	 * $return array of static blood group.
-	 */
 	public function getBloodGroup()
 	{
 		return array(
@@ -259,9 +194,6 @@ class StudentInfo extends CActiveRecord
 		);
 	}
 
-	/**
-	 * $return array of static gender option.
-	 */
 	public function getGenderOptions()
 	{
 		return array(
@@ -270,9 +202,6 @@ class StudentInfo extends CActiveRecord
 		);
 	}
 
-	/**
-	 * $return array of static title option.
-	 */
 	public function getTitleOptions()
 	{
 		return array(
@@ -282,9 +211,6 @@ class StudentInfo extends CActiveRecord
 		);
 	}
 		
-	/**
-	 * $return array of static living option.
-	 */
 	public function getLivingOptions()
 	{
 		return array(
@@ -292,16 +218,4 @@ class StudentInfo extends CActiveRecord
 		self::TYPE_HOME=>'HOME',
 		);
 	}
-
-	/**
-	 * $return array of static regular or details status option.
-	 */
-	public function getStatusOptions()
-	{
-		return array(
-		self::TYPE_REGULAR=>'Regular',
-		self::TYPE_DTOD=>'DTOD',
-		);
-	}
-
 }

@@ -1,14 +1,9 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 /**
  * This is the model class for table "city".
  * @package EduSec.models
  */
-
 class City extends CActiveRecord
 {
 	/**
@@ -27,10 +22,6 @@ class City extends CActiveRecord
 	{
 		return 'city';
 	}
-
-	/**
-	 * @return default scope to get data from table in order to "city_name".
-	 */
 	public function defaultScope() 
 	{
        		return array(
@@ -42,12 +33,16 @@ class City extends CActiveRecord
 	 */
 	public function rules()
 	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
 		return array(
 			array('city_name, country_id, state_id', 'required','message'=>''),
 			array('city_id, country_id, state_id', 'numerical', 'integerOnly'=>true,'message'=>''),
 			array('city_name', 'length', 'max'=>60),
-			array('city_name','CRegularExpressionValidator','pattern'=>'/^([A-Za-z  ]+)$/','message'=>''),
+			//array('city_name','CRegularExpressionValidator','pattern'=>'/^([A-Za-z  ]+)$/','message'=>''),
 			array('city_name','checkcity'),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
 			array('city_id, city_name, country_id, state_id', 'safe', 'on'=>'search'),
 		);
 	}
@@ -57,7 +52,9 @@ class City extends CActiveRecord
 	 */
 	public function relations()
 	{
-	   return array(
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
+		return array(
 		'Rel_state' => array(self::BELONGS_TO, 'State','state_id'),
 		'Rel_country' => array(self::BELONGS_TO, 'Country','country_id'),
 		);
@@ -83,6 +80,9 @@ class City extends CActiveRecord
 
 	public function search()
 	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+
 		$criteria=new CDbCriteria;
 
 		
@@ -94,14 +94,30 @@ class City extends CActiveRecord
 		$city_data = new CActiveDataProvider(get_class($this), array(
 			'criteria'=>$criteria,
 		));
-		$_SESSION['city_data']=$city_data;
+		unset($_SESSION['exportData']);
+		$_SESSION['exportData']=$city_data;
 		return $city_data;
 	}
 	
 	/**
-	 * @return boolean value by
-	 * Check unique city name in same state and country before save.
+	*For Export to PDF & Excel
+	*Field written in attributes are exported in excel
+	*For pdf pdfFile will be render to export
 	*/
+        public static function getExportData() {
+	      $data = array('data'=>$_SESSION['exportData'],'attributes'=>array(
+			'city_name',
+			'Rel_state.state_name',
+			'Rel_country.name',			
+        		),
+		'filename'=>'City', 'pdfFile'=>'/city/CityExportPdf');
+              return $data;
+        }
+
+	/**
+	* Check city name must be unique in same state.
+	* @return boolean
+	*/	
 	public function checkcity()
 	{
 		if($this->isNewRecord)
@@ -113,7 +129,7 @@ class City extends CActiveRecord
 				    ->from('city')
 				    ->where('state_id="'.$state.'"'.' and city_name='.$city)
 			    	    ->queryAll();
-			
+				
 			if($acdm_term_name)
 			{
 				$this->addError('city_name',"Already Exists.");	
@@ -131,10 +147,10 @@ class City extends CActiveRecord
 			$city='"'.strtolower($this->city_name).'"';
 			$acdm_term_name=Yii::app()->db->createCommand()
 				     ->select('city_name')
-				    ->from('city')
-				    ->where('city_id <>'.$city_id.' and state_id="'.$state.'"'.' and city_name='.$city)
-			    	    ->queryAll();
-			
+				     ->from('city')
+				     ->where('city_id <>'.$city_id.' and state_id="'.$state.'"'.' and city_name='.$city)
+				     ->queryAll();
+				
 			if($acdm_term_name)
 			  {
 			 	$this->addError('city_name',"Already Exists.");	
@@ -146,10 +162,6 @@ class City extends CActiveRecord
 			  }
 		}	
 	}
-
-	/**
-	 * @return array for create dropdown for city.
-	*/
 	private static $_items=array();
 
         public static function items()
@@ -159,18 +171,18 @@ class City extends CActiveRecord
             return self::$_items;
         }
 
-        public static function item($code)
-        {
-           if(!isset(self::$_items))
+    public static function item($code)
+    {
+        if(!isset(self::$_items))
             self::loadItems();
         return isset(self::$_items[$code]) ? self::$_items[$code] : false;
-        }
+    }
 
-        private static function loadItems()
-        {
-          self::$_items=array();
-          $models=self::model()->findAll();
-          foreach($models as $model)
+    private static function loadItems()
+    {
+        self::$_items=array();
+        $models=self::model()->findAll();
+        foreach($models as $model)
             self::$_items[$model->city_id]=$model->city_name;
-        }
+    }
 }

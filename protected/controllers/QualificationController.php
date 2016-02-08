@@ -1,10 +1,6 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
-class QualificationController extends RController
+class QualificationController extends EduSecCustom
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -35,20 +31,22 @@ class QualificationController extends RController
 
 	/**
 	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'admin' page.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
 		$model=new Qualification;
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Qualification']))
 		{
 			$model->attributes=$_POST['Qualification'];
-			$model->qualification_organization_id=yii::app()->user->getState('org_id');
 			$model->qualification_created_by=Yii::app()->user->id;
 			$model->qualification_created_date=new CDbExpression('NOW()');
 			if($model->save())
+				//$this->redirect(array('view','id'=>$model->qualification_id));
 				$this->redirect(array('admin'));
 		}
 
@@ -65,13 +63,15 @@ class QualificationController extends RController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['Qualification']))
 		{
 			$model->attributes=$_POST['Qualification'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('admin'));//$this->redirect(array('view','id'=>$model->qualification_id));
 		}
 
 		$this->render('update',array(
@@ -86,44 +86,15 @@ class QualificationController extends RController
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			$this->loadModel($id)->delete();
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		try{
+		    $this->loadModel($id)->delete();
+		    if(!isset($_GET['ajax']))
+			    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}catch (CDbException $e){
+			throw new CHttpException(400,'You can not delete this record because it is used in another table.');
 		}
-		else if(!Yii::app()->request->isPostRequest) {
-			$emp_academic_record = EmployeeAcademicRecordTrans::model()->findAll(array('condition'=>'employee_academic_record_trans_qualification_id='.$id));
-			$stud_academic_record = StudentAcademicRecordTrans::model()->findAll(array('condition'=>'student_academic_record_trans_qualification_id='.$id));
-			if(!empty($emp_academic_record) || !empty($stud_academic_record))
-			{
-				throw new CHttpException(400,'You can not delete this record because it is used in another table.');
-			}
-			else
-			{
-				$this->loadModel($id)->delete();
-				$this->redirect( array('admin'));
-			}
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model=new Qualification('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Qualification']))
-			$model->attributes=$_GET['Qualification'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
-
+	
 	/**
 	 * Manages all models.
 	 */

@@ -1,5 +1,6 @@
 <?php
-
+echo CHtml::link('<i class="fa fa-chevron-left"></i>Back', array('/dashboard/dashboard'), array('class'=>'btnyellow','style'=>'font-size:20px;background-color:green;color:#FFFFFF;padding:3px 3px;margin:10px;text-decoration:none'));
+//echo $dataProvider->getItemCount();
 if($this->getAction()->getId()!='inbox') 
 $this->breadcrumbs=array(
 		ucfirst($this->module->id)=>array('inbox'),
@@ -45,7 +46,7 @@ $this->widget('zii.widgets.CListView', array(
     'dataProvider'=>$dataProvider,
     'itemView'=>'_list',
     'itemsTagName'=>'table',
-    'template'=>'<div class="mailbox-summary">{summary}</div>{sorter}'.$ie6br.'<div id="mailbox-items" class="ui-helper-clearfix">{items}</div>{pager}',
+    'template'=>'<div class="mailbox-summary"><div style="float:left;">'.$this->getAction()->getId().'&nbsp;&nbsp;&nbsp;</div>{summary}</div>{sorter}'.$ie6br.'<div id="mailbox-items" class="ui-helper-clearfix">{items}</div>{pager}',
     'sortableAttributes'=>$this->getAction()->getId()=='sent'?
 	array('created'=>'Date Sent') :
 	array('modified'=>'Date Received'),

@@ -31,8 +31,8 @@
 	</div>
 
 	<div class="row">
-		<?php echo $form->label($model,'academic_terms_period_organization_id'); ?>
-		<?php echo $form->textField($model,'academic_terms_period_organization_id'); ?>
+		<?php //echo $form->label($model,'academic_terms_period_organization_id'); ?>
+		<?php // echo $form->textField($model,'academic_terms_period_organization_id'); ?>
 	</div>
 
 	<div class="row">

@@ -139,5 +139,6 @@ $this->menu=array(
 		//'student_transaction_division_id',
 		//'student_transaction_batch_id',
 		'student_academic_term_period_tran_id',
+		'student_transaction_batch_year',
 	),
 )); ?>

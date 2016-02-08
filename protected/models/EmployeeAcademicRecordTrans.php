@@ -1,14 +1,22 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 /**
  * This is the model class for table "employee_academic_record_trans".
- * @package EduSec.models
+ *
+ * The followings are the available columns in table 'employee_academic_record_trans':
+ * @property integer $employee_academic_record_trans_id
+ * @property integer $employee_academic_record_trans_user_id
+ * @property integer $employee_academic_record_trans_qualification_id
+ * @property integer $employee_academic_record_trans_eduboard_id
+ * @property integer $employee_academic_record_trans_year_id
+ * @property integer $theory_mark_obtained
+ * @property integer $theory_mark_max
+ * @property double $theory_percentage
+ * @property integer $practical_mark_obtained
+ * @property integer $practical_mark_max
+ * @property double $practical_percentage
+ * @property integer $employee_academic_record_trans_oraganization_id
  */
-
 class EmployeeAcademicRecordTrans extends CActiveRecord
 {
 	/**
@@ -40,10 +48,13 @@ class EmployeeAcademicRecordTrans extends CActiveRecord
 			array('employee_academic_record_trans_user_id, employee_academic_record_trans_qualification_id, employee_academic_record_trans_eduboard_id, employee_academic_record_trans_year_id, theory_mark_obtained, theory_mark_max, theory_percentage', 'required','message'=>""),
 			array('employee_academic_record_trans_user_id, employee_academic_record_trans_qualification_id, employee_academic_record_trans_eduboard_id, employee_academic_record_trans_year_id, theory_mark_obtained, theory_mark_max, practical_mark_obtained, practical_mark_max,	employee_academic_record_trans_oraganization_id', 'numerical', 'integerOnly'=>true,'message'=>""),
 			array('theory_percentage, practical_percentage', 'numerical'),
-
-			array('theory_mark_max','checkMarks','message'=>'Obtained Marks Can Not Be Greater Than Max Marks'),
+			array('theory_mark_obtained','compare','compareAttribute'=>'theory_mark_max','operator'=>'>','message'=>'Theory Marks Obtained must be less than max marks'),
+			array('practical_mark_obtained','compare','compareAttribute'=>'practical_mark_max','operator'=>'>','message'=>'Practical Marks Obtained must be less than max marks'),
+			//array('theory_mark_max','checkMarks','message'=>'Obtained Marks Can Not Be Greater Than Max Marks'),
 			array('theory_percentage','checkpercentage','message'=>'Percentage Always Less Than 100'),
 			array('theory_mark_obtained, theory_mark_max, practical_mark_obtained, practical_mark_max','CRegularExpressionValidator','pattern'=>'/^([0-9]+)$/','message'=>''),
+
+			//array('theory_mark_obtained, theory_mark_max, practical_mark_obtained, practical_mark_max','length','max'=>4),
 
 			array('theory_mark_obtained, theory_mark_max, practical_mark_obtained, practical_mark_max','numerical',
    			 'integerOnly'=>true,
@@ -53,6 +64,14 @@ class EmployeeAcademicRecordTrans extends CActiveRecord
    			 'tooBig'=>'You cannot Enter more than 3000.'),
 
 			array('practical_mark_obtained, practical_mark_max, practical_percentage','safe'),
+			/*array('employee_academic_record_trans_qualification_id','unique',
+				'criteria'=>array(
+				'condition'=>'employee_academic_record_trans_user_id=:employee_academic_record_trans_user_id',
+		'params'=>array(':employee_academic_record_trans_user_id'=>$_REQUEST['id']),
+				),'message'=>'unique',
+			),*/
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
 			array('employee_academic_record_trans_id, employee_academic_record_trans_user_id, employee_academic_record_trans_qualification_id, employee_academic_record_trans_eduboard_id, employee_academic_record_trans_year_id, theory_mark_obtained, theory_mark_max,	employee_academic_record_trans_oraganization_id,theory_percentage, practical_mark_obtained, practical_mark_max, practical_percentage', 'safe', 'on'=>'search'),
 		);
 	}
@@ -62,6 +81,8 @@ class EmployeeAcademicRecordTrans extends CActiveRecord
 	 */
 	public function relations()
 	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
 		return array(
 
 		'Rel_employee_qualification' => array(self::BELONGS_TO, 'Qualification', 'employee_academic_record_trans_qualification_id'),
@@ -71,11 +92,7 @@ class EmployeeAcademicRecordTrans extends CActiveRecord
 
 		);
 	}
-	
-	/**
-	 * Check obtain marks must be less then Max. marks.
-	*/
-	public function checkMarks($attribute,$params)
+	/*public function checkMarks($attribute,$params)
 	{
 	    	if(($this->theory_mark_obtained > $this->theory_mark_max) || ($this->practical_mark_obtained > $this->practical_mark_max))
 		{
@@ -89,13 +106,8 @@ class EmployeeAcademicRecordTrans extends CActiveRecord
 			else
 				$this->addError('practical_mark_obtained','Obtained Marks Always Less Than Max Mark');
 		}	
-	}
-
-	/**
-	 * Check precentage must be less then 100%.
-	*/
-
-	public function checkpercentage($attribute,$params)
+	}*/
+/*	public function checkpercentage($attribute,$params)
 	{
 		if(($this->theory_percentage > 100) || ($this->practical_percentage > 100))
 		{
@@ -109,7 +121,7 @@ class EmployeeAcademicRecordTrans extends CActiveRecord
 			else
 				$this->addError('practical_percentage','Percentage Always Less Than 100');
 		}	
-	}
+	}*/
 
 	/**
 	 * @return array customized attribute labels (name=>label)
@@ -160,10 +172,6 @@ class EmployeeAcademicRecordTrans extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-
-	/**
-	 * Return academic record data for particular user.
-	*/
 	public function mysearch()
 	{
 		// Warning: Please modify the following code to remove attributes that
@@ -195,10 +203,7 @@ class EmployeeAcademicRecordTrans extends CActiveRecord
 		return $data;
 	}
 
-	/**
-	 * Check obtain theory and practical marks must be less then Max marks.
-	*/
-	public function beforesave()
+	/*public function beforesave()
 	{
 		if(($this->theory_mark_obtained > $this->theory_mark_max) || ($this->practical_mark_obtained > $this->practical_mark_max))
 		{
@@ -220,6 +225,6 @@ class EmployeeAcademicRecordTrans extends CActiveRecord
 		}	
 		
 
-	}
+	}*/
 
 }

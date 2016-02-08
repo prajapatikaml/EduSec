@@ -386,7 +386,7 @@ class ExportToPDFExcelController extends RController
 	}
 	public function actionEmployeeFinalViewExportToPdf($id)
 	{
-		$employee_transaction = EmployeeTransaction::model()->findAll(' 	employee_transaction_id='.$id);
+		$employee_transaction = EmployeeTransaction::model()->findAll('employee_transaction_id='.$id);
 		$employee_docs = EmployeeDocsTrans::model()->findAll('employee_docs_trans_user_id='.$id);
 		$employee_qual = EmployeeAcademicRecordTrans::model()->findAll('employee_academic_record_trans_user_id='.$id);
 		$employee_exp = EmployeeExperienceTrans::model()->findAll('employee_experience_trans_user_id='.$id);
@@ -397,9 +397,36 @@ class ExportToPDFExcelController extends RController
 		    'employee_transaction'=>$employee_transaction,
 		    'emp_exp'=>$employee_exp,
 		), true);
+		
+		
+		ob_clean();
+		//$pdf = new TCPDF();
+		//$pdf->SetCreator(PDF_CREATOR);
+		//$pdf->SetAuthor(Yii::app()->name);
+		//$pdf->SetTitle($title);
+		//$pdf->SetSubject($title);
+		//$pdf->SetKeywords('example, text, report');
+		//$pdf->SetHeaderData('', 0, $title, '');
+		//$pdf->setHeaderFont(Array('helvetica', '', 8));
+		//$pdf->setFooterFont(Array('helvetica', '', 6));
+		//$pdf->SetMargins(15, 18, 15);
+		//$pdf->SetHeaderMargin(5);
+		//$pdf->SetFooterMargin(10);
+		//$pdf->SetAutoPageBreak(TRUE, 15);
+		//$pdf->SetFont('dejavusans', '', 7);
+		//$resolution= array(150, 150);
+		//$pdf->AddPage('P', $resolution);
+		$html = '<style> table, th, td { border : 1px solid #000;} th {text-align: center;}</style>'.$html;
+		//$pdf->writeHTML($html, true, false, true, false, '');
+		//$pdf->LastPage();
+		//$pdf->Output($filename, "I");
+	  
 		$this->exporttopdf('Employee Report','Employee.pdf',$html);	              
 	}
-		public function actiondocumentExportToPdf() 
+	
+	
+
+	public function actiondocumentExportToPdf() 
 	{
              	if(isset($_SESSION['document']))
                	{
@@ -533,10 +560,151 @@ class ExportToPDFExcelController extends RController
 		
 		$this->exporttopdf('EmployeeCertificateDetails Report','EmployeeCertificateDetailsTable.pdf',$html);
 	}
-	
+	public function actionStudentAttendenceEmailGenerateExcel()
+	{
+            $session=new CHttpSession;
+            $session->open();		
+            
+              if(isset($session['StudentAttendenceEmail_records']))
+               {
+                $d=$_SESSION['StudentAttendenceEmail_records'];
+		 $model = array();
+
+		if($d->data)
+			$model[]=array_keys($d->data[0]->attributes);//headers: cols name
+			else
+			{
+				$this->render('no_data_found',array('last_page'=>$_SERVER['HTTP_REFERER'],));
+				exit;			
+			}
+
+		foreach ($d->data as $item) {
+		    $model[] = $item->attributes;
+		}
+		//print_r($model);exit;
+               }
+              
+		
+		Yii::app()->request->sendFile("StudentAttendenceEmail.xls",
+			$this->renderPartial('/studentAttendenceEmail/exportGridtoReport', array(
+				'model'=>$model
+			), true)
+		);
+	}
+        public function actionStudentAttendenceEmailGeneratePdf() 
+	{
+           $session=new CHttpSession;
+           $session->open();
+		Yii::import('application.extensions.tcpdf.*');
+		require_once('tcpdf/tcpdf.php');
+		require_once('tcpdf/config/lang/eng.php');	
+             if(isset($session['StudentAttendenceEmail_records']))
+               {
+                $d=$_SESSION['StudentAttendenceEmail_records'];
+		 $model = array();
+
+		if($d->data)
+			$model[]=array_keys($d->data[0]->attributes);//headers: cols name
+			else
+			{
+				$this->render('no_data_found',array('last_page'=>$_SERVER['HTTP_REFERER'],));
+				exit;			
+			}
+
+		foreach ($d->data as $item) {
+		    $model[] = $item->attributes;
+		}
+		//print_r($model);exit;
+               }
+              
+
+
+		$html = $this->renderPartial('/studentAttendenceEmail/exportGridtoReport', array(
+			'model'=>$model
+		), true);
+		
+		//die($html);
+		ob_clean();
+		$pdf = new TCPDF();
+		$pdf->SetCreator(PDF_CREATOR);
+		$pdf->SetAuthor(Yii::app()->name);
+		$pdf->SetTitle('StudentAttendenceEmail Report');
+		$pdf->SetSubject('StudentAttendenceEmail Report');
+		//$pdf->SetKeywords('example, text, report');
+		$pdf->SetHeaderData('', 0, "Report", '');
+		$pdf->setHeaderFont(Array('helvetica', '', 8));
+		$pdf->setFooterFont(Array('helvetica', '', 6));
+		$pdf->SetMargins(15, 18, 15);
+		$pdf->SetHeaderMargin(5);
+		$pdf->SetFooterMargin(10);
+		$pdf->SetAutoPageBreak(TRUE, 0);
+		$pdf->SetFont('dejavusans', '', 7);
+		$pdf->AddPage();
+		$pdf->writeHTML($html, true, false, true, false, '');
+		$pdf->LastPage();
+		$pdf->Output("StudentAttendenceEmail.pdf", "I");
+	}
+
 	protected function exporttopdf($title,$filename,$html)
 	{
-		Yii::import('application.extensions.tcpdf.*');
+
+		$org_data=Organization::model()->findAll();
+
+		foreach($org_data as $as=>$row)
+		{
+			$org=$row['organization_id'];
+		}
+				
+		$mpdf=Yii::app()->ePdf->mpdf();
+        	$mpdf=Yii::app()->ePdf->mpdf('', 'A4',0,'',15,15,25,16,4,9,'P');
+		$mpdf = new mPDF('', 'A4',0,'',15,15,30,20,4,9,'P');
+		ob_clean();
+		ob_clean();
+		$org = Organization::model()->findAll();
+		$org_image=CHtml::link(CHtml::image(Yii::app()->controller->createUrl('/site/loadImage', array('id'=>$org[0]['organization_id'])),'No Image',array('width'=>130,'height'=>70))); 
+		$org_name=$org[0]['organization_name'];
+		$org_add=$org[0]['address_line1']."<br/>".$org[0]['address_line2']."<br/>";
+		$mpdf->SetHTMLHeader('<table style="border-bottom:1.6px solid #74b9fo;border-top:hidden;border-left:hidden;border-right:hidden;width:100%;"><tr style="border:hidden"><td vertical-align="center" style="width:35px;border:hidden" align="left">'.$org_image.'</td><td style="border:hidden"><b style="font-size:22px;">'.$org_name.'</b><br/><span style="font-size:10.2px">'.$org_add.'</td></tr></table>');
+		$mpdf->SetWatermarkImage('images/rudraSoftech.png',0.3, '');
+		$mpdf->showWatermarkImage = true;
+$arr = array (
+  'odd' => array (
+    'L' => array (
+      'content' => $title,
+      'font-size' => 10,
+      'font-style' => 'B',
+      'font-family' => 'serif',
+      'color'=>'#27292b'
+    ),
+    'C' => array (
+      'content' => 'Page - {PAGENO}/{nbpg}',
+      'font-size' => 10,
+      'font-style' => 'B',
+      'font-family' => 'serif',
+      'color'=>'#27292b'
+    ),
+    'R' => array (
+      'content' => 'Printed @ {DATE j-m-Y H:m}',
+      'font-size' => 10,
+      'font-style' => 'B',
+      'font-family' => 'serif',
+      'color'=>'#27292b'
+    ),
+    'line' => 1,
+  ),
+  'even' => array ()
+);
+
+		$mpdf->SetFooter($arr);
+
+		$mpdf->WriteHTML('<sethtmlpageheader name="main" page="ALL" value="on" show-this-page="1">');
+		$mpdf->WriteHTML($html);
+		$mpdf->Output($filename,"I");
+ 	
+
+		
+
+/*		Yii::import('application.extensions.tcpdf.*');
 		require_once('tcpdf/tcpdf.php');
 		require_once('tcpdf/config/lang/eng.php');
 
@@ -560,6 +728,77 @@ class ExportToPDFExcelController extends RController
 		$pdf->AddPage('P', $resolution);
 		$pdf->writeHTML($html, true, false, true, false, '');
 		$pdf->LastPage();
-		$pdf->Output($filename, "I");
+		$pdf->Output($filename, "I");*/
 	}
+	public function actionEmployeecontactexcel()
+	{
+            $session=new CHttpSession;
+            $session->open();		
+            
+              if(isset($session['employee_records']))
+               {
+                $d=$_SESSION['employee_records'];
+		 $model = array();
+
+		if($d->data)
+			$model[]=array_keys($d->data[0]->attributes);//headers: cols name
+			else
+			{
+				$this->render('no_data_found',array('last_page'=>$_SERVER['HTTP_REFERER'],));
+				exit;			
+			}
+
+		foreach ($d->data as $item) {
+		    $model[] = $item->attributes;
+		}
+               }
+              
+		
+		Yii::app()->request->sendFile("employee-contact.xls",
+			$this->renderPartial('/employeeTransaction/contactExcel', array(
+				'model'=>$model
+			), true)
+		);
+	}
+	public function actionTransferemployeeexcel()
+	{
+	    	$this->toExcel($_SESSION['employee_records'],
+		array(
+		'Rel_Emp_Info.employee_no',
+		'Rel_Emp_Info.employee_attendance_card_id',
+		'Rel_Emp_Info.employee_first_name::First Name',
+		'Rel_Emp_Info.employee_last_name::Last Name',
+		'Rel_Designation.employee_designation_name::Designation',
+		'Rel_Department.department_name::Department',	
+		'Rel_Emp_Info.employee_left_transfer_date',
+		'Rel_Emp_Info.transfer_left_remarks',		
+		),
+		'Transfer Employee List',
+		array(
+		    'creator' => 'Rudrasoftech',
+		),
+		'Excel5'
+	    );
+	}
+	public function actionResignemployeeexcel()
+	{
+	    	$this->toExcel($_SESSION['employee_records'],
+		array(
+		'Rel_Emp_Info.employee_attendance_card_id',
+		'Rel_Emp_Info.employee_first_name::First Name',
+		'Rel_Emp_Info.employee_last_name::Last Name',
+		'Rel_Designation.employee_designation_name::Designation',
+		'Rel_Department.department_name::Department',	
+		'Rel_Emp_Info.employee_left_transfer_date::Resign Approve Date',
+		//'Rel_exit_detail.employee_resign_application_date',
+		),
+		'Transfer Employee List',
+		array(
+		    'creator' => 'Rudrasoftech',
+		),
+		'Excel5'
+	    );
+	}
+	
+
 }

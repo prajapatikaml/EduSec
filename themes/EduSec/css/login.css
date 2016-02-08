@@ -1,0 +1,219 @@
+/* Stylesheet */
+
+
+/* Imports */
+
+@import url(animate.css);
+
+/* Selections */
+
+::selection {
+ 	color: #fff;
+ 	text-shadow: none;
+ 	background: #444;
+}
+
+::-moz-selection {
+ 	color: #fff;
+ 	text-shadow: none;
+ 	background: #444;
+}
+
+/* Basics */
+
+html {
+	width: 100%;
+	font: 12px Tahoma, Helvetica, sans-serif;
+		color: #444444;
+	background: #fff url('../images/bg.jpg') no-repeat center center fixed;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	color: #444;
+	-webkit-font-smoothing: antialiased;
+	border-top:2px solid #f57d20;
+	
+}
+.logobox{background:#fff;width:98%;padding:1%}
+.forgotbox{padding:10px 0 10px 0}
+#container {
+	width: 340px;
+	margin:0 auto;
+
+	background: url('../images/boxbg.png');
+	border-radius: 3px;
+	-webkit-animation-name: bounceIn;
+	-webkit-animation-fill-mode: both;
+	-webkit-animation-duration: 1s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: linear;
+	-moz-animation-name: bounceIn;
+	-moz-animation-fill-mode: both;
+	-moz-animation-duration: 1s;
+	-moz-animation-iteration-count: 1;
+	-moz-animation-timing-function: linear;
+	animation-name: bounceIn;
+	animation-fill-mode: both;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+	animation-timing-function: linear;
+}
+
+form {
+	margin: 0 auto;
+	margin-top: 20px;
+}
+
+label {
+	color: #fff;
+	display: inline-block;
+	margin-left: 18px;
+	padding-top: 10px;
+	font-size: 14px;
+}
+
+p a {
+	font-size: 11px;
+	color: #333;
+	float: right;
+	margin-top: -2px;
+	margin-right: 20px;
+	-webkit-transition: all .4s ease;
+	-moz-transition: all .4s ease;
+	transition: all .4s ease;
+}
+
+p a:hover {
+	color: #555;
+}
+
+input {
+	font-size: 12px;
+	outline: none;
+}
+
+input[type=name],input[type=text],
+input[type=password] {
+	color: #333333;
+	padding-left: 10px;
+	margin: 10px;
+	margin-top: 12px;
+	margin-left: 18px;
+	width: 290px;
+	font-size:14px;
+	height: 35px;
+	border: 1px solid #c5c5c5;
+	-webkit-transition: all .4s ease;
+	-moz-transition: all .4s ease;
+	transition: all .4s ease;
+}
+
+input[type=text]:hover,
+input[type=name]:hover,
+input[type=password]:hover {
+	border: 1px solid #b6bfc0;
+	box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .7), 0 0 0 5px #f5f7f8;
+}
+
+input[type=name]:focus,
+input[type=password]:focus {
+	border: 1px solid #a8c9e4;
+	box-shadow: inset 0 1.5px 3px rgba(190, 190, 190, .4), 0 0 0 5px #e6f2f9;
+}
+
+#lower {
+	background: url('../images/boxbg.png');
+	width: 100%;
+	height: 69px;
+	margin-top: 10px;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+.logo{margin:80px auto 50px auto; text-align:center}
+.login{margin:20px auto 20px auto; text-align:center; font-size:24px; color:#333}
+.userphoto{margin:20px auto 20px auto; text-align:center}
+.signin{margin:50px auto 50px auto; text-align:center; font-size:14px; color:#333}
+.signin span{font-weight:bold;}
+input[type=checkbox] {
+	margin-left: 20px;
+	margin-top: 30px;
+}
+
+.check {
+	margin-left: 3px;
+	font-size: 11px;
+	color: #444;
+	text-shadow: 0 1px 0 #fff;
+}
+
+input[type=submit] {
+	float: right;
+	margin-right: 20px;
+	margin-top: 20px;
+	width: 300px;
+	height: 35px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #fff;
+	border: 1px solid #229234;
+	cursor: pointer;
+	background:#35aa47;
+	color:#fff;
+}
+
+input[type=submit]:hover {
+	border: 1px solid #43b955;
+	cursor: pointer;
+	background:#35aa47;
+}
+
+input[type=submit]:active {
+	border: 1px solid #229234;
+	cursor: pointer;
+	background:#43b955;
+}
+#footer {
+	padding: 0; 
+	padding: 0; 
+	margin-top: 0; 
+	text-align:center;
+	position:fixed;
+	bottom:0px;
+	width:100%;
+	}
+.footer-date-display {
+	padding: 0; 
+	color: #333; 
+	text-align:right;
+	font-size:36px;
+	padding:0 2% 0 0;
+	}
+	.footer-day-display {
+	padding: 0; 
+	color: #333; 
+	text-align:right;
+	font-size:24px;
+	padding:0 2% 0 0;
+	}
+.footer-bottom {
+	padding: 0; 
+	color: #fff; 
+	padding: 10px 0 10px 0; 
+	margin-top: 30px; 
+	background:#91c46a;
+	text-align:center;
+	width:100%;
+	}
+
+#forgotbox{display:none;}
+
+.captchaArea img {
+  padding-left: 100px;
+}
+
+.captchaArea a {
+  float: right;
+  padding-right: 25px;
+  padding-top: 20px;
+}

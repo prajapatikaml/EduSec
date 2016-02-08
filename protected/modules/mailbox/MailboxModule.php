@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Works with javascript on/off
@@ -37,7 +38,7 @@ class MailboxModule extends CWebModule
 	/**
 	* @property string the name of the column in your User model that defines whether user is an admin or not.
 	*/
-	public $superuserColumn = '';
+	//public $superuserColumn = 'userType';
 	/**
 	* @property string text to display if user not found.
 	*/
@@ -130,7 +131,7 @@ class MailboxModule extends CWebModule
 	/**
 	 * @property string default subject to use when no subject is provided.
 	 */
-	public $defaultSubject = '(no subject)';
+	public $defaultSubject = 'Subject';
 	/**
 	 * @property string list or allowable characters to check Subject field against 
 	 * using case-insensitive regular expression. Square brackets '[]', dashes '-', 
@@ -229,6 +230,12 @@ class MailboxModule extends CWebModule
 	public function init()
 	{
 		// import the module-level models and components
+		if(Yii::app()->user->isGuest)
+		{
+			  Yii::app()->user->loginRequired();
+
+		}
+		else
 		$this->setImport(array(
 			'mailbox.models.*',
 			'mailbox.components.*',
@@ -253,6 +260,7 @@ class MailboxModule extends CWebModule
 				$this->_userid = Yii::app()->user->id;
 			return $this->_userid;
 		}
+		
 	}
 	
 	public function getUserName($userid=0)
@@ -264,10 +272,11 @@ class MailboxModule extends CWebModule
 			
 		}
 		if(!$this->_username) {
-			$userid = Yii::app()->user->id;//{$this->userIdColumn};
+			$userid = Yii::app()->user->{$this->userIdColumn};
 			$this->_username = call_user_func(array($this->userClass, 'model'))->findByPk($userid)->{$this->usernameColumn};
 		}
-		return $this->_username; 
+		
+		return $this->_userid; 
 	}
 	
 	public function getFromLabel($userid)
@@ -277,16 +286,17 @@ class MailboxModule extends CWebModule
 	
 	public function getUrl($userid)
 	{
-		return  null; //Yii::app()->createUrl('user', array('user' => $userid));
+		return Yii::app()->createUrl('user', array('user' => $userid));
 	}
 	
 	public function isAdmin($userid=0)
 	{
-		if(Yii::app()->user->isGuest)
+		/*if(Yii::app()->user->isGuest)
 			return false;
-		else /*if(!$userid)
-			$userid = $this->getUserId();*/
+		if(!$userid)
+			$userid = $this->getUserId();
 		
+		*/
 		return true;
 		
 		//return User::model()->findbyPk($userid)->superuser;
@@ -300,14 +310,17 @@ class MailboxModule extends CWebModule
 	public function autoComplete($term)
 	{
 		$criteria = new CDbCriteria;
-
+		//$criteria->condition = 'user_organization_id = :user_organization_id';
+	        //$criteria->params = array(':user_organization_id' => Yii::app()->user->getState('org_id'));
+		//$criteria->compare($this->usernameColumn,'smit.patel@hansabacollege.com');
 		$criteria->compare($this->usernameColumn, $term, true, 'OR');
 		$criteria->compare($this->userIdColumn, $term, true, 'OR');
-		//$criteria->compare('email', $term, true, 'OR');
-		$criteria->mergeWith(array('limit'=>25));
+		//$criteria->compare($this->usernameColumn,array('condition'=>'user_organization_email_id=smit.patel@hansabacollege.com'));
+		$criteria->mergeWith(array('limit'=>10));
 		$users = call_user_func(array($this->userClass, 'model'))
 			->findAll($criteria);
-		//$users = User::model()->keyword($term)->limit(100)->findAll();
+		
+		//$users = User::model()->keyword($term)->limit(5)->findAll();
 		$json = '[';
 		foreach($users as $user)
 		{
@@ -336,11 +349,13 @@ class MailboxModule extends CWebModule
 	 */
 	public function getUserSupportList()
 	{
-		$list = array('admin'=>'Site Administrator','support'=>'Customer Support','billing'=>'Billing Administrator' );
+		//$list = array('admin'=>'Site Administrator','support'=>'Customer Support','billing'=>'Billing Administrator' );
+		$list = array();
 		
 		// we add site news as an option for the admin to create news updates by messaging the news box...
- 		if($this->isAdmin())
-			$list[$this->getUserName($this->newsUserId)] = 'Site News';
+ 		//if($this->isAdmin())
+		//$list[$this->getUserName($this->newsUserId)] = 'Site News';
+		
 		return $list;
 	}
 	
@@ -464,17 +479,17 @@ EOD;
 		
 		//// set module vars in javascript
 		$this->_jsOptions = <<<EOD
-{
-	trashbox:{$this->jsVar('trashbox')},
-	dragDelete:{$this->jsVar('dragDelete')},
-	confirmDelete:{$this->jsVar('confirmDelete')},
-	menuPosition:{$this->jsVar('menuPosition')},
-	juiThemes:{$this->jsVar('juiThemes')},
-	juiButtons:{$this->jsVar('juiButtons')},
-	juiIcons:{$this->jsVar('juiIcons')},
-	alternateRows:{$this->jsVar('alternateRows')},
-	highlightRows:{$this->jsVar('highlightRows')}
-}
+		{
+			trashbox:{$this->jsVar('trashbox')},
+			dragDelete:{$this->jsVar('dragDelete')},
+			confirmDelete:{$this->jsVar('confirmDelete')},
+			menuPosition:{$this->jsVar('menuPosition')},
+			juiThemes:{$this->jsVar('juiThemes')},
+			juiButtons:{$this->jsVar('juiButtons')},
+			juiIcons:{$this->jsVar('juiIcons')},
+			alternateRows:{$this->jsVar('alternateRows')},
+			highlightRows:{$this->jsVar('highlightRows')}
+		}
 EOD;
 		return $this->_jsOptions;
 	}
@@ -536,15 +551,14 @@ EOD;
 		if(!$userid)
 			$userid = $this->getUserId();
 		return Mailbox::newMsgs($userid);
-		
-		// Update message count only once every 30 seconds
+		// Update message count only once every 10 seconds
 		if(!$this->_new)
 			$this->_new = Mailbox::newMsgs(Yii::app()->user->id);
 		return $this->_new;
 		
 		
-		// Update message count only once every 30 seconds
-		if(!$_SESSION['Mailbox']['new'] || $_SESSION['Mailbox']['timestamp'] < (time() + 30) )
+		// Update message count only once every 10 seconds
+		if(!$_SESSION['Mailbox']['new'] || $_SESSION['Mailbox']['timestamp'] < (time() + 10) )
 		{
 			$_SESSION['Mailbox']['new'] = Mailbox::newMsgs($userid);
 			$_SESSION['Mailbox']['timestamp'] = time();

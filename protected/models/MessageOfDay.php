@@ -1,14 +1,9 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 /**
  * This is the model class for table "message_of_day".
  * @package EduSec.models
  */
-
 class MessageOfDay extends CActiveRecord
 {
 	/**
@@ -28,10 +23,6 @@ class MessageOfDay extends CActiveRecord
 	{
 		return 'message_of_day';
 	}
-
-	/**
-	 * @return default scope to get data from table in order to "message".
-	 */
 	public function defaultScope() 
 	{
        		return array(
@@ -43,10 +34,14 @@ class MessageOfDay extends CActiveRecord
 	 */
 	public function rules()
 	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
 		return array(
 			array('message, created_by, creation_date,message_of_day_active', 'required','message'=>''),
 			array('created_by', 'numerical', 'integerOnly'=>true),
-			array('message', 'length', 'max'=>250),
+			array('message', 'length', 'max'=>1000),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
 			array('id, message, created_by, creation_date,message_of_day_active', 'safe', 'on'=>'search'),
 		);
 	}
@@ -83,6 +78,9 @@ class MessageOfDay extends CActiveRecord
 	 */
 	public function search()
 	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('id',$this->id);
@@ -97,7 +95,22 @@ class MessageOfDay extends CActiveRecord
 				),
 			)
 		);
-		 $_SESSION['message']=$message;
+		unset($_SESSION['exportData']);
+		$_SESSION['exportData'] =$message;
 		return $message;
 	}
+
+	/**
+	*For Export to PDF & Excel
+	*Field written in attributes are exported in excel
+	*For pdf pdfFile will be render to export
+	*/	
+	public static function getExportData() {
+	      $data = array('data'=>$_SESSION['exportData'],'attributes'=>array(
+			'message',
+			'Rel_user_message.user_organization_email_id::Created By',
+        		),
+		'filename'=>'Messages-List', 'pdfFile'=>'/messageOfDay/messageGeneratePDF');
+              return $data;
+        }
 }

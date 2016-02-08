@@ -11,5 +11,5 @@ $this->menu=array(
 ?>
 
 
-<h2 style='color:black'>Student Attendance Report</h2>
+
 <?php echo $this->renderPartial('stud_report', array('model'=>$model)); ?>

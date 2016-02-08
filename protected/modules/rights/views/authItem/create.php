@@ -5,7 +5,7 @@
 
 <div class="createAuthItem">
 
-	<h2><?php echo Rights::t('core', 'Create :type', array(
+	<h2 style="color:#427FED;border-bottom:2px solid #ff503f;padding: 10px 1%;width: 98%;"><?php echo Rights::t('core', 'Create :type', array(
 		':type'=>Rights::getAuthItemTypeName($_GET['type']),
 	)); ?></h2>
 

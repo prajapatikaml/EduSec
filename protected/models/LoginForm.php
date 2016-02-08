@@ -1,9 +1,10 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
+/**
+ * LoginForm class.
+ * LoginForm is the data structure for keeping
+ * user login form data. It is used by the 'login' action of 'SiteController'.
+ */
 class LoginForm extends CFormModel
 {
 	public $username;
@@ -23,10 +24,12 @@ class LoginForm extends CFormModel
 	public function rules()
 	{
 		return array(
+			// username and password are required
 			array('username, password ', 'required','on'=>'login','message'=>''),
-			array('username', 'required','on'=>'forgotpassword','message'=>''),
 			array('parent_username, parent_password', 'required','on'=>'parentlogin','message'=>''),		
+			// rememberMe needs to be a boolean
 			array('rememberMe', 'boolean'),
+			// password needs to be authenticated
 			array('password', 'authenticate','on'=>'login'),
 			array('parent_password', 'authenticate','on'=>'parentlogin'),
 			
@@ -91,11 +94,6 @@ class LoginForm extends CFormModel
 		else
 			return false;
 	}
-
-	/**
-	 * Logs in the parent user using the given username and password in the model.
-	 * @return boolean whether login is successful
-	 */
 	public function parentlogin()
 	{
 		if($this->_identity===null)

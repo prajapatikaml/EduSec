@@ -2,10 +2,15 @@
 	'Rights'=>Rights::getBaseUrl(),
 	Rights::t('core', 'Generate items'),
 ); ?>
+<div id="rights-menu">
+
+	<?php $this->renderPartial('/_menu'); ?>
+
+</div>
 
 <div id="generator">
 
-	<h2><?php echo Rights::t('core', 'Generate items'); ?></h2>
+	<h2 style="color:#427FED;border-bottom:2px solid #ff503f;padding: 10px 1%;width: 98%;"><?php echo Rights::t('core', 'Generate items'); ?></h2>
 
 	<p><?php echo Rights::t('core', 'Please select which items you wish to generate.'); ?></p>
 
@@ -37,7 +42,7 @@
 				</table>
 
 			</div>
-
+<br/>
 			<div class="row">
 
    				<?php echo CHtml::link(Rights::t('core', 'Select all'), '#', array(
@@ -50,9 +55,9 @@
 
 			</div>
 
-   			<div class="row">
+   			<div class="row buttons">
 
-				<?php echo CHtml::submitButton(Rights::t('core', 'Generate')); ?>
+				<?php echo CHtml::submitButton(Rights::t('core', 'Generate'),array('class'=>'submit')); ?>
 
 			</div>
 

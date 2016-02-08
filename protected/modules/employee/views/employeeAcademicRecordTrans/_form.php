@@ -1,15 +1,13 @@
-<?php
-$this->breadcrumbs=array(
-	'Employee List'=>array('/employee/employeeTransaction/EmployeeAcademicRecords', 'id'=>$_REQUEST['id']),
-	'Academic Details',
-);?>
+<?php $years=array();  
+      $years=range(date('Y')-50,date('Y'));
+      foreach($years as $y)
+	$acd_years[$y]=$y; 	
+?>
 <div class="portlet box blue">
 <i class="icon-reorder"></i>
- <div class="portlet-title">Update Details
+ <div class="portlet-title"><span class="box-title">Fil Details</span>
  </div>
-
-
-<div class="ui-tabs-panel form">
+<div class="form two-coloumn">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'employee-academic-record-trans-form',
@@ -21,14 +19,13 @@ $this->breadcrumbs=array(
 
 	<?php //echo $form->errorSummary($model); ?>
 	<?php
-		     $org = Yii::app()->user->getState('org_id');
 		     $id = $_REQUEST['id'];
 		     if(isset($model->employee_academic_record_trans_qualification_id))
 		     {
-			$query = 'qualification_id  not in(select employee_academic_record_trans_qualification_id from  employee_academic_record_trans where qualification_id <>'.$model->employee_academic_record_trans_qualification_id.' ) and qualification_organization_id='.$org.'';
+			$query = 'qualification_id  not in(select employee_academic_record_trans_qualification_id from  employee_academic_record_trans where qualification_id <>'.$model->employee_academic_record_trans_qualification_id.' )';
 		     }
 		     else
-		     $query = 'qualification_id  not in(select employee_academic_record_trans_qualification_id from  employee_academic_record_trans where employee_academic_record_trans_user_id='.$id.')';
+		     $query = 'qualification_id  not in(select employee_academic_record_trans_qualification_id from  employee_academic_record_trans where employee_academic_record_trans_user_id='.$id.') ';
 		     $remaining_course = Yii::app()->db->createCommand()
                     ->select('qualification_id,qualification_name')
                     ->from('qualification')
@@ -47,12 +44,8 @@ $this->breadcrumbs=array(
 	</div>
 
 	<div class="row">
-		<?php $y = date('Y');
-			$py = $y- 50;
-			$arr = array_combine(range($py,$y,1), range($py,$y,1));
-		?>
 		<?php echo $form->labelEx($model,'employee_academic_record_trans_year_id'); ?>
-		<?php echo $form->dropDownList($model,'employee_academic_record_trans_year_id',$arr, array('empty' => 'Select Year','tabindex'=>3)); ?><span class="status">&nbsp;</span>
+		<?php echo $form->dropDownList($model,'employee_academic_record_trans_year_id',$acd_years, array('empty' => 'Select Year','selected'=>'selected','tabindex'=>3)); ?><span class="status">&nbsp;</span>
 		<?php echo $form->error($model,'employee_academic_record_trans_year_id'); ?>
 	</div>
 
@@ -91,8 +84,10 @@ $this->breadcrumbs=array(
 
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Add' : 'Save', array('class'=>'submit','tabindex'=>10)); ?>
+		<?php echo CHtml::link('Cancel', array('employeeTransaction/update','id'=>$id), array('class'=>'btnCan')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+</div>

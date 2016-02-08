@@ -1,14 +1,9 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 /**
  * This is the model class for table "student_status_master".
  * @package EduSec.models
  */
-
 class Studentstatusmaster extends CActiveRecord
 {
 	/**
@@ -34,13 +29,19 @@ class Studentstatusmaster extends CActiveRecord
 	 */
 	public function rules()
 	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
 		return array(
-			array('status_name, creation_date, created_by', 'required','message'=>""),
-			array('created_by, organization_id,student_status_master_detain_shift_id', 'numerical', 'integerOnly'=>true),
+			array('status_name', 'required','message'=>""),
+			array('created_by', 'numerical', 'integerOnly'=>true),
 			array('status_name', 'length', 'max'=>30),
-			array('status_name', 'unique','message'=>'Already Exists.'),
+			array('status_name', 'unique','message'=>'Record already exist.'),
 			array('status_name','CRegularExpressionValidator', 'pattern'=>'/^([A-Za-z ]+)$/','message'=>''),
-			array('id, status_name, creation_date, created_by, organization_id,student_status_master_detain_shift_id', 'safe', 'on'=>'search'),
+			array('created_by','default','value'=>Yii::app()->user->id),
+			array('creation_date','default','value'=>new CDbExpression('NOW()')),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
+			array('id, status_name, creation_date, created_by', 'safe', 'on'=>'search'),
 		);
 	}
 
@@ -49,8 +50,9 @@ class Studentstatusmaster extends CActiveRecord
 	 */
 	public function relations()
 	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
 		return array(
-		'Rel_org' => array(self::BELONGS_TO, 'Organization','organization_id'),
 		'Rel_user' => array(self::BELONGS_TO, 'User','created_by'),
 		);
 	}
@@ -65,7 +67,6 @@ class Studentstatusmaster extends CActiveRecord
 			'status_name' => 'Status',
 			'creation_date' => 'Creation Date',
 			'created_by' => 'Created By',
-			'organization_id' => 'Organization',
 		);
 	}
 
@@ -79,19 +80,28 @@ class Studentstatusmaster extends CActiveRecord
 		// should not be searched.
 
 		$criteria=new CDbCriteria;
-
 		$criteria->compare('id',$this->id);
 		$criteria->compare('status_name',$this->status_name,true);
 		$criteria->compare('creation_date',$this->creation_date,true);
 		$criteria->compare('created_by',$this->created_by);
-		$criteria->compare('organization_id',$this->organization_id);
-		$criteria->compare('student_status_master_detain_shift_id',$this->student_status_master_detain_shift_id);
-		
-
 		$data = new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
 		));
-		$_SESSION['status_data'] = $data;
+		unset($_SESSION['exportData']);
+		$_SESSION['exportData'] = $data;
 		return $data; 
 	}
+
+	/**
+	*For Export to PDF & Excel
+	*Field written in attributes are exported in excel
+	*For pdf pdfFile will be render to export
+	*/
+	public static function getExportData() {
+	      $data = array('data'=>$_SESSION['exportData'],'attributes'=>array(
+			'status_name',
+        		),
+		'filename'=>'StudentStatus-List', 'pdfFile'=>'/studentstatusmaster/gridview_export_report');
+              return $data;
+        }
 }

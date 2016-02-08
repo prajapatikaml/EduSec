@@ -1,3 +1,6 @@
+<div class="portlet box blue">
+ <div class="portlet-title"><i class="fa fa-plus"></i><span class="box-title">Fill Details</span>
+</div>
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -12,31 +15,21 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'message'); ?>
-		 <?php echo $form->textArea($model,'message',array('rows'=>4, 'cols'=>45)); ?><span class="status">&nbsp;</span>
-		<?php echo $form->error($model,'message'); ?>
+		 <?php echo $form->textArea($model,'message',array('rows'=>10, 'cols'=>450,'style'=>'float:left;height:100px;width:500px')); ?><span class="status">&nbsp;</span>
+		<b style="color:red"><?php echo $form->error($model,'message'); ?></b>
 	</div>
 	<div class="row">
 		 <?php echo $form->labelEx($model,'message_of_day_active'); ?>
 	   	 <?php echo $form->checkBox($model,'message_of_day_active', array('value'=>1, 'uncheckValue'=>0)); ?>
 	   	 <?php echo $form->error($model,'message_of_day_active'); ?>
 	</div>
-<!--
-	<div class="row">
-		<?php echo $form->labelEx($model,'created_by'); ?>
-		<?php echo $form->textField($model,'created_by'); ?>
-		<?php echo $form->error($model,'created_by'); ?>
-	</div>
-
-	<div class="row">
-		<?php echo $form->labelEx($model,'creation_date'); ?>
-		<?php echo $form->textField($model,'creation_date'); ?>
-		<?php echo $form->error($model,'creation_date'); ?>
-	</div>
--->
+</div><!-- form -->
 	<div class="row buttons">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Add' : 'Save',array('class'=>'submit')); ?>
+		<?php echo CHtml::link('Cancel', array('admin'), array('class'=>'btnCan')); ?> 
 	</div>
 
 <?php $this->endWidget(); ?>
 
-</div><!-- form -->
+</div>
+</div>

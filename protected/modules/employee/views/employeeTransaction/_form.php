@@ -69,14 +69,22 @@ $this->layout='//layouts/personal-profile';
 	<div id="divlink8" class="info-link">
 	<?php echo CHtml::link('Monthly Attendance',array('employeeAttendence/Singlemonthattendence', 'id'=>$model->employee_transaction_id),array('title'=>'My Attendance','style'=>'text-decoration:none;color:white;')); ?>
 	</div>
+	<?php if(Yii::app()->user->checkAccess('Hrms.EmployeeSalaryStructure.Employeesalaryhead')  && (Yii::app()->user->getState('emp_id') == $_REQUEST['id']) || Yii::app()->user->checkAccess('EmployeeSalaryStructure.AllEmployeeSalary')) { ?>
 	<div id="divlink8" class="info-link">
 	<?php echo CHtml::link('Salary Structure',array('/hrms/employeeSalaryStructure/Employeesalaryhead', 'id'=>$model->employee_transaction_id),array('title'=>'My Salary Info','style'=>'text-decoration:none;color:white;')); ?>
 	</div>
+	
 	<div id="divlink8" class="info-link">
 	<?php echo CHtml::link('Salary Slip',array('/hrms/employeeSalaryStructure/Mysalaryslip', 'id'=>$model->employee_transaction_id),array('title'=>'My Salary Slip','style'=>'text-decoration:none;color:white;')); ?>
 	</div>
 	<div id="divlink8" class="info-link">
 	<?php echo CHtml::link('Salary Report',array('/hrms/employeeSalarySlip/Singleempsalaryreport', 'id'=>$_REQUEST['id']),array('style'=>'text-decoration:none;color:white;','target'=>'_blank'));?>
+	</div>
+	<?php } ?>
+	<div id="divlink8" class="info-link">
+	<?php
+	echo CHtml::link('Exam Timetable',array('/exam/branchSubjectwiseScheduling/facultyexamtimetable', 'id'=>$_REQUEST['id']),array('style'=>'text-decoration:none;color:white;','target'=>'_blank'));
+	?>
 	</div>
 </div>
 
@@ -98,7 +106,7 @@ switch ($n)
    break;
 
    case 'updateprofiletab4':
-       echo $this->renderPartial('updateproftab4', array('address'=>$address));
+       echo $this->renderPartial('updateproftab4', array('model'=>$model,'address'=>$address));
    break;
 
    case 'employeeCertificates':
@@ -106,15 +114,15 @@ switch ($n)
    break;
 
    case 'employeedocs':
-       echo $this->renderPartial('/employeeDocsTrans/employeedocs', array('emp_doc'=>$emp_doc));
+       echo $this->renderPartial('/employeeDocsTrans/employeedocs', array('emp_doc'=>$emp_doc,'model'=>$model));
    break;
 
    case 'employeeAcademicRecords':
-       echo $this->renderPartial('/employeeAcademicRecordTrans/employeerecords', array('employeerecords'=>$employeerecords));
+       echo $this->renderPartial('/employeeAcademicRecordTrans/employeerecords', array('employeerecords'=>$employeerecords,'model'=>$model));
    break;
 
    case 'employeeExperience':
-       echo $this->renderPartial('/employeeExperienceTrans/employeeexperience', array('employeeexperience'=>$emp_exp));
+       echo $this->renderPartial('/employeeExperienceTrans/employeeexperience', array('employeeexperience'=>$emp_exp,'model'=>$model));
    break;
 
    default:

@@ -11,11 +11,11 @@ class MailApi  {
         public function sendmail($to,$message)
         {
 		require_once "Mail.php";	
-		$from = "EduSec<rudratestmail@gmail.com>";
-		$subject = "Login details for Edusec";
+		$from = "<rudratestmail@gmail.com>";
+		$subject = "Mail from DRSTC";
 		$body = $message;
 		 
-	 	$host = "ssl://smtp.gmail.com";
+		$host = "smtp.gmail.com";
 		$username = "rudratestmail@gmail.com";
 		$password = "rudra@123";
 		 
@@ -24,7 +24,7 @@ class MailApi  {
 		   'Subject' => $subject);
 		$smtp = Mail::factory('smtp',
 		   array ('host' => $host,
-			  'port'=>'465', 
+			  'port'=>'587', 
 		     'auth' => true,
 		     'username' => $username,
 		     'password' => $password));

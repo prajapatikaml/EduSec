@@ -1,90 +1,96 @@
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'personal-profile-form',
-//	'enableAjaxValidation'=>true,
-	'clientOptions'=>array('validateOnSubmit'=>true),
-)); ?>
+<div class="row">
+	     <div class="row-left">
+	      <?php echo $form->labelEx($info,'employee_guardian_name'); ?>
+              <?php echo $form->textField($info,'employee_guardian_name',array('size'=>18,'maxlength'=>100,'tabindex'=>1)); ?><span class="status">&nbsp;</span>
+              <?php echo $form->error($info,'employee_guardian_name'); ?>
+	     </div>
+
+             <div class="row-right">
+	      <?php echo $form->labelEx($info,'employee_guardian_relation'); ?>
+              <?php echo $form->textField($info,'employee_guardian_relation',array('size'=>18,'maxlength'=>20,'tabindex'=>2)); ?><span class="status">&nbsp;</span>
+              <?php echo $form->error($info,'employee_guardian_relation'); ?>
+	     </div>
+</div>
+<div class="row">
+               <div class="row-left">
+	      <?php echo $form->labelEx($info,'employee_guardian_qualification'); ?>
+	      <?php echo $form->textField($info,'employee_guardian_qualification',array('size'=>18,'maxlength'=>50,'tabindex'=>3)); ?><span class="status">&nbsp;</span>
+	      <?php echo $form->error($info,'employee_guardian_qualification'); ?>
+	      </div>
+</div>
+
 
 
 <div class="row">
-	 <?php echo $form->labelEx($address,'employee_address_c_line1'); ?>
-	 <?php echo $form->textField($address,'employee_address_c_line1',array('size'=>59,'maxlength'=>100,'tabindex'=>1)); ?><span class="status">&nbsp;</span>
-	 <?php echo $form->error($address,'employee_address_c_line1'); ?>
+
+               <div class="row-left">
+	      <?php echo $form->labelEx($info,'employee_guardian_occupation'); ?>
+              <?php echo $form->textField($info,'employee_guardian_occupation',array('size'=>18,'maxlength'=>50,'tabindex'=>4)); ?><span class="status">&nbsp;</span>
+              <?php echo $form->error($info,'employee_guardian_occupation'); ?>
+	      </div>
+
+               <div class="row-right">
+              <?php echo $form->labelEx($info,'employee_guardian_income'); ?>
+              <?php echo $form->textField($info,'employee_guardian_income',array('size'=>18,'maxlength'=>15,'tabindex'=>5)); ?><span class="status">&nbsp;</span>
+              <?php echo $form->error($info,'employee_guardian_income'); ?>
+	      </div>
 </div>
 
-   
 <div class="row">
-	 <?php echo $form->labelEx($address,'employee_address_c_line2'); ?>
-	 <?php echo $form->textField($address,'employee_address_c_line2',array('size'=>59,'maxlength'=>100,'tabindex'=>2)); ?><span class="status">&nbsp;</span>
-	 <?php echo $form->error($address,'employee_address_c_line2'); ?>
+	      <?php echo $form->labelEx($info,'employee_guardian_home_address'); ?>
+              <?php echo $form->textField($info,'employee_guardian_home_address',array('size'=>59,'maxlength'=>100,'tabindex'=>6)); ?><span class="status">&nbsp;</span>
+              <?php echo $form->error($info,'employee_guardian_home_address'); ?>
+</div>
+
+<div class="row">
+	      <?php echo $form->labelEx($info,'employee_guardian_occupation_address'); ?>
+              <?php echo $form->textField($info,'employee_guardian_occupation_address',array('size'=>59,'maxlength'=>100,'tabindex'=>7)); ?><span class="status">&nbsp;</span>
+              <?php echo $form->error($info,'employee_guardian_occupation_address'); ?>
 </div>
 
 <div class="row">
 
-	<div class="row-right">
-	 <?php echo $form->labelEx($address,'employee_address_c_country'); ?>
-	 <?php //echo $form->dropDownList($address,'employee_address_c_country',Country::items(), array('empty' => '-----------Select---------','tabindex'=>6)); 
-		echo $form->dropDownList($address,'employee_address_c_country' ,Country::items(),
-			array(
-			'prompt' => '-----------Select-----------','tabindex'=>3,
-			'ajax' => array(
-			'type'=>'POST', 
-			'url'=>CController::createUrl('dependent/UpdateEmpCStates'), 
-			'update'=>'#EmployeeAddress_employee_address_c_state', //selector to update
-			
-			))); 
-	 ?><span class="status">&nbsp;</span>
-	 <?php echo $form->error($address,'employee_address_c_country'); ?>
-   	</div>
+             <div class="row-left">
+	      <?php echo $form->labelEx($info,'employee_guardian_occupation_city'); ?>
+              <?php echo $form->dropDownList($info,'employee_guardian_occupation_city', City::items(), array('empty' => '-----------Select---------','tabindex'=>8)); ?><span class="status">&nbsp;</span>
+              <?php echo $form->error($info,'employee_guardian_occupation_city'); ?>
+	     </div>
 
-	<div class="row-left">
-	 <?php echo $form->labelEx($address,'employee_address_c_state'); ?>
-	 <?php 
-			if(isset($address->employee_address_c_state))
-			echo $form->dropDownList($address,'employee_address_c_state', CHtml::listData(State::model()->findAll(array('condition'=>'country_id='.$address->employee_address_c_country)), 'state_id', 'state_name'),
-			array(
-			'prompt' => '-----------Select-----------','tabindex'=>4,
-			'ajax' => array(
-			'type'=>'POST', 
-			'url'=>CController::createUrl('dependent/UpdateEmpCCities'), 
-			'update'=>'#EmployeeAddress_employee_address_c_city', //selector to update
-			
-			)));
-			else	
-			echo $form->dropDownList($address,'employee_address_c_state',array(),
-			array(
-			'prompt' => '-----------Select-----------','tabindex'=>4,
-			'ajax' => array(
-			'type'=>'POST', 
-			'url'=>CController::createUrl('dependent/UpdateEmpCCities'), 
-			'update'=>'#EmployeeAddress_employee_address_c_city', //selector to update
-			
-			)));?><span class="status">&nbsp;</span>
-	 <?php echo $form->error($address,'employee_address_c_state'); ?>
-   	</div>
 
+             <div class="row-right">
+	      <?php echo $form->labelEx($info,'employee_guardian_city_pin'); ?>
+              <?php echo $form->textField($info,'employee_guardian_city_pin',array('size'=>18,'maxlength'=>6,'tabindex'=>9)); ?><span class="status">&nbsp;</span>
+              <?php echo $form->error($info,'employee_guardian_city_pin'); ?>
+	     </div>
 
 </div>
-
-<div class="row last">
-
-	<div class="row-left">
-	 <?php echo $form->labelEx($address,'employee_address_c_city'); ?>
-	 <?php 
-		if(isset($address->employee_address_c_city))
-		echo $form->dropDownList($address,'employee_address_c_city', CHtml::listData(City::model()->findAll(array('condition'=>'state_id='.$address->employee_address_c_state)), 'city_id', 'city_name'));
-		else
-		echo $form->dropDownList($address,'employee_address_c_city',array('empty' => '-----------Select---------','tabindex'=>5)); ?><span class="status">&nbsp;</span>
-	 <?php echo $form->error($address,'employee_address_c_city'); ?>
-   	</div>
+<div class="row">
+             <div class="row-left">           
+	      <?php echo $form->labelEx($info,'employee_guardian_mobile1'); ?>
+              <?php echo $form->textField($info,'employee_guardian_mobile1',array('size'=>18,'maxlength'=>15,'tabindex'=>10)); ?><span class="status">&nbsp;</span>
+              <?php echo $form->error($info,'employee_guardian_mobile1'); ?>
+	     </div>
 
 
-	<div class="row-right">
-	 <?php echo $form->labelEx($address,'employee_address_c_pincode'); ?>
-	 <?php echo $form->textField($address,'employee_address_c_pincode',array('size'=>18,'maxlength'=>6,'tabindex'=>6)); ?><span class="status">&nbsp;</span>
-	 <?php echo $form->error($address,'employee_address_c_pincode'); ?>
-   	</div>
-
+             <div class="row-right">
+	      <?php echo $form->labelEx($info,'employee_guardian_mobile2'); ?>
+	      <?php echo $form->textField($info,'employee_guardian_mobile2',array('size'=>18,'maxlength'=>15,'tabindex'=>11)); ?><span class="status">&nbsp;</span>
+              <?php echo $form->error($info,'employee_guardian_mobile2'); ?>
+	     </div>
 </div>
 
+<div class="row">
+             <div class="row-left">
+	      <?php echo $form->labelEx($info,'employee_guardian_phone_no'); ?>
+	      <?php echo $form->textField($info,'employee_guardian_phone_no',array('size'=>18,'maxlength'=>15,'tabindex'=>12)); ?><span class="status">&nbsp;</span>
+	      <?php echo $form->error($info,'employee_guardian_phone_no'); ?>
+	     </div>
 
-<?php $this->endWidget(); ?>
+<!--	     <div class="row-right">
+	      <?php echo $form->labelEx($info,'employee_tally_id'); ?>
+              <?php echo $form->textField($info,'employee_tally_id',array('size'=>18,'maxlength'=>9,'tabindex'=>13)); ?><span class="status">&nbsp;</span>
+              <?php echo $form->error($info,'employee_tally_id'); ?>
+	     </div>
+
+-->
+</div>

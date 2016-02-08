@@ -1,10 +1,6 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
-class EmployeeCertificateDetailsTableController extends RController
+class EmployeeCertificateDetailsTableController extends EduSecCustom
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -33,79 +29,27 @@ class EmployeeCertificateDetailsTableController extends RController
 		));
 	}
 
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'view' page.
-	 */
-	public function actionCreate()
-	{
-		$model=new EmployeeCertificateDetailsTable;
-		$this->performAjaxValidation($model);
-
-		if(isset($_POST['EmployeeCertificateDetailsTable']))
-		{
-			$model->attributes=$_POST['EmployeeCertificateDetailsTable'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->employee_certificate_details_table_id));
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
-
-		if(isset($_POST['EmployeeCertificateDetailsTable']))
-		{
-			$model->attributes=$_POST['EmployeeCertificateDetailsTable'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->employee_certificate_details_table_id));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
+	
 
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
 	 * @param integer $id the ID of the model to be deleted
 	 */
-	public function actionDelete($id)
+	public function actionDelete()
 	{
-		if(Yii::app()->request->isPostRequest)
+		if(!empty($_POST['certiid']))
 		{
-			$this->loadModel($id)->delete();
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		$certidelete = $_POST['certiid'];
+		$allIds = (is_array($certidelete)) ? implode(",",$certidelete) : $certidelete;
+		$sql = "DELETE FROM employee_certificate_details_table WHERE  	employee_certificate_details_table_id IN ($allIds)";
+		$cmd = Yii::app()->db->createCommand($sql);
+		$cmd->execute();
+
 		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-                $model=new EmployeeCertificateDetailsTable('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['EmployeeCertificateDetailsTable']))
-			$model->attributes=$_GET['EmployeeCertificateDetailsTable'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
 
 	/**
@@ -123,10 +67,9 @@ class EmployeeCertificateDetailsTableController extends RController
 			'model'=>$model,
 		));
 	}
-
 	/**
-	 * Return list of employee certificate list.
-	 */
+	* This action return the list of the certificate of the employee.
+	*/
 	public function actionEmployeeCertificates()
 	{
 		

@@ -1,14 +1,21 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 /**
  * This is the model class for table "student_academic_record_trans".
- * @package EduSec.models
+ *
+ * The followings are the available columns in table 'student_academic_record_trans':
+ * @property integer $student_academic_record_trans_id
+ * @property integer $student_academic_record_trans_stud_id
+ * @property integer $student_academic_record_trans_qualification_id
+ * @property integer $student_academic_record_trans_eduboard_id
+ * @property integer $student_academic_record_trans_record_trans_year_id
+ * @property integer $theory_mark_obtained
+ * @property integer $theory_mark_max
+ * @property double $theory_percentage
+ * @property integer $practical_mark_obtained
+ * @property integer $practical_mark_max
+ * @property double $practical_percentage
  */
-
 class StudentAcademicRecordTrans extends CActiveRecord
 {
 	/**
@@ -40,9 +47,12 @@ class StudentAcademicRecordTrans extends CActiveRecord
 			array('student_academic_record_trans_stud_id, student_academic_record_trans_qualification_id, student_academic_record_trans_eduboard_id, student_academic_record_trans_record_trans_year_id, theory_mark_obtained, theory_mark_max, theory_percentage', 'required','message'=>""),
 			array('student_academic_record_trans_stud_id, student_academic_record_trans_qualification_id, student_academic_record_trans_eduboard_id, student_academic_record_trans_record_trans_year_id, theory_mark_obtained, theory_mark_max, practical_mark_obtained, practical_mark_max', 'numerical', 'integerOnly'=>true,'message'=>""),
 			array('theory_percentage, practical_percentage', 'numerical'),
+			array('theory_mark_obtained','compare','compareAttribute'=>'theory_mark_max','operator'=>'<=','message'=>'Theory Marks Obtained must be less than max marks'),
+			array('practical_mark_obtained','compare','compareAttribute'=>'practical_mark_max','operator'=>'<=','message'=>'Theory Marks Obtained must be less than max marks'),
+			array('practical_percentage','compare','compareValue'=>'100','operator'=>'<=','message'=>'Percentage Always Less Than 100'),
 
-			array('theory_mark_max','checkMarks','message'=>'Obtained Marks Can Not Be Greater Than Max Marks'),
-			array('theory_percentage','checkpercentage','message'=>'Percentage Always Less Than 100'),
+			//array('theory_mark_max','checkMarks','message'=>'Obtained Marks Can Not Be Greater Than Max Marks'),
+			array('theory_percentage','compare','compareValue'=>'100','operator'=>'<=','message'=>'Percentage Always Less Than 100'),
 			array('theory_mark_obtained, theory_mark_max, practical_mark_obtained, practical_mark_max','length','max'=>4),
 
 			array('theory_mark_obtained, theory_mark_max, practical_mark_obtained, practical_mark_max','numerical',
@@ -52,6 +62,8 @@ class StudentAcademicRecordTrans extends CActiveRecord
    			 'tooSmall'=>'You must Enter at least 1.',
    			 'tooBig'=>'You cannot Enter more than 3000.'),
 			array('practical_mark_obtained, practical_mark_max, practical_percentage','safe'),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
 			array('student_academic_record_trans_id, student_academic_record_trans_stud_id, student_academic_record_trans_qualification_id, student_academic_record_trans_eduboard_id, student_academic_record_trans_record_trans_year_id, theory_mark_obtained, theory_mark_max, theory_percentage, practical_mark_obtained, practical_mark_max, practical_percentage', 'safe', 'on'=>'search'),
 		);
 	}
@@ -61,50 +73,16 @@ class StudentAcademicRecordTrans extends CActiveRecord
 	 */
 	public function relations()
 	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
 		return array(
 		'Rel_student_qualification' => array(self::BELONGS_TO, 'Qualification', 'student_academic_record_trans_qualification_id'),
 		'Rel_student_eduboard' => array(self::BELONGS_TO, 'Eduboard', 'student_academic_record_trans_eduboard_id'),
+		'Rel_student_year' => array(self::BELONGS_TO, 'Year', 'student_academic_record_trans_record_trans_year_id'),
 		);
 	}
 
-	/**
-	 * Generate error if obtain mark greater then max marks.
-	 */
-	public function checkMarks($attribute,$params)
-	{
-	    	if(($this->theory_mark_obtained > $this->theory_mark_max) || ($this->practical_mark_obtained > $this->practical_mark_max))
-		{
-			if(($this->theory_mark_obtained > $this->theory_mark_max) && ($this->practical_mark_obtained > $this->practical_mark_max)) 
-			{
-				$this->addError('theory_mark_obtained','Obtained Marks Always Less Than Max Mark');
-				$this->addError('practical_mark_obtained','Obtained Marks Always Less Than Max Mark');
-			}
-			else if($this->theory_mark_obtained > $this->theory_mark_max)
-				$this->addError('theory_mark_obtained','Obtained Marks Always Less Than Max Mark');
-			else
-				$this->addError('practical_mark_obtained','Obtained Marks Always Less Than Max Mark');
-		}	
-	}
-
-	/**
-	 * Generate error if percentage is greate then 100%.
-	 */
-	public function checkpercentage($attribute,$params)
-	{
-		if(($this->theory_percentage > 100) || ($this->practical_percentage > 100))
-		{
-			if(($this->theory_percentage > 100) && ($this->practical_percentage > 100)) 
-			{
-				$this->addError('theory_percentage','Percentage Always Less Than 100');
-				$this->addError('practical_percentage','Percentage Always Less Than 100');
-			}
-			else if($this->theory_percentage > 100)
-				$this->addError('theory_percentage','Percentage Always Less Than 100');
-			else
-				$this->addError('practical_percentage','Percentage Always Less Than 100');
-		}	
-	}
-	
+		
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
@@ -152,40 +130,40 @@ class StudentAcademicRecordTrans extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
-
-	/**
-	 * Return academic information for select user.
-	 */
 	public function mysearch()
 	{
-		$criteria=new CDbCriteria;
-		if(Yii::app()->user->getState('stud_id'))
-		{
-		$criteria->condition = 'student_academic_record_trans_stud_id = :student_transaction_student_id';
-		$criteria->params = array(':student_transaction_student_id' => Yii::app()->user->getState('stud_id'));
-		}
-		else
-		{
-		$criteria->condition = 'student_academic_record_trans_stud_id = :student_transaction_student_id';
-		$criteria->params = array(':student_transaction_student_id' => $_REQUEST['id']);
-		}
-		$criteria->compare('student_academic_record_trans_id',$this->student_academic_record_trans_id);
-		$criteria->compare('student_academic_record_trans_stud_id',$this->student_academic_record_trans_stud_id);
-		$criteria->compare('student_academic_record_trans_qualification_id',$this->student_academic_record_trans_qualification_id);
-		$criteria->compare('student_academic_record_trans_eduboard_id',$this->student_academic_record_trans_eduboard_id);
-		$criteria->compare('student_academic_record_trans_record_trans_year_id',$this->student_academic_record_trans_record_trans_year_id);
-		$criteria->compare('theory_mark_obtained',$this->theory_mark_obtained);
-		$criteria->compare('theory_mark_max',$this->theory_mark_max);
-		$criteria->compare('theory_percentage',$this->theory_percentage);
-		$criteria->compare('practical_mark_obtained',$this->practical_mark_obtained);
-		$criteria->compare('practical_mark_max',$this->practical_mark_max);
-		$criteria->compare('practical_percentage',$this->practical_percentage);
+			// Warning: Please modify the following code to remove attributes that
+			// should not be searched.
 
-		
-		$student_qualification = new CActiveDataProvider($this, array(
-			'criteria'=>$criteria,
-		));
-		$_SESSION['student_qualification']=$student_qualification;
-		return $student_qualification;
-	}		
-}
+			$criteria=new CDbCriteria;
+			if(Yii::app()->user->getState('stud_id'))
+			{
+			$criteria->condition = 'student_academic_record_trans_stud_id = :student_transaction_student_id';
+			$criteria->params = array(':student_transaction_student_id' => Yii::app()->user->getState('stud_id'));
+			}
+			else
+			{
+			$criteria->condition = 'student_academic_record_trans_stud_id = :student_transaction_student_id';
+			$criteria->params = array(':student_transaction_student_id' => $_REQUEST['id']);
+			}
+			$criteria->compare('student_academic_record_trans_id',$this->student_academic_record_trans_id);
+			$criteria->compare('student_academic_record_trans_stud_id',$this->student_academic_record_trans_stud_id);
+			$criteria->compare('student_academic_record_trans_qualification_id',$this->student_academic_record_trans_qualification_id);
+			$criteria->compare('student_academic_record_trans_eduboard_id',$this->student_academic_record_trans_eduboard_id);
+			$criteria->compare('student_academic_record_trans_record_trans_year_id',$this->student_academic_record_trans_record_trans_year_id);
+			$criteria->compare('theory_mark_obtained',$this->theory_mark_obtained);
+			$criteria->compare('theory_mark_max',$this->theory_mark_max);
+			$criteria->compare('theory_percentage',$this->theory_percentage);
+			$criteria->compare('practical_mark_obtained',$this->practical_mark_obtained);
+			$criteria->compare('practical_mark_max',$this->practical_mark_max);
+			$criteria->compare('practical_percentage',$this->practical_percentage);
+
+			
+			$student_qualification = new CActiveDataProvider($this, array(
+				'criteria'=>$criteria,
+			));
+			$_SESSION['student_qualification']=$student_qualification;
+			return $student_qualification;
+	}
+
+}	

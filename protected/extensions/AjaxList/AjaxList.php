@@ -105,8 +105,8 @@ class AjaxList extends CBasePager
 		
 		if(($page = $currentPage -1)<0)
 			$page = 0;
-		/*$buttons[] = $this->createPageButton($this->prevPageLabel, $page, self::CSS_PREVIOUS_PAGE, $currentPage <= 0, false);
-		*/
+		$buttons[] = $this->createPageButton($this->prevPageLabel, $page, self::CSS_PREVIOUS_PAGE, $currentPage <= 0, false);
+
 		// internal pages
 		for($i = $beginPage;$i <= $endPage;++$i)
 			$pages[$i+1]=$this->generatePageText($i);
@@ -114,15 +114,15 @@ class AjaxList extends CBasePager
 		$pageVar = $this->getPages()->pageVar;
 		$id = $this->getOwner()->id;
 		$selection = @$_GET[$this->getPages()->pageVar] ? @$_GET[$this->getPages()->pageVar]: 1;
-		$buttons[]='<li>page';
+		$buttons[]='<li>Page';
 		$buttons[]= CHtml::dropDownList($this->getId(),$selection,$pages,array('onchange'=>'$.fn.yiiGridView.update(\''.$this->getOwner()->id.'\',{ data:{'.$this->getPages()->pageVar.': $(this).val() }})',));
-		$buttons[]='</li>';
+		$buttons[]='of '.$pageCount.'</li>';
 
 		// next page
-		/*if(($page = $currentPage+1) >= $pageCount -1)
+		if(($page = $currentPage+1) >= $pageCount -1)
 			$page = $pageCount -1;
-		$buttons[] = $this->createPageButton($this->nextPageLabel, $page, self::CSS_NEXT_PAGE, $currentPage >= $pageCount -1, false).' ---- ' ;
-			*/
+		$buttons[] = $this->createPageButton($this->nextPageLabel, $page, self::CSS_NEXT_PAGE, $currentPage >= $pageCount -1, false).' &nbsp; ' ;
+
 		
 
 		return $buttons;

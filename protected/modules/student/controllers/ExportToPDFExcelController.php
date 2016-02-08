@@ -62,32 +62,58 @@ class ExportToPDFExcelController extends RController
 			'Rel_Stud_Info.student_gender',
 			'Rel_Stud_Info.student_mobile_no::Mobile Number',
 			'Rel_Stud_Info.student_guardian_mobile::Guardian Mobile',
+			'Rel_Branch.branch_name::Branch',
 			'Rel_student_academic_terms_name.academic_term_name',
+			'Rel_Stud_Info.student_birthplace',
+			'Rel_Quota.quota_name::Quota',
 			'Rel_Stud_Info.student_dob',
 			'Rel_Nationality.nationality_name',
+			'Rel_Religion.religion_name',
+			'Rel_Cast.cast_master_name',
+			'Rel_Category.category_name::Category',
 			'Rel_student_academic_terms_period_name.academic_term_period::Term Period',
 			'Rel_Stud_Info.student_guardian_relation::Guardian Relation',
+			'Rel_Stud_Info.student_guardian_qualification::Guardian Qualification',
+			
+			'Rel_Stud_Info.student_guardian_occupation::Guardian Occupation',
 			'Rel_Stud_Info.student_guardian_income::Guardian Income',
+			'Rel_Stud_Info.student_guardian_occupation_address::Guardian Occupation Address',
 			'Rel_Stud_Info.student_guardian_home_address::Guardian Home Address',
+			'Rel_Stud_Info.Rel_gardian_city.city_name::GuardianCity',
 			'Rel_Stud_Info.student_guardian_city_pin',
 			'Rel_Stud_Info.student_guardian_phoneno',
 			'Rel_Stud_Info.student_email_id_1',
+			'Rel_Stud_Info.student_email_id_2',
 			'Rel_Stud_Info.student_bloodgroup',
+			'Rel_Batch.batch_name::Batch',
+			'Rel_Shift.shift_type',
 			'Rel_language.Rel_language_known1.languages_name',
 			'Rel_language.Rel_language_known2.languages_name',
+			'Rel_language.Rel_language_known3.languages_name',
+			'Rel_language.Rel_language_known4.languages_name',
 			'Rel_Student_Address.student_address_c_line1::Current Address Line1',
 			'Rel_Student_Address.student_address_c_line2::Current Address Line2',
 			'Rel_Student_Address.Rel_c_city.city_name::Current Address City',
 			'Rel_Student_Address.student_address_c_pin::Current Address City Pin ',
+			'Rel_Student_Address.student_address_c_taluka',
+			'Rel_Student_Address.student_address_c_district',
 			'Rel_Student_Address.Rel_c_state.state_name::Current Address State',
 			'Rel_Student_Address.Rel_c_country.name::Current Address Country',
 			'Rel_Student_Address.student_address_p_line1::Permanent Address Line1',
 			'Rel_Student_Address.student_address_p_line2::Permanent Address Line2',
 			'Rel_Student_Address.Rel_p_city.city_name::Permanent Address City',
 			'Rel_Student_Address.student_address_p_pin::Permanent Address pincode',
+			'Rel_Student_Address.student_address_p_taluka',
+			'Rel_Student_Address.student_address_p_district',
 			'Rel_Student_Address.Rel_p_state.state_name::Permanent Address State',
 			'Rel_Student_Address.Rel_p_country.name::Permanent Address Country',
 			'Rel_Student_Address.student_address_phone',
+			'Rel_Stud_Info.student_mother_name',
+			'Rel_Stud_Info.student_roll_no',
+			'Rel_Stud_Info.student_gr_no',
+			'Rel_Stud_Info.student_merit_no',
+			'Rel_Stud_Info.student_living_status',
+			//'Rel_Stud_Info.student_middle_name',
 			'Rel_Student_Address.student_address_mobile',
 			'Rel_Status.status_name',
 			),
@@ -429,12 +455,14 @@ class ExportToPDFExcelController extends RController
 		$student_docs = StudentDocsTrans::model()->findAll('student_docs_trans_user_id='.$id);	
 		$studentqualification = StudentAcademicRecordTrans::model()->findAll('student_academic_record_trans_stud_id='.$id);
 		$student_transaction = StudentTransaction::model()->findAll('student_transaction_id='.$id);		 
-
+		//$studentfeedbackdetailstable = FeedbackDetailsTable::model()->findAll('feedback_details_table_student_id='.$id);
 		$html = $this->renderPartial('/studentTransaction/studentfinalview', array(
 		    'student_docs'=>$student_docs,
 		    'studentqualification'=>$studentqualification,
 		    'student_transaction'=>$student_transaction,
+		    //'studentfeedbackdetailstable'=>$studentfeedbackdetailstable,
 		), true);
+
 
 		$this->exporttopdf('Stundent Report','StundentFinalView.pdf',$html);	       
 	    }
@@ -620,7 +648,73 @@ class ExportToPDFExcelController extends RController
 	
 	protected function exporttopdf($title,$filename,$html)
 	{
-		Yii::import('application.extensions.tcpdf.*');
+
+		$mpdf=Yii::app()->ePdf->mpdf();
+        	$mpdf=Yii::app()->ePdf->mpdf('', 'A4',0,'',15,15,25,16,4,9,'P');
+		$mPDF->showImageErrors = true;
+		ob_clean();
+		$org = Organization::model()->findAll();
+		$org_image=CHtml::link(CHtml::image(Yii::app()->controller->createUrl('/site/loadImage', array('id'=>$org[0]['organization_id'])),'No Image',array('width'=>130,'height'=>70))); 
+		$org_name=$org[0]['organization_name'];
+		$org_add=$org[0]['address_line1']."<br/>".$org[0]['address_line2']."<br/>";
+		//$org_add=$org->address_line1." ".$org->address_line2."<br/>" . City::model()->findBypk(Organization::model()->findByPk(Yii::app()->user->getState('org_id'))->city)->city_name.", ".State::model()->findBypk(Organization::model()->findByPk(Yii::app()->user->getState('org_id'))->state)->state_name.", ".Country::model()->findBypk(Organization::model()->findByPk(Yii::app()->user->getState('org_id'))->country)->name.".";
+
+
+		$mpdf->SetHTMLHeader('<table style="border-bottom:1.6px solid #74b9fo;border-top:hidden;border-left:hidden;border-right:hidden;width:100%;"><tr style="border:hidden"><td vertical-align="center" style="width:35px;border:hidden" align="left">'.$org_image.'</td><td style="border:hidden"><b style="font-size:22px;">'.$org_name.'</b><br/><span style="font-size:10.2px">'.$org_add.'</td></tr></table>');
+
+$mpdf->WriteHTML('<watermarkimage src="/edusec/site/loadImage/id/'.Yii::app()->user->getState("org_id").'" alpha="0.22" size="60,60" />');
+				
+		$mpdf->SetWatermarkImage('images/rudraSoftech.png',0.3, '');
+		$mpdf->showWatermarkImage = true;
+
+$arr = array (
+  'odd' => array (
+    'L' => array (
+      'content' => $title,
+      'font-size' => 10,
+      'font-style' => 'B',
+      'font-family' => 'serif',
+      'color'=>'#27292b'
+    ),
+    'C' => array (
+      'content' => 'Page - {PAGENO}/{nbpg}',
+      'font-size' => 10,
+      'font-style' => 'B',
+      'font-family' => 'serif',
+      'color'=>'#27292b'
+    ),
+    'R' => array (
+      'content' => 'Printed @ {DATE j-m-Y H:m}',
+      'font-size' => 10,
+      'font-style' => 'B',
+      'font-family' => 'serif',
+      'color'=>'#27292b'
+    ),
+    'line' => 1,
+  ),
+  'even' => array ()
+);
+
+		$mpdf->SetFooter($arr);
+
+		$mpdf->WriteHTML('<sethtmlpageheader name="main" page="ALL" value="on" show-this-page="1">');
+		$mpdf->WriteHTML($html);
+		$mpdf->Output($filename,"I");
+ 	
+
+
+		$mpdf->WriteHTML($html);
+		$mpdf->Output();
+ 	
+
+
+
+
+
+
+
+
+		/*Yii::import('application.extensions.tcpdf.*');
 		require_once('tcpdf/tcpdf.php');
 		require_once('tcpdf/config/lang/eng.php');
 
@@ -644,7 +738,7 @@ class ExportToPDFExcelController extends RController
 		$pdf->AddPage('P', $resolution);
 		$pdf->writeHTML($html, true, false, true, false, '');
 		$pdf->LastPage();
-		$pdf->Output($filename, "I");
+		$pdf->Output($filename, "I");*/
 	}
 	public function actionScheduleTimingGenerateExcel()
 	{
@@ -710,4 +804,38 @@ class ExportToPDFExcelController extends RController
 		), true);
 		$this->exporttopdf('ScheduleTiming Report','ScheduleTiming.pdf',$html);		
 	}
+
+	public function actionStudentcontactexcel()
+	{
+            $session=new CHttpSession;
+            $session->open();		
+            
+              if(isset($session['Student_records']))
+               {
+                $d=$_SESSION['Student_records'];
+		 $model = array();
+
+		if($d->data)
+			$model[]=array_keys($d->data[0]->attributes);//headers: cols name
+			else
+			{
+				$this->render('no_data_found',array('last_page'=>$_SERVER['HTTP_REFERER'],));
+				exit;			
+			}
+
+		foreach ($d->data as $item) {
+		    $model[] = $item->attributes;
+		}
+		//print_r($model);exit;
+               }
+              
+		
+		Yii::app()->request->sendFile("student-contact.xls",
+			$this->renderPartial('/studentTransaction/contactExcel', array(
+				'model'=>$model
+			), true)
+		);
+	}
+
+
 }

@@ -9,10 +9,9 @@ echo CHtml::link('GO BACK',Yii::app()->createUrl('report/Studentid'),array('titl
 <button style="float:right; margin-right:50%;" onclick="javascript:window.print()" id="printid">Print</button>
 </div></br></br>
 <?php
-$org_id=Yii::app()->user->getState('org_id');
-$org_data = Organization::model()->findByAttributes(array('organization_id'=>$org_id));
-$orgcity = City::model()->findByPk($org_data->city)->city_name;
-$orgstate = State::model()->findByPk($org_data->state)->state_name;
+$org_data = Organization::model()->findAll();
+$orgcity = City::model()->findByPk($org_data[0]->city)->city_name;
+$orgstate = State::model()->findByPk($org_data[0]->state)->state_name;
 
 $i = 0;
 
@@ -20,7 +19,7 @@ if($student_data1 && $selected_list)
 {
 foreach($student_data1 as $stud)
 {
-$orglogo = CHtml::image(Yii::app()->controller->createUrl('/site/loadImage', array('id'=>Yii::app()->user->getState('org_id'))),'No Image',array('width'=>65,'height'=>65));
+$orglogo = CHtml::image(Yii::app()->controller->createUrl('/site/loadImage', array('id'=>$org_data[0]->organization_id)),'No Image',array('width'=>65,'height'=>65));
 
 $studphoto = StudentPhotos::model()->findByPk($stud['student_transaction_student_photos_id'])->student_photos_path;
 ?>
@@ -33,15 +32,15 @@ $studphoto = StudentPhotos::model()->findByPk($stud['student_transaction_student
 			<?php echo $orglogo;?>
 		</div>
 		<div class="collegeheader">
-			<h3 class="org_name"><?php echo $org_data->organization_name;?></h3>
+			<h3 class="org_name"><?php echo $org_data[0]->organization_name;?></h3>
 			<div class="contact-details">
  			 <?php 
-			echo $org_data->address_line1." ".$org_data->address_line2."</br>".$orgcity."-".$org_data->pin." ".$orgstate;
+			echo $org_data[0]->address_line1." ".$org_data[0]->address_line2."</br>".$orgcity."-".$org_data[0]->pin." ".$orgstate;
 			echo "</br>";
-			echo "Ph: ".$org_data->phone.",  Fax: ".$org_data->fax_no;
+			echo "Ph: ".$org_data[0]->phone.",  Fax: ".$org_data[0]->fax_no;
 			echo "</br>";
-			echo "Website: ".$org_data->website."</br>";
-			echo "Email: ".$org_data->email;			 
+			echo "Website: ".$org_data[0]->website."</br>";
+			echo "Email: ".$org_data[0]->email;			 
 			?>
 			</div>
 		</div>
@@ -108,10 +107,10 @@ $studphoto = StudentPhotos::model()->findByPk($stud['student_transaction_student
 		</div>
 		<div class="front_sign">
 			<?php
-				  if($org_id == 1)
+			/*	  if($org_id == 1)
 					echo CHtml::image(Yii::app()->baseUrl.'/college_data/org_sign/hansabapricipalsign.png',"",array("width"=>"100px"));
 				  if($org_id == 2)
-					echo CHtml::image(Yii::app()->baseUrl.'/college_data/org_sign/jasodaba-principal.png',"",array("width"=>"100px"));
+					echo CHtml::image(Yii::app()->baseUrl.'/college_data/org_sign/jasodaba-principal.png',"",array("width"=>"100px"));*/
 			?>
 		</div>			
 		<div class="footername">
@@ -125,17 +124,17 @@ $studphoto = StudentPhotos::model()->findByPk($stud['student_transaction_student
 <div class="backend_main">
 	<div class="backend_header">
 		<div class="back_logo">
-			<?php echo CHtml::image(Yii::app()->controller->createUrl('/site/loadImage', array('id'=>Yii::app()->user->getState('org_id'))),'No Image',array('width'=>40,'height'=>40));?>
+			<?php echo CHtml::image(Yii::app()->controller->createUrl('/site/loadImage', array('id'=>$org_data[0]->organization_id)),'No Image',array('width'=>40,'height'=>40));?>
 		</div>
 		<div class="back_header" align="center">
-			<b><?php echo $org_data->organization_name;?></b>
+			<b><?php echo $org_data[0]->organization_name;?></b>
 		</div>
 	</div>
 	<div class="backend-content">
 	    <div class="content_inner">	
 		<div class='org_branch_data'>
 		   <div class='college-name'>
-			<b><?php echo $org_data->organization_name;?></b>
+			<b><?php echo $org_data[0]->organization_name;?></b>
 		   </div>
 		   <ul style = "padding-left: 22px; margin:0px; margin-top:4px;">
 		   <li>B.E. Civil Engg.</li>
@@ -147,7 +146,7 @@ $studphoto = StudentPhotos::model()->findByPk($stud['student_transaction_student
 		</div>
 		<div class="org_branch_data no-right-border">
 		   <div class='college-name'>
-			<b><?php echo $org_data->organization_name;?></b>
+			<b><?php echo $org_data[0]->organization_name;?></b>
 		   </div>
 		   <ul style = "padding-left: 22px; margin:0px; margin-top:4px;">
 		   <li>Diploma in Civil Engg.</li>
@@ -157,19 +156,7 @@ $studphoto = StudentPhotos::model()->findByPk($stud['student_transaction_student
 		   <li>Diploma in Automobile Engg.</li>
 		   </ul>
 		</div>
-
-		<?php /*$org_list = Organization::model()->findAll(); 
-		   foreach($org_list as $list) {
-		      print "<div class='org_branch_data'><div class='college-name'><b>".$list->organization_name."</b></div>";
-		      $branch = Branch::model()->findAll('branch_organization_id ='.$list->organization_id);
-		      print '<ul style = "padding-left: 22px; margin:0px;">';
-		      foreach($branch as $result)
-			print "<li>".$result->branch_name."</li>";
-		    print '</ul></div>';
-		   }		
-	*/?>
-
-	    </div>		
+	   </div>		
 	</div>
 </div>
 </div> <!-- end outer div -->

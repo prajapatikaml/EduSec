@@ -1,50 +1,15 @@
-<?php
-$this->breadcrumbs=array(
-	'Employee List'=>array('admin'),
-	'Documents',
-);?>
-<div class="portlet box blue">
-<i class="icon-reorder"></i>
- <div class="portlet-title">Documents
- </div>
+<?php if(Yii::app()->user->checkAccess('EmployeeTransaction.UpdateEmployeeData')  && (Yii::app()->user->getState('emp_id') == $_REQUEST['id']) || Yii::app()->user->checkAccess('EmployeeTransaction.UpdateAllEmployeeData')) { 
+   echo CHtml::link('<i class="fa fa-plus-square"></i> Add', array('employeeDocsTrans/create' ,'id'=>$_REQUEST['id']), array('id'=>'docid','class'=>'submit btn btn-add', 'style'=>'float: right; font-weight: 600;'));
+    }?>
+<div class="form">
 
-<div class="profile-tab profile-edit ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-collapsible">
-
-<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-<li class="ui-state-default ui-corner-top">
-  <?php echo CHtml::link('Personal Profile', array('updateTab1', 'id'=>$_REQUEST['id'])); ?></li>
-<li class="ui-state-default ui-corner-top">
-  <?php echo CHtml::link('Gaurdian Info', array('updateprofiletab2', 'id'=>$_REQUEST['id'])); ?></li>
-<li class="ui-state-default ui-corner-top">
-   <?php echo CHtml::link('Address Info', array('updateprofiletab3', 'id'=>$_REQUEST['id'])); ?></li>
-<li class="ui-state-default ui-corner-top">
-   <?php echo CHtml::link('Academic Record', array('EmployeeAcademicRecords', 'id'=>$_REQUEST['id'])); ?></li>
-<li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active">
-   <?php echo CHtml::link('Document', array('Employeedocs', 'id'=>$_REQUEST['id'])); ?></li>
-</ul>
-
-</ul>
-
-<div class="ui-tabs-panel form">
-
-<?php 
-
-  if(Yii::app()->user->checkAccess('EmployeeTransaction.UpdateEmployeeData')  && (Yii::app()->user->getState('emp_id') == $_REQUEST['id']) || Yii::app()->user->checkAccess('EmployeeTransaction.UpdateAllEmployeeData')) { 
-
-echo CHtml::link('Add New+',array('EmployeeDocsTrans/Create','id'=>$_REQUEST['id']),array('class'=>'btn green','style'=>'text-decoration:none;'));
-}
-?>
 <?php
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'employee-docs-final_view',
 	'dataProvider'=>$emp_doc->mysearch(),
-//	'filter'=>$model,
-	//'ajaxUpdate'=>false,
 	'enableSorting'=>false,
+
 	'columns'=>array(
-		//'employee_docs_trans_id',
-		//'employee_docs_trans_user_id',
-		//'employee_docs_trans_emp_docs_id',
 		array(
 		'header'=>'SN.',
 		'class'=>'IndexColumn',
@@ -65,14 +30,25 @@ $this->widget('zii.widgets.grid.CGridView', array(
           	),
 		array(
                 'name'=>'Submit Date',
-               // 'type'=>'raw',
-                //'value'=>'$data->Rel_Stud_doc->student_docs_submit_date',
-	        'value'=>'date_format(new DateTime($data->Rel_Emp_doc->employee_docs_submit_date), "d-m-Y")',
+              'value'=>'date_format(new DateTime($data->Rel_Emp_doc->employee_docs_submit_date), "d-m-Y")',
           	),
 
+		array(
+			'class'=>'MyCButtonColumn',
+			'template' => '{delete}',
+			'buttons'=>array(
+                        
+                        'delete' => array(
+				
+				'url'=>'Yii::app()->createUrl("/employee/employeeDocsTrans/delete", array("id"=>$data->employee_docs_trans_id))',
+
+                        ),
+		   ),
+		),
 	),
 	'pager'=>array(
 		'class'=>'AjaxList',
+	//	'maxButtonCount'=>25,
 		'maxButtonCount'=>$emp_doc->count(),
 		'header'=>''
 	    ),

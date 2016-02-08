@@ -34,9 +34,8 @@ echo CHtml::link('GO BACK',Yii::app()->createUrl('report/Employeeid'),array('tit
 <button style="float:right; margin-right:50%;" onclick="javascript:window.print()" id="printid">Print</button>
 </div></br>
 <?php
-$org_id=Yii::app()->user->getState('org_id');
-
-$org_data = Organization::model()->findByAttributes(array('organization_id'=>$org_id));
+$org = Organization::model()->findAll();
+$org_data=$org[0];
 $orgcity = City::model()->findByPk($org_data->city)->city_name;
 $orgstate = State::model()->findByPk($org_data->state)->state_name;
 
@@ -149,10 +148,10 @@ $empphoto = EmployeePhotos::model()->findByPk($emp['employee_transaction_emp_pho
 	</div> <!-- WATERMARK DIV COMPLETED -->
 	<div class="front_sign">
 			<?php
-				  if($org_id == 1)
+			/*	  if($org_id == 1)
 					echo CHtml::image(Yii::app()->baseUrl.'/college_data/org_sign/hansabapricipalsign.png',"",array("width"=>"80"));
 				  if($org_id == 2)
-					echo CHtml::image(Yii::app()->baseUrl.'/college_data/org_sign/jasodaba-principal.png',"",array("width"=>"80"));
+					echo CHtml::image(Yii::app()->baseUrl.'/college_data/org_sign/jasodaba-principal.png',"",array("width"=>"80"));*/
 			?>
 		<div class="footername">
 			Principal

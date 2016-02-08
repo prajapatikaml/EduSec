@@ -5,6 +5,5 @@ $this->breadcrumbs=array(
 );
 
 ?>
-<h1>Add Employee Experience</h1>
 
 <?php echo $this->renderPartial('_form', array('model'=>$model,'emp_exp'=>$emp_exp)); ?>

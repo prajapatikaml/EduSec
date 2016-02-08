@@ -1,14 +1,9 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 /**
  * This is the model class for table "employee_docs".
- * @package EduSec.models
+ * @package EduSec.modules.employee.models
  */
-
 class EmployeeDocs extends CActiveRecord
 {
 	/**
@@ -34,12 +29,19 @@ class EmployeeDocs extends CActiveRecord
 	 */
 	public function rules()
 	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
 		return array(
 			array('employee_docs_path, doc_category_id, title,employee_docs_submit_date', 'required','message'=>''),
 			
 			array('employee_docs_desc', 'length', 'max'=>50),
 			array('employee_docs_path', 'file', 'types'=>'jpeg, jpg, pdf, txt, doc, gif, png', 'maxSize'=>1024*1024*2, 'tooLarge'=>'The document was larger than 2MB. Please upload a smaller document.',),
-			array('employee_docs_desc','CRegularExpressionValidator','pattern'=>'/^([A-Za-z1-9 ]+)$/','message'=>''),
+			
+			//array('title','CRegularExpressionValidator','pattern'=>'/^[a-zA-Z& ]+([-]*[a-zA-Z0-9 ]+)*$/','message'=>''),
+			//array('employee_docs_desc','CRegularExpressionValidator','pattern'=>'/^([A-Za-z1-9 ]+)$/','message'=>''),
+//			array('employee_docs_path', 'length', 'max'=>150),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
 			array('employee_docs_id, employee_docs_desc, employee_docs_path, doc_category_id,employee_docs_submit_date, title', 'safe', 'on'=>'search'),
 		);
 	}

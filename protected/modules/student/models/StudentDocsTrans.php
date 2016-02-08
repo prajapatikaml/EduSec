@@ -1,8 +1,4 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 /**
  * This is the model class for table "student_docs_trans".
@@ -69,6 +65,9 @@ class StudentDocsTrans extends CActiveRecord
 	 */
 	public function search()
 	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('student_docs_trans_id',$this->student_docs_trans_id);
@@ -81,8 +80,8 @@ class StudentDocsTrans extends CActiveRecord
 	}
 
 	/**
-	 * Return student document details for select user.
-	 */
+	** Retrive list of document related to particuler Student.
+	*/
 	public function mysearch()
 	{
 		// Warning: Please modify the following code to remove attributes that

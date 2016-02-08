@@ -1,14 +1,8 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
-
 /**
  * This is the model class for table "employee_docs_trans".
- * @package EduSec.models
+* @package EduSec.Employee.models
  */
-
 class EmployeeDocsTrans extends CActiveRecord
 {
 	/**
@@ -34,9 +28,13 @@ class EmployeeDocsTrans extends CActiveRecord
 	 */
 	public function rules()
 	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
 		return array(
 			array('employee_docs_trans_user_id, employee_docs_trans_emp_docs_id', 'required','message'=>''),
 			array('employee_docs_trans_user_id, employee_docs_trans_emp_docs_id', 'numerical', 'integerOnly'=>true),
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
 			array('employee_docs_trans_id, employee_docs_trans_user_id, employee_docs_trans_emp_docs_id', 'safe', 'on'=>'search'),
 		);
 	}
@@ -46,6 +44,8 @@ class EmployeeDocsTrans extends CActiveRecord
 	 */
 	public function relations()
 	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
 		return array(
 			'Rel_Emp_doc' => array(self::BELONGS_TO, 'EmployeeDocs', 'employee_docs_trans_emp_docs_id'),
 		);
@@ -69,6 +69,9 @@ class EmployeeDocsTrans extends CActiveRecord
 	 */
 	public function search()
 	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+
 		$criteria=new CDbCriteria;
 
 		$criteria->compare('employee_docs_trans_id',$this->employee_docs_trans_id);
@@ -80,27 +83,18 @@ class EmployeeDocsTrans extends CActiveRecord
 		));
 	}
 
-	/**
-	 * Return particular user login user document details.
-	 */
 	public function mysearch()
 	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
+
 		$criteria=new CDbCriteria;
-		if(Yii::app()->user->getState('emp_id') && !Yii::app()->user->checkAccess('EmployeeTransaction.UpdateEmployeeData'))
-		{
-		$criteria->condition = 'employee_docs_trans_user_id = :employee_user_id';
-	        $criteria->params = array(':employee_user_id' =>Yii::app()->user->getState('emp_id'));
-		}
-		else if(Yii::app()->user->getState('emp_id') && Yii::app()->user->checkAccess('EmployeeTransaction.UpdateEmployeeData'))
-		{
-		$criteria->condition = 'employee_docs_trans_user_id = :employee_user_id';
-	        $criteria->params = array(':employee_user_id' => $_REQUEST['id']);
-		}
-		else
-		{
-		$criteria->condition = 'employee_docs_trans_user_id = :employee_user_id';
-	        $criteria->params = array(':employee_user_id' => $_REQUEST['id']);
-		}
+		$trans = EmployeeTransaction::model()->resetScope()->findByPk($_REQUEST['id']);
+		$users = EmployeeTransaction::model()->resetScope()->findAll('employee_transaction_user_id='.$trans->employee_transaction_user_id);	
+		$arr = CHtml::listData($users,'employee_transaction_id','employee_transaction_id');	
+
+		$criteria->addInCondition('employee_docs_trans_user_id',$arr);
+
 		$criteria->compare('employee_docs_trans_id',$this->employee_docs_trans_id);
 		$criteria->compare('employee_docs_trans_user_id',$this->employee_docs_trans_user_id);
 		$criteria->compare('employee_docs_trans_emp_docs_id',$this->employee_docs_trans_emp_docs_id);

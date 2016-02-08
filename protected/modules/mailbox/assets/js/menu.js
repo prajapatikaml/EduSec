@@ -5,6 +5,7 @@ jQuery(document).ready(function(){
 		{
 			$('.mailbox-menu-item').button();
 			$('.mailbox-menu-newmsg span').button();
+			
 			if($.yiimailbox.juiIcons==1)
 			{
 				$('#mailbox-inbox').button({

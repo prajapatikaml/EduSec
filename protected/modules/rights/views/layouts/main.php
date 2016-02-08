@@ -1,4 +1,5 @@
-<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" media="print,screen" />
+<?php $this->beginContent(Rights::module()->appLayout); ?>
+
 <div id="rights" class="container">
 
 	<div id="content">
@@ -21,4 +22,4 @@
 
 </div>
 
-
+<?php $this->endContent(); ?>

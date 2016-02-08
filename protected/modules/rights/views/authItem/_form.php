@@ -12,14 +12,14 @@
 		<?php echo $form->labelEx($model, 'name'); ?>
 		<?php echo $form->textField($model, 'name', array('maxlength'=>255, 'class'=>'text-field')); ?>
 		<?php echo $form->error($model, 'name'); ?>
-		<p class="hint"><?php echo Rights::t('core', 'Do not change the name unless you know what you are doing.'); ?></p>
+		<p class="hint" style="color:#2793CC">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle"></i> <?php echo Rights::t('core', 'Do not change the name unless you know what you are doing.'); ?></p>
 	</div>
 
 	<div class="row">
 		<?php echo $form->labelEx($model, 'description'); ?>
 		<?php echo $form->textField($model, 'description', array('maxlength'=>255, 'class'=>'text-field')); ?>
 		<?php echo $form->error($model, 'description'); ?>
-		<p class="hint"><?php echo Rights::t('core', 'A descriptive name for this item.'); ?></p>
+		<p class="hint" style="color:#2793CC">&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-info-circle"></i> <?php echo Rights::t('core', 'A descriptive name for this item.'); ?></p>
 	</div>
 
 	<?php if( Rights::module()->enableBizRule===true ): ?>
@@ -45,7 +45,7 @@
 	<?php endif; ?>
 
 	<div class="row buttons">
-		<?php echo CHtml::submitButton(Rights::t('core', 'Save')); ?> | <?php echo CHtml::link(Rights::t('core', 'Cancel'), Yii::app()->user->rightsReturnUrl); ?>
+		<?php echo CHtml::submitButton(Rights::t('core', 'Save'),array('class'=>'submit')); ?>  <?php echo CHtml::link(Rights::t('core', 'Cancel'), Yii::app()->user->rightsReturnUrl, array('class'=>'btnCan')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

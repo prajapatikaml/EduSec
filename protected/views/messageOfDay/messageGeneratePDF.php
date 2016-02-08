@@ -1,56 +1,27 @@
-<style>
-table, th, td {
-  vertical-align: middle;
-}
-th, td, caption {
-  padding: 4px 0 10px;
-  text-align: center;
-}
+<?php $this->widget('zii.widgets.grid.CGridView', array(
+	'dataProvider'=>$model,
+	'summaryText'=>false,
+	'enableSorting'=>false,
+	'enablePagination' => false,
+	'columns'=>array(
+		array(
+		'header'=>'SI No',
+		'class'=>'IndexColumn',
+		),
+		
+		'message',
+		array(
+                    'class'=>'JToggleColumn',
+                    'name'=>'message_of_day_active', // boolean model attribute (tinyint(1) with values 0 or 1)
+                    'filter' => array('1' => 'Yes','0' => 'No'), // filter
+		    'action'=>'switch', // other action, default is 'toggle' action
+		    'checkedButtonLabel'=>Yii::app()->baseUrl.'/images/checked.png', // tooltip
+                    'uncheckedButtonLabel'=>Yii::app()->baseUrl.'/images/unchecked.png',
+	            'checkedButtonTitle'=>"", // tooltip
+                    'uncheckedButtonTitle'=>"Display",
 
-</style>
-<?php 
-
-if ($model != null):?>
-<?$k=0;?>
-<table border="1">
-
-	<tr>
-		<th align="center">
-		      SN.		
-		</th>
-		<th>
-		     Message
-		</th>
-		
-		<th>
-		     Created By		
-		</th>
-		
-		
- 	</tr>
-	<?php 
-	foreach($model as $m=>$v) {
-          if($m <> 0) {
-            ?>	<tr>
-		<td>
-			<?php echo ++$k; ?>
-		</td>
-		
-		<td>
-		      <?php echo $v['message']; ?>	
-		</td>
-		
-		<td>
-		     <?php echo User::model()->findByPk($v['created_by'])->user_organization_email_id; ?>		
-		</td>
-		
-			
- 	   </tr> 
-       <?php
-    
-       }// end if
-     }// end for loop
-	
-?>
-</table>
-<?php endif; ?>
+		    'labeltype'=>'image',
+                    'htmlOptions'=>array('style'=>'text-align:center')
+	                ),
+	),
+)); ?>

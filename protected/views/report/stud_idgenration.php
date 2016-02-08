@@ -1,19 +1,14 @@
-
 <?php
 $this->breadcrumbs=array(
 	'Generating Student Identity Card',
 	
 );
-
-$this->menu=array(
-	array('label'=>'', 'url'=>array('IdcardFieldFormat/create'),'linkOptions'=>array('class'=>'Create','title'=>'Generate Id Format')),
-
-);
-
-
 ?>
-<h1>Generating Student Identity Card</h1>
-<div class="form">
+<div class="portlet box blue">
+<i class="icon-reorder"></i>
+ <div class="portlet-title"><span class="box-title">Generating Student Identity Card</span>
+</div>
+<div class="form  two-coloumn">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'stu-id-card',
@@ -23,11 +18,10 @@ $this->menu=array(
 )); ?>
 	<p class="note">Fields with <span class="required">*</span> are required.</p>
 	<?php
-	$org_id=Yii::app()->user->getState('org_id');
 	$acd = Yii::app()->db->createCommand()
 		->select('*')
 		->from('academic_term')
-		->where('current_sem=1 and academic_term_organization_id='.$org_id)
+		->where('current_sem=1')
 		->queryAll();
 	$acdterm=CHtml::listData($acd,'academic_term_id','academic_term_name');
 	$period=array();
@@ -37,7 +31,7 @@ $this->menu=array(
 	}?>
 	<div class="row">
 		<?php echo $form->labelEx($model,'template_name'); ?>
-<?php echo $form->dropDownList($model,'template_name',CHtml::listData(IdcardFieldFormat::model()->findAll(array('condition'=>'idcard_org_id='.Yii::app()->user->getState('org_id').' and stud_emp_type="Student"','group'=>'idtemplate_name')),'idtemplate_name','idtemplate_name'), array('empty' => 'Select Template'));?>
+<?php echo $form->dropDownList($model,'template_name',CHtml::listData(IdcardFieldFormat::model()->findAll(array('condition'=>'stud_emp_type="Student"','group'=>'idtemplate_name')),'idtemplate_name','idtemplate_name'), array('empty' => 'Select Template'));?>
 	<span class="status">&nbsp;</span>
 	<?php echo $form->error($model,'template_name'); ?>
 	</div>
@@ -67,11 +61,11 @@ $this->menu=array(
 	</div>
 	<div class="row">
 		<?php echo CHtml::label('Enroll No',''); ?>
-		<?php echo CHtml::textField('enroll_no', null, array('empty' => '---------------Select-------------','tabindex'=>6,'size'=>13));?><span class="status">&nbsp;</span>&nbsp;&nbsp;
+		<?php echo CHtml::textField('enroll_no', null, array('empty' => 'Select Enroll No','tabindex'=>6,'size'=>13));?><span class="status">&nbsp;</span>&nbsp;&nbsp;
 	</div>
 	<div class="row">
 		<?php echo CHtml::label('Roll No',''); ?>
-		<?php echo CHtml::textField('roll_no', null, array('empty' => '---------------Select-------------','tabindex'=>7,'size'=>13));?><span class="status">&nbsp;</span>&nbsp;&nbsp;
+		<?php echo CHtml::textField('roll_no', null, array('empty' => 'Select Roll No','tabindex'=>7,'size'=>13));?><span class="status">&nbsp;</span>&nbsp;&nbsp;
 	</div>
 
 

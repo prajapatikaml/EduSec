@@ -3,15 +3,19 @@ $this->breadcrumbs=array('Report',
 	'Employee Document Search',
 	
 );
-echo CHtml::link('GO BACK',Yii::app()->createUrl('report/documentsearch'));
 
-echo "</br>";
-echo "</br>";
 $dataProvider =$model->newsearch($department_id,$category_id);
 $pageSize = Yii::app()->user->getState("pageSize",@$_GET["pageSize"]);
 $dataProvider->getPagination()->setPageSize($pageSize);
 ?>
-<table  border="2px" id="twoColThinTable">
+<div class="portlet box blue view" style="width:100%">
+       <div class="portlet-title"> <i class="fa fa-plus"></i><span class="box-title">Document Search Details</span>
+ </div>
+    	<div class="operation">
+	  <?php echo CHtml::link('<i class="fa fa-chevron-left"></i>Back', array('documentsearch'), array('class'=>'btnyellow'));?>	
+	</div>
+<div class="portlet-body">
+<table  class="report-table">
 <tr class="row">
 	<td class="col1">Department </td>
 	<td class="col2"><?php echo Department::model()->findByPk($department_id)->department_name;?></td>
@@ -21,27 +25,21 @@ $dataProvider->getPagination()->setPageSize($pageSize);
 	<td class="col2"><?php echo DocumentCategoryMaster::model()->findByPk($category_id)->doc_category_name;?></td>
 </tr>
 </table>
+</div></div>
+<div class="portlet box blue" style="margin-top:50px;">
+<div class="portlet-title"><i class="fa fa-plus"></i> <span class="box-title">Search Results</span>
+</div>
 <?php
-
-
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'employee-docs-search-grid',
 	'dataProvider'=>$dataProvider,
-//	'filter'=>$model,
-	//'enableSorting'=>false,
 	'columns'=>array(
-		//'employee_docs_trans_id',
-		//'employee_docs_trans_user_id',
-		//'employee_docs_trans_emp_docs_id',
 		array(
 		'header'=>'SI No',
 		'class'=>'IndexColumn',
 		),
 		'employee_attendance_card_id',
-		//'employee_transaction_id',
 		'employee_first_name',
-		//'employee_docs_path',
-		//'title',
 		array(
                 'name'=>'Document File',
                 'type'=>'raw',
@@ -55,8 +53,6 @@ $this->widget('zii.widgets.grid.CGridView', array(
                 'name'=>'Submit Date',
 	        'value'=>'date_format(new DateTime($data->employee_docs_submit_date), "d-m-Y")',
           	),
-
-	
 	),
 	'pager'=>array(
 		'class'=>'AjaxList',
@@ -64,3 +60,4 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		'header'=>''
 	    ),
 )); ?>
+</div>

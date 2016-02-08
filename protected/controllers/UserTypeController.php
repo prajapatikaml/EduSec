@@ -1,8 +1,4 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 class UserTypeController extends Controller
 {
@@ -61,20 +57,22 @@ class UserTypeController extends Controller
 
 	/**
 	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'admin' page.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
 		$model=new UserType;
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['UserType']))
 		{
 			$model->attributes=$_POST['UserType'];
 			$model->created_by=Yii::app()->user->id;
 			$model->creation_date=new CDbExpression('NOW()');
-			$model->user_type_organization_id=Yii::app()->user->getState('org_id');
 			if($model->save())
+				//$this->redirect(array('view','id'=>$model->user_type_id));
 				$this->redirect(array('admin'));
 		}
 
@@ -91,7 +89,9 @@ class UserTypeController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['UserType']))
 		{
@@ -112,33 +112,13 @@ class UserTypeController extends Controller
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			try{
-			    $this->loadModel($id)->delete();
-			    if(!isset($_GET['ajax']))
-				    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-			}catch (CDbException $e){
-				throw new CHttpException(400,'You can not delete this record because it is used in another table.');
-			}
+		try{
+		    $this->loadModel($id)->delete();
+		    if(!isset($_GET['ajax']))
+			    $this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}catch (CDbException $e){
+			throw new CHttpException(400,'You can not delete this record because it is used in another table.');
 		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
-	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model=new UserType('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['UserType']))
-			$model->attributes=$_GET['UserType'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
 	}
 
 	/**

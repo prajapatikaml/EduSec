@@ -15,6 +15,11 @@ $this->breadcrumbs=array(
     'Student History',
 );
 ?>
+<div class="portlet box blue">
+<i class="icon-reorder"></i>
+ <div class="portlet-title"><span class="box-title">Select Criterias</span>
+</div>
+
 <div class="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(
@@ -48,3 +53,4 @@ class="status">&nbsp;</span>
 <?php $this->endWidget(); ?>
 
 </div><!-- form -->
+</div>

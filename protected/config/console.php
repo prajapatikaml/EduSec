@@ -2,6 +2,8 @@
 
 // This is the configuration for yiic console application.
 // Any writable CConsoleApplication properties can be configured here.
+$app = include('main.php');
+
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
 	'name'=>'My Console Application',
@@ -12,13 +14,7 @@ return array(
 		),*/
 		// uncomment the following to use a MySQL database
 		
-		/*'db'=>array(
-			'connectionString' => 'mysql:host=localhost;dbname=hansaba_18_02_2013',
-			'emulatePrepare' => true,
-			'username' => 'root',
-			'password' => 'ubuntu',
-			'charset' => 'utf8',
-		),*/
-		'db'=>require('db.php'),	
+		'db'=>$app['components']['db'],
 	),
 );
+

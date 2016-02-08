@@ -1,8 +1,4 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 class StudentDocsTransController extends RController
 {
@@ -19,6 +15,31 @@ class StudentDocsTransController extends RController
 	{
 		return array(
 			'rights', // perform access control for CRUD operations
+		);
+	}
+
+	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	public function accessRules()
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('create','update'),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('@'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
 		);
 	}
 
@@ -42,29 +63,46 @@ class StudentDocsTransController extends RController
 		$model=new StudentDocsTrans;
 		$stud_doc=new StudentDocs;
 
-		$this->performAjaxValidation(array($model,$stud_doc));
-		if(isset($_POST['StudentDocs']))
-		{
-		 $stud_doc->attributes=$_POST['StudentDocs'];
-  		 $stud_doc->student_docs_path = CUploadedFile::getInstance($stud_doc,'student_docs_path');
-			$valid = $stud_doc->validate();
-			if($valid)
-			{
-			 $stud_doc->student_docs_path->saveAs(Yii::getPathOfAlias('webroot').'/college_data/stud_docs/' .$stud_doc->student_docs_path);
-			$date = $_POST['StudentDocs']['student_docs_submit_date'];
-			$submit_date = date("Y-m-d", strtotime($date));
-			$stud_doc->student_docs_submit_date = $submit_date;
-			
-			$stud_doc->save();
-		
-			 $model->student_docs_trans_user_id = $_REQUEST['id'];
-			 $model->student_docs_trans_stud_docs_id = $stud_doc->student_docs_id;
-			
-			 $model->save();
+		//$this->layout='receipt_layout';
 
-			$this->redirect(array('studentTransaction/studentdocs','id'=>$model->student_docs_trans_user_id));
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation(array($model,$stud_doc));
+
+//		$docs = CUploadedFile::getInstancesByName('student_docs_path');
+
+		
+			if(isset($_POST['StudentDocs']))
+			{
+				//var_dump($stud_doc->student_docs_path);
+				//exit;
+				 $stud_doc->attributes=$_POST['StudentDocs'];
+		  		 $stud_doc->student_docs_path = CUploadedFile::getInstance($stud_doc,'student_docs_path');
+				//var_dump($stud_doc->student_docs_path);
+				//exit;
+				// if($stud_doc->student_docs_path != NULL) {
+					$valid = $stud_doc->validate();
+					if($valid)
+					{
+					 $stud_doc->student_docs_path->saveAs(Yii::getPathOfAlias('webroot').'/college_data/stud_docs/' .$stud_doc->student_docs_path);
+					$date = $_POST['StudentDocs']['student_docs_submit_date'];
+					$submit_date = date("Y-m-d", strtotime($date));
+					$stud_doc->student_docs_submit_date = $submit_date;
+					
+					$stud_doc->save();
+				
+					 $model->student_docs_trans_user_id = $_REQUEST['id'];
+					 $model->student_docs_trans_stud_docs_id = $stud_doc->student_docs_id;
+					
+					 $model->save();
+
+					$this->redirect(array('studentTransaction/studentdocs','id'=>$model->student_docs_trans_user_id));
+					}
+				/*else
+				{
+					$stud_doc->addError('student_docs_path',"Please select any document1");
+					
+				}*/
 			}
-		}
 
 		$this->render('create',array(
 			'model'=>$model,'stud_doc'=>$stud_doc,
@@ -79,6 +117,9 @@ class StudentDocsTransController extends RController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
+
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['StudentDocsTrans']))
 		{
@@ -101,8 +142,10 @@ class StudentDocsTransController extends RController
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
+			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
 
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 		}

@@ -76,10 +76,8 @@ if($selectedlist)
 ?>
 <div class="print">
 <?php
-//echo Yii::app()->request->baseUrl;
-$gobackimage = CHtml::image('../images/Goback.png', 'No Image', array('height'=>'40','width'=>40));
 
-echo CHtml::link($gobackimage,Yii::app()->createUrl('report/PostLabelStudent'),array('title'=>'Go Back'))."&nbsp;&nbsp;"; 
+echo CHtml::link('GO BACK',Yii::app()->createUrl('report/PostLabelStudent'),array('title'=>'Go Back'))."&nbsp;&nbsp;"; 
 ?>
 <button onclick="javascript:window.print()" id="printid">Print</button>
 </div></br></br>
@@ -106,23 +104,34 @@ foreach($student_data as $stud)
 					}
 					if($value=='student_address_c_line1')
 					{
+
 					$line1 = StudentAddress::model()->findByPk($stud['student_transaction_student_address_id'])->student_address_c_line1;
 					$line2 = StudentAddress::model()->findByPk($stud['student_transaction_student_address_id'])->student_address_c_line2;
+					if(!empty($stud['student_transaction_student_address_id']->student_address_c_city))
 					$city = City::model()->findByPk(StudentAddress::model()->findByPk($stud['student_transaction_student_address_id'])->student_address_c_city)->city_name;
+					else $city="";
 					$pin = StudentAddress::model()->findByPk($stud['student_transaction_student_address_id'])->student_address_c_pin;
-					$state = State::model()->findByPk(StudentAddress::model()->findByPk($stud['student_transaction_student_address_id'])->student_address_p_state)-> 	state_name;
+					if(!empty($stud['student_transaction_student_address_id']->student_address_c_state))
+					$state = State::model()->findByPk(StudentAddress::model()->findByPk($stud['student_transaction_student_address_id'])->student_address_p_state)->state_name;
+					else 
+					$state="";
 					$label = "Address";
-					$field_value = $line1.",".$line2." ".$city."-".$pin.",".$state;
+					$field_value = $line1.", ".$line2." ".$city."-".$pin.", ".$state;
 					}
 					if($value=='student_address_p_line1')
 					{
 					$line1 = StudentAddress::model()->findByPk($stud['student_transaction_student_address_id'])->student_address_p_line1;
 					$line2 = StudentAddress::model()->findByPk($stud['student_transaction_student_address_id'])->student_address_p_line2;
+					if(!empty($stud['student_transaction_student_address_id']->student_address_p_city))
 					$city = City::model()->findByPk(StudentAddress::model()->findByPk($stud['student_transaction_student_address_id'])->student_address_p_city)->city_name;
+					else $city="";
 					$pin = StudentAddress::model()->findByPk($stud['student_transaction_student_address_id'])->student_address_p_pin;
-					$state = State::model()->findByPk(StudentAddress::model()->findByPk($stud['student_transaction_student_address_id'])->student_address_p_state)-> 	state_name;
+					if(!empty($stud['student_transaction_student_address_id']->student_address_p_state))
+					$state = State::model()->findByPk(StudentAddress::model()->findByPk($stud['student_transaction_student_address_id'])->student_address_p_state)->state_name;
+					else 
+					$state="";
 					$label = "Address";
-					$field_value = $line1.",".$line2." ".$city."-".$pin.",".$state;
+					$field_value = $line1.", ".$line2." ".$city."-".$pin.", ".$state;
 					
 					}
 					if($value=='student_mobile_no')
@@ -136,7 +145,7 @@ foreach($student_data as $stud)
 					$field_value = StudentInfo::model()->findByPk($stud['student_transaction_student_id'])->student_guardian_mobile;
 					}
 					?>
-	
+		
 		<div class="student-details">
 			<?php echo '<label>'.$label.' : </label>';?> 
 			<div class="value-detail"><?php echo $field_value; ?></div>

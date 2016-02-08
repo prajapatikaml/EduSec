@@ -1,10 +1,6 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
-class UserController extends RController
+class UserController extends EduSecCustom
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -34,65 +30,14 @@ class UserController extends RController
 		));
 	}
 
-	/**
-	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'admin' page.
-	 */
-	public function actionCreate()
-	{
-		$model=new User;
-		$ass_comp = new assignCompanyUserTable;
-		$model->setScenario('create');
-		$this->performAjaxValidation($model);
-
-		if(isset($_POST['User']))
-		{
-			$model->attributes=$_POST['User'];
-			$model->user_password=md5($model->user_password.$model->user_password);
-			$model->user_type='admin';
-			$model->user_organization_id = Yii::app()->user->getState('org_id');
-			$model->user_created_by=Yii::app()->user->id;
-			$model->user_creation_date=new CDbExpression('NOW()');
-			if($model->save())
-			{
-				$this->redirect(array('admin'));
-			}
-		}
-
-		$this->render('create',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Updates a particular model.
-	 * If update is successful, the browser will be redirected to the 'view' page.
-	 * @param integer $id the ID of the model to be updated
-	 */
-	public function actionUpdate($id)
-	{
-		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
-
-		if(isset($_POST['User']))
-		{
-			$model->attributes=$_POST['User'];
-			if($model->save())
-				$this->redirect(array('admin'));
-		}
-
-		$this->render('update',array(
-			'model'=>$model,
-		));
-	}
-	
-	/**
-	 * Use for update employee login email id.
-	 */
+	/** Use for update employee login user details.
+	*  @param integer $id the ID of the model to be update.
+	*/
 	public function actionUpdateemploginid($id)
 	{
 		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
+
+	 	$this->performAjaxValidation($model);
 
 		if(isset($_POST['User']))
 		{
@@ -108,12 +53,13 @@ class UserController extends RController
 		));
 	}
 
-	/**
-	 * Use for update student login email id.
-	 */
+	/** Use for update student login user details.
+	*  @param integer $id the ID of the model to be update.
+	*/
 	public function actionUpdatestudloginid($id)
 	{
 		$model=$this->loadModel($id);
+
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['User']))
@@ -130,13 +76,13 @@ class UserController extends RController
 		));
 	}
 
-	/**
-	 * Use for change password.
-	 */
+	/** Use for change password of user login.
+	*/
 	public function actionChange()
 	{
 		$model=$this->loadModel(Yii::app()->user->id);
 		$model->setScenario('change');
+
 		$this->performAjaxValidation($model);
 
 		if(isset($_POST['User']))
@@ -145,7 +91,7 @@ class UserController extends RController
 			$user = User::model()->findByPk(Yii::app()->user->id);
 			$model->user_password = md5($model->new_pass.$model->new_pass);
 			if($model->save())
-				$this->redirect(array('/site/newdashboard'));
+				$this->redirect(array('/dashboard/dashboard'));
 		}
 
 		$this->render('change',array(
@@ -170,39 +116,8 @@ class UserController extends RController
 			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
 	}
 
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model=new User('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['User']))
-			$model->attributes=$_GET['User'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionAdmin()
-	{
-		$model=new User('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['User']))
-			$model->attributes=$_GET['User'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
-
-	/**
-	 * Generate Student list grid for reset their login id.
-	 */
+	/** Display student list for reset login id
+	*/
 	public function actionResetstudloginid()
 	{
 		$model=new StudentTransaction('resetloginstudentsearch');
@@ -215,9 +130,8 @@ class UserController extends RController
 		));
 	}
 
-	/**
-	 * Generate Employee list grid for reset their login id.
-	 */
+	/** Display employee list for reset login id.
+	*/
 	public function actionResetemploginid()
 	{
 		$model=new EmployeeTransaction('search');
@@ -255,9 +169,8 @@ class UserController extends RController
 		}
 	}
 
-	/**
-	 * Generate Student list grid for reset their password.
-	 */
+	/** Display student list for reset password
+	*/
 	public function actionResetstudpassword()
 	{
 		$model=new StudentTransaction('resetloginstudentsearch');
@@ -269,9 +182,9 @@ class UserController extends RController
 			'model'=>$model,
 		));
 	}
-	/**
-	 * Generate Employee list grid for reset their password.
-	 */
+
+	/** Display employee list for reset password
+	*/
 	public function actionResetemppassword()
 	{
 		$model=new EmployeeTransaction('search');
@@ -284,9 +197,8 @@ class UserController extends RController
 		));
 	}
 
-	/**
-	 * Use for update student password.
-	 */
+	/** @param $id user id of student to reset their password
+	*/
 	public function actionUpdate_stud_password($id)
 	{
 		$model=$this->loadModel($id);
@@ -294,15 +206,13 @@ class UserController extends RController
 		$student_info = StudentInfo::model()->findByPk($student_data->student_transaction_student_id)->student_first_name;
 		$model->user_password=MD5($model->user_organization_email_id.$model->user_organization_email_id);
 		$model->save();
-		Yii::app()->user->setFlash('resetstudpassword',$student_info.' '."Password has been Reseted");
+		Yii::app()->user->setFlash('resetstudpassword',$student_info.' '."Password is Reset");
 		$this->redirect(array('user/resetstudpassword'));
 		
 	}
 
-	/**
-	 * Use for update employee password.
-	 */
-
+	/** @param $id user id of employee to reset their password
+	*/
 	public function actionUpdate_emp_password($id)
 	{
 		$model=$this->loadModel($id);
@@ -310,9 +220,8 @@ class UserController extends RController
 		$emp_info = EmployeeInfo::model()->findByPk($emp_data->employee_transaction_employee_id)->employee_first_name;
 		$model->user_password=MD5($model->user_organization_email_id.$model->user_organization_email_id);
 		$model->save();		
-		Yii::app()->user->setFlash('resetemppassword', $emp_info.' '."Password has been Reseted");
+		Yii::app()->user->setFlash('resetemppassword', $emp_info.' '."Password is Reset");
 		$this->redirect(array('user/resetemppassword'));
 		
 	}
-
 }

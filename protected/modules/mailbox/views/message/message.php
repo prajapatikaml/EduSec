@@ -1,6 +1,6 @@
 <?php
 $this->breadcrumbs=array(
-	ucfirst($this->module->id)=>array('mailbox/inbox'),
+	ucfirst($this->module->id)=>array('inbox'),
 	'Message',
 );
 

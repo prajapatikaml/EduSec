@@ -1,8 +1,4 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 class StudentAddressController extends Controller
 {
@@ -67,11 +63,14 @@ class StudentAddressController extends Controller
 	{
 		$model=new StudentAddress;
 
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
 		if(isset($_POST['StudentAddress']))
 		{
 			$model->attributes=$_POST['StudentAddress'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('admin'));//$this->redirect(array('view','id'=>$model->student_address_id));
 		}
 
 		$this->render('create',array(
@@ -88,11 +87,14 @@ class StudentAddressController extends Controller
 	{
 		$model=$this->loadModel($id);
 
+		// Uncomment the following line if AJAX validation is needed
+		// $this->performAjaxValidation($model);
+
 		if(isset($_POST['StudentAddress']))
 		{
 			$model->attributes=$_POST['StudentAddress'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('admin'));//$this->redirect(array('view','id'=>$model->student_address_id));
 		}
 
 		$this->render('update',array(
@@ -109,8 +111,10 @@ class StudentAddressController extends Controller
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
+			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
 
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 		}

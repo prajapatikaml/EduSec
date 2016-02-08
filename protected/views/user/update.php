@@ -2,7 +2,7 @@
 $this->breadcrumbs=array(
 	'Users'=>array('index'),
 	//$model->user_id=>array('view','id'=>$model->user_id),
-	$model->user_id=>array(),
+	$model->user_id,
 	'Edit',
 );
 

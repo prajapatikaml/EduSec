@@ -4,29 +4,18 @@ $this->breadcrumbs=array(
 	'Manage',
 );
 
-$this->menu=array(
-	array('label'=>'', 'url'=>array('create'),'linkOptions'=>array('class'=>'Create','title'=>'Add')),
-	array('label'=>'', 'url'=>array('ExportToPDFExcel/EmployeeExportToPdf'),'linkOptions'=>array('class'=>'export-pdf','title'=>'Export To PDF','target'=>'_blank')),
-	array('label'=>'', 'url'=>array('ExportToPDFExcel/EmployeeExportToExcel'),'linkOptions'=>array('class'=>'export-excel','title'=>'Export To Excel','target'=>'_blank')),
-);
-
-
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('employee-transaction-grid', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
 ?>
 
-<h1>Manage Employees</h1>
-
+<div class="portlet box blue">
+<div class="portlet-title"><i class="fa fa-reorder"></i>
+<span class="box-title">Manage Employees</span>
+</div>
+<div class="operation">
+<?php if(Yii::app()->user->checkAccess('Employee.EmployeeTransaction.Create')) { ?>
+<?php echo CHtml::link('<i class="fa fa-plus-square"></i>Add', array('employeeTransaction/create'), array('class'=>'btn green'))?>
+ <?php echo CHtml::link('<i class="fa fa-file-pdf-o"></i>PDF', array('/site/export.exportPDF', 'model'=>get_class($model)), array('class'=>'btnyellow', 'target'=>'_blank'));?>
+ <?php echo CHtml::link('<i class="fa fa-file-excel-o"></i>Excel', array('/site/export.exportExcel', 'model'=>get_class($model)), array('class'=>'btnblue')); } ?>
+</div>
 <?php
     Yii::app()->clientScript->registerScript(
    'myHideEffect',
@@ -58,11 +47,6 @@ $('.search-form form').submit(function(){
 
 </div>
 
-<div class="portlet box blue">
- <div class="portlet-title"> Employee List
- </div>
-
-<?php echo CHtml::link('Add New +', array('employeeTransaction/create'), array('class'=>'btn green'))?>
 
 <?php
 $dataProvider = $model->search();
@@ -79,10 +63,11 @@ $dataProvider->getPagination()->setPageSize($pageSize);
 	'id'=>'employee-transaction-grid',
 	'dataProvider'=>$dataProvider,
 	'filter'=>$model,
-	'ajaxUpdate'=>false,
 	'selectionChanged'=>"function(id){
-		window.location='" . Yii::app()->urlManager->createUrl('employee/employeeTransaction/update', array('id'=>'')) . "' + $.fn.yiiGridView.getSelection(id);
-	}",		
+		if($.fn.yiiGridView.getSelection(id) != '')
+		  window.location='" . Yii::app()->urlManager->createUrl('employee/employeeTransaction/update', array('id'=>'')) . "' + $.fn.yiiGridView.getSelection(id);
+	}",
+	'ajaxUpdate'=>false,
 	'columns'=>array(
 		array(
 		'header'=>'SI No',
@@ -122,10 +107,9 @@ $dataProvider->getPagination()->setPageSize($pageSize);
 			'header' => 'Department',		
 			'name'=>'employee_transaction_department_id',
 			'value'=>'Department::model()->findByPk($data->employee_transaction_department_id)->department_name',
-				'filter' =>CHtml::listData(Department::model()->findAll(), 'department_id','department_name'),
+				'filter' =>CHtml::listData(Department::model()->findAll(),'department_id','department_name'),
 
 		), 
-
 		array(
 		'type'=>'raw',
                 'value'=>'CHtml::image(Yii::app()->baseUrl."/college_data/emp_images/" . $data->Rel_Photo->employee_photos_path, "No Image",array("width"=>"20px","height"=>"20px"))',

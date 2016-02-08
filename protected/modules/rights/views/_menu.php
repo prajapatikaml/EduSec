@@ -1,7 +1,7 @@
 <?php $this->widget('zii.widgets.CMenu', array(
 	'firstItemCssClass'=>'first',
 	'lastItemCssClass'=>'last',
-	'htmlOptions'=>array('class'=>'actions', 'style'=>'padding-left: 0;'),
+	'htmlOptions'=>array('class'=>'actions'),
 	'items'=>array(
 		array(
 			'label'=>Rights::t('core', 'Assignments'),

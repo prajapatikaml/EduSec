@@ -4,36 +4,27 @@ $this->breadcrumbs=array('Report',
 	
 );?>
 
-<?php
-echo CHtml::link('GO BACK',Yii::app()->createUrl('report/StudentDocumentsearch'));
-?></br></br>
-
-<table  border="2px" id="twoColThinTable">
-<?php if($acdm_period !=0) { ?>
-<tr class="row">
-	<td class="col1">Academic Year</td>
-	<td class="col2"><?php echo AcademicTermPeriod::model()->findByPk($acdm_period)->academic_term_period;?></td>
-</tr>
-<?php }  ?>
-<?php if($sem !=0) {?>
-<tr class="row">
-	<td class="col1">Semester </td>
-	<td class="col2"><?php echo AcademicTerm::model()->findByPk($sem)->academic_term_name;?></td>
-</tr>
-<?php } ?>
-<?php if($branch_id !=0) { ?>
-<tr class="row">
-	<td class="col1">Branch</td>
-	<td class="col2"><?php echo Branch::model()->findByPk($branch_id)->branch_name;?></td>
-</tr>
-<?php  } ?>
+<div class="portlet box blue view" style="width:100%">
+	<div class="portlet-title"><i class="fa fa-plus"></i><span class="box-title">Document Search Details</span>
+</div>
+	<div class="operation">
+	<?php echo CHtml::link('<i class="fa fa-chevron-left"></i>Back', array('studentDocumentsearch'), array('class'=>'btnyellow'));?>
+	</div>
+  	<div class="portlet-body">
+<table  border="2px" class="report-table">
 <tr class="row">
 	<td class="col1">Document</td>
 	<td class="col2"><?php echo DocumentCategoryMaster::model()->findByPk($cat_id)->doc_category_name;?></td>
 </tr>
 </table>
+</div>
+</div>
+
+<div class="portlet box blue" style="margin-top:50px;">
+<div class="portlet-title"><i class="fa fa-plus"></i><span class="box-title"> Search Results</span>
+</div>
 <?php
-$dataProvider =$model->newsearch($branch_id,$cat_id,$acdm_period,$sem);
+$dataProvider =$model->newsearch($cat_id);
 $pageSize = Yii::app()->user->getState("pageSize",@$_GET["pageSize"]);
 $dataProvider->getPagination()->setPageSize($pageSize);
 ?>
@@ -41,21 +32,14 @@ $dataProvider->getPagination()->setPageSize($pageSize);
 $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'student-docs-search-grid',
 	'dataProvider'=>$dataProvider,
-//	'filter'=>$model,
-	//'enableSorting'=>false,
 	'columns'=>array(
-		//'employee_docs_trans_id',
-		//'employee_docs_trans_user_id',
-		//'employee_docs_trans_emp_docs_id',
 		array(
 		'header'=>'SI No',
 		'class'=>'IndexColumn',
 		),
 		'student_roll_no',		
-		'student_enroll_no',
+		//'student_enroll_no',
 		'student_first_name',
-		//'student_docs_path',
-
 		array(
                 'name'=>'Document File',
                 'type'=>'raw',
@@ -78,3 +62,4 @@ $this->widget('zii.widgets.grid.CGridView', array(
 		'header'=>''
 	    ),
 )); ?>
+</div>

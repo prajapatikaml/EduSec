@@ -1,8 +1,4 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 class EmployeeAddressController extends RController
 {
@@ -19,6 +15,32 @@ class EmployeeAddressController extends RController
 	{
 		return array(
 			'rights', // perform access control for CRUD operations
+		);
+	}
+
+	/**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	 
+	public function accessRules()
+	{
+		return array(
+			array('allow',  // allow all users to perform 'index' and 'view' actions
+				'actions'=>array('index','view'),
+				'users'=>array('*'),
+			),
+			array('allow', // allow authenticated user to perform 'create' and 'update' actions
+				'actions'=>array('create','update'),
+				'users'=>array('@'),
+			),
+			array('allow', // allow admin user to perform 'admin' and 'delete' actions
+				'actions'=>array('admin','delete'),
+				'users'=>array('@'),
+			),
+			array('deny',  // deny all users
+				'users'=>array('*'),
+			),
 		);
 	}
 
@@ -40,13 +62,15 @@ class EmployeeAddressController extends RController
 	public function actionCreate()
 	{
 		$model=new EmployeeAddress;
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['EmployeeAddress']))
 		{
 			$model->attributes=$_POST['EmployeeAddress'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('admin'));//$this->redirect(array('view','id'=>$model->employee_address_id));
 		}
 
 		$this->render('create',array(
@@ -62,13 +86,15 @@ class EmployeeAddressController extends RController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['EmployeeAddress']))
 		{
 			$model->attributes=$_POST['EmployeeAddress'];
 			if($model->save())
-				$this->redirect(array('admin'));
+				$this->redirect(array('admin'));//$this->redirect(array('view','id'=>$model->employee_address_id));
 		}
 
 		$this->render('update',array(
@@ -85,8 +111,10 @@ class EmployeeAddressController extends RController
 	{
 		if(Yii::app()->request->isPostRequest)
 		{
+			// we only allow deletion via POST request
 			$this->loadModel($id)->delete();
 
+			// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 			if(!isset($_GET['ajax']))
 				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 		}
@@ -99,6 +127,10 @@ class EmployeeAddressController extends RController
 	 */
 	public function actionIndex()
 	{
+/*		$dataProvider=new CActiveDataProvider('EmployeeAddress');
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+		));*/
 		$model=new EmployeeAddress('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['EmployeeAddress']))

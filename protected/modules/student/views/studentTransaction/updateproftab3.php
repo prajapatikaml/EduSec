@@ -1,17 +1,36 @@
 <style>
-#StudentAddress_student_address_c_line1,
-#StudentAddress_student_address_c_line2{
-   width:500px !important;
+.portlet.box.blue label {
+    float: left;
+    font-size: 14px;
+    font-weight: bold;
+    padding-right: 20px;
+    text-align: right;
+    width: 188px;
 }
+
 </style>
+         <!-- chosen -->
+	<link rel="stylesheet" href="<?php echo Yii::app()->baseUrl?>/css/chosen/chosen.css">
+	
+	
+	<!-- Bootstrap -->
+	<script src="<?php echo Yii::app()->baseUrl?>/js/tags/bootstrap.min.js"></script>
+    
+    <!-- Chosen -->
+	<script src="<?php echo Yii::app()->baseUrl?>/js/chosen/chosen.jquery.min.js"></script>
+    
+	<!-- Theme framework -->
+	<script src="<?php echo Yii::app()->baseUrl?>/js/tags/eakroko.min.js"></script>
+
 <?php
 $this->breadcrumbs=array(
-	'Student List'=>array('admin'),
-	'Update Details',
+	'Student'=>array('update', 'id'=>$_REQUEST['id']),
+	'Other Info',
 );?>
+
 <div class="portlet box blue">
 <i class="icon-reorder"></i>
- <div class="portlet-title">Update Details
+ <div class="portlet-title"><span class="box-title">Update Student Details</span>
  </div>
 
 <div class="profile-tab profile-edit ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-collapsible">
@@ -20,13 +39,13 @@ $this->breadcrumbs=array(
 <li class="ui-state-default ui-corner-top">
   <?php echo CHtml::link('Personal Profile', array('updateprofiletab1', 'id'=>$_REQUEST['id'])); ?></li>
 <li class="ui-state-default ui-corner-top">
+  <?php echo CHtml::link('Academic Details', array('updateprofiletab5', 'id'=>$_REQUEST['id'])); ?></li>
+<li class="ui-state-default ui-corner-top">
   <?php echo CHtml::link('Gaurdian Info', array('updateprofiletab2', 'id'=>$_REQUEST['id'])); ?></li>
-<li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active">
-   <?php echo CHtml::link('Address Info', array('updateprofiletab3', 'id'=>$_REQUEST['id'])); ?></li>
+<li class="ui-state-default ui-corner-top  ui-tabs-selected ui-state-active">
+   <?php echo CHtml::link('Other Info', array('updateprofiletab3', 'id'=>$_REQUEST['id'])); ?></li>
 <li class="ui-state-default ui-corner-top">
-   <?php echo CHtml::link('Academic Record', array('studentacademicrecord', 'id'=>$_REQUEST['id'])); ?></li>
-<li class="ui-state-default ui-corner-top">
-   <?php echo CHtml::link('Document', array('Studentdocs', 'id'=>$_REQUEST['id'])); ?></li>
+   <?php echo CHtml::link('Address Info', array('updateprofiletab4', 'id'=>$_REQUEST['id'])); ?></li>
 </ul>
 
 <div class="ui-tabs-panel form">
@@ -36,85 +55,102 @@ $this->breadcrumbs=array(
 	'htmlOptions'=>array('enctype'=>'multipart/form-data'),
 	'clientOptions'=>array('validateOnSubmit'=>true),
 )); ?>
-<div class="row">
-	<?php echo $form->labelEx($address,'student_address_c_line1'); ?>
-	<?php echo $form->textField($address,'student_address_c_line1',array('size'=>59,'maxlength'=>100)); ?><span class="status">&nbsp;</span>
-	<?php echo $form->error($address,'student_address_c_line1'); ?>
-</div>
-
-<div class="row">
-	<?php echo $form->labelEx($address,'student_address_c_line2'); ?>
-	<?php echo $form->textField($address,'student_address_c_line2',array('size'=>59,'maxlength'=>100)); ?><span class="status">&nbsp;</span>
-	<?php echo $form->error($address,'student_address_c_line2'); ?>
-</div>
-
-<div class="row">
-
+	<div class="row">
+		<div class="row-left">
+		<?php echo $form->labelEx($info,'Emergency Contact Name'); ?>
+		<?php echo $form->textField($info,'emergency_cont_name',array('size'=>13,'style'=>'width:auto')); ?><span class="status">&nbsp;</span>
+		<?php echo $form->error($info,'emergency_cont_name'); ?>
+		</div>
 	<div class="row-right">
-	<?php echo $form->labelEx($address,'student_address_c_country'); ?>
-	<?php 
-		echo $form->dropDownList($address,'student_address_c_country',Country::items(), array(
-			'prompt' => '-----------Select-----------',
-			'ajax' => array(
-			'type'=>'POST', 
-			'url'=>CController::createUrl('dependent/UpdateStudCStates'), 
-			'update'=>'#StudentAddress_student_address_c_state', //selector to update
-			
-			))); ?><span class="status">&nbsp;</span>
-	<?php echo $form->error($address,'student_address_c_country'); ?>
+		<?php echo $form->labelEx($info,'Emergency Contact No'); ?>
+		<?php echo $form->textField($info,'emergency_cont_no',array('size'=>13,'style'=>'width:auto')); ?><span class="status">&nbsp;</span>
+		<?php echo $form->error($info,'emergency_cont_no'); ?>
 	</div>
-
-	<div class="row-left">
-	<?php echo $form->labelEx($address,'student_address_c_state'); ?>
-	<?php 
-			if(isset($address->student_address_c_state))
-			echo $form->dropDownList($address,'student_address_c_state', CHtml::listData(State::model()->findAll(array('condition'=>'country_id='.$address->student_address_c_country)), 'state_id', 'state_name'),
-			array(
-			'prompt' => '-----------Select-----------',
-			'ajax' => array(
-			'type'=>'POST', 
-			'url'=>CController::createUrl('dependent/UpdateStudCCities'), 
-			'update'=>'#StudentAddress_student_address_c_city', //selector to update
-			
-			)));
-			else
-			echo $form->dropDownList($address,'student_address_c_state',array(), 			array(
-			'prompt' => '-----------Select-----------',
-			'ajax' => array(
-			'type'=>'POST', 
-			'url'=>CController::createUrl('dependent/UpdateStudCCities'), 
-			'update'=>'#StudentAddress_student_address_c_city', //selector to update
-			
-			))); ?><span class="status">&nbsp;</span>
-	<?php echo $form->error($address,'student_address_c_state'); ?>
+    </div>
+	<div class="row">
+        <div class="row-left">
+			<?php echo $form->labelEx($info,'passport_no'); ?>
+        		<?php echo $form->textField($info,'passport_no',array('size'=>13,'maxlength'=>20)); ?>
+			<?php echo $form->error($info,'passport_no'); ?><span class="status">&nbsp;</span>
 	</div>
-
-</div>
-
-<div class="row last">
-
-	<div class="row-left">
-	<?php echo $form->labelEx($address,'student_address_c_city'); ?>
-	<?php 
-		if(isset($address->student_address_c_city))
-		echo $form->dropDownList($address,'student_address_c_city', CHtml::listData(City::model()->findAll(array('condition'=>'state_id='.$address->student_address_c_state)), 'city_id', 'city_name'));
+	<div class = "row-right">
+	<?php echo $form->labelEx($info,'visa_exp_date'); ?>
+	<?php if($info->visa_exp_date != '' && $info->visa_exp_date != 0000-00-00)
+		$info->visa_exp_date= date('d-m-Y',strtotime($info->visa_exp_date));
 		else
-		echo $form->dropDownList($address,'student_address_c_city',array(), array('empty' => '-----------Select---------')); ?><span class="status">&nbsp;</span>
-	<?php echo $form->error($address,'student_address_c_city'); ?>
-	</div>
+		$info->visa_exp_date='';
+		$this->widget('zii.widgets.jui.CJuiDatePicker', array(
+	    	'model'=>$info,
+		'attribute'=>'visa_exp_date',
+	    	'options'=>array(
+		'dateFormat'=>'dd-mm-yy',
+		'changeYear'=>'true',
+		'changeMonth'=>'true',
+		'showAnim' =>'slide',
+		'yearRange'=> '1910:2020',
+		
+	    	),
+		'htmlOptions'=>array(
+		'style'=>'width:165px;vertical-align:top',
+		
+		'size'=>13,
+	    	),
+		));
 
-	<div class="row-right">
-	<?php echo $form->labelEx($address,'student_address_c_pin'); ?>
-	<?php echo $form->textField($address,'student_address_c_pin',array('size'=>11,'maxlength'=>6)); ?><span class="status">&nbsp;</span>
-	<?php echo $form->error($address,'student_address_c_pin'); ?>
-	</div>
+	?><span class="status">&nbsp;</span>
+	<?php echo $form->error($info,'visa_exp_date'); ?>
+</div>
+</div>
+<div class="row">
+<table>
+<tr>
+<td>	<div >
+	<?php
+	$data=LanguagesKnown::model()->findAll(array('condition'=>'languages_known_id='.$model->student_transaction_languages_known_id));
 
+	foreach($data as $d=>$row)
+	{
+		 $langss=$row['languages_known1'];
+	}
+
+	$langArr = array();
+	$as=explode(',',$langss);
+
+	foreach($as as $ai)
+	{
+	  $langArr[$ai] =  array('selected'=>true);
+	}
+
+    echo $form->labelEx($lang,'Languages Known'); 
+	echo "</td><td>";
+    echo $form->dropDownList(
+    $lang,
+    'languages_known1[]',
+    CHtml::listData(Languages::model()->findAll(), 'languages_name', 'languages_name'),
+    array(
+                'class'=>'chosen-select input-xxlarge',
+		'multiple'=>'multiple',
+                'maxlength'=>200,
+                'options' => $langArr,
+		
+    )
+);
+	echo "</td></tr></table>";							
+?>
+	<?php echo $form->error($lang,'languages_known1'); ?><span class="status">&nbsp;</span> 
+</div>
 
 </div>
+
 
 	<div class="row buttons last">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Add' : 'Save',array('class'=>'submit')); 
-		?>
-		<?php echo CHtml::link('Cancel', array('admin'), array('class'=>'btnCan')); ?>
-	</div>
+		<?php
+		if(Yii::app()->user->checkAccess('StudentTransaction.UpdateStudentData')  && (Yii::app()->user->getState('stud_id') == $_REQUEST['id']) || Yii::app()->user->checkAccess('StudentTransaction.UpdateAllStudentData'))
+		 echo CHtml::submitButton('Save', array('class'=>'submit')); ?>
+	
+		<?php echo CHtml::link('Cancel', array('update','id'=>$_REQUEST['id']), array('class'=>'btnCan')); ?>
+   	</div>
 <?php  $this->endWidget(); ?>
+</div>
+</div>
+</div>

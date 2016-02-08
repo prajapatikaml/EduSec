@@ -58,7 +58,7 @@ class Mailbox extends CActiveRecord
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('conversation_id, initiator_id, interlocutor_id, subject, bm_read, bm_deleted, modified, is_system', 'safe', 'on'=>'search'),
-			array('to','length','max'=>30),
+			array('to','length','max'=>100),
 		);
 	}
 
@@ -233,8 +233,7 @@ class Mailbox extends CActiveRecord
 		$sql->bindValue(':userid',$userid,PDO::PARAM_STR);
 		$sql->bindValue(':bminit',self::INITIATOR_FLAG,PDO::PARAM_STR);
 		$sql->bindValue(':bminter',self::INTERLOCUTOR_FLAG,PDO::PARAM_STR);
-		
-		
+				
 		$convs = $sql->queryAll();
 		$count=0;
 		foreach($convs as &$conv) {

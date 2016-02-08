@@ -1,0 +1,11 @@
+#calendar th, #calendar td{
+    text-align: center;
+}
+
+#calendar .weekdays-row th {
+    background-color: #fff;
+}
+
+#calendar .calendar-selected-day {
+    font-weight: bold;
+}

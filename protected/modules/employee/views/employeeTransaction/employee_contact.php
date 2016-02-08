@@ -3,19 +3,14 @@ $this->breadcrumbs=array(
 	'Employee'=>array('admin'),
 	'Contact',
 );
-
-$this->menu=array(
-	//array('label'=>'', 'url'=>array('create'),'linkOptions'=>array('class'=>'Create','title'=>'Add')),
-	//array('label'=>'', 'url'=>array('Importationinstruction'),'linkOptions'=>array('class'=>'remaining_employee','title'=>'Importation Instruction')),
-	//array('label'=>'', 'url'=>array('ExportToPDFExcel/EmployeeExportToPdf'),'linkOptions'=>array('class'=>'export-pdf','title'=>'Export To PDF','target'=>'_blank')),
-	//array('label'=>'', 'url'=>array('ExportToPDFExcel/EmployeeExportToExcel'),'linkOptions'=>array('class'=>'export-excel','title'=>'Export To Excel','target'=>'_blank')),
-);
-
 ?>
 
-<h1>Employees Contact</h1>
-
-
+<div class="portlet box blue">
+<div class="portlet-title"><i class="fa fa-plus"></i><span class="box-title">Employee Contact</span>
+</div>
+<div class="operation">
+<?php echo CHtml::link('<i class="fa fa-file-excel-o"></i>Excel', array('ExportToPDFExcel/employeecontactexcel', 'model'=>get_class($model)), array('class'=>'btnblue'));?>
+</div>
 <?php
 $dataProvider = $model->search();
 if(Yii::app()->user->getState("pageSize",@$_GET["pageSize"]))
@@ -46,10 +41,6 @@ $dataProvider->getPagination()->setPageSize($pageSize);
 		      'header' => 'Name',
 		      'name' => 'employee_first_name',
 	              'value' => '$data->Rel_Emp_Info->employee_first_name',
-		      //'type'=>'html',
-    			/*'value'=>function($data){
-        			return CHtml::tag('div', array('title'=>'Hover text'), 'Cell content');
-    				},*/
                      ),
 
 		 array(
@@ -62,7 +53,7 @@ $dataProvider->getPagination()->setPageSize($pageSize);
 			'header' => 'Designation',
 			'name'=>'employee_transaction_designation_id',
 			'value'=>'EmployeeDesignation::model()->findByPk($data->employee_transaction_designation_id)->employee_designation_name',
-		'filter' =>CHtml::listData(EmployeeDesignation::model()->findAll(array('condition'=>'employee_designation_organization_id='.Yii::app()->user->getState('org_id'))),
+		'filter' =>CHtml::listData(EmployeeDesignation::model()->findAll(),
 	'employee_designation_id','employee_designation_name'),
 
 		),
@@ -70,7 +61,7 @@ $dataProvider->getPagination()->setPageSize($pageSize);
 			'header' => 'Department',		
 			'name'=>'employee_transaction_department_id',
 			'value'=>'Department::model()->findByPk($data->employee_transaction_department_id)->department_name',
-				'filter' =>CHtml::listData(Department::model()->findAll(array('condition'=>'	department_organization_id='.Yii::app()->user->getState('org_id'))),'department_id','department_name'),
+				'filter' =>CHtml::listData(Department::model()->findAll(),'department_id','department_name'),
 
 		), 
 		array(
@@ -85,13 +76,15 @@ $dataProvider->getPagination()->setPageSize($pageSize);
 			'value'=>'$data->Rel_Emp_Info->employee_private_mobile',
 			'filter'=>false,
 		),
-		
+		array(
+			'class'=>'MyCButtonColumn',
+		),
 	),
 
 	'pager'=>array(
 			'class'=>'AjaxList',
-			//'maxButtonCount'=>25,
 			'maxButtonCount'=>$model->count(),
 			'header'=>''
 		   ),
 )); ?>
+</div>

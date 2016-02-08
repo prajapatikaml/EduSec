@@ -8,7 +8,7 @@
 	</div>
 	
 	<div class="row buttons">
-		<?php echo CHtml::submitButton(Rights::t('core', 'Add')); ?>
+		<?php echo CHtml::submitButton(Rights::t('core', 'Add'),array('class'=>'submit')); ?>
 	</div>
 
 <?php $this->endWidget(); ?>

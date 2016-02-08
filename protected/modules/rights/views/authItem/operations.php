@@ -2,10 +2,15 @@
 	'Rights'=>Rights::getBaseUrl(),
 	Rights::t('core', 'Operations'),
 ); ?>
+<div id="rights-menu">
+
+	<?php $this->renderPartial('/_menu'); ?>
+
+</div>
 
 <div id="operations">
 
-	<h2><?php echo Rights::t('core', 'Operations'); ?></h2>
+	<h2 style="color:#427FED;border-bottom:2px solid #ff503f;padding: 10px 1%;width: 98%;"><?php echo Rights::t('core', 'Operations'); ?></h2>
 
 	<p>
 		<?php echo Rights::t('core', 'An operation is a permission to perform a single operation, for example accessing a certain controller action.'); ?><br />

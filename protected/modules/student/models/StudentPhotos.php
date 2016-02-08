@@ -1,15 +1,13 @@
 <?php
 
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
-
 /**
  * This is the model class for table "student_photos".
- * @package EduSec.models
+ *
+ * The followings are the available columns in table 'student_photos':
+ * @property integer $student_photos_id
+ * @property string $student_photos_desc
+ * @property string $student_photos_path
  */
-
 class StudentPhotos extends CActiveRecord
 {
 	/**
@@ -35,12 +33,17 @@ class StudentPhotos extends CActiveRecord
 	 */
 	public function rules()
 	{
+		// NOTE: you should only define rules for those attributes that
+		// will receive user inputs.
 		return array(
+			//array('student_photos_path', 'required', 'on'=>'update'),
+			//array('student_photos_path', 'length', 'max'=>50),			
 			array('student_photos_path', 'file','maxSize'=>1024*1024*2, 'tooLarge'=>'The Photo was larger than 2MB. Please upload a smaller photo.','types'=>'jpg, jpeg, gif, png, JPG', 'allowEmpty'=>true),
+			//array('student_photos_path', 'checkfile'),
 			array('student_photos_id, student_photos_desc, student_photos_path', 'safe', 'on'=>'search'),
 		);
 	}
-
+//'wrongType'=>'Invalid Images File. Use jpg, jpeg, gif, png, JPG type only.'
 	/**
 	 * @return array relational rules.
 	 */
@@ -83,4 +86,20 @@ class StudentPhotos extends CActiveRecord
 			'criteria'=>$criteria,
 		));
 	}
+
+	/*public function checkfile()
+	{
+		$ext = substr(strrchr($this->student_photos_path,'.'),1);
+		if($ext=="jpg")
+			{
+			    
+			    return true;
+				  				
+			}
+			else
+			{
+				$this->addError('student_photos_path',"File is not valid.");	
+				return false;					
+			}
+	}*/
 }

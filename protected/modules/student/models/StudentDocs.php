@@ -1,14 +1,15 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
 /**
  * This is the model class for table "student_docs".
- * @package EduSec.models
+ *
+ * The followings are the available columns in table 'student_docs':
+ * @property integer $student_docs_id
+ * @property string $doc_category_id
+ * @property string $title
+ * @property string $student_docs_desc
+ * @property string $student_docs_path
  */
-
 class StudentDocs extends CActiveRecord
 {
 	/**
@@ -42,7 +43,9 @@ class StudentDocs extends CActiveRecord
 
 			array('student_docs_path', 'file', 'types'=>'jpeg, jpg, pdf, txt, doc,docx, gif, png', 'maxSize'=>1024*1024*2, 'tooLarge'=>'The document was larger than 2MB. Please upload a smaller document.',),
 			
-			array('title','CRegularExpressionValidator','pattern'=>'/^[a-zA-Z& ]+([-]*[a-zA-Z0-9 ]+)*$/','message'=>''),			
+			//array('title','CRegularExpressionValidator','pattern'=>'/^[a-zA-Z& ]+([-]*[a-zA-Z0-9 ]+)*$/','message'=>''),			
+			// The following rule is used by search().
+			// Please remove those attributes that should not be searched.
 			array('student_docs_id, student_docs_desc, student_docs_path, doc_category_id,student_docs_submit_date, title', 'safe', 'on'=>'search'),
 		);
 	}
@@ -52,6 +55,8 @@ class StudentDocs extends CActiveRecord
 	 */
 	public function relations()
 	{
+		// NOTE: you may need to adjust the relation name and the related
+		// class name for the relations automatically generated below.
 		return array(
 		);
 	}
@@ -77,6 +82,8 @@ class StudentDocs extends CActiveRecord
 	 */
 	public function search()
 	{
+		// Warning: Please modify the following code to remove attributes that
+		// should not be searched.
 
 		$criteria=new CDbCriteria;
 

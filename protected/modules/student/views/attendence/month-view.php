@@ -20,7 +20,16 @@ $stud_info = StudentInfo::model()->findByAttributes(array('student_info_transact
 ?>
 <br />
 
-<table  border="2px" id="twoColThinTable">
+<div class="portlet box yellow" style="width:100%;margin-top:20px;">
+    <i class="icon-reorder"></i>
+    <div class="portlet-title"><span class="box-title">Monthwise Student Attendance Report</span>
+    	<div class="operation">
+	  <?php echo CHtml::link('Back', array('documentsearch'), array('class'=>'btnback'));?>	
+	  
+	</div>
+    </div>
+	<div class="portlet-body" >
+	<table class="report-table" border="2" >
 <tr class="row">
 	<td class="col1">Name </td>
 	<td class="col2"><?php echo $stud_info['student_first_name']." ".$stud_info['student_middle_name']." ".$stud_info['student_last_name'];?></td>
@@ -47,7 +56,7 @@ $stud_info = StudentInfo::model()->findByAttributes(array('student_info_transact
 <p class="hint">
 	Notice: P=Present, A=Absent, Display multiple attendence records for same block if attendence is taken for more than one time in a same day for same subject.
 </p>
-<table class="table_data">
+<table class="report-table" border="2" >
 <th colspan="<?php echo $num+1; ?>" style="font-size: 18px; color: rgb(255, 255, 255);">
 		Monthwise Report<br/>
 <tr class="table_header">
@@ -69,7 +78,7 @@ $stud_info = StudentInfo::model()->findByAttributes(array('student_info_transact
 	$date = $i.'-'.$month_value.'-'.date('Y');
 	$attend_date = date("Y-m-d", strtotime($date));
 	$result1 = Attendence::model()->findAll(array('condition'=>'month(attendence_date)='.$month_value.' AND st_id='.$student_id.' AND sub_id='.$subject_id.' AND day(attendence_date)='.$i.' AND year(attendence_date)='.$year));
-	//echo $i."</br>".count($result1)."</br>";
+	
 	if(count($result1) !=0)		
 	{	
 		print "<td>";

@@ -4,10 +4,13 @@
 ); ?>
 
 <div id="assignments">
+	<h2 style="color:#427FED;border-bottom:2px solid #ff503f;padding: 10px 1%;width: 98%;"><?php echo Rights::t('core', 'Assignments'); ?></h2>
+	<div id="rights-menu">
 
-	<h2><?php echo Rights::t('core', 'Assignments'); ?></h2>
+		<?php $this->renderPartial('/_menu'); ?>
 
-	<p>
+	</div>
+	<p style="color:#27917B;font-weight:600">
 		<?php echo Rights::t('core', 'Here you can view which permissions has been assigned to each user.'); ?>
 	</p>
 

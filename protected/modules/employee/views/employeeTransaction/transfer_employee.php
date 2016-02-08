@@ -12,6 +12,18 @@ legend {
     font-size:14px;
     font-weight:bold;
 }
+.transfer-details{
+   background:#FAF0E6;
+   color:#8B1A1A;
+   height: 100px;
+   margin-bottom: 15px;
+   padding:10px;
+   width: 400px;
+   border:2px solid #E0EEE0;
+}
+.transfer-details li{
+   color:#228B22;
+}
 </style>
 <div class="form">
 
@@ -24,6 +36,18 @@ legend {
 ?><p class="note">Fields with <span class="required">*</span> are required.</p>
 <fieldset>
 	<legend>Transfer Employee</legend>
+	
+	<div class="transfer-details">
+		After transfer of employee following things need to keep in mind for employee!
+		<ul>
+			<li> Design New Salary Structure... </li>
+			<li> Design New Leave Structure... </li>
+			<li> Design New Timetable... </li>
+			<li> Design New Permission role and access... </li>
+		</ul>	
+	</div>
+
+
 	
 <div class="row">
 		<?php echo $form->labelEx($info,'employee_first_name'); ?>
@@ -62,12 +86,7 @@ legend {
 					))); ?><span class="status">&nbsp;</span>
 	      <?php echo $form->error($model,'employee_transaction_organization_id'); ?>
 	</div>
-	<div class="row-right">
-		   <?php echo $form->labelEx($info,'employee_private_email'); ?>
-		   <?php echo $form->textField($user,'user_organization_email_id',array('size'=>13)); ?><span class="status">&nbsp;</span>
-		   <?php echo $form->error($user,'user_organization_email_id'); ?>
-	</div>
-</div>
+	
 <div class="row">
 	<div class="row-left">
 	      <?php echo $form->labelEx($model,'employee_transaction_designation_id'); ?>
@@ -90,6 +109,13 @@ legend {
 	      <?php echo $form->labelEx($model,'employee_transaction_shift_id'); ?>
 	      <?php echo $form->dropDownList($model,'employee_transaction_shift_id',array(), array('empty' => 'Select Shift')); ?><span class="status">&nbsp;</span>
 	      <?php echo $form->error($model,'employee_transaction_shift_id'); ?>
+	</div>
+</div>
+<div class="row">
+	<div class="row-left">
+	      <?php echo $form->labelEx($model,'transfer_left_remarks'); ?>
+	      <?php echo $form->textArea($model,'transfer_left_remarks',array('cols'=>21,'rows'=>5)); ?><span class="status">&nbsp;</span>
+	      <?php echo $form->error($model,'transfer_left_remarks'); ?>
 	</div>
 </div>
 

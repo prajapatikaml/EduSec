@@ -4,21 +4,18 @@ $this->breadcrumbs=array(
 	$model->academic_term_name,
 );
 ?>
-
-<h1>View Semester <?php //echo $model->academic_term_id; ?></h1>
-
+<div class="portlet box blue view">
+ <div class="portlet-title"><i class="fa fa-plus"></i><span class="box-title">View Semester</span>
+</div>
 <div class="operation">
-<?php echo CHtml::link('Back', array('admin'), array('class'=>'btnback'));?>
-<?php echo CHtml::link('Edit', array('update' ,'id'=>$model->academic_term_id), array('class'=>'btnupdate'));?>
-<?php echo CHtml::link('Delete', array('delete' ,'id'=>$model->academic_term_id), array('class'=>'btndelete','onclick'=>"return confirm('Are you sure want to delete?');"));?>
+<?php echo CHtml::link('<i class="fa fa-chevron-left"></i>Back', array('admin'), array('class'=>'btnyellow'));?>
+<?php echo CHtml::link('<i class="fa fa-pencil-square-o"></i>Edit', array('update' ,'id'=>$model->academic_term_id, 'page'=>Yii::app()->request->getParam('page')), array('class'=>'btn green'));?>
+<?php echo CHtml::link('<i class="fa fa-minus-circle"></i>Delete', array('delete' ,'id'=>$model->academic_term_id), array('class'=>'btnblue','onclick'=>"return confirm('Are you sure want to delete?');"));?>
 </div>
 
-<div class="portlet box blue">
-<i class="icon-reorder"></i>
- <div class="portlet-title">View Details
- </div>
-
-<?php $this->widget('application.extensions.DetailView4Col', array(
+<div class="detail-content">
+ <div class="detail-bg">
+<?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
 		//'academic_term_id',
@@ -26,12 +23,17 @@ $this->breadcrumbs=array(
 		array(
                 'name'=>'academic_term_start_date',
                 'type'=>'raw',		
-                'value'=>($model->academic_term_start_date == 0000-00-00) ? 'Not Set' : date_format(new DateTime($model->academic_term_start_date), 'd-m-Y'),
+                'value'=>$model->academic_term_start_date,
 	        ),
 		array(
                 'name'=>'academic_term_end_date',
                 'type'=>'raw',		
-                'value'=>($model->academic_term_end_date == 0000-00-00) ? 'Not Set' : date_format(new DateTime($model->academic_term_end_date), 'd-m-Y'),
+                'value'=>$model->academic_term_end_date,
+	        ),
+		array(
+                'name'=>'course_id',
+                'type'=>'raw',		
+                'value'=>($model->course_id==0) ? "Not Set" : $model->Rel_course->course_name,
 	        ),
 //		'academic_term_period_id',
 		array('name'=>'academic_term_period_id',
@@ -41,7 +43,10 @@ $this->breadcrumbs=array(
 			'name'=>'current_sem',
 			'value'=>($model->current_sem == 1) ?  "YES" : "NO",
 		),
+		
 	),
-	'htmlOptions'=> array('class'=>'custom-view'),
+	//'htmlOptions'=> array('class'=>'report-table'),
 )); ?>
+ </div>
+</div>
 </div>

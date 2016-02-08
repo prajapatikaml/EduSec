@@ -1,40 +1,7 @@
-<?php
-$this->breadcrumbs=array(
-	'Employee List'=>array('admin'),
-	'Academic Details',
-);?>
-<div class="portlet box blue">
-<i class="icon-reorder"></i>
- <div class="portlet-title">Academic Records
- </div>
-
-<div class="profile-tab profile-edit ui-tabs ui-widget ui-widget-content ui-corner-all ui-tabs-collapsible">
-
-<ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header ui-corner-all">
-<li class="ui-state-default ui-corner-top">
-  <?php echo CHtml::link('Personal Profile', array('updateTab1', 'id'=>$_REQUEST['id'])); ?></li>
-<li class="ui-state-default ui-corner-top">
-  <?php echo CHtml::link('Gaurdian Info', array('updateprofiletab2', 'id'=>$_REQUEST['id'])); ?></li>
-<li class="ui-state-default ui-corner-top">
-   <?php echo CHtml::link('Address Info', array('updateprofiletab3', 'id'=>$_REQUEST['id'])); ?></li>
-<li class="ui-state-default ui-corner-top ui-tabs-selected ui-state-active">
-   <?php echo CHtml::link('Academic Record', array('EmployeeAcademicRecords', 'id'=>$_REQUEST['id'])); ?></li>
-<li class="ui-state-default ui-corner-top">
-   <?php echo CHtml::link('Document', array('Employeedocs', 'id'=>$_REQUEST['id'])); ?></li>
-</ul>
-
-</ul>
-
-<div class="ui-tabs-panel form">
-
-<?php  if(Yii::app()->user->checkAccess('EmployeeTransaction.UpdateEmployeeData')  && (Yii::app()->user->getState('emp_id') == $_REQUEST['id']) || Yii::app()->user->checkAccess('EmployeeTransaction.UpdateAllEmployeeData')) { 
-
-echo CHtml::link('Add New+',array('/employee/employeeAcademicRecordTrans/create','id'=>$_REQUEST['id']),array('class'=>'btn green','style'=>'text-decoration:none;'));
-}
-?>
+<div class="form">
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'employee-academic-record-trans-grid',
-	'dataProvider'=>$emp_record->mysearch(),
+	'dataProvider'=>$employeerecords->mysearch(),
 	//'filter'=>$model,
 	'enableSorting'=>false,
 	'columns'=>array(
@@ -44,39 +11,54 @@ echo CHtml::link('Add New+',array('/employee/employeeAcademicRecordTrans/create'
 		),
 		
 		array('name' => 'employee_academic_record_trans_qualification_id',
-	              'value' => '$data->Rel_employee_qualification->qualification_name',
+	              'value' => '(!empty($data->Rel_employee_qualification->qualification_name) ? $data->Rel_employee_qualification->qualification_name : "Not Set")',
                      ),
 		array('name' => 'employee_academic_record_trans_eduboard_id',
-			'value' => '$data->Rel_employee_eduboard->eduboard_name',
+			'value' => '(!empty($data->Rel_employee_eduboard->eduboard_name) ? $data->Rel_employee_eduboard->eduboard_name : "Not Set")',
                      ),
 		array('name' => 'employee_academic_record_trans_year_id',
-			'value' => '$data->employee_academic_record_trans_year_id',
+			'value' => '(!empty($data->Rel_employee_year->year_name) ? $data->Rel_employee_year->year_name : "Not Set")',
                      ),
-		array('name' => 'theory_mark_obtained',
-			'value' => '$data->theory_mark_obtained',
+		 //'employee_academic_record_trans_year_id',
+                array('name' => 'theory_mark_obtained',
+			'value' => '(!empty($data->theory_mark_obtained) ? $data->theory_mark_obtained : "Not Set")',
                      ),
 		array('name' => 'theory_mark_max',
-			'value' => '$data->theory_mark_max',
+			'value' => '(!empty($data->theory_mark_max) ? $data->theory_mark_max : "Not Set")',
                      ),
 		array('name' => 'theory_percentage',
-			'value' => '$data->theory_percentage',
+			'value' => '(!empty($data->theory_percentage) ? $data->theory_percentage : "Not Set")',
                      ),
 		array('name' => 'practical_mark_obtained',
-			'value' => '$data->practical_mark_obtained',
+			'value' => '(!empty($data->practical_mark_obtained) ? $data->practical_mark_obtained : "Not Set")',
                      ),
 		array('name' => 'practical_mark_max',
-			'value' => '$data->practical_mark_max',
+			'value' => '(!empty($data->practical_mark_max) ? $data->practical_mark_max : "Not Set")',
                      ),
 		array('name' => 'practical_percentage',
-			'value' => '$data->practical_percentage',
+			'value' => '(!empty($data->practical_percentage) ? $data->practical_percentage : "Not Set")',
                      ),
+		
+		array(
+			'class'=>'CButtonColumn',
+			'template' => '{update}{delete}',
+	                'buttons'=>array(
+			'update' => array(
+				'url'=>'Yii::app()->createUrl("employee/employeeAcademicRecordTrans/update", array("id"=>$data->employee_academic_record_trans_id))',
+				'options'=>array('id'=>'update-qualification'),
+                        ),
+			'delete' => array(
+				'url'=>'Yii::app()->createUrl("employee/employeeAcademicRecordTrans/delete", array("id"=>$data->employee_academic_record_trans_id))',
+                        ),
+			),
+		),
 	),
 	'pager'=>array(
 		'class'=>'AjaxList',
-		'maxButtonCount'=>$emp_record->count(),
+	//	'maxButtonCount'=>25,
+		'maxButtonCount'=>$employeerecords->count(),
 		'header'=>''
 	    ),
 ));
 ?>
-</div>
 </div>

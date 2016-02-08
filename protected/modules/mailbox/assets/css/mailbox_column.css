@@ -46,4 +46,10 @@
 	clear:both;
 	float:none !important;
 }
-
+.mailbox-menu-newmsg{
+	clear:left;
+	padding-top: 20px !important;
+	padding-bottom: 20px !important;
+	margin-top: 4px;
+	float:none !important;
+}

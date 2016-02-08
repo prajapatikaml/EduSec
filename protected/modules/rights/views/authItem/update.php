@@ -93,7 +93,7 @@
 
 			<div class="addChild">
 
-				<h5><?php echo Rights::t('core', 'Add Child'); ?></h5>
+				<h4><?php echo Rights::t('core', 'Add Child'); ?></h4>
 
 				<?php if( $childFormModel!==null ): ?>
 

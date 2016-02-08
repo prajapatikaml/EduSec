@@ -3,35 +3,15 @@ $this->breadcrumbs=array(
 	'Academic Year'=>array('admin'),
 	'Manage',
 );
-
-
-Yii::app()->clientScript->registerScript('search', "
-$('.search-button').click(function(){
-	$('.search-form').toggle();
-	return false;
-});
-$('.search-form form').submit(function(){
-	$.fn.yiiGridView.update('academic-term-period-grid', {
-		data: $(this).serialize()
-	});
-	return false;
-});
-");
 ?>
-
-<h1>Manage Academic Year</h1>
-
-<div class="operation">
-<?php echo CHtml::link('PDF', array('exportToPDFExcel/academicTermPeriodExportToPdf'), array('class'=>'btnyellow', 'target'=>'_blank'));?>
-<?php echo CHtml::link('Excel', array('exportToPDFExcel/academicTermPeriodExportToExcel'), array('class'=>'btnblue'));?>
-</div>
-
 <div class="portlet box blue">
-
- <div class="portlet-title"> Academic Year
- </div>
-
-<?php echo CHtml::link('Add New +', array('academicTermPeriod/create'), array('class'=>'btn green'))?>
+<div class="portlet-title"><i class="fa fa-plus"></i><span class="box-title">Manage Academic Year</span>
+</div>
+<div class="operation">
+<?php echo CHtml::link('<i class="fa fa-plus-square"></i>Add', array('academicTermPeriod/create'), array('class'=>'btn green'))?>
+<?php echo CHtml::link('<i class="fa fa-file-pdf-o"></i>PDF', array('site/export.exportPDF', 'model'=>get_class($model)), array('class'=>'btnyellow', 'target'=>'_blank'));?>
+<?php echo CHtml::link('<i class="fa fa-file-excel-o"></i>Excel', array('site/export.exportExcel', 'model'=>get_class($model)), array('class'=>'btnblue'));?>
+</div>
 
 <?php
 $dataProvider = $model->search();
@@ -47,24 +27,23 @@ $dataProvider->getPagination()->setPageSize($pageSize);
 	'dataProvider'=>$dataProvider,
 	'filter'=>$model,
 	'selectionChanged'=>"function(id){
-		window.location='" . Yii::app()->urlManager->createUrl('academicTermPeriod/view', array('id'=>'')) . "' + $.fn.yiiGridView.getSelection(id);
+	window.location='" . Yii::app()->urlManager->createUrl('academicTermPeriod/view', array('id'=>'')) . "' + $.fn.yiiGridView.getSelection(id);
 	}",
-
 	'columns'=>array(
 		array(
 		'header'=>'SI No',
 		'class'=>'IndexColumn',
 		),
-
 		'academic_term_period',
-
+	   array(
+		'class'=>'MyCButtonColumn',
+	   ),
 	),
+
 	'pager'=>array(
 		'class'=>'AjaxList',
-		//'maxButtonCount'=>25,
 		'maxButtonCount'=>$model->count(),
 		'header'=>''
 	    ),
 )); ?>
-
 </div>

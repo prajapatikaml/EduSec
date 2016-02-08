@@ -2,7 +2,7 @@
 $this->breadcrumbs=array(
 	'Semester'=>array('index'),
 	//$model->academic_term_name=>array('view','id'=>$model->academic_term_id),
-	$model->academic_term_name=>array(),
+	$model->academic_term_name,
 	'Edit',
 );
 

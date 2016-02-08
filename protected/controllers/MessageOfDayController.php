@@ -1,10 +1,6 @@
 <?php
-/*****************************************************************************************
- * EduSec is a college management program developed by
- * Rudra Softech, Inc. Copyright (C) 2013-2014.
- ****************************************************************************************/
 
-class MessageOfDayController extends RController
+class MessageOfDayController extends EduSecCustom
 {
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
@@ -32,7 +28,6 @@ class MessageOfDayController extends RController
 			'model'=>$this->loadModel($id),
 		));
 	}
-
 	public function actions()
 	{
 		return array(
@@ -41,26 +36,17 @@ class MessageOfDayController extends RController
 		);
     	}
 
-	/* Print only message */
-	public function actionprint_message($id)
-	{
-		$this->layout='receipt_layout';
-		$model=MessageOfDay::model()->findByPk($id);
-		$message = $model->message;
-		
-		$this->render('print_message',array(
-			'message'=>$message,
-		));
-	}
-
+	
 	/**
 	 * Creates a new model.
-	 * If creation is successful, the browser will be redirected to the 'admin' page.
+	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
 	public function actionCreate()
 	{
 		$model=new MessageOfDay;
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['MessageOfDay']))
 		{
@@ -74,6 +60,7 @@ class MessageOfDayController extends RController
 			}
 
 			if($model->save())
+				//$this->redirect(array('view','id'=>$model->id));
 				$this->redirect(array('admin'));
 		}
 
@@ -90,7 +77,9 @@ class MessageOfDayController extends RController
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-		$this->performAjaxValidation($model);
+
+		// Uncomment the following line if AJAX validation is needed
+		 $this->performAjaxValidation($model);
 
 		if(isset($_POST['MessageOfDay']))
 		{
@@ -116,32 +105,13 @@ class MessageOfDayController extends RController
 	 */
 	public function actionDelete($id)
 	{
-		if(Yii::app()->request->isPostRequest)
-		{
-			$this->loadModel($id)->delete();
+		$this->loadModel($id)->delete();
 
-			if(!isset($_GET['ajax']))
-				$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
-		}
-		else
-			throw new CHttpException(400,'Invalid request. Please do not repeat this request again.');
+		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
+		if(!isset($_GET['ajax']))
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
 	}
-
-	/**
-	 * Lists all models.
-	 */
-	public function actionIndex()
-	{
-		$model=new MessageOfDay('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['MessageOfDay']))
-			$model->attributes=$_GET['MessageOfDay'];
-
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-	}
-
+	
 	/**
 	 * Manages all models.
 	 */

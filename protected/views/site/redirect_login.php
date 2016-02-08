@@ -1,13 +1,9 @@
-<br />
-<h2>Institute details are successfully saved. We have sent you login credential on your organization email.</h2>
+<div class="header">
+	<h1 class="title">Installation Completed</h1>
+</div>
 
-<p> For login : <?php echo CHtml::link('Click here..',Yii::app()->createUrl('site/login'));?>  </p>
+<div class="install-instruct">
+<h1 style="color: rgb(0, 0, 0); font-weight: normal; font-size: 20px;"> Organization and first user successfully created. </h1>
 
-
-<div style="color: green; font-size: 17px; font-weight: 700;">
-<?php //$userCount = User::model()->count();
-	$user = User::model()->findByPk(1);
-	echo 'Your UserName and Password is : '.$user->user_organization_email_id."\n";
-  //}
-?>
+<?php echo CHtml::link('Click here to login..',Yii::app()->createUrl('site/login'));?> 
 </div>

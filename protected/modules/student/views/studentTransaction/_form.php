@@ -1,4 +1,5 @@
 <?php
+$this->layout='//layouts/personal-profile';
 $this->breadcrumbs=array(
 	'Profile',
 );?>
@@ -31,28 +32,69 @@ $this->breadcrumbs=array(
 	</div> <?php //end of student logo div?>
 
 	</br>
-		<div id="divlink1" class="info-link">
-			<?php echo CHtml::link('Personal Info',array('studentTransaction/updateprofiletab1', 'id'=>$model->student_transaction_id),array('title'=>'Personal Info','style'=>'text-decoration:none;color:white;'));?>
-		</div>
-		<div id="divlink2" class="info-link">
-			<?php echo CHtml::link('Guardian Info',array('studentTransaction/updateprofiletab2', 'id'=>$model->student_transaction_id),array('title'=>'Guardian Info','style'=>'text-decoration:none;color:white;'));?>
-		</div>
-		<div id="divlink3" class="info-link">
-			<?php echo CHtml::link('Other Info',array('studentTransaction/updateprofiletab3', 'id'=>$model->student_transaction_id),array('title'=>'Other Info','style'=>'text-decoration:none;color:white;'));?>
-		</div>
-		<div id="divlink4" class="info-link">
-			<?php echo CHtml::link('Address Info',array('studentTransaction/updateprofiletab4', 'id'=>$model->student_transaction_id),array('title'=>'Address Info','style'=>'text-decoration:none;color:white;'));?>
-		</div>
-
-		<div id="divlink5" class="info-link">
-			<?php echo CHtml::link('Documents',array('studentTransaction/studentdocs', 'id'=>$model->student_transaction_id),array('title'=>'Documents','style'=>'text-decoration:none;color:white;'));?>
-		</div>
-		<div id="divlink7" class="info-link">
-			<?php echo CHtml::link('Course Details',array('/report/courseDetails', 'id'=>$model->student_transaction_id),array('title'=>'Current Semester Subjects List','style'=>'text-decoration:none;color:white;'));?>
-		</div>
+	<div id="divlink1" class="info-link">
+		<?php echo CHtml::link('Personal Info',array('studentTransaction/updateprofiletab1', 'id'=>$model->student_transaction_id),array('title'=>'Personal Info','style'=>'text-decoration:none;color:white;'));?>
+	</div>
+	<div id="divlink2" class="info-link">
+		<?php echo CHtml::link('Academic Details',array('studentTransaction/updateprofiletab5', 'id'=>$model->student_transaction_id),array('title'=>'Academic Details','style'=>'text-decoration:none;color:white;'));?>
+	</div>
+	<div id="divlink2" class="info-link">
+		<?php echo CHtml::link('Guardian Info',array('studentTransaction/updateprofiletab2', 'id'=>$model->student_transaction_id),array('title'=>'Guardian Info','style'=>'text-decoration:none;color:white;'));?>
+	</div>
+	<div id="divlink3" class="info-link">
+		<?php echo CHtml::link('Other Info',array('studentTransaction/updateprofiletab3', 'id'=>$model->student_transaction_id),array('title'=>'Other Info','style'=>'text-decoration:none;color:white;'));?>
+	</div>
+	<div id="divlink4" class="info-link">
+		<?php echo CHtml::link('Address Info',array('studentTransaction/updateprofiletab4', 'id'=>$model->student_transaction_id),array('title'=>'Address Info','style'=>'text-decoration:none;color:white;'));?>
+	</div>
+	<div id="divlink9" class="info-link">
+		<?php echo CHtml::link('Certificates',array('studentTransaction/studentcertificate', 'id'=>$model->student_transaction_id),array('title'=>'Certificates','style'=>'text-decoration:none;color:white;'));?>
+	</div>
+	<div id="divlink5" class="info-link">
+		<?php echo CHtml::link('Documents',array('studentTransaction/studentdocs', 'id'=>$model->student_transaction_id),array('title'=>'Documents','style'=>'text-decoration:none;color:white;'));?>
+	</div>
+	<div id="divlink6" class="info-link">
+		<?php echo CHtml::link('Qualifications',array('studentTransaction/studentacademicrecord', 'id'=>$model->student_transaction_id),array('title'=>'Qualifications','style'=>'text-decoration:none;color:white;'));?>
+	</div>
+	<div id="divlink7" class="info-link">
+		<?php echo CHtml::link('Performances',array('studentTransaction/studentperformance', 'id'=>$model->student_transaction_id),array('title'=>'Performances','style'=>'text-decoration:none;color:white;'));?>
+	</div>
+	<div id="divlink7" class="info-link">
+		<?php echo CHtml::link('Subjects',array('/report/mysubjects', 'id'=>$model->student_transaction_id),array('title'=>'Current Semester Subjects List','style'=>'text-decoration:none;color:white;'));?>
+	</div>
+	<div id="divlink7" class="info-link">
+		<?php echo CHtml::link('Holidays',array('/report/myholidays', 'id'=>$model->student_transaction_id),array('title'=>'Current Semester Holidays','style'=>'text-decoration:none;color:white;'));?>
+	</div>
+	<div id="divlink8" class="info-link">
+		<?php echo CHtml::link('TimeTable',array('/timetable/timeTable/StudentPersonalTimetable', 'student_id'=>$model->student_transaction_id),array('style'=>'text-decoration:none;color:white;'));?>
 	</div>
 
-</div>
+	<?php if(Yii::app()->user->getState('stud_id') || $_REQUEST['id'] ) { ?>	
+	<div id="divlink8" class="info-link">
+		<?php	echo CHtml::link('Paid Fees Details',array('/fees/feesPaymentTransaction/studentFeesReportwithoutform'),array('style'=>'text-decoration:none;color:white;'));?>
+	</div>
+	<?php }	?>
+
+	<?php 	if(Yii::app()->user->checkAccess('Student.Attendence.StudentAttendenceReport') ) { ?>	
+	<div id="divlink8" class="info-link">
+		<?php	echo CHtml::link('Attendance',array('attendence/studentAttendenceReport', 'id'=>$model->student_transaction_id),array('style'=>'text-decoration:none;color:white;'));?>	
+	</div>
+	<?php }	?>
+
+	<?php if(Yii::app()->user->checkAccess('Report.Studenthistory') ) { ?>	
+	<div id="divlink8" class="info-link">			
+		<?php	echo CHtml::link('History',array('/report/studenthistory', 'id'=>$model->student_transaction_id),array('style'=>'text-decoration:none;color:white;')); ?>	
+	</div>
+	<?php }	?>
+	<?php if(Yii::app()->user->checkAccess('Exam.BranchSubjectwiseScheduling.Studentexamtimetable') ) { ?>	
+	<div id="divlink8" class="info-link">			
+		<?php	echo CHtml::link('Exam Timetable',array('/exam/branchSubjectwiseScheduling/studentexamtimetable','id'=>$model->student_transaction_id),array('target'=>'_blank','style'=>'text-decoration:none;color:white;')); ?>	
+	</div>
+	<?php }	?>
+	
+	</div>
+
+</div><?php //end of menulink logo div?>
 	
 	
 <div class="form profile-wrapper">
@@ -69,7 +111,7 @@ else
 switch ($n)
 {
    case 'updateprofiletab1':
-       echo $this->renderPartial('updateproftab1', array('model'=>$model,'info'=>$info));
+       echo $this->renderPartial('updateproftab1', array('model'=>$model,'info'=>$info,'yearModel'=>$yearModel));
    break;
 
    case 'updateprofiletab2':
@@ -83,6 +125,10 @@ switch ($n)
    case 'updateprofiletab4':
        echo $this->renderPartial('updateproftab4', array('address'=>$address));
    break;
+  
+   case 'updateprofiletab5':
+       echo $this->renderPartial('updateproftab5', array('model'=>$model,'info'=>$info));
+   break;
 
    case 'studentcertificate':
        echo $this->renderPartial('/studentCertificateDetailsTable/studentcertificate', array('studentcertificate'=>$studentcertificate));
@@ -92,6 +138,13 @@ switch ($n)
        echo $this->renderPartial('/studentDocsTrans/studentdocstrans', array('studentdocstrans'=>$studentdocstrans));
    break;
 
+   case 'studentacademicrecord':
+       echo $this->renderPartial('/studentAcademicRecordTrans/studenntacademicrecord', array('stud_qua'=>$stud_qua));
+   break;
+
+   case 'studentperformance':
+       echo $this->renderPartial('/feedbackDetailsTable/studentperformance', array('stud_feed'=>$stud_feed));
+   break;
 
    default:
       echo $this->renderPartial('profile_form', array('model'=>$model,'info'=>$info,'photo'=>$photo,'address'=>$address,'lang'=>$lang,'parent'=>$parent));

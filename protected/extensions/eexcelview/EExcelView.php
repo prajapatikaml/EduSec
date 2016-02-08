@@ -202,7 +202,8 @@ Yii::import('zii.widgets.grid.CGridView');
 				}
 			      
 
-			      $date_value = date("Y-m-d", strtotime($value)); 
+			      $date_value = DateTime::createFromFormat("Y-m-d", $value);
+
 			      if ($date_value == true)  {
 
 				//date edited francis 
@@ -244,6 +245,15 @@ Yii::import('zii.widgets.grid.CGridView');
 					$value = 'Teaching';
 				else if($column->name == 'fees_payment_cheque_status' && $value == 1)
 					$value = 'Return Cheque';	
+				else if($column->name == 'valid_for' && $value == 1)
+					$value = '6 Months';	
+				else if($column->name == 'valid_for' && $value == 2)
+					$value = '12 Months';	
+				else if($column->name == 'email_sms_status' && $value == 1)
+					$value = 'Sms';	
+				else if($column->name == 'email_sms_status' && $value == 2)
+					$value = 'Email';	
+				
 				
 				// Write to the cell (and advance to the next)
 				self::$activeSheet->setCellValue( $this->columnName(++$i).($row+2) , $value);
