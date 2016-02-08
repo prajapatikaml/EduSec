@@ -1,7 +1,0 @@
-<?php
-class exportExcel extends CAction{
-    public function run(){
-        echo 'HELLO WORLD';
-    }
-}
-?>
