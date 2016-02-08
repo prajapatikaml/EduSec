@@ -1,0 +1,197 @@
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('fontAwesome/fontawesome-webfont.eot?v=3.2.1');
+  src: url('fontAwesome/fontawesome-webfont.eot?#iefix&v=3.2.1') format('embedded-opentype'), url('fontAwesome/fontawesome-webfont.woff?v=3.2.1') format('woff'), url('fontAwesome/fontawesome-webfont.ttf?v=3.2.1') format('truetype'), url('fontAwesome/fontawesome-webfont.svg#fontawesomeregular?v=3.2.1') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: 	url('Open_Sans/OpenSans-Light.ttf');
+}
+
+
+[class^="icon-"], [class*=" icon-"] {
+  position: relative;
+  font-style: normal;
+  margin-top: 8px;
+  font-family: FontAwesome;
+  color: #cccccc;
+  font-size: 16px;
+  font-weight: normal;
+  text-decoration: inherit;
+  left: 6px;
+  top: 25px;
+}
+
+.lw_right {
+  background-color: #FFFFFF;
+  min-height: 320px;
+  margin: 110px auto auto;
+  padding: 20px 30px 15px;
+  width: 291px;
+}
+
+body {
+  background: #444444 !important;
+  font-family: 'Open Sans',sans-serif;
+  color: #000;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+input[id="LoginForm_username"], input[type="password"], input[id="LoginForm_parent_username"], input[type="parent_password"] {
+  border: 1px solid #E5E5E5;
+  color: #333333;
+  float: left;
+  font-size: 12px;
+  outline: medium none;
+  padding: 8px 10px 8px 20px;
+  width: 230px;
+}
+
+#login-form table tr {
+  float: left;
+  height: 50px;
+}
+
+.lw_right td {
+  padding: 5px 0;
+}
+
+#login-form .input-icon {
+  border-left: 2px solid #35AA47 !important;
+  float: left;
+  width:  290px;
+}
+
+.captch-image {
+  margin-bottom: 10px;
+  position: relative;
+  margin-top : 10px;
+}
+
+#LoginForm_verifyCode {
+  float: left;
+  margin-right: 25px;
+}
+
+.captch-image a {
+  float: left;
+  width: 35px;
+  margin-left: 10px;
+}
+.captch-image img {
+  float: left;
+}
+
+.lw_right h1 {
+  font-weight: 300;
+  margin-top: 0;
+}
+
+.forgotPass-wrapper label,
+.lw_right label {
+    float: left;
+    font-weight: bold;
+    line-height: 30px;
+    width: 100px;
+}
+
+span.required {
+  color: red;
+}
+
+#login-button {
+  background-color: #35AA47;
+  border: medium none;
+  color: white;
+  float: right;
+  margin-left: 70px;
+  padding: 10px;
+  text-shadow: none;
+}
+
+.errorMessage {
+  color:red;
+  float:left;
+}
+
+.error .new-status {
+  background: url("../images/error.png") no-repeat scroll right center transparent !important;
+  float: left;
+  height: 20px;
+  padding-left: 5px;
+  padding-top: 5px;
+  width: 20px;
+}
+
+.success .new-status {
+  background:url("../images/success.png") no-repeat center right !important;
+  height: 20px;
+  width: 20px;
+  float:left;
+  padding-left: 5px;
+  padding-top: 5px;
+
+}
+
+.header-area, .footer-area {
+  background: none repeat scroll 0 0 #282828 !important;
+  border-bottom: 1px solid #777777;
+  float: left;
+  height: 60px;
+  width: 100%;
+}
+
+.container {
+  float: left;
+  height: 557px;
+  width: 100%;
+}
+
+.forgotPass-wrapper {
+  margin: 200px auto;
+  width: 30%;
+}
+
+.footer-area .powered-by {
+  float: right;
+  margin-right: 15px;
+}
+
+.footer-area .powered-text {
+  color: #999999;
+  float: left;
+  line-height: 55px;
+  margin-right: 20px;
+}
+
+.login-details {
+  bottom: 55%;
+  color: #FFFFFF;
+  left: 20px;
+  position: absolute;
+  width: 222px;
+}
+
+.login-details3.login-details {
+  top: 360px;
+}
+.login-details1.login-details {
+  top: 180px;
+}
+.login-details2.login-details {
+  top: 270px;
+}
+.login-details label {
+  float: left;
+  width: 100%;
+}
+img {
+  border: none;
+}

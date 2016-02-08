@@ -1,0 +1,25 @@
+
+
+
+
+
+.mailbox-list{
+	padding: 10px !important;
+}
+
+
+.mailbox-menu-folders{
+	padding:4px 6px 4px 4px !important;
+	margin-bottom: 4px !important;
+}
+
+.mailbox-message-subject{
+	padding:10px;
+}
+
+.mailbox-compose{
+	padding:10px !important;
+}
+.mailbox-summary{
+	font-size:1.4em;
+}

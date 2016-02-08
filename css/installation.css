@@ -1,0 +1,140 @@
+body {
+  color: #222222;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 75%;
+}
+
+div.container {
+  float: left;
+  width: 100%;
+}
+.content {
+  background: none repeat scroll 0 0 #EAEAEA;
+  border-radius: 6px 6px 6px 6px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  color: black;
+  margin: 25px auto;
+  min-height: 500px;
+  padding: 20px 40px 0;
+  position: relative;
+  width: 600px;
+}
+
+.header h1 {
+  color: #555555;
+  font-size: 17px;
+  font-weight: normal;
+}
+.header {
+  float: left;
+  width: 100%;
+}
+
+ul h1.title {
+  color: #555555;
+  font-size: 22px;
+  font-weight: normal;
+  text-align: center;
+}
+
+ul.error-list li {
+  color: red;
+  font-size: 14px;
+}
+
+.require-note {
+  float: left;
+  margin-top: 30px;
+  min-height: 300px;
+  width: 100%;
+  background: none repeat scroll 0 0 #F8F8F8;
+  border: 1px solid #DDDDDD;
+  border-radius: 4px 4px 4px 4px;
+  overflow: hidden;
+}
+.header .app-logo {
+  float: left;
+  margin-right: 15px;
+}
+.row label {
+  float: left;
+  font-size: 15px;
+  font-weight: normal;
+  width: 130px;
+}
+.row {
+  float: left;
+  height: 40px;
+  width: 100%;
+}
+.content #db-form-box {
+  float: left;
+  margin-top: 20px;
+}
+input[type="text"], input[type="password"], input[type="file"] {
+  border: 1px solid #DDDDDD;
+  border-radius: 0 0 0 0;
+  height: 30px;
+  float: left;
+}
+
+.btnblue {
+  background-color: #4D90FE;
+  color: #FFFFFF;
+  float: left;
+  line-height: 17px;
+  margin: 0 10px 10px;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  width: 70px;
+  border: 0px;	
+}
+
+
+.check-db-status {
+  color: red;
+  float: left;
+  margin-left: 40px;
+  margin-top: 15px;
+}
+.header span {
+  font-size: 15px;
+}
+
+.req-finish {
+  float: left;
+  font-size: 14px;
+  margin-top: 20px;
+  color: green;
+}
+.form .error .status {
+  background: url("../images/error.png") no-repeat scroll right center transparent !important;
+  float: left;
+  height: 20px;
+  padding-left: 5px;
+  padding-top: 5px;
+  width: 20px;
+}
+.form .success .status {
+  background:url("../images/success.png") no-repeat center right !important;
+  height: 20px;
+  width: 20px;
+  float:left;
+  padding-left: 5px;
+  padding-top: 5px;
+
+}
+span.required {
+  color: red;
+}
+img {
+  border: none;
+}
+.notes {
+  color: #555555;
+  float: left;
+  font-size: 15px;
+  font-weight: normal;
+  margin-top: 15px;
+}

@@ -1,0 +1,65 @@
+<?php
+$this->breadcrumbs=array(
+	'Employee Addresses'=>array('index'),
+	'Manage',
+);
+
+$this->menu=array(
+//	array('label'=>'', 'url'=>array('index')),
+	array('label'=>'', 'url'=>array('create'),'linkOptions'=>array('class'=>'Create','title'=>'Create')),
+);
+
+Yii::app()->clientScript->registerScript('search', "
+$('.search-button').click(function(){
+	$('.search-form').toggle();
+	return false;
+});
+$('.search-form form').submit(function(){
+	$.fn.yiiGridView.update('employee-address-grid', {
+		data: $(this).serialize()
+	});
+	return false;
+});
+");
+?>
+
+<h1>Manage Employee Addresses</h1>
+
+<!--<p>
+You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
+or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
+</p>-->
+
+<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
+<div class="search-form" style="display:none">
+<?php $this->renderPartial('_search',array(
+	'model'=>$model,
+)); ?>
+</div><!-- search-form -->
+
+<?php $this->widget('zii.widgets.grid.CGridView', array(
+	'id'=>'employee-address-grid',
+	'dataProvider'=>$model->search(),
+	'filter'=>$model,
+	'columns'=>array(
+		//'employee_address_id',
+		//'employee_address_c_line1',
+		//'employee_address_c_line2',
+		'employee_address_c_city',
+		//'employee_address_c_pincode',
+		'employee_address_c_state',
+		'employee_address_c_country',
+		//'employee_address_p_line1',
+		//'employee_address_p_line2',
+		'employee_address_p_city',
+		//'employee_address_p_pincode',
+		'employee_address_p_state',
+		'employee_address_p_country',
+		//'employee_address_phone',
+		//'employee_address_mobile',
+		*/
+		array(
+			'class'=>'MyCButtonColumn',
+		),
+	),
+)); ?>
