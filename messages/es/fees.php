@@ -143,7 +143,7 @@ return [
     'Update Fees Category Detail' => 'Actualizar Detalle de Categoría de Cuota',
     'Update Fees Category Detail: ' => 'Actualizar Detalle de Categoría de Cuota: ',
     'Update Fees Category: ' => 'Actualizar Categoría de Cuota',
-    'Update Fees Receipt : ' => 'Actualizar Recibo de Cuotas',
+    'Update Fees Receipt : ' => 'Actualizar Recibo de Cuotas : ',
     'Updated At' => 'Actualizado a las',
     'Updated By' => 'Actualizado por el',
     'View Bank' => 'Ver Banco',

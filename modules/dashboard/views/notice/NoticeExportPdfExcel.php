@@ -36,7 +36,7 @@ use yii\grid\GridView;
             [
 		'attribute'=>'is_status',
 		'value'=>function ($data) {
-				return ($data->is_status==1) ? "<b style=\"color:#449d44\">Active</b>" : "<b style=\"color:#c9302c\">Deactive</b>";
+				return ($data->is_status==0) ? "<b style=\"color:#449d44\">Active</b>" : "<b style=\"color:#c9302c\">Deactive</b>";
 			},
 		'format'=> 'html',
 	  ],

@@ -63,7 +63,7 @@ $(function () {
     </div>
     <div class="col-xs-3 col-sm-8" style="padding-top: 25px;">
 	<?php $stu_login_prefix = app\models\Organization::find()->one()->org_stu_prefix;?>
-	<button type="button" class="btn btn-danger" data-html=true data-toggle="popover" title="Student Login Note" data-trigger="focus" data-content="Unique Id is used as login username with <b><?= $stu_login_prefix ?> </b>prefix. </br> Example: If Unique id : 123 so, Username : <?= $stu_login_prefix ?>123"><i class="fa fa-info-circle"></i></button>
+	<button type="button" class="btn btn-danger" data-html=true data-toggle="popover" title="Student Login Note" data-trigger="focus" data-content="<?php echo Yii::t('stu', 'Unique Id is used as login username with'); ?> <b><?= $stu_login_prefix ?> </b><?php echo Yii::t('stu', 'prefix.'); ?> </br> <?php echo Yii::t('stu', 'Example: If Unique id : 123 so, Username :'); ?> <?= $stu_login_prefix ?>123"><i class="fa fa-info-circle"></i></button>
     </div>
    </div>
 

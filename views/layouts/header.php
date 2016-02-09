@@ -45,7 +45,7 @@ $notifyCount = ($countT + count($eventsList));
 	<?= Html::label(Yii::t('app', 'Select Language'), 'language') ?>
 	</div>
 	<div class="col-sm-6" style="padding-left:7px;">
-	<?= Html::dropDownList('language', Yii::$app->language, ['en' => Yii::t('app', 'English'), 'gu' => Yii::t('app', 'Gujarati (ગુજરાતી)'), 'hi' => Yii::t('app', 'Hindi (हिन्दी)'), 'fr' => Yii::t('app', 'French (français)'), 'es' => Yii::t('app', 'Spanish (Latin American)'),], ['class'=> 'form-control', 'onchange' => 'this.form.submit()', 'style' => 'padding: 5px;']) ?>
+	<?= Html::dropDownList('language', Yii::$app->language, ['en' => Yii::t('app', 'English'), 'gu' => Yii::t('app', 'Gujarati (ગુજરાતી)'), 'hi' => Yii::t('app', 'Hindi (हिन्दी)'), 'fr' => Yii::t('app', 'French (français)'), 'es' => Yii::t('app', 'Spanish (Latin American)'), 'ar' => Yii::t('app', 'Arabic (العربية)')], ['class'=> 'form-control', 'onchange' => 'this.form.submit()', 'style' => 'padding: 5px;']) ?>
 	</div>
 
 	<?= Html::endForm() ?>

@@ -18,8 +18,8 @@
  */
 return [
     'Emp Master Emp Info ID' => '',
-    'Employee Login Note' => 'Empleado Iniciar Sesión Nota',
     'Info Emp Master ID' => '',
+    'View Designation' => '',
     '--- Select Department ---' => '--- Seleccionar Departamento ---',
     '--- Select Designation ---' => '--- Seleccionar Designación ---',
     'A+' => 'A+',
@@ -102,6 +102,7 @@ return [
     'Employee Detail' => 'Detalle del Empleado',
     'Employee ID' => 'ID Empleado',
     'Employee Id' => 'ID Empleado',
+    'Employee Login Note' => 'Empleado Iniciar Sesión Nota',
     'Employee Module' => 'Módulo de Empleado',
     'Employee Name' => 'Nombre del Empleado',
     'Employee Profile' => 'Perfil del Empleado',

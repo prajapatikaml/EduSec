@@ -21,7 +21,7 @@ use yii\helpers\Html;
 	if(!empty($stuData)) {
 		echo '<table class="table table-striped">';
 		echo '<tr>';
-		echo '<th class="text-center">SI No.</th>';
+		echo '<th class="text-center">'.Yii::t('fees', 'SI No.').'</th>';
 		echo '<th>'.Yii::t('fees', 'Student No').'</th>';
 		echo '<th>'.Yii::t('fees', 'Student Name').'</th>';
 		echo '<th>'.Yii::t('fees', 'Total Collection').'</th>';

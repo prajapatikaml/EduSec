@@ -11,6 +11,12 @@ if(Yii::$app->language == 'fr') :
 	}');
 endif;
 
+if(Yii::$app->language == 'ar') :
+	$this->registerCss('input[type], textarea {
+    	direction: rtl;
+	}');
+endif;
+
 if (Yii::$app->controller->action->id === 'login') {
     echo $this->render(
         'login-layout',

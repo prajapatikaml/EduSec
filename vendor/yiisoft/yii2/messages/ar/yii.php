@@ -17,7 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Are you sure you want to delete this item?' => '',
+    'Are you sure you want to delete this item?' => 'هل أنت متأكد من أنك تريد حذف هذا البند؟',
     'The requested view "{name}" was not found.' => '',
     'in {delta, plural, =1{a day} other{# days}}' => '',
     'in {delta, plural, =1{a minute} other{# minutes}}' => '',

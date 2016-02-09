@@ -19,8 +19,8 @@
 return [
     'Emp Infos' => '',
     'Emp Master Emp Info ID' => '',
-    'Employee Login Note' => 'કર્મચારીની લૉગિન નોંધ',
     'Info Emp Master ID' => '',
+    'View Designation' => '',
     'APPROVED' => '@@માન્ય@@',
     'DISAPPROVED' => '@@અમાન્ય@@',
     '{title}' => '@@@@',
@@ -105,6 +105,7 @@ return [
     'Employee Detail' => 'કર્મચારીની વિગતો',
     'Employee ID' => 'કર્મચારી આઈડી',
     'Employee Id' => 'કર્મચારી આઈડી',
+    'Employee Login Note' => 'કર્મચારીની લૉગિન નોંધ',
     'Employee Module' => 'કર્મચારી મોડ્યુલ',
     'Employee Name' => 'કર્મચારીનું નામ',
     'Employee Profile' => 'કર્મચારી પ્રોફાઇલ',

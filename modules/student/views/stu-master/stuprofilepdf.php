@@ -123,7 +123,7 @@ foreach($stuGuard as $key => $guardData) : ?>
 <tr>
 	<td class="label"> <?php echo Yii::t('stu', 'Guardian'); ?> </td>
 	<td><?php echo ++$sr_no; ?></td>
-	<td class="label"> <?= $guardData->getAttributeLabel('is_emp_contact') ?> </td>
+	<td class="label"> <?= $guardData->getAttributeLabel('is_emg_contact') ?> </td>
 	<td><?php echo ( ($guardData->is_emg_contact == 1) ? Yii::t('stu','Yes') : Yii::t('stu', 'No') ); ?></td>
 </tr>
 <tr>
@@ -139,7 +139,7 @@ foreach($stuGuard as $key => $guardData) : ?>
 	<td><?php echo $guardData->guardian_occupation;?></td>
 </tr>
 <tr>
-	<td class="label"><?= $guardData->getAttributeLabel('guardian_incode') ?></td>
+	<td class="label"><?= $guardData->getAttributeLabel('guardian_income') ?></td>
 	<td><?php echo $guardData->guardian_income;?></td>
 </tr>
 <tr>

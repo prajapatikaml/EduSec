@@ -208,6 +208,7 @@ return [
     'View All Employees' => '',
     'View Category' => '',
     'View Department' => '',
+    'View Designation' => '',
     'View Status' => '',
     'Year' => '',
     'Year(s)' => '',

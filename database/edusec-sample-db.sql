@@ -3,9 +3,9 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 28, 2015 at 07:07 PM
--- Server version: 5.5.22
--- PHP Version: 5.5.19-1+deb.sury.org~precise+1
+-- Generation Time: Nov 16, 2015 at 12:24 PM
+-- Server version: 5.5.43
+-- PHP Version: 5.6.14-1+deb.sury.org~precise+1
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `edusecyii2_sample_db`
+-- Database: `edusec_test_comm`
 --
 
 -- --------------------------------------------------------
@@ -293,6 +293,13 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/gii/default/index', 2, '/gii/default/index', NULL, NULL, 1432554651, 1432554651),
 ('/gii/default/preview', 2, '/gii/default/preview', NULL, NULL, 1432554651, 1432554651),
 ('/gii/default/view', 2, '/gii/default/view', NULL, NULL, 1432554651, 1432554651),
+('/installation/*', 2, NULL, NULL, NULL, 1447656806, 1447656806),
+('/installation/db-config', 2, NULL, NULL, NULL, 1447656806, 1447656806),
+('/installation/db-import', 2, NULL, NULL, NULL, 1447656806, 1447656806),
+('/installation/index', 2, NULL, NULL, NULL, 1447656806, 1447656806),
+('/installation/institute-setup', 2, NULL, NULL, NULL, 1447656806, 1447656806),
+('/installation/setup-completed', 2, NULL, NULL, NULL, 1447656806, 1447656806),
+('/installation/user-setup', 2, NULL, NULL, NULL, 1447656806, 1447656806),
 ('/languages/*', 2, '/languages/*', NULL, NULL, 1432554654, 1432554654),
 ('/languages/create', 2, '/languages/create', NULL, NULL, 1432554654, 1432554654),
 ('/languages/delete', 2, '/languages/delete', NULL, NULL, 1432554654, 1432554654),
@@ -391,6 +398,7 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/site/error', 2, '/site/error', NULL, NULL, 1432554655, 1432554655),
 ('/site/forgotpassword', 2, '/site/forgotpassword', NULL, NULL, 1432554655, 1432554655),
 ('/site/index', 2, '/site/index', NULL, NULL, 1432554655, 1432554655),
+('/site/language', 2, NULL, NULL, NULL, 1447656806, 1447656806),
 ('/site/loadimage', 2, '/site/loadimage', NULL, NULL, 1432554655, 1432554655),
 ('/site/login', 2, '/site/login', NULL, NULL, 1432554655, 1432554655),
 ('/site/logout', 2, '/site/logout', NULL, NULL, 1432554655, 1432554655),
@@ -436,6 +444,9 @@ INSERT INTO `auth_item` (`name`, `type`, `description`, `rule_name`, `data`, `cr
 ('/student/stu-guardians/index', 2, '/student/stu-guardians/index', NULL, NULL, 1432554640, 1432554640),
 ('/student/stu-guardians/update', 2, '/student/stu-guardians/update', NULL, NULL, 1432554640, 1432554640),
 ('/student/stu-guardians/view', 2, '/student/stu-guardians/view', NULL, NULL, 1432554640, 1432554640),
+('/student/stu-import/*', 2, NULL, NULL, NULL, 1447656799, 1447656799),
+('/student/stu-import/download-file', 2, NULL, NULL, NULL, 1447656799, 1447656799),
+('/student/stu-import/index', 2, NULL, NULL, NULL, 1447656799, 1447656799),
 ('/student/stu-info/*', 2, '/student/stu-info/*', NULL, NULL, 1432554641, 1432554641),
 ('/student/stu-info/create', 2, '/student/stu-info/create', NULL, NULL, 1432554641, 1432554641),
 ('/student/stu-info/delete', 2, '/student/stu-info/delete', NULL, NULL, 1432554641, 1432554641),
@@ -725,6 +736,13 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('SuperAdmin', '/gii/default/index'),
 ('SuperAdmin', '/gii/default/preview'),
 ('SuperAdmin', '/gii/default/view'),
+('SuperAdmin', '/installation/*'),
+('SuperAdmin', '/installation/db-config'),
+('SuperAdmin', '/installation/db-import'),
+('SuperAdmin', '/installation/index'),
+('SuperAdmin', '/installation/institute-setup'),
+('SuperAdmin', '/installation/setup-completed'),
+('SuperAdmin', '/installation/user-setup'),
 ('SuperAdmin', '/languages/*'),
 ('SuperAdmin', '/languages/create'),
 ('SuperAdmin', '/languages/delete'),
@@ -833,6 +851,7 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('SuperAdmin', '/site/error'),
 ('SuperAdmin', '/site/forgotpassword'),
 ('SuperAdmin', '/site/index'),
+('SuperAdmin', '/site/language'),
 ('SuperAdmin', '/site/loadimage'),
 ('SuperAdmin', '/site/login'),
 ('SuperAdmin', '/site/logout'),
@@ -879,6 +898,9 @@ INSERT INTO `auth_item_child` (`parent`, `child`) VALUES
 ('SuperAdmin', '/student/stu-guardians/index'),
 ('SuperAdmin', '/student/stu-guardians/update'),
 ('SuperAdmin', '/student/stu-guardians/view'),
+('SuperAdmin', '/student/stu-import/*'),
+('SuperAdmin', '/student/stu-import/download-file'),
+('SuperAdmin', '/student/stu-import/index'),
 ('SuperAdmin', '/student/stu-info/*'),
 ('SuperAdmin', '/student/stu-info/create'),
 ('SuperAdmin', '/student/stu-info/delete'),
@@ -1743,7 +1765,7 @@ CREATE TABLE IF NOT EXISTS `login_details` (
   `user_ip_address` varchar(16) NOT NULL,
   PRIMARY KEY (`login_detail_id`),
   KEY `login_user_id` (`login_user_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=17 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
 --
 -- Dumping data for table `login_details`
@@ -1765,7 +1787,8 @@ INSERT INTO `login_details` (`login_detail_id`, `login_user_id`, `login_status`,
 (13, 33, 0, '2015-05-28 17:06:12', '2015-05-28 17:07:56', '192.168.1.109'),
 (14, 1, 1, '2015-05-28 17:08:13', NULL, '192.168.1.109'),
 (15, 1, 1, '2015-05-28 17:41:47', NULL, '192.168.1.101'),
-(16, 1, 1, '2015-05-28 18:17:21', NULL, '127.0.0.1');
+(16, 1, 1, '2015-05-28 18:17:21', NULL, '127.0.0.1'),
+(17, 1, 1, '2015-11-16 12:22:54', NULL, '127.0.0.1');
 
 -- --------------------------------------------------------
 

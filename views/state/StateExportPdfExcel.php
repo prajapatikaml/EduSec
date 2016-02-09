@@ -40,7 +40,7 @@ use yii\grid\GridView;
 	      //'label' => 'Updated At',
 	      'attribute' => 'updated_at',
               'value' => function ($data) {
-				return (!empty($data->updated_at) ? Yii::$app->formatter->asDateTime($data->updated_at) : " (not set) ");
+				return (!empty($data->updated_at) ? Yii::$app->formatter->asDateTime($data->updated_at) : Yii::t('stu', ' (not set) '));
 			},
             ],
 	    [

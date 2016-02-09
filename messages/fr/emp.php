@@ -18,8 +18,8 @@
  */
 return [
     'Emp Master Emp Info ID' => '',
-    'Employee Login Note' => 'employé connexion note',
     'Info Emp Master ID' => '',
+    'View Designation' => '',
     'APPROVED' => '@@@@',
     'DISAPPROVED' => '@@Désapprouvé@@',
     'address' => '@@@@',
@@ -108,6 +108,7 @@ return [
     'Employee Detail' => 'Détail du travailleur',
     'Employee ID' => 'Identifiant de l’employé',
     'Employee Id' => 'Identifiant de l’employé',
+    'Employee Login Note' => 'employé connexion note',
     'Employee Module' => 'Module du travailleur',
     'Employee Name' => 'Nom du travailleur',
     'Employee Profile' => 'Profil du travailleur',

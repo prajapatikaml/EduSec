@@ -45,7 +45,7 @@ use yii\helpers\Url;
 	<div class="col-sm-4">
 	    <?php if(isset($model->city_state_id)) { ?>
 
-		<?= $form->field($model, 'city_state_id',['inputOptions'=>[ 'class'=>'form-control'] ])->dropDownList(ArrayHelper::map(\app\models\State::find()->all(),'state_id','state_name'),['prompt'=>'---Select State---'])->label(false);  ?>
+		<?= $form->field($model, 'city_state_id',['inputOptions'=>[ 'class'=>'form-control'] ])->dropDownList(ArrayHelper::map(\app\models\State::find()->all(),'state_id','state_name'),['prompt'=>Yii::t('app', '--- Select State ---')])->label(false);  ?>
 	    <?php } else {   ?>
 		<?= $form->field($model, 'city_state_id',['inputOptions'=>[ 'class'=>'form-control'] ])->dropDownList(['prompt'=>Yii::t('app', '--- Select State ---')])->label(false);  ?>
 	    <?php } ?>

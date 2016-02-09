@@ -18,9 +18,9 @@
  */
 return [
     'Emp Master Emp Info ID' => '',
-    'Employee Login Note' => 'कर्मचारी लॉगिन नोट',
     'Info Emp Master ID' => '',
     'Unique Id' => '',
+    'View Designation' => '',
     'APPROVED' => '@@स्वीकृत@@',
     'DISAPPROVED' => '@@अस्वीकृत@@',
     'address' => '@@@@',
@@ -109,6 +109,7 @@ return [
     'Employee Detail' => 'कर्मचारी की जानकारी',
     'Employee ID' => 'कर्मचारी आईडी',
     'Employee Id' => 'कर्मचारी आईडी',
+    'Employee Login Note' => 'कर्मचारी लॉगिन नोट',
     'Employee Module' => 'कर्मचारी मॉड्यूल',
     'Employee Name' => 'कर्मचारी का नाम',
     'Employee Profile' => 'कर्मचारी प्रोफ़ाइल',

@@ -137,7 +137,7 @@ class DefaultController extends Controller
 		    ->orderBy('si.stu_gender ASC')
 		    ->all();
 	if($stuGenWise)
-	    $stuGenWise[0][0] = "Not Set".$stuGenWise[0][0];
+	    $stuGenWise[0][0] = "".$stuGenWise[0][0];
 
 
 	/**
@@ -152,7 +152,7 @@ class DefaultController extends Controller
 		    ->orderBy('ei.emp_gender ASC')
 		    ->all();
 	if($empGenWise)
-	$empGenWise[0][0] = "Not Set".$empGenWise[0][0];
+	$empGenWise[0][0] = "".$empGenWise[0][0];
 
 
 	/**
