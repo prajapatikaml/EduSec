@@ -27,6 +27,10 @@ if (Yii::$app->controller->action->id === 'login') {
 <meta property="og:image" content="http://www.rudrasoftech.com/rudra.png">
 
 		<link rel="shortcut icon" href="<?php echo Yii::$app->request->baseUrl; ?>/images/rudrasoftech_favicon.png" type="image/x-icon" />
+
+		<!-- Render this(ar-layout-css) file for supporting Arabic Language -->
+		<?= $this->render('ar-layout-css'); ?>
+
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>

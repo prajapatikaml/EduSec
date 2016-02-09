@@ -68,8 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="box box-solid box-warning">
   <div class="box-header">
-    <i class="ion ion-calendar"></i>
-    <h3 class="box-title"><?php echo Yii::t('dash', 'Event Schedule') ?></h3>
+    <h3 class="box-title"><i class="ion ion-calendar"></i> <?php echo Yii::t('dash', 'Event Schedule') ?></h3>
   </div><!-- /.box-header -->
   <div class="box-body">
    <div class="events-index">

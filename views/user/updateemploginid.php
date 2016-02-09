@@ -10,7 +10,7 @@ $this->title = Yii::t('app', 'Update Employee Login');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-xs-12">
-  <div class="col-lg-8 col-sm-8 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-edit"></i> <?php echo Yii::t('app', 'Update Employee Login'); ?> </h3></div>
+  <div class="col-lg-12 col-sm-12 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-edit"></i> <?php echo Yii::t('app', 'Update Employee Login'); ?> </h3></div>
 </div>
 <div class="col-xs-12 col-lg-12">
   <div class="<?php echo $model->isNewRecord ? 'box-success' : 'box-info'; ?> box view-item col-xs-12 col-lg-12">
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
    
 
-<div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
+<div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding edusecArLangCss">
 	<div class="col-xs-6">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>

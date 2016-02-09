@@ -24,14 +24,13 @@ endif;
 
 ?>
 <div class="col-xs-12">
-  <div class="col-lg-8 col-sm-8 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-search"></i> <?php echo Yii::t('fees', 'View Fees Collect Category'); ?></h3></div>
-  <div class="col-xs-4"></div>
+  <div class="col-lg-8 col-sm-8 col-xs-12 no-padding edusecArLangCss"><h3 class="box-title"><i class="fa fa-search"></i> <?php echo Yii::t('fees', 'View Fees Collect Category'); ?></h3></div>
   <div class="col-lg-4 col-xs-12 no-padding" style="padding-top: 20px !important;">
 	<div class="col-xs-6 col-sm-3 left-padding">
 	<?= Html::a(Yii::t('fees', 'Back'), ['index'], ['class' => 'btn btn-block btn-back']) ?>
 	</div>
 	<div class="col-xs-6 col-sm-3 left-padding">
-	<?= Html::a(Yii::t('fees', 'Add Head'), ['fees-category-details/create', 'fcc_id' => $model->fees_collect_category_id], ['class' => 'btn btn-block bg-olive']) ?>
+	<?= Html::a(Yii::t('fees', 'Add Head'), ['fees-category-details/create', 'fcc_id' => $model->fees_collect_category_id], ['class' => 'btn btn-block bg-olive', 'style' => ((Yii::$app->language == 'ar') ? 'padding:7px 3px;font-size:12px' : ''), 'title' => Yii::t('fees', 'Add Head')]) ?>
 	</div>
 	<div class="col-xs-6 col-sm-3 left-padding">
         <?= Html::a(Yii::t('fees', 'Update'), ['update', 'id' => $model->fees_collect_category_id], ['class' => 'btn btn-block btn-info']) ?>

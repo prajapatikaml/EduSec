@@ -7,12 +7,17 @@ use yii\helpers\ArrayHelper;
 $this->title = Yii::t('app', 'Update Student Login : ').$model->user_login_id;
 ?>
 
-<div class="col-xs-12">
-	<h3 class="box-title"><i class="fa fa-plus"></i> <?= Html::encode($this->title) ?>
-		<div class="pull-right">
-			<?= Html::a(Yii::t('app', 'Back'), ['resetstudloginid'], ['class' => 'btn btn-block btn-back']) ?>
+<div class="col-xs-12 col-sm-12">
+  	<div class="col-lg-8 col-sm-8 col-xs-12 no-padding edusecArLangCss"><h3 class="box-title"><i class="fa fa-pencil-square"></i> <?= $this->title ?></h3></div>
+	<div class="col-lg-4 col-sm-4 col-xs-12">
+		<div class="col-sm-4 col-xs-4 edusecArLangHide">
 		</div>
-	</h3>
+		<div class="col-sm-4 col-xs-4 edusecArLangHide">
+		</div>
+		<div class="col-sm-4 col-xs-4 no-padding" style="padding-top: 20px !important;">	
+		<?= Html::a(Yii::t('app', 'Back'), ['resetstudloginid'], ['class' => 'btn btn-block btn-back']) ?>
+		</div>
+	</div>
 </div>
 
 <div class="col-xs-12 col-lg-12">

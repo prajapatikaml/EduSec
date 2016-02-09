@@ -73,15 +73,15 @@ if(isset($_REQUEST['event_id'])) {
     <?= $form->field($model, 'event_type')->dropDownList([1 => 'Holiday', 2 => 'Important Notice', 3 => 'Meeting', 4 => 'Messages'],['prompt'=> Yii::t('dash', '--- Select Type ---')]); ?>
     </div>
 
-    <div class="form-group col-xs-12 col-sm-6 col-lg-5 no-padding">
+    <div class="form-group col-xs-12 col-sm-6 col-lg-5 no-padding edusecArLangCss">
 	<div class="col-xs-6">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('dash', 'Create') : Yii::t('dash', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-success' : 'btn btn-info']) ?> 
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('dash', 'Create') : Yii::t('dash', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-success btn-block' : 'btn btn-info btn-block']) ?> 
 	</div>
 	<div class="col-xs-6">
 	<?php if(isset($_GET['return_dashboard'])) 
-		echo Html::a(Yii::t('dash', 'Cancel'), ['/dashboard'], ['class' => 'btn btn-default']);
+		echo Html::a(Yii::t('dash', 'Cancel'), ['/dashboard'], ['class' => 'btn btn-default btn-block']);
 	      else
-		echo Html::a(Yii::t('dash', 'Cancel'), ['index'], ['class' => 'btn btn-default']);
+		echo Html::a(Yii::t('dash', 'Cancel'), ['index'], ['class' => 'btn btn-default btn-block']);
 	?>
 	</div>
     </div>

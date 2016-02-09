@@ -31,7 +31,7 @@ use yii\helpers\Html;
 		</th>
 	</tr>
 	<tr>
-		<td class="text-left padding-left"><?php echo "<b>".Yii::t('fees', "Student No :")."</b>".$stuData->stuMasterStuInfo->stu_unique_id;?></td>
+		<td class="text-left padding-left"><?php echo "<b> ".Yii::t('fees', "Student No :")."</b> ".$stuData->stuMasterStuInfo->stu_unique_id;?></td>
 		<td></td>
 		<td class="text-right padding-right"><?php echo "<b>".Yii::t('fees', "Receipt Date :")." </b>".Yii::$app->formatter->asDate(date('Y-m-d')); ?></td>
 	</tr>

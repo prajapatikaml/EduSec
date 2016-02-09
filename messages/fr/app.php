@@ -17,7 +17,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Arabic (العربية)' => 'Arabe (العربية)',
+	'Go Back' => 'Retourner',
+	'Return Home' => 'Rentrer à la maison',
+    'Please contact us if you think this is a server error. Thank you.' => "S'il vous plaît nous contacter si vous pensez que cela est une erreur de serveur. Merci.",
+    'The above error occurred while the Web server was processing your request.' => "L'erreur ci-dessus est produite lorsque le serveur Web est en train de traiter votre demande.",
     'Arabic' => '@@@@',
     'Database host' => '@@Hébergeur base des Donnees@@',
     'Database name' => '@@Nom base des données@@',
@@ -59,6 +62,7 @@ return [
     'Admin Username' => 'Identifiant administrateur',
     'Alias' => 'Pseudonyme',
     'All rights reserved' => 'Tous droits réservés',
+    'Arabic (العربية)' => 'Arabe (العربية)',
     'Are you sure you want to delete this item?' => 'Supprimer cet outil ?',
     'Auth Assignments' => 'Authentification des travaux',
     'Back' => 'Retourner',

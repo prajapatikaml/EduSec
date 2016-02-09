@@ -53,7 +53,7 @@ for($j=0;$j<=11;$j++)
 	<div class = "col-sm-4 col-xs-9">
 	     <?= $form->field($info, 'emp_unique_id',['inputOptions'=>['class'=>'form-control','placeholder'=>'Unique Id']])->textInput(['value'=>$empno]) ?>
 	</div>
-	<div class="col-xs-3 col-sm-8" style="padding-top: 25px;">
+	<div class="col-xs-3 col-sm-8 edusecArLangPopover" style="padding-top: 25px;">
 	<?php $emp_login_prefix = \app\models\Organization::find()->one()->org_emp_prefix;?>
 		<button type="button" class="btn btn-danger" data-html=true data-toggle="popover" title="<?php echo Yii::t('emp', 'Employee Login Note') ?>" data-trigger="focus" data-content="<?php echo Yii::t('stu', 'Unique Id is used as login username with') ?> <b><?= $emp_login_prefix ?> </b><?php echo Yii::t('stu', 'prefix.') ?> </br> <?php echo Yii::t('stu', 'Example: If Unique id : 123 so, Username :') ?> <?= $emp_login_prefix ?>123"><i class="fa fa-info-circle"></i></button>
     	</div>
@@ -166,7 +166,7 @@ for($j=0;$j<=11;$j++)
  </div><!---./end box-body--->
 </div><!---./end box--->
 
-   <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
+   <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding edusecArLangCss">
 	<div class="col-xs-6 col-xs-12">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('emp', 'Create') : Yii::t('emp', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>

@@ -10,17 +10,20 @@ $this->params['breadcrumbs'][] = $this->title;
 
 ?>
 <div class="col-xs-12">
-  <div class="col-lg-4 col-sm-4 col-xs-8 no-padding"><h3 class="box-title"><i class="fa fa-search"></i> <?= Html::encode($this->title) ?></h3></div>
-  <div class="col-lg-1 col-sm-2 col-xs-4 pull-right no-padding" style="padding-top: 20px !important;">
+  <div class="col-lg-8 col-sm-8 col-xs-12 no-padding edusecArLangCss"><h3 class="box-title"><i class="fa fa-search"></i> <?= Html::encode($this->title) ?></h3></div>
+  <div class="col-lg-4 col-sm-4 col-xs-12 pull-right no-padding" style="padding-top: 20px !important;">
+	<div class="col-sm-4 edusecArLangHide"></div>
+	<div class="col-sm-4 edusecArLangHide"></div>
+	<div class="col-sm-4">
 	<?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-block btn-back']) ?>
+	</div>
    </div>
 </div>
 
 <div class="col-xs-12 col-lg-12">
  <div class="box box-primary view-item no-padding">
   <div class="box-header with-border">
-    <i class="fa fa-user"></i>
-    <h3 class="box-title text-aqua"><?= "<b>".Yii::t('rbac-admin', 'User')."</b>" ?> : <?= Html::encode($model->{$usernameField}) ?></h3>
+    <h3 class="box-title text-aqua"><i class="fa fa-user"></i> <?= "<b>".Yii::t('rbac-admin', 'User')."</b>" ?> : <?= Html::encode($model->{$usernameField}) ?></h3>
   </div><!-- /.box-header -->
   <div class="box-body">
   <div class="assignment-index row">

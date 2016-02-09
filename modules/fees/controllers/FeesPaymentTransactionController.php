@@ -186,7 +186,7 @@ class FeesPaymentTransactionController extends Controller
 		$model = new FeesPaymentTransaction();
 		$stuData = \app\modules\student\models\StuMaster::findOne($sid);
 		$FccModel = \app\modules\fees\models\FeesCollectCategory::findOne($fcid);
-		$title = "Receipt of ".$stuData->stuMasterStuInfo->name.' : '.Yii::$app->dateformatter->getDateDisplay(date('Y-m-d'));
+		$title = Yii::t('fees', "Receipt of ").$stuData->stuMasterStuInfo->name.' : '.Yii::$app->dateformatter->getDateDisplay(date('Y-m-d'));
 		$html = $this->renderPartial('print-common-receipt', [
 					'model' => $model,
 					'stuData' => $stuData,

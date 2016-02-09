@@ -223,7 +223,7 @@ $feesDetails = \app\modules\fees\models\FeesCategoryDetails::find()->where(['fee
  
 </div><!---End box-body div---->
 <div class="box-footer">
-	<div class="pull-right" style="padding-bottom:10px">
+	<div class="<?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?>" style="padding-bottom:10px">
 	<?php if($collectOn) { echo Html::submitButton($model->isNewRecord ? '<i class="fa fa-plus-circle"></i> '.Yii::t('fees', ' Take Fees') : '<i class="fa fa-pencil-square-o"></i> '.Yii::t('fees', 'Update Fees'), ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-info']); } ?>
 		     
 	<?php if($printOn & $model->isNewRecord) { echo Html::a('<i class="fa fa-print"></i> '.Yii::t('fees', 'Print receipt'),['print-common-receipt', 'sid'=>$stuData->stu_master_id, 'fcid'=>$FccModel->fees_collect_category_id], ['class' => 'btn btn-warning', 'target'=>'_blank']); } ?>

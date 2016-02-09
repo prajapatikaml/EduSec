@@ -34,7 +34,7 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'state_name', ['inputOptions'=>['placeholder'=>Yii::t('app', 'State/Province Name')] ])->textInput(['maxlength' => 35])->label(false) ?>
     </div>
    </div>
-   <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
+   <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding edusecArLangCss">
 	<div class="col-xs-6">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>

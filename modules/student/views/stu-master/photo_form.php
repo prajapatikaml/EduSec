@@ -53,8 +53,8 @@ $(document).ready(function(){
 });
 </script>
 <div class="col-xs-12 col-lg-12" style="border-bottom: 1px solid rgb(244, 244, 244);">
+  <button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
   <div class="col-lg-12 col-sm-12 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-edit"></i>
-	<button type="button" class="close" data-dismiss="modal" aria-label="Close">x</button>
 	<?= Html::encode($this->title) ?> </h3>
   </div>
 </div>

@@ -72,7 +72,7 @@ else
     </div>
    </div>
 
-    <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
+    <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding edusecArLangCss">
 	<div class="col-xs-6">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('course', 'Create') : Yii::t('course', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>

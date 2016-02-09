@@ -17,9 +17,12 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Arabic (العربية)' => 'અરબી (العربية)',
+	'Go Back' => 'પાછા જાવ',
+	'Return Home' => 'મુખ્ય પૃષ્ઠ પર પાછા ફરો',
     'Doc Category ID' => '',
+    'Please contact us if you think this is a server error. Thank you.' => 'તમે આ એક સર્વર ભૂલ લાગે છે, તો અમને સંપર્ક કરો. આભાર.',
     'Stu Category ID' => '',
+    'The above error occurred while the Web server was processing your request.' => 'વેબ સર્વર તમારી વિનંતિ પર પ્રક્રિયા કરવામાં આવી હતી જ્યારે ઉપરોક્ત ભૂલ આવી.',
     'Arabic' => '@@@@',
     'Database host' => '@@ડેટાબેઝ હોસ્ટ@@',
     'Database name' => '@@ડેટાબેઝનું નામ@@',
@@ -57,6 +60,7 @@ return [
     'Admin Username' => 'સંચાલકનું નામ',
     'Alias' => 'ઉપનામ',
     'All rights reserved' => 'બધા હકો અમારી પાસે રાખેલા છે',
+    'Arabic (العربية)' => 'અરબી (العربية)',
     'Are you sure you want to delete this item?' => 'તમે આ રેકોર્ડ કાઢી નાખવા માંગો છો તમને ખાતરી છે?',
     'Auth Assignments' => 'સોંપણી',
     'Back' => 'પાછળ જાઓ',

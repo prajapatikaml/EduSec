@@ -68,7 +68,7 @@ use yii\widgets\ActiveForm;
     </div>
    </div>
 
-    <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
+    <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding edusecArLangCss">
 	<div class="col-xs-6">
         <?= Html::submitButton($guard->isNewRecord ? Yii::t('stu', 'Add') : Yii::t('stu', 'Update'), ['class' => $guard->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>

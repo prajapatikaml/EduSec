@@ -154,7 +154,7 @@ $this->registerJs(
                                     <li><a href="#emp-notice" data-toggle="tab"><?php echo Yii::t('app', 'Employee') ?></a></li>
                                     <li><a href="#stu-notice" data-toggle="tab"><?php echo Yii::t('app', 'Student') ?></a></li>
 				    <li class="active"><a href="#all-notice" data-toggle="tab"><?php echo Yii::t('app', 'General') ?></a></li>
-                                    <li class="pull-left header"><i class="fa fa-inbox"></i><?php echo Yii::t('app', 'Notice Board') ?></li>
+                                    <li class="pull-left header" style="<?= (Yii::$app->language == 'ar') ? 'left:35%' : ''; ?>"><i class="fa fa-inbox"></i><?php echo Yii::t('app', 'Notice Board') ?></li>
                                 </ul>
                                 <div class="tab-content">
                                     <!-- Notice -->
@@ -212,7 +212,7 @@ $this->registerJs(
 					foreach($noticeList as $nl) :
 					?>
 					 <div class="notice-main bg-teal">
-						<div class="notice-disp-date">				        		<small class="label label-success"><i class="fa fa-calendar"></i> <?= (!empty($nl->notice_date) ? Yii::$app->formatter->asDate($nl->notice_date) : "Not Set"); ?></small>	
+						<div class="notice-disp-date">	<small class="label label-success"><i class="fa fa-calendar"></i> <?= (!empty($nl->notice_date) ? Yii::$app->formatter->asDate($nl->notice_date) : "Not Set"); ?></small>	
 						</div>
 						<div class="notice-body">
 							 <div class="notice-title"><?= Html::a($nl->notice_title, '#', ['style' => 'color:#FFF', 'class'=>'noticeModalLink', 'data-value'=>Url::to(['dashboard/notice/view-popup','id'=>$nl->notice_id])]); ?>&nbsp; </div>
@@ -233,8 +233,7 @@ $this->registerJs(
 			    <!-- Calendar -->
                             <div class="box box-info">
                                 <div class="box-header with-border">
-                                    <i class="fa fa-calendar"></i>
-                                    <h3 class="box-title"><?php echo Yii::t('app', 'Calendar') ?></h3>
+                                    <h3 class="box-title <?= (Yii::$app->language == 'ar') ? 'pull-right' : '' ?>"><i class="fa fa-calendar"></i> <?php echo Yii::t('app', 'Calendar') ?></h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <!--The calendar -->
@@ -307,7 +306,7 @@ EOF;
                                 <ul class="nav nav-tabs pull-right">
                                     <li><a href="#birth-upcoming" data-toggle="tab"><?php echo Yii::t('app', 'Upcoming') ?></a></li>
 				    <li class="active"><a href="#birth-taday" data-toggle="tab"><?php echo Yii::t('app', "Today's") ?></a></li>
-                                    <li class="pull-left header"><i class="fa fa-birthday-cake"></i><?php echo Yii::t('app', 'Birthdays') ?></li>
+                                    <li class="pull-left header" style="<?= (Yii::$app->language == 'ar') ? 'left:26%' : ''; ?>"><i class="fa fa-birthday-cake"></i><?php echo Yii::t('app', 'Birthdays') ?></li>
                                 </ul>
                                 <div class="tab-content">
                                     <!-- Birthdays -->
@@ -362,8 +361,7 @@ EOF;
 			    <!-- TO DO List -->
                             <div class="box box-primary">
                                 <div class="box-header with-border">
-                                    <i class="ion ion-university"></i>
-                                    <h3 class="box-title"><?php echo Yii::t('app', 'Courses') ?></h3>
+                                    <h3 class="box-title <?= (Yii::$app->language == 'ar') ? 'pull-right' : ''; ?>"><i class="ion ion-university"></i> <?php echo Yii::t('app', 'Courses') ?></h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <ul class="todo-list" id="coursList">
@@ -378,7 +376,7 @@ EOF;
                                             </span>
                                             <span class="text"><?php echo $cl->course_name;?></span>
                                             <?php $stuCount = app\modules\student\models\stuMaster::find()->where(['stu_master_course_id' => $cl->course_id, 'is_status' => 0])->count();?>
-					    <span class="notification-container pull-right text-teal" title="<?= $stuCount; ?> Students"><i class="fa fa-users"></i><span class="label label-info notification-counter"><?= $stuCount; ?></span></span>
+					    <span class="notification-container <?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?> text-teal" title="<?= $stuCount; ?> Students"><i class="fa fa-users"></i><span class="label label-info notification-counter"><?= $stuCount; ?></span></span>
                                         </li>
 				     <?php endforeach; ?>
                                     </ul>

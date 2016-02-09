@@ -15,7 +15,7 @@ $this->title = Yii::t('stu', 'Update Guardian : ') . ' ' . $guard->guardian_name
 ?>
 <script>
 $(document).ready(function(){
-	$('.modal-header').html('<div class="row"><div class="col-xs-12"><button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button><div class="col-lg-8 col-sm-10 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-edit"></i> <?= Html::encode($this->title) ?> </h3></div></div></div>');
+	$('.modal-header').html('<div class="row"><div class="col-xs-12"><button class="close" aria-hidden="true" data-dismiss="modal" type="button">×</button><div class="col-lg-8 col-sm-10 col-xs-12 no-padding edusecArLangCss"><h3 class="box-title"><i class="fa fa-edit"></i> <?= Html::encode($this->title) ?> </h3></div></div></div>');
 });
 
 </script>
@@ -82,8 +82,8 @@ $(document).ready(function(){
     </div>
    </div>
 
-    <div class="form-group col-xs-12 col-sm-6 col-lg-6 no-padding">
-	<div class="col-xs-6 col-sm-6">
+    <div class="form-group col-xs-12 col-sm-6 col-lg-6 no-padding edusecArLangCss">
+	<div class="col-xs-6 col-sm-6" style="<?= (Yii::$app->language == 'ar') ? 'float:none' : ''; ?>">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('stu', 'Create') : Yii::t('stu', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<!--div class="col-xs-6">

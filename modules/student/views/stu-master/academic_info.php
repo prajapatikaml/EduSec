@@ -21,12 +21,11 @@ $this->params['breadcrumbs'][] = Yii::t('stu', 'Update Academic Details');
 }
 </style>
 <div class="col-xs-12">
-  <div class="col-lg-8 col-sm-8 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-edit"></i> <?= Html::encode($this->title) ?> </h3>
+  <div class="col-lg-8 col-sm-8 col-xs-12 no-padding edusecArLangCss"><h3 class="box-title"><i class="fa fa-edit"></i> <?= Html::encode($this->title) ?> </h3>
   </div>
-  <div class="col-xs-4"></div>
   <div class="col-lg-4 col-sm-4 col-xs-12 no-padding" style="padding-top: 20px !important;">
-	<div class="col-xs-4"></div>
-	<div class="col-xs-4"></div>
+	<div class="col-xs-4 edusecArLangHide"></div>
+	<div class="col-xs-4 edusecArLangHide"></div>
 	<div class="col-xs-4 left-padding">
 	<?= Html::a(Yii::t('stu', 'Back'), '', ['class' => 'btn btn-block btn-back', 'onclick'=>'js:history.go(-1);return false;']) ?>
 	</div>
@@ -112,7 +111,7 @@ $this->params['breadcrumbs'][] = Yii::t('stu', 'Update Academic Details');
     </div> <!--/ box-body -->
     </div> <!--/ box -->
 
-    <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
+    <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding edusecArLangCss">
 	<div class="col-xs-6">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('stu', 'Create') : Yii::t('stu', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>

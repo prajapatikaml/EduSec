@@ -345,4 +345,13 @@ return array (
       '@fedemotta/datatables' => $vendorDir . '/fedemotta/yii2-widget-datatables',
     ),
   ),
+  'airani/yii2-adminlte-asset' => 
+  array (
+    'name' => 'airani/yii2-adminlte-asset',
+    'version' => '1.1.0.0',
+    'alias' => 
+    array (
+      '@dmstr' => $vendorDir . '/airani/yii2-adminlte-asset',
+    ),
+  ),
 );

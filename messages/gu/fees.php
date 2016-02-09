@@ -17,10 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Cash' => 'કેશ',
-    'Cheque' => 'ચેક',
-    'Paid/Unpaid' => 'ચૂકવાયેલા/ન ચૂકવાયેલા',
-    'The combination of Fees Category and Batch has already been taken.' => 'ફી કેટેગરી અને બેચ જોડાણ એ પહેલાથી જ લેવામાં આવી છે.',
+    'Receipt of ' => '',
     ' Take Fees' => 'ફી લો',
     '(Not Set)' => '(સેટ નથી)',
     'ADD' => 'ઉમેરો',
@@ -42,7 +39,9 @@ return [
     'Batch :' => 'બેચ :',
     'Batch Name' => 'બેચનું નામ',
     'Cancel' => 'રદ કરો',
+    'Cash' => 'કેશ',
     'Category Wise Fees Collect' => 'પ્રકાર મુજબની ફી એકત્રિત કરો',
+    'Cheque' => 'ચેક',
     'Cheque Date' => 'ચેકની તારીખ',
     'Cheque No' => 'ચેક નંબર',
     'Clear' => 'સાફ કરો',
@@ -97,6 +96,7 @@ return [
     'No student data available' => 'કોઈ વિદ્યાર્થીના ડેટા ઉપલબ્ધ નથી',
     'PDF' => 'પીડીએફ',
     'Paid Amount' => 'ચૂકવેલ રકમ',
+    'Paid/Unpaid' => 'ચૂકવાયેલા/ન ચૂકવાયેલા',
     'Paid/Unpaid Amount' => 'ચૂકવાયેલ/બાકી  રકમ',
     'Partial Payment Fees Receipt' => 'આંશિક ફી ચુકવણીની રસીદ',
     'Payment Date' => 'ચૂકવણીની તારીખ',
@@ -130,6 +130,7 @@ return [
     'Student No :' => 'વિદ્યાર્થી નં. :',
     'Student Payment History' => 'વિદ્યાર્થીની ફી ચૂકવણીનો સારાંશ',
     'TakeFees' => 'ફી લો',
+    'The combination of Fees Category and Batch has already been taken.' => 'ફી કેટેગરી અને બેચ જોડાણ એ પહેલાથી જ લેવામાં આવી છે.',
     'Total Amount' => 'કુલ રકમ',
     'Total Collection' => 'કુલ કલેક્શન',
     'Total Paid Fees' => 'કુલ ચૂકવેલી ફી',

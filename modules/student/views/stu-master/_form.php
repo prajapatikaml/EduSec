@@ -46,7 +46,7 @@ $(function () {
 	<?php $stu_login_prefix = \app\models\Organization::find()->one()->org_stu_prefix;?>
 	<?= $form->field($info, 'stu_unique_id', ['template' => '{label}{input}{error}'])->textInput(['value' => $uniq_id]) ?>
     </div>
-    <div class="col-xs-3 col-sm-8" style="padding-top: 25px;">
+    <div class="col-xs-3 col-sm-8 edusecArLangPopover" style="padding-top: 25px;">
 	<button type="button" class="btn btn-danger" data-html=true data-toggle="popover" title="<?php echo Yii::t('stu','Student Login Note') ?>" data-trigger="focus" data-content="<?php echo Yii::t('stu', 'Unique Id is used as login username with') ?> <b><?= $stu_login_prefix ?> </b><?php echo Yii::t('stu', 'prefix.') ?> </br> <?php echo Yii::t('stu', 'Example: If Unique id : 123 so, Username :') ?> <?= $stu_login_prefix ?>123"><i class="fa fa-info-circle"></i></button>
     </div>
    </div>
@@ -178,7 +178,7 @@ $(function () {
   </div><!---./end box-body--->
  </div><!---./end box--->
 
-    <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
+    <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding edusecArLangCss">
 	<div class="col-xs-6">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('stu' ,'Create') : Yii::t('stu', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>

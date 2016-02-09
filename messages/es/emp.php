@@ -19,7 +19,7 @@
 return [
     'Emp Master Emp Info ID' => '',
     'Info Emp Master ID' => '',
-    'View Designation' => '',
+    'View Designation' => 'Ver Designación',
     '--- Select Department ---' => '--- Seleccionar Departamento ---',
     '--- Select Designation ---' => '--- Seleccionar Designación ---',
     'A+' => 'A+',

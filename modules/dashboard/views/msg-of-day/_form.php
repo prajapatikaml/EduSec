@@ -35,7 +35,7 @@ use yii\bootstrap\ActiveForm;
 
     <?= $form->field($model, 'is_status')->checkBox(['value'=>0, 'uncheck'=>1], true)->label("<b>&nbsp;".Yii::t('dash', 'Active')."</b>"); ?>
 
-    <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
+    <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding edusecArLangCss">
 	<div class="col-xs-6">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('dash', 'Create') : Yii::t('dash', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>

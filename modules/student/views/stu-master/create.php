@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Manage Students'), '
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-xs-12">
-  <div class="col-lg-4 col-sm-4 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-plus"></i> <?= Html::encode($this->title) ?></h3></div>
+  <div class="col-lg-12 col-sm-12 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-plus"></i> <?= Html::encode($this->title) ?></h3></div>
 </div>
 
 <div class="stu-master-create">

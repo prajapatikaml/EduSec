@@ -19,7 +19,6 @@
 return [
     'Emp Master Emp Info ID' => '',
     'Info Emp Master ID' => '',
-    'View Designation' => '',
     'APPROVED' => '@@@@',
     'DISAPPROVED' => '@@Désapprouvé@@',
     'address' => '@@@@',
@@ -215,6 +214,7 @@ return [
     'View All Employees' => 'Voir la liste de travailleurs',
     'View Category' => 'Voir catégorie',
     'View Department' => 'Voir entité administrative',
+    'View Designation' => 'Voir Appellation',
     'View Status' => 'Visualiser statut',
     'Year' => 'Année',
     'Year(s)' => 'Année(s)',

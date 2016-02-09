@@ -70,7 +70,7 @@ $this->registerCss(".disp-count{cursor:default;} .disp-count:hover {background-c
 		<h4 class="box-title">
 		  <?= Html::a(($ck+1).'. '.$cv->course_name, '#collapse'.$ck, ['data-parent'=>'#accordion', 'data-toggle'=>'collapse', 'aria-expanded'=>"true", 'style'=>'color:#3c8dbc']) ?>
 		</h4>
-		<div class="pull-right box-tools">
+		<div class="<?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?> box-tools">
 		    <span class="btn btn-sm btn-info disp-count">
 			<i class="fa fa-users"></i> <?php echo Yii::t('course', 'Students'); ?> &nbsp;
 			<span class="badge">

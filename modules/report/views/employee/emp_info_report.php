@@ -28,7 +28,7 @@ $_SESSION['selected_list']=$selected_list;
 
        <div class="box-header">
 	          <h3 class="box-title"><i class="fa fa-info-circle"></i> <?= $this->title ?></h3>
-          <div class="box-tools pull-right">
+          <div class="box-tools <?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?>">
           	<?php echo Html::a('<i class="fa fa-arrow-circle-left"></i> '.Yii::t('report', "Back"), ['employee/empinforeport'], ['class'=>'btn btn-back', 'style'=>'color:#fff']);?> &nbsp;
 <?php echo Html::a('<i class="fa fa-file-excel-o"></i> '.Yii::t('report',"Excel"),['employee/selected-employee-list','employeelistexcelexport'=>'employeelistexcel'],array('title'=>'Export to Excel', 'target'=>'_blank', 'class'=>'btn btn-info', 'style'=>'color:#fff'));?> &nbsp;
 <?php echo Html::a('<i class="fa fa-file-pdf-o"></i> '.Yii::t('report',"PDF"),array('employee/selected-employee-list','employeelistexport'=>'employeelistpdf'),array('title'=>'Export to PDF','target'=>'_blank','class'=>'btn btn-warning', 'style'=>'color:#fff')); ?>	

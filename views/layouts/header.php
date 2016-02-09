@@ -11,11 +11,22 @@ use yii\web\NotFoundHttpException;
 AppAsset::register($this);
 
 Yii::$app->name = "EduSec";
+
+if(Yii::$app->language == 'ar') :
+	$this->registerCss('
+.navbar-right:last-child {
+    margin-left: 6px !important;
+}
+.navbar-nav > .notifications-menu > .dropdown-menu > li.header::after, .navbar-nav > .messages-menu > .dropdown-menu > li.header::after, .navbar-nav > .tasks-menu > .dropdown-menu > li.header::after {
+	left:8% !important;
+}
+');
+endif;
 ?>
 
-<header class="header">
+<header class="main-header header<?php // (Yii::$app->language == 'ar' ? 'main-header' : 'header')?>">
 
-<?= Html::a(Html::img(Yii::$app->request->baseUrl.'/images/edusec.png', ['width'=>'120px;', 'height'=>'22px']), Yii::$app->homeUrl, ['class' => 'logo']) ?>
+<?= Html::a(Html::img(Yii::$app->request->baseUrl.'/images/edusec.png', ['width'=>'120px;', 'height'=>'22px']), Yii::$app->homeUrl, ['class' => 'logo', /*'style' => ((\Yii::$app->language == 'ar') ? 'padding: 14px 50px !important;' : '')*/]) ?>
 
 <nav class="navbar navbar-static-top" role="navigation">
 
@@ -39,21 +50,28 @@ $notifyCount = ($countT + count($eventsList));
 <div class="navbar-right">
 
 <ul class="nav navbar-nav">
-<li class="module-menu">
-	<?= Html::beginForm( yii\helpers\Url::to(['/site/language']), NULL, ['style' => 'margin-top: 10px;'] ) ?>
-	<div class="col-sm-6 no-padding">
-	<?= Html::label(Yii::t('app', 'Select Language'), 'language') ?>
-	</div>
-	<div class="col-sm-6" style="padding-left:7px;">
-	<?= Html::dropDownList('language', Yii::$app->language, ['en' => Yii::t('app', 'English'), 'gu' => Yii::t('app', 'Gujarati (ગુજરાતી)'), 'hi' => Yii::t('app', 'Hindi (हिन्दी)'), 'fr' => Yii::t('app', 'French (français)'), 'es' => Yii::t('app', 'Spanish (Latin American)'), 'ar' => Yii::t('app', 'Arabic (العربية)')], ['class'=> 'form-control', 'onchange' => 'this.form.submit()', 'style' => 'padding: 5px;']) ?>
-	</div>
+<li class="dropdown notifications-menu">
+	<a href="#" class="dropdown-toggle" data-toggle="dropdown" title="<?= Yii::t('app', 'Select Language') ?>">
+		<i class="fa fa-language fa-lg"></i>
+    </a>
+	<ul class="dropdown-menu" style="<?= (Yii::$app->language == 'ar') ? 'left: 0 !important; right: auto !important;' : '';?>">
+		<li class="header">
+			<?= Html::beginForm( yii\helpers\Url::to(['/site/language']), NULL, ['style' => 'margin: 10px; padding-bottom: 35px;'] ) ?>
+			<div class="col-sm-6 col-xs-6 no-padding">
+			<?= Html::label(Yii::t('app', 'Select Language'), 'language') ?>
+			</div>
+			<div class="col-sm-6 col-xs-6" style="padding-left:7px;">
+			<?= Html::dropDownList('language', Yii::$app->language, ['en' => Yii::t('app', 'English'), 'gu' => Yii::t('app', 'Gujarati (ગુજરાતી)'), 'hi' => Yii::t('app', 'Hindi (हिन्दी)'), 'fr' => Yii::t('app', 'French (français)'), 'es' => Yii::t('app', 'Spanish (Latin American)'), 'ar' => Yii::t('app', 'Arabic (العربية)')], ['class'=> 'form-control', 'onchange' => 'this.form.submit()', 'style' => 'padding: 5px;', 'title' => Yii::t('app', 'Select Language')]) ?>
+			</div>
 
-	<?= Html::endForm() ?>
+			<?= Html::endForm() ?>
+		</li>
+	</ul>
 </li>
 <?php if(!Yii::$app->session->get('stu_id')) : ?>
 <li class="dropdown module-menu">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="<?= Yii::t('app', 'Main Menu') ?>">
-		<i class="fa fa-th"></i>
+		<i class="fa fa-th fa-lg"></i>
     </a>
 	<?= $this->render(
 		'module-name.php'
@@ -67,7 +85,7 @@ $notifyCount = ($countT + count($eventsList));
         <i class="fa fa-bell-o"></i>
         <span class="label label-warning"><?= ($notifyCount) ? $notifyCount : "0";?></span>
     </a>
-    <ul class="dropdown-menu">
+    <ul class="dropdown-menu" style="<?= (Yii::$app->language == 'ar') ? 'left: 0 !important; right: auto !important;' : '';?>">
 
         <li class="header"><?= (($notifyCount) ? (Yii::t('app', "You have ").$notifyCount.Yii::t('app', " notifications")) : (Yii::t('app', "You have No notifications"))); ?></li>
 	<?php if($notifyCount != 0) : ?>
@@ -164,7 +182,7 @@ if (Yii::$app->user->isGuest) {
             <i class="glyphicon glyphicon-user"></i>
             <span><?= @Yii::$app->user->identity->user_login_id ?> <i class="caret"></i></span>
         </a>
-        <ul class="dropdown-menu" style="margin-right:10px">
+        <ul class="dropdown-menu" style="margin-right:<?= (Yii::$app->language == 'ar' && isset($isStudent)) ? '-50px' : '10px'; ?>">
             <!-- User image -->
             <li class="user-header bg-light-blue">
                 <img src="<?= $Photo ?>" class="img-circle" alt="User Image"/>

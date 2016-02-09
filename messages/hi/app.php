@@ -17,7 +17,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Arabic (العربية)' => 'अरबी  (العربية)',
+	'Go Back' => 'वापस जाओ',
+	'Return Home' => 'घर लौटना',
+    'Please contact us if you think this is a server error. Thank you.' => 'आप इस एक सर्वर त्रुटि है तो हमसे संपर्क करें। धन्यवाद।',
+    'The above error occurred while the Web server was processing your request.' => 'वेब सर्वर आपके अनुरोध पर कार्रवाई की गई थी, जबकि ऊपर त्रुटि हुई।',
     'Arabic' => '@@@@',
     'Database host' => '@@डाटाबेस होस्ट@@',
     'Database name' => '@@डाटाबेस का नाम@@',
@@ -59,6 +62,7 @@ return [
     'Admin Username' => 'एडमिन यूज़रनेम',
     'Alias' => 'उपनाम',
     'All rights reserved' => 'सर्वाधिकार सुरक्षित',
+    'Arabic (العربية)' => 'अरबी  (العربية)',
     'Are you sure you want to delete this item?' => 'आप इस रिकॉर्ड को नष्ट करना चाहते हैं आप सुनिश्चित हैं?',
     'Auth Assignments' => 'असाइनमेंट्स',
     'Back' => 'वापस जाएँ',

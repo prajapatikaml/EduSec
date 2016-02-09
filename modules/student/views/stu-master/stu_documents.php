@@ -81,7 +81,7 @@ else
 		}
 	     endforeach; 
 	?>
-    <div class="form-group col-xs-12 col-sm-3" style="<?= $st; ?>;margin-top: 10px;">
+    <div class="form-group col-xs-12 col-sm-3 edusecArLangCss" style="<?= $st; ?>;margin-top: 10px;">
 		<?= Html::submitButton('<i class="fa fa-upload"></i>'. Yii::t('stu', 'Upload'), ['class' => $stu_docs->isNewRecord ? 'btn btn-success btn-block' : 'btn btn-primary btn-block']) ?>
     </div>
 	<?php ActiveForm::end(); ?>

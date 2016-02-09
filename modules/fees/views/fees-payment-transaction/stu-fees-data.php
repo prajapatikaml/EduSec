@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
 <!--div class="table-responsive"-->
 <!-----Start Display Block Of Student Details----->
 <div class="col-xs-12">
-  <div class="col-lg-4 col-sm-8 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-inr"></i> <?= $this->title ?></h3></div>
+  <div class="col-lg-12 col-sm-12 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-inr"></i> <?= $this->title ?></h3></div>
 </div>
 
 <div class="col-xs-12" style="padding-top: 10px;">

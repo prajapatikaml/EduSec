@@ -17,9 +17,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Student No/Unique ID is auto generated.' => '@@يتم إنشاء رقم الطالب الخاص الكود الخاص به تلقائيًا@@',
-    'Student import detail must match with application language.' => '@@تفاصيل استيراد بيانات الطالب يجب أن تتوافق مع لغة الاستمارة@@',
-    'create' => '@@إنشاء@@',
+    'Student No/Unique ID is auto generated.' => 'يتم إنشاء رقم الطالب الخاص الكود الخاص به تلقائيًا',
+    'Student import detail must match with application language.' => 'تفاصيل استيراد بيانات الطالب يجب أن تتوافق مع لغة الاستمارة',
+    'create' => 'إنشاء',
+    'view' => 'إظهار',
     ' (not set) ' => ' (غير مُعد) ',
     ' --- Select Batch --- ' => 'اختر العام الدراسي',
     ' Import' => 'استيراد',
@@ -248,5 +249,4 @@ return [
     'delete' => 'حذف',
     'prefix.' => 'سابقة',
     'update' => 'تحديث',
-    'view' => 'إظهار',
 ];

@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
    <div class="box box-success">
 	<div class="box-header with-border">
 		<h3 class="box-title"><i class="fa fa-graduation-cap"></i> <?php echo Yii::t('stu', 'Current Course Wise Total Student'); ?></h3>
-		<div class="box-tools pull-right">
+		<div class="box-tools <?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?>">
 			<button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		</div>
 	</div>
@@ -82,7 +82,7 @@ $this->params['breadcrumbs'][] = $this->title;
    <div class="box box-warning">
 	<div class="box-header with-border">
 		<h3 class="box-title"><i class="fa fa-bar-chart"></i> <?php echo Yii::t('stu', 'Year Wise Admission'); ?></h3>
-		<div class="box-tools pull-right">
+		<div class="box-tools <?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?>">
 			<button class="btn btn-warning btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		</div>
 	</div>
@@ -142,7 +142,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="box box-info">
 		<div class="box-header with-border">
 			<h3 class="box-title"><i class="fa fa-list-ul"></i> <?php echo Yii::t('stu', 'Recently Added Student'); ?></h3>
-			<div class="box-tools pull-right">
+			<div class="box-tools <?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?>">
 				<button class="btn btn-info btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 				<button class="btn btn-info btn-sm" title="Remove" data-toggle="tooltip" data-widget="remove"><i class="fa fa-times"></i></button>
 			</div>

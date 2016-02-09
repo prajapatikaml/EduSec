@@ -243,10 +243,10 @@ return [
     'delete' => '',
     'prefix.' => '',
     'update' => '',
-    'view' => '',
     'Student No/Unique ID is auto generated.' => '@@@@',
     'Student import detail must match with application language.' => '@@@@',
     'create' => '@@@@',
+    'view' => '@@@@',
     'FEMALE' => '@@@@',
     'MALE' => '@@@@',
 ];

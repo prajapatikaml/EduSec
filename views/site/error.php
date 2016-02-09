@@ -26,15 +26,15 @@ if(\Yii::$app->user->isGuest) {
 			<i class="fa fa-bug" style="font-size:120px"></i> &nbsp;
 		<?php endif; ?>
         </h2>
-	<h3 class="text-red" style="text-align:left"><i class="fa fa-warning text-red"></i> <?= Html::encode($name) ?></h3>
+	<h3 class="text-red" style="text-align:<?= (Yii::$app->language == 'ar') ? 'right' : 'left'; ?>"><i class="fa fa-warning text-red"></i> <?= Html::encode($name) ?></h3>
 	<hr>
 		<p class="text-danger"><?= nl2br(Html::encode($message)) ?></p>
-		<p class="text-info">The above error occurred while the Web server was processing your request.</p>
-		<p class="text-info">Please contact us if you think this is a server error. Thank you.</p>
+		<p class="text-info"><?= Yii::t('app', 'The above error occurred while the Web server was processing your request.') ?></p>
+		<p class="text-info"><?= Yii::t('app', 'Please contact us if you think this is a server error. Thank you.') ?></p>
 	<hr>
 	<h4>
-		<?= Html::a('<i class="fa fa-arrow-circle-left"></i> Go Back','javascript:history.back()', ['class'=>'btn btn-default','onclick' => "javascript:history.back()"]) ?>
-		<div class="pull-right"><?= Html::a('<i class="fa fa-home"></i> Return Home', Yii::$app->homeUrl, ['class'=>'btn btn-default']) ?></div>
+		<?= Html::a('<i class="fa fa-arrow-circle-left"></i> '.Yii::t('app','Go Back'),'javascript:history.back()', ['class'=>'btn btn-default','onclick' => "javascript:history.back()"]) ?>
+		<div class="<?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?>"><?= Html::a('<i class="fa fa-home"></i> '.Yii::t('app', 'Return Home'), Yii::$app->homeUrl, ['class'=>'btn btn-default']) ?></div>
 	</h4>
     </div><!-- /.error-content -->
   </div><!-- /.error-page -->

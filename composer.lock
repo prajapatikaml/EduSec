@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "d4f626479aef619c42d604fd5f388e97",
+    "hash": "facdef5b9585002aeaef17c522a8aa62",
     "packages": [
         {
             "name": "2amigos/yii2-switch-widget",
@@ -71,6 +71,60 @@
                 "yii2"
             ],
             "time": "2015-03-20 20:10:20"
+        },
+        {
+            "name": "airani/yii2-adminlte-asset",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/airani/yii2-adminlte-asset.git",
+                "reference": "d3c266ea40fd2a0089ca6180509dde3caa8d57ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/airani/yii2-adminlte-asset/zipball/d3c266ea40fd2a0089ca6180509dde3caa8d57ad",
+                "reference": "d3c266ea40fd2a0089ca6180509dde3caa8d57ad",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/admin-lte": "~2.0",
+                "cebe/yii2-gravatar": "1.*",
+                "rmrevin/yii2-fontawesome": "2.8.*",
+                "yiisoft/yii2": "2.*",
+                "yiisoft/yii2-bootstrap": "2.*"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "dmstr\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tobias Munk",
+                    "email": "tobias@diemeisterei.de"
+                },
+                {
+                    "name": "Evgeniy Tkachenko",
+                    "email": "et.coder@gmail.com"
+                }
+            ],
+            "description": "Backend theme for Yii2 Framework",
+            "keywords": [
+                "AdminLTE",
+                "extension",
+                "yii2"
+            ],
+            "time": "2015-03-16 22:20:59"
         },
         {
             "name": "arogachev/yii2-excel",

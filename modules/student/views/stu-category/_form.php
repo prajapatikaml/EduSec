@@ -28,7 +28,7 @@ use yii\bootstrap\ActiveForm;
 
     <?= $form->field($model, 'stu_category_name')->textInput(['maxlength' => 50, 'placeholder' => $model->getAttributeLabel('stu_category_name')]) ?>
 
-    <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
+    <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding edusecArLangCss">
 	<div class="col-xs-6">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('stu','Create') : Yii::t('stu','Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>

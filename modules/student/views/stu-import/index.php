@@ -27,12 +27,12 @@ $this->params['breadcrumbs'][] = $this->title;
 	</div><!--./box-header-->
 	<div class="box-body">
 		<div class="row">
-			<div class="col-sm-4">
+			<div class="col-sm-12 col-xs-12">
 				<?= $form->field($model, 'importFile')->fileInput(['title' => Yii::t('stu', 'Browse Excel File')])->label(false) ?>
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-12">
+			<div class="col-sm-12 col-xs-12">
 				<div class="callout callout-info">
 					<h4><?php echo Yii::t('stu', 'You must have to follow the following instruction at the time of importing data'); ?></h4>
 					<ol>

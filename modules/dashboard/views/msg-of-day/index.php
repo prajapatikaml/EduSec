@@ -14,8 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 
 <div class="col-xs-12">
-  <div class="col-lg-4 col-sm-4 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-th-list"></i> <?php echo Yii::t('dash', 'Message of Day List') ?></h3></div>
-  <div class="col-xs-4"></div>
+  <div class="col-lg-8 col-sm-8 col-xs-12 no-padding edusecArLangCss"><h3 class="box-title"><i class="fa fa-th-list"></i> <?php echo Yii::t('dash', 'Message of Day List') ?></h3></div>
   <div class="col-lg-4 col-sm-4 col-xs-12 no-padding" style="padding-top: 20px !important;">
 	<div class="col-xs-4 left-padding">
         <?= Html::a(Yii::t('dash', 'ADD'), ['create'], ['class' => 'btn btn-block btn-success']) ?>

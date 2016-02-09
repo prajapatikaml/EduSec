@@ -29,7 +29,7 @@ $_SESSION['selected_list']=$selected_list;
 
         <div class="box-header">
           <h3 class="box-title"><i class="fa fa-info-circle"></i> <?= $this->title ?></h3>
-          <div class="box-tools pull-right">
+          <div class="box-tools <?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?>">
           	<?php echo Html::a('<i class="fa fa-arrow-circle-left"></i> ' .Yii::t('report', "Back"), ['student/stuinforeport'],['class'=>'btn btn-back', 'style'=>'color:#fff']);?>
 		<?php echo Html::a('<i class="fa fa-file-excel-o"></i> '.Yii::t('report', "Excel"),['student/selected-student-list','studentlistexcelexport'=>'studentlistexcel'],array('title'=>'Export to Excel','target'=>'_blank','class'=>'btn btn-info', 'style'=>'color:#fff'));?>
 		<?php echo Html::a('<i class="fa fa-file-pdf-o"></i> ' .Yii::t('report', "PDF"),array('student/selected-student-list','studentlistexport'=>'studentlistpdf'),array('title'=>'Export to PDF','target'=>'_blank','class'=>'btn btn-warning', 'style'=>'color:#fff')); ?> 	

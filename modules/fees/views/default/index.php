@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
    <div class="box box-info">
 	<div class="box-header with-border">
 		<h3 class="box-title"><i class="fa fa-pie-chart"></i> <?php echo Yii::t('fees', 'Course Wise Collect Fees'); ?></h3>
-		<div class="box-tools pull-right">
+		<div class="box-tools <?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?>">
 			<button class="btn btn-info btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		</div>
 	</div>
@@ -122,7 +122,7 @@ $this->params['breadcrumbs'][] = $this->title;
    <div class="box box-danger">
 	<div class="box-header with-border">
 		<h3 class="box-title"><i class="fa fa-pie-chart"></i> <?php echo Yii::t('fees', 'Paid/Unpaid Amount'); ?></h3>
-		<div class="box-tools pull-right">
+		<div class="box-tools <?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?>">
 			<button class="btn btn-danger btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		</div>
 	</div>
@@ -199,7 +199,7 @@ $this->params['breadcrumbs'][] = $this->title;
    <div class="box box-warning">
 	<div class="box-header with-border">
 		<h3 class="box-title"><i class="fa fa-bar-chart"></i> <?php echo Yii::t('fees', 'Individual Category Wise Fees Collection'); ?> </h3>
-		<div class="box-tools pull-right">
+		<div class="box-tools <?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?>">
 			<button class="btn btn-warning btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		</div>
 	</div>
@@ -258,7 +258,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="box box-primary">
 		<div class="box-header with-border">
 			<h3 class="box-title"><?php echo Yii::t('fees', 'Recently Fees Transaction'); ?></h3>
-			<div class="box-tools pull-right">
+			<div class="box-tools <?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?>">
 				<button class="btn btn-primary btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 				<button class="btn btn-primary btn-sm" title="Remove" data-toggle="tooltip" data-widget="remove"><i class="fa fa-times"></i></button>
 			</div>

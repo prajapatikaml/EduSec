@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = Yii::t('fees', 'Update');
 $this->params['breadcrumbs'][] = ['label' => Yii::t('fees', 'Receipt - ').$model->fees_pay_tran_id, 'url' => ['view', 'id' => $model->fees_pay_tran_id]];
 ?>
 <div class="col-xs-12">
-  <div class="col-lg-4 col-sm-8 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-edit"></i> <?= $this->title ?></h3></div>
+  <div class="col-lg-12 col-sm-12 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-edit"></i> <?= $this->title ?></h3></div>
 </div>
 
 <div class="fees-payment-transaction-update">

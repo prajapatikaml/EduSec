@@ -53,8 +53,8 @@ $( document ).ready(function() {
 </style>
 <div class="col-xs-12">
   <div class="col-lg-12 col-sm-12 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-edit"></i>
-	<button type="button" class="close pull-right" data-dismiss="modal" aria-label="Close">x</button>
 	<?= Html::encode($this->title) ?> </h3>
+	<button type="button" class="close <?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?>" data-dismiss="modal" aria-label="Close">x</button>
   </div>
 </div>
 
@@ -84,7 +84,7 @@ $( document ).ready(function() {
     <div class="hint col-xs-12 col-sm-12" style="color:red;padding-top:15px"><b><?php echo Yii::t('emp', 'Note'); ?>:- </b>&nbsp;<?php echo Yii::t('emp', 'Only Upload Jpeg, Jpg, Png, Gif Type'); ?>
     </div>
  
-    <div class="form-group col-xs-12 col-sm-12 no-padding">
+    <div class="form-group col-xs-12 col-sm-12 no-padding edusecArLangCss">
 	<hr>
         <?= Html::submitButton($model->isNewRecord ? Yii::t('emp', 'Create') : Yii::t('emp', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-success' : 'btn btn-info']) ?>
     </div>

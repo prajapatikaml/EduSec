@@ -35,7 +35,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'data')->textarea(['rows' => 6])  */ ?>
 
-      <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
+      <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding edusecArLangCss">
 	<div class="col-xs-6">
         <?= Html::submitButton($model->isNewRecord ? Yii::t('rbac-admin', 'Create') : Yii::t('rbac-admin', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>

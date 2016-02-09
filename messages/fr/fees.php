@@ -19,6 +19,7 @@
 return [
     'Cash' => '',
     'Cheque' => '',
+    'Receipt of ' => '',
     'The combination of Fees Category and Batch has already been taken.' => '',
     ' Take Fees' => 'Encaisser les frais',
     '(Not Set)' => '(Non paramétré)',

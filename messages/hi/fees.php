@@ -17,8 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Cash' => 'नकद',
-    'Cheque' => 'चेक',
+    'Receipt of ' => '',
     'The combination of Fees Category and Batch has already been taken.' => '',
     ' Take Fees' => 'फीस लीजियें',
     '(Not Set)' => '(सेट नहीं है)',
@@ -41,7 +40,9 @@ return [
     'Batch :' => 'बैच : ',
     'Batch Name' => 'बैच का नाम',
     'Cancel' => 'रद्द करें',
+    'Cash' => 'नकद',
     'Category Wise Fees Collect' => 'श्रेणी वाइज फीस जमा करें ',
+    'Cheque' => 'चेक',
     'Cheque Date' => 'चैक तारीख',
     'Cheque No' => 'चैक नं.',
     'Clear' => 'साफ़ करें',

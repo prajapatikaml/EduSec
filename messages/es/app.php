@@ -17,7 +17,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Arabic (العربية)' => 'Arábico (العربية)',
+	'Go Back' => 'Regresa',
+	'Return Home' => 'Volver a casa',
+    'Please contact us if you think this is a server error. Thank you.' => 'Póngase en contacto con nosotros si usted piensa que esto es un error en el servidor. Gracias.',
+    'The above error occurred while the Web server was processing your request.' => 'Se ha producido el error anterior, mientras que el servidor Web se procesando su solicitud.',
     'created_at' => '',
     'Arabic' => '@@@@',
     'Database host' => '@@Host de Base de Datos@@',
@@ -55,6 +58,7 @@ return [
     'Admin Username' => 'Alias Administrador',
     'Alias' => 'Alias',
     'All rights reserved' => 'Todos los derechos reservados',
+    'Arabic (العربية)' => 'Arábico (العربية)',
     'Are you sure you want to delete this item?' => '¿Desea eliminar el ítem?',
     'Auth Assignments' => 'Asignaciones de autenticación',
     'Back' => 'Atrás',

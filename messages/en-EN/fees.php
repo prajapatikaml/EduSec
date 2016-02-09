@@ -107,6 +107,7 @@ return [
     'Receipt Date :' => '',
     'Receipt No - ' => '',
     'Receipt No.' => '',
+    'Receipt of ' => '',
     'Recently Fees Transaction' => '',
     'Recepit No' => '',
     'SI No.' => '',

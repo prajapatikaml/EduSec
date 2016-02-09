@@ -106,7 +106,7 @@ if($dispStatus) :
    <div class="box-header with-border">
 	<h3 class="box-title"><i class="fa fa-users"></i> <?php echo Yii::t('fees', 'Student Details'); ?></h3>
 	<?php if(!empty($stuData)) : ?>
-	<div class="box-tools pull-right"><?= Html::a('<i class="fa fa-file-pdf-o"></i> '.Yii::t('fees', 'Generate PDF'), ['export-fcc-wise-fees-pdf', 'fccid'=>$FccModel->fees_collect_category_id], ['class'=>'btn btn-sm btn-warning', 'target'=>'_blank', 'style'=>'color:#fff', 'data-method'=>'POST']) ?></div>
+	<div class="box-tools <?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?>"><?= Html::a('<i class="fa fa-file-pdf-o"></i> '.Yii::t('fees', 'Generate PDF'), ['export-fcc-wise-fees-pdf', 'fccid'=>$FccModel->fees_collect_category_id], ['class'=>'btn btn-sm btn-warning', 'target'=>'_blank', 'style'=>'color:#fff', 'data-method'=>'POST']) ?></div>
 	<?php endif; ?>
    </div>
    <div class="box-body table-responsive no-padding">

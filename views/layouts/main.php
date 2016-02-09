@@ -11,12 +11,6 @@ if(Yii::$app->language == 'fr') :
 	}');
 endif;
 
-if(Yii::$app->language == 'ar') :
-	$this->registerCss('input[type], textarea {
-    	direction: rtl;
-	}');
-endif;
-
 if (Yii::$app->controller->action->id === 'login') {
     echo $this->render(
         'login-layout',
@@ -41,7 +35,10 @@ if (Yii::$app->controller->action->id === 'login') {
 		<meta property="og:description" content="Core functions like admissions, library management, transport management, students attendance in short entire range of university functions can be well performed by EduSec" />
 		<meta property="og:image" content="http://www.rudrasoftech.com/rudra.png">
 
-	<link rel="shortcut icon" href="<?php echo Yii::$app->request->baseUrl; ?>/images/rudrasoftech_favicon.png" type="image/x-icon" />
+		<link rel="shortcut icon" href="<?php echo Yii::$app->request->baseUrl; ?>/images/rudrasoftech_favicon.png" type="image/x-icon" />
+		<!-- Render this(ar-layout-css) file for supporting Arabic Language -->
+		<?= $this->render('ar-layout-css'); ?>
+
         <?= Html::csrfMetaTags() ?>
         <title><?= Html::encode($this->title) ?></title>
         <?php $this->head() ?>

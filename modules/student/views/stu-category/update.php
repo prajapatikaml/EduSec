@@ -10,7 +10,7 @@ $this->params['breadcrumbs'][] = ['label' => $model->stu_category_name, 'url' =>
 $this->params['breadcrumbs'][] = Yii::t('stu', 'Update');
 ?>
 <div class="col-xs-12">
-  <div class="col-lg-6 col-sm-6 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-edit"></i> <?php echo Yii::t('stu', 'Update Admission Category'); ?></h3></div>
+  <div class="col-lg-12 col-sm-12 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-edit"></i> <?php echo Yii::t('stu', 'Update Admission Category'); ?></h3></div>
 </div>
 
 <div class="stu-status-update">

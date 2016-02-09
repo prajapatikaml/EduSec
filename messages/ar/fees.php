@@ -17,6 +17,8 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'PDF' => 'PDF',
+    'Receipt of ' => 'استلام ',
     ' Take Fees' => 'تحصيل الرسوم',
     '(Not Set)' => 'لم يتم ظبطه',
     'ADD' => 'أضف',
@@ -25,7 +27,7 @@ return [
     'Add Fees Category' => 'أضف فئات الرسوم',
     'Add Fees Category Detail' => 'أضف تفاصيل فئات الرسوم',
     'Add Fees Details' => 'أضف تفاصيل الرسوم',
-    'Add Head' => 'أضف رأس صفحة التحصيل',
+    'Add Head' => 'إضافة الرأسل',
     'Amount' => 'المبلغ',
     'Are you sure you want to delete this item?' => 'هل أنت متأكد من حذف هذا البند؟',
     'Back' => 'عودة',
@@ -93,7 +95,6 @@ return [
     'No fees results found.' => 'لم يتم العثور على نتائج بخصوص الرسوم',
     'No results found.' => 'لم يتم العثور على نتائج',
     'No student data available' => 'لم يتم العثور على بيانات الطالب',
-    'PDF' => '',
     'Paid Amount' => 'المبلغ المدفع',
     'Paid/Unpaid' => 'مدفوع / غير مدفوع',
     'Paid/Unpaid Amount' => 'مبالغ مدفوعة/غير مدفوعة',

@@ -23,7 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
   <div class="col-xs-12">
 	<h2 class="page-header">	
 		<i class="fa fa-user"></i> <?php echo Yii::t('emp', 'Employee Profile'); ?>
-		<div class="pull-right">
+		<div class="<?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'; ?>">
 		<?php if(Yii::$app->user->can("/employee/export-data/employee-profile-pdf")) { ?>
 		    <?= Html::a('<i class="fa fa-file-pdf-o"></i> '.Yii::t('emp', 'Generate PDF'), ['export-data/employee-profile-pdf', 'eid' => $model->emp_master_id], ['class' => 'btn-sm btn btn-warning', 'id' => 'export-pdf', 'target' => 'blank']) ?>
 		<?php } ?>
@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <section class="content edusec-user-profile">
 <div class="row">
-	<div class="col-md-3 table-responsive edusec-pf-border no-padding" style="margin-bottom:15px">
+	<div class="col-md-3 table-responsive edusec-pf-border no-padding edusecArLangCss" style="margin-bottom:15px">
 		<div class="col-md-12 text-center">
 			<?= Html::img($info->getEmpPhoto($info->emp_photo), ['alt'=>'No Image', 'class'=>'img-circle edusec-img-disp']); ?>
 		<div class="photo-edit">

@@ -23,8 +23,7 @@ $this->params['breadcrumbs'][] = $this->title;
       }
 ?>
 <div class="col-xs-12">
-  <div class="col-lg-8 col-sm-8 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-th-list"></i> <?= $this->title ?></h3></div>
-  <div class="col-lg-4 col-sm-4 col-xs-12 no-padding" style="padding-top: 20px !important;"></div>
+  <div class="col-lg-12 col-sm-12 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-th-list"></i> <?= $this->title ?></h3></div>
 </div>
 
 <div class="col-xs-12" style="padding-top: 10px;">

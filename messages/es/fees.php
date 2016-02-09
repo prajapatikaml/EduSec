@@ -17,9 +17,7 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Cash' => 'efectivo',
-    'Cheque' => 'cheque',
-    'The combination of Fees Category and Batch has already been taken.' => 'La combinación de Cuotas Categoría y Batch ya ha sido tomada.',
+    'Receipt of ' => '',
     ' Take Fees' => 'Obtener Cuotas',
     '(Not Set)' => '(No Configurado)',
     'ADD' => 'AGREGAR',
@@ -41,7 +39,9 @@ return [
     'Batch :' => 'Lote :',
     'Batch Name' => 'Nombre del Lote',
     'Cancel' => 'Cancelar',
+    'Cash' => 'efectivo',
     'Category Wise Fees Collect' => 'Categoría de Cuotas Cobradas Actuales',
+    'Cheque' => 'cheque',
     'Cheque Date' => 'Fecha del Cheque',
     'Cheque No' => 'N° de Cheque',
     'Clear' => 'Limpiar',
@@ -130,6 +130,7 @@ return [
     'Student No :' => 'N° de Estudiante :',
     'Student Payment History' => 'Historial de pagos del Estudiante',
     'TakeFees' => 'Obtener Cuotas',
+    'The combination of Fees Category and Batch has already been taken.' => 'La combinación de Cuotas Categoría y Batch ya ha sido tomada.',
     'Total Amount' => 'Cantidad Total',
     'Total Collection' => 'Total Cobrado',
     'Total Paid Fees' => 'Total Cuotas Pagadas',

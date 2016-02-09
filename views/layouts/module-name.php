@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 ?>
 
-<ul class="dropdown-menu">
+<ul class="dropdown-menu" style="<?= (Yii::$app->language == 'ar') ? 'left: 0 !important; right: auto !important;' : '';?>">
     <li>
         <ul class="menu">
 			<?php if(Yii::$app->user->can('Configuration')) : ?>

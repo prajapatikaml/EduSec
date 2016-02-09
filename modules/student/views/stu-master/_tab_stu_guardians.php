@@ -15,7 +15,7 @@ $adminUser = array_keys(\Yii::$app->authManager->getRolesByUser(Yii::$app->user-
   <div class="col-xs-12 col-md-12 col-lg-12">
 	<h2 class="page-header">	
 	<i class="fa fa-info-circle"></i> <?= Html::encode(Yii::t('stu', 'Guardians Details')) ?>
-	<div class="pull-right">
+	<div class="<?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'?>">
 	<?php if(Yii::$app->user->can('/student/stu-master/addguardian')) { ?>
 		<?= Html::a('<i class="fa fa-user-plus"></i> '. Yii::t('stu', 'Add Guardian'), ['addguardian', 'sid' => $model->stu_master_id], ['class' => 'btn-sm btn btn-primary text-warning', 'id' => 'update-guard-data']) ?>
 	<?php } ?>
@@ -40,7 +40,7 @@ $adminUser = array_keys(\Yii::$app->authManager->getRolesByUser(Yii::$app->user-
   <div class="col-xs-12 col-md-12 col-lg-12">
 	<h2 class="page-header edusec-border-bottom-warning">
 	<?= $i."-".$sd['guardian_name'] ?>
-	<div class="pull-right">
+	<div class="<?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'?>">
 		<?php if(Yii::$app->user->can("/student/stu-master/update") && ($_REQUEST['id'] == Yii::$app->session->get('stu_id')) || (in_array("SuperAdmin", $adminUser)) || Yii::$app->user->can("updateAllStuInfo")) { ?>
 		    <?= Html::a('<i class="fa fa-pencil-square-o"></i> '.Yii::t('stu', 'Edit'), '#', ['class' => 'btn btn-primary btn-sm', 'onclick' => "updateGuard(".$sd['stu_guardian_id'].",".$model->stu_master_id.", 'guardians');return false;"]) ?>
 		<?php } ?>
@@ -79,7 +79,7 @@ EOF;
 ?>
 <div class="row">
   <div class="col-xs-12 col-md-12 col-lg-12">
-	<div class="pull-right edusec-stu-emg-gur">
+	<div class="<?= (Yii::$app->language == 'ar') ? 'pull-left' : 'pull-right'?> edusec-stu-emg-gur">
 		<span class="edusec-emg-ct-label"><?php echo Yii::t('stu', 'Is Emergency Contact'); ?></span>
 		<?php if((Yii::$app->user->can('/student/stu-master/emg-change-status') && ($_REQUEST['id'] == Yii::$app->session->get('stu_id'))) || ( $adminUser == "SuperAdmin" ) || Yii::$app->user->can("updateAllStuInfo")) { ?>
 		   <?= \dosamigos\switchinput\SwitchRadio::widget([
@@ -105,56 +105,56 @@ EOF;
 
 <div class="row">
 	  <div class="col-lg-12 col-sm-12 col-xs-12">
-		<div class="col-lg-3 col-sm-3 col-xs-6 edusec-profile-label"><?= $guardian->getAttributeLabel('guardian_name') ?></div>
+		<div class="col-lg-3 col-sm-3 col-xs-6 edusec-profile-label edusecArLangCss"><?= $guardian->getAttributeLabel('guardian_name') ?></div>
 		<div class="col-lg-9 col-sm-9 col-xs-6 edusec-profile-text"><?= $sd['guardian_name'] ?></div>
 	  </div>
 
 	<div class="col-md-12 col-xs-12 col-sm-12">
 	  <div class="col-lg-6 col-sm-6 col-xs-12 no-padding">
-		<div class="col-lg-6 col-xs-6 edusec-profile-label"><?= $guardian->getAttributeLabel('guardian_relation') ?></div>
+		<div class="col-lg-6 col-xs-6 edusec-profile-label edusecArLangCss"><?= $guardian->getAttributeLabel('guardian_relation') ?></div>
 		<div class="col-lg-6 col-xs-6 edusec-profile-text"><?= $sd['guardian_relation'] ?></div>
 	  </div>
 	  <div class="col-lg-6 col-sm-6 col-xs-12 no-padding">
-		<div class="col-lg-6 col-xs-6 edusec-profile-label"><?= $guardian->getAttributeLabel('guardian_occupation') ?></div>
+		<div class="col-lg-6 col-xs-6 edusec-profile-label edusecArLangCss"><?= $guardian->getAttributeLabel('guardian_occupation') ?></div>
 		<div class="col-lg-6 col-xs-6 edusec-profile-text"><?= $sd['guardian_occupation'] ?></div>
 	  </div>
 	</div>
 
 	<div class="col-md-12 col-xs-12 col-sm-12">
 	  <div class="col-lg-6 col-sm-6 col-xs-12 no-padding">
-		<div class="col-lg-6 col-xs-6 edusec-profile-label"><?= $guardian->getAttributeLabel('guardian_mobile_no') ?></div>
+		<div class="col-lg-6 col-xs-6 edusec-profile-label edusecArLangCss"><?= $guardian->getAttributeLabel('guardian_mobile_no') ?></div>
 		<div class="col-lg-6 col-xs-6 edusec-profile-text"><?= $sd['guardian_mobile_no'] ?></div>
 	  </div>
 	  <div class="col-lg-6 col-sm-6 col-xs-12 no-padding">
-		<div class="col-lg-6 col-xs-6 edusec-profile-label"><?= $guardian->getAttributeLabel('guardian_phone_no') ?></div>
+		<div class="col-lg-6 col-xs-6 edusec-profile-label edusecArLangCss"><?= $guardian->getAttributeLabel('guardian_phone_no') ?></div>
 		<div class="col-lg-6 col-xs-6 edusec-profile-text"><?= $sd['guardian_phone_no'] ?></div>
 	  </div>
 	</div>
 
 	<div class="col-md-12 col-xs-12 col-sm-12">
 	  <div class="col-lg-6 col-sm-6 col-xs-12 no-padding">
-		<div class="col-lg-6 col-xs-6 edusec-profile-label"><?= $guardian->getAttributeLabel('guardian_income') ?></div>
+		<div class="col-lg-6 col-xs-6 edusec-profile-label edusecArLangCss"><?= $guardian->getAttributeLabel('guardian_income') ?></div>
 		<div class="col-lg-6 col-xs-6 edusec-profile-text"><?= $sd['guardian_income'] ?></div>
 	  </div>
 	  <div class="col-lg-6 col-sm-6 col-xs-12 no-padding">
-		<div class="col-lg-6 col-xs-6 edusec-profile-label"><?= $guardian->getAttributeLabel('guardian_email') ?></div>
+		<div class="col-lg-6 col-xs-6 edusec-profile-label edusecArLangCss"><?= $guardian->getAttributeLabel('guardian_email') ?></div>
 		<div class="col-lg-6 col-xs-6 edusec-profile-text"><?= $sd['guardian_email'] ?></div>
 	  </div>
 	</div>
 
 	 <div class="col-md-12 col-xs-12 col-sm-12">
-		<div class="col-md-3 col-xs-6 col-sm-3 edusec-profile-label"><?= $guardian->getAttributeLabel('guardian_qualification') ?></div>
+		<div class="col-md-3 col-xs-6 col-sm-3 edusec-profile-label edusecArLangCss"><?= $guardian->getAttributeLabel('guardian_qualification') ?></div>
 		<div class="col-md-9 col-xs-6 col-sm-9 edusec-profile-text"><?= $sd['guardian_qualification'] ?></div>
 	 </div>
 
 
 	<div class="col-md-12 col-xs-12 col-sm-12">
-		<div class="col-md-3 col-xs-6 col-sm-3 edusec-profile-label"><?= $guardian->getAttributeLabel('guardian_home_address') ?></div>
+		<div class="col-md-3 col-xs-6 col-sm-3 edusec-profile-label edusecArLangCss"><?= $guardian->getAttributeLabel('guardian_home_address') ?></div>
 		<div class="col-md-9 col-xs-6 col-sm-9 edusec-profile-text"><?= $sd['guardian_home_address'] ?></div>
 	</div>
 
 	<div class="col-md-12 col-xs-12 col-sm-12">
-		<div class="col-md-3 col-xs-6 col-sm-3 edusec-profile-label"><?= $guardian->getAttributeLabel('guardian_office_address') ?></div>
+		<div class="col-md-3 col-xs-6 col-sm-3 edusec-profile-label edusecArLangCss"><?= $guardian->getAttributeLabel('guardian_office_address') ?></div>
 		<div class="col-md-9 col-xs-6 col-sm-9 edusec-profile-text"><?= $sd['guardian_office_address'] ?></div>
 	</div>
 </div>
