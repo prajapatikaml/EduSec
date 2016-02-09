@@ -1,0 +1,486 @@
+html,
+body {
+    height: 100%;
+}
+
+.wrap {
+    min-height: 100%;
+    height: auto;
+    margin: 0 auto -60px;
+    padding: 0 0 60px;
+}
+
+.wrap > .container {
+    padding: 70px 0px 20px;
+}
+
+.footer {
+  background-color: rgb(245, 245, 245);
+  border-top: 1px solid rgb(221, 221, 221);
+  height: 100px;
+  margin-top: 50px;
+  min-height: 100px;
+  padding-top: 40px;
+  position: relative;
+}
+
+/******* emp info report*/
+fieldset {
+    border: 1px solid #C0C0C0;;
+    margin: 0;
+    min-width: 0;
+    padding: 15px;
+    width:100%;
+}
+
+/*****  empinforreport end */
+.jumbotron {
+    text-align: center;
+    background-color: transparent;
+}
+
+.jumbotron .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+}
+
+.not-set {
+    color: #c55;
+    font-style: italic;
+}
+
+/* add sorting icons to gridview sort links */
+a.asc:after, a.desc:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+    padding-left: 5px;
+}
+
+a.asc:after {
+    content: /*"\e113"*/ "\e151";
+}
+
+a.desc:after {
+    content: /*"\e114"*/ "\e152";
+}
+
+.sort-numerical a.asc:after {
+    content: "\e153";
+}
+
+.sort-numerical a.desc:after {
+    content: "\e154";
+}
+
+.sort-ordinal a.asc:after {
+    content: "\e155";
+}
+
+.sort-ordinal a.desc:after {
+    content: "\e156";
+}
+
+.grid-view th {
+    white-space: nowrap;
+}
+
+.hint-block {
+    display: block;
+    margin-top: 5px;
+    color: #999;
+}
+
+.error-summary {
+    color: #a94442;
+    background: #fdf7f7;
+    border-left: 3px solid #eed3d7;
+    padding: 10px 20px;
+    margin: 0 0 15px 0;
+}
+/********************** Validation icon in form ************************ start ******/
+
+.has-error .status {
+  background: url("../images/delete1.png") no-repeat scroll right center transparent !important;
+  float: left;
+  height: 30px;
+  padding-left: 20px;
+  padding-top: 15px;
+  /*width: 20px;*/
+}
+.has-success .status {
+  background: url("../images/ok1.png") no-repeat scroll right center transparent !important;
+  float: left;
+  height: 30px;
+  padding-left: 20px;
+  padding-top: 15px;
+  /*width: 20px;*/
+}
+/********************** Validation icon in form ************************ end ******/
+/*********************** boot test ************************************* start *****/
+
+.bs-callout-label-1 {
+  border-left-color: #1b809e !important;
+  background-color: #d9edf7;
+  border-color: #bce8f1;
+  color: #1b809e;
+  font-size: 15px;
+  font-weight: bold;
+}
+.bs-callout-label-2 {
+  border-left-color: #aa6708 !important;
+  background-color: #fcf8e3;
+  border-color: #fbeed5;
+  color: #aa6708;
+  font-size: 15px;
+  font-weight: bold;
+}
+.bs-callout-label-3 {
+  border-left-color: /*#7FB842*/ #468847 !important;
+  background-color: #dff0d8;
+  border: 1px solid #d6e9c6;
+  color: #468847;
+  font-size: 15px;
+  font-weight: bold;
+}
+.bs-callout {
+  padding-left: 10px;
+  margin: 20px 0;
+  border: 1px solid #eee;
+  border-left-width: 5px;
+  border-radius: 3px;
+}
+.bs-callout-label-4 {
+  border-left-color: /*#7FB842*/ #FF6600 !important;
+  background-color: #FFD4B8;
+  border: 1px solid #FF944D;
+  color: #FF6C47;
+  font-size: 15px;
+  font-weight: bold;
+}
+.bs-callout-label-5 {
+  border-left-color: /*#7FB842*/ #99CCFF !important;
+  background-color: #DAEDFF;
+  border: 1px solid #C2E0FF;
+  color: #75A3FF;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+/*.panel {
+  box-shadow: 0 2px 0 rgba(0,0,0,.05);
+  border-radius: 2px;
+  border: 1px solid;
+  opacity: 1;
+  margin-bottom: 35px;
+  -webkit-transition: opacity .5s;
+  transition: opacity .5s;
+} 
+.panel-footer {
+  background-color: #f1f3f6;
+  color: #404040;
+  border-color: #ebeef2;
+  position: relative;
+} 
+.panel .panel-heading, .panel>:first-child {
+border-top-left-radius: 0;
+border-top-right-radius: 0;
+}
+.panel-heading {
+position: relative;
+height: 50px;
+padding: 0;
+margin-bottom:15px;
+}
+.panel-body  {
+  padding:0px;
+}*/
+.col-lg-drop {
+    display: inline;
+    float: right;
+    margin: 4px 66px 4px 5px;
+    min-height: 1px;
+    padding-left: 41px;
+    position: relative;
+    width: 43%;
+}
+/*
+button.ui-datepicker-trigger {
+  position: absolute;
+  left: 236px;
+  top: 1px;
+  border-radius: 0px 3px 3px 0px;
+
+}
+.hasDatepicker {
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}*/
+/*********************** boot test ************************************* end *****/
+/********************* Add * in required section *************** start ******/
+form div.required label.control-label:after {
+  content:" * ";
+  color:red;
+}
+/********************* Add * in required section *************** end *******/
+
+/**************************** Yes/No Switch on Student Guardians Tab *********************** Start ***/
+
+.onoffswitch {
+  float:right;
+  padding-left:5px; 
+}
+
+/**************************** Yes/No Switch on Student Guardians Tab *********************** End ***/
+
+.navbar-inverse {
+  background-color: rgb(24, 187, 156);
+  border: none; 
+}
+.navbar-inverse a {
+  color: #FFF !important;
+}
+.navbar-brand {
+  float: left;
+  font-size: 18px;
+  height: 80px;
+  line-height: 45px;
+  padding: 15px;
+}
+.navbar-nav > li > a {
+  line-height: 45px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+}
+
+.content-area {
+  background: none repeat scroll 0 0 rgb(255, 255, 255);
+  padding: 15px;
+  float: left;
+  width: 100%;
+}
+.content-header {
+  background: none repeat scroll 0 0 rgb(255, 255, 255);
+  padding: 20px 20px 10px;
+}
+
+h1, .h1, h2, .h2, h3, .h3 {
+  margin-bottom: 10px;
+  margin-top: 0;
+}
+
+.container {
+  margin-left: 0;
+}
+.content {
+  float: left;
+  width: 80%;
+}
+.footer .container {
+  margin: auto;
+  width: 60%;
+}
+body {
+  background-color: #F3F4F8;
+}
+
+h3 {
+  float: left;
+}
+.operation {
+  float: right;
+}
+.breadcrumb {
+  border-radius: 4px;
+  float: left;
+  height: 50px;
+  list-style: outside none none;
+  margin: 0;
+  padding: 15px;
+  width: 100%;
+}
+
+
+
+/*************  Custom css   *****************************/
+
+.sidebar {
+  background: none repeat scroll 0 0 rgb(48, 54, 66);
+  color: rgb(255, 255, 255);
+  min-height: 595px;
+  position: absolute;
+  width: 270px;
+  z-index: 1;
+  padding-top: 25px;
+}
+
+#page-wrapper {
+  margin: 80px 0 0 270px;
+  position: inherit;
+  min-height: 351px;
+}
+.col-lg-12.header {
+  background: none repeat scroll 0 0 rgb(255, 255, 255);
+  height: 55px;
+  padding-top: 10px;
+}
+
+table.detail-view, table.detail-view th, table.detail-view td {
+  border: medium none !important;
+}
+
+table.detail-view th {
+  float: left;
+  padding-right: 42px;
+  text-align: right;
+  width: 20%;
+}
+table.detail-view td {
+  float: right;
+  width: 78%;
+}
+
+
+@media (min-width: 1200px) {
+  .sidebar {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    display: none;
+  }
+  #page-wrapper {
+    margin: 0 !important;     
+  }
+}
+
+a.btn  {
+  color: #303642;
+}
+.btn.add {
+  background: url("../images/add.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+  padding-left: 25px;
+}
+.btn.pdf {
+  background: url("../images/pdf.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+  padding-left: 25px;
+}
+.btn.excel {
+  background: url("../images/excel.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+  padding-left: 25px;
+}
+
+.btn.update {
+  background: url("../images/update.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+  padding-left: 25px;
+}
+.btn.delete {
+  background: url("../images/delete.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+  padding-left: 25px;
+}
+.btn.back {
+  background: url("../images/back.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+  padding-left: 25px;
+}
+a.btn-cancel, .btn-cancel {
+  background: #303642;
+  color: #FFF;
+  border: none;
+}
+.btn-submit {
+  background: #18BB9C;
+  color: #FFF;
+  border: none;
+}
+
+a.btn-cancel:hover, .btn-submit:hover {
+  color: #FFF;
+}
+.sidebar ul {
+  padding-left: 0px;
+}
+.sidebar ul li {
+  border-bottom: 1px solid rgb(204, 204, 204);
+  list-style: outside none none;
+  padding: 7px 0 7px 15px;
+}
+
+.sidebar ul li:last-child {
+  border: none;
+}
+.glyphicon.glyphicon-eye-open {
+  color: #4F76BE;
+}
+.glyphicon.glyphicon-pencil {
+  background: url('../images/grid_update.png'); 
+  font-size: 0px;
+  height: 20px;
+  line-height: 30px;
+  width: 16px;
+}
+.glyphicon.glyphicon-trash {
+  background: url('../images/grid_delete.png');
+  font-size: 0px;
+  height: 20px;
+  line-height: 30px;
+  width: 16px;
+}
+.glyphicon.glyphicon-chevron-right {
+  float: left;
+  line-height: 30px;
+  width: 25px;
+}
+
+.navbar-brand {
+  padding: 15px 15px 15px 25px;
+  margin-left: 0 !important;
+}
+
+.stu-master-view {
+  background: none repeat scroll 0 0 rgb(255, 255, 255);
+  height: auto;
+  margin: 25px 30px;
+  min-height: 180px;
+  padding: 25px 0 0;
+  border: 1px solid rgb(193, 193, 193);
+}
+.line {
+  border-bottom: 1px solid rgb(193, 193, 193);
+  line-height: 30px;
+  padding-left: 0;
+}
+
+.round-area {
+  width: 140px; 
+  height: 140px; 
+  border-radius: 50%; 
+  border: 1px solid rgb(204, 204, 204);
+}
+.summary {
+  line-height: 30px;
+  text-align: right;
+}
+.sidebar-nav ul li a {
+  color: #FFF;
+}

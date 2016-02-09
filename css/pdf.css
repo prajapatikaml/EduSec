@@ -1,0 +1,28 @@
+<style>
+	.grid-view {
+		padding-top:15px !important;
+	}
+	.grid-view table{
+		display: table;
+		border-collapse: collapse;
+		border:1.5px solid #adacab;
+		font-size: 10px;
+		font-style:VarelaRound-Regular;
+		width:100%;
+	}
+	table tr:nth-child(even) { /*(even) or (2n 0)*/
+		background: #F5F5F5;
+	}
+	table tr:nth-child(odd) { /*(odd) or (2n 1)*/
+		background: white;
+	}
+	.grid-view th{text-align:left;font-weight:bold;color:#990a10;width:110px;border:0.4px solid #adacab;height:24px;background:#e3e3e3;text-align:center;}
+	.title{color:seagreen;}
+	.grid-view td{border:0.4px solid #adacab;height:24px;text-align:center;}
+	
+	.user-data .label {width:130px;color:#990a10;}
+	.user-data td {text-align:left; padding:8px}
+	
+</style>
+
+

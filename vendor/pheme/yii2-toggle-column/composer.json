@@ -1,0 +1,26 @@
+{
+    "name": "pheme/yii2-toggle-column",
+    "description": "Provides a toggle data column and action",
+    "type": "yii2-extension",
+    "keywords": [
+        "yii2",
+        "extension",
+        "toggle",
+        "column"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aris Karageorgos",
+            "email": "aris@phe.me"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "\\pheme\\grid\\": ""
+        }
+    }
+}

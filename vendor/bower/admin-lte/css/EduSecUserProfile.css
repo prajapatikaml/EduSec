@@ -1,0 +1,85 @@
+.edusec-img-disp {
+	border: 5px solid #fff;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
+	width:135px;
+	height:135px;
+	margin: 15px;
+}
+.photo-edit {
+    font-size: 15px;
+    position: relative;
+    top: -42px;
+}
+.photo-edit-icon {
+  background: none repeat scroll 0 0 #fff;
+  border-radius: 50%;
+  padding: 5px 8px;
+}
+.edusec-user-profile .nav-tabs {
+    border-bottom: 3px solid #00C0EF;
+}
+
+.edusec-user-profile .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+   background:#00C0EF;
+   color:#fff;	
+}
+.edusec-user-profile .nav > li > a:hover, .edusec-user-profile .nav > li > a:focus {
+   
+    border:1px solid #00C0EF;
+}
+.edusec-profile-label {
+    background: #F4F4F4;
+    border-bottom: 1px solid #ddd;
+    padding:12px;
+    word-wrap: break-word;
+}
+.edusec-profile-text {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+    padding:12px;
+    word-wrap: break-word;
+}
+
+.edusec-profile-text:empty:before {
+    content: '\00a0';
+}
+
+.edusec-stu-emg-gur .form-group {
+    float:right;
+    margin-bottom:0;
+}
+.edusec-emg-ct-label {
+   float: left;
+   font-weight: bold;
+   margin-right: 5px;
+   margin-top: 4px;
+}
+.edusec-border-bottom-warning {
+  border-bottom: 1px solid #f39c12;
+}
+.edusec-profile-title-1 {
+  font-size:17px;
+}
+.edusec-pf-bg {
+  background-color: #f4f4f4;
+}
+.edusec-pf-border {
+  border: 1px solid #ececf0;
+  box-shadow: 0 0 6px 1px #ececf0;
+}
+
+@media (max-width: 600px) {
+  .disp-doc {
+  	overflow: auto;
+  }
+}
+@media (min-width: 600px) {
+  .disp-doc {
+  	overflow: visible;
+  }
+}
+@media (max-width: 992px) {
+  .profile-data {
+  	padding: 0px !important;
+  }
+}
