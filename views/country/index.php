@@ -7,11 +7,10 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\CountrySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Country List';
-$this->params['breadcrumbs'][] = ['label' => 'Configuration', 'url' => ['default/index']];
+$this->title = Yii::t('app', 'Country List');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Configuration'), 'url' => ['default/index']];
 
 ?>
-
 <?php if($model->isNewRecord) 
 	echo $this->render('create', ['model' => $model]); 	
    else
@@ -19,17 +18,17 @@ $this->params['breadcrumbs'][] = ['label' => 'Configuration', 'url' => ['default
 ?>
 
 <div class="col-xs-12">
-  <div class="col-lg-4 col-sm-4 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-th-list"></i> Country List</h3></div>
+  <div class="col-lg-4 col-sm-4 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-th-list"></i> <?php echo $this->title ?></h3></div>
   <div class="col-xs-4"></div>
   <div class="col-lg-4 col-sm-4 col-xs-12 no-padding" style="padding-top: 20px !important;">
 	<div class="col-xs-4 left-padding">
        
 	</div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a('PDF', ['export-data/export-to-pdf', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-warning', 'target'=>'_blank']) ?>
+	<?= Html::a(Yii::t('app', 'PDF'), ['export-data/export-to-pdf', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-warning', 'target'=>'_blank']) ?>
 	</div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a('EXCEL', ['export-data/export-excel', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-primary', 'target'=>'_blank']) ?>
+	<?= Html::a(Yii::t('app', 'EXCEL'), ['export-data/export-excel', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-primary', 'target'=>'_blank']) ?>
 	</div>
   </div>
 </div>

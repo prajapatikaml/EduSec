@@ -7,10 +7,10 @@ $role = Yii::$app->AuthManager->getRoles();
 <div class="row">
   <div class="col-xs-12">
 	<h2 class="page-header">	
-	<i class="fa fa-info-circle"></i> Guardian Info
+	<i class="fa fa-info-circle"></i> <?php echo Yii::t('emp', 'Guardian Info'); ?>
 	<?php if(Yii::$app->user->can("/employee/emp-master/update") && (Yii::$app->session->get('emp_id') == $_REQUEST['id']) || in_array('SuperAdmin',$admin) || Yii::$app->user->can("updateAllEmpInfo")) 		
         { ?>
-	<div class="pull-right"><?= Html::a('<i class="fa fa-pencil-square-o"></i> Edit', ['update', 'empid' => $model->emp_master_id, 'tab' => 'guardians'], ['class' => 'btn btn-primary btn-sm', 'id' => 'update-data']) ?></div>
+	<div class="pull-right"><?= Html::a('<i class="fa fa-pencil-square-o"></i> '.Yii::t('emp', 'Edit'), ['update', 'empid' => $model->emp_master_id, 'tab' => 'guardians'], ['class' => 'btn btn-primary btn-sm', 'id' => 'update-data']) ?></div>
 	<?php } ?>
 	</h2>
   </div><!-- /.col -->

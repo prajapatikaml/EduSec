@@ -4,6 +4,13 @@ use yii\helpers\Html;
 
 /* @var $this \yii\web\View */
 /* @var $content string */
+
+if(Yii::$app->language == 'fr') :
+	$this->registerCss('.sidebar .sidebar-menu .treeview-menu > li > a {
+		font-size: 13px;
+	}');
+endif;
+
 if (Yii::$app->controller->action->id === 'login') {
     echo $this->render(
         'login-layout',

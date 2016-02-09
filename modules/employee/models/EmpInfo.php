@@ -152,45 +152,45 @@ class EmpInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'emp_info_id' => 'Employee ',
-            'emp_unique_id' => 'Employee ID',
-            'emp_attendance_card_id' => 'Attendance Card ID',
-            'emp_title' => 'Title',
-            'emp_first_name' => 'First Name',
-            'emp_middle_name' => 'Middle Name',
-            'emp_last_name' => 'Last Name',
-            'emp_name_alias' => 'Name Alias',
-            'emp_mother_name' => 'Mother Name',
-            'emp_gender' => 'Gender',
-            'emp_dob' => 'Date of Birth',
-            'emp_religion' => 'Religion',
-            'emp_bloodgroup' => 'Blood Group',
-            'emp_joining_date' => 'Joining Date',
-            'emp_birthplace' => 'Birth place',
-            'emp_email_id' => 'Email ID',
-            'emp_maritalstatus' => 'Marital status',
-            'emp_mobile_no' => 'Mobile No',
-            'emp_photo' => 'Browse Photo ',
-            'emp_languages' => 'Languages',
-            'emp_bankaccount_no' => 'Bank Account No',
-            'emp_qualification' => 'Qualification',
-            'emp_specialization' => 'Specialization',
-            'emp_experience_year' => 'Year',
-            'emp_experience_month' => 'Month',
-            'emp_hobbies' => 'Hobbies',
-            'emp_reference' => 'Reference',
-            'emp_guardian_name' => 'Full Name',
-            'emp_guardian_relation' => 'Relation',
-            'emp_guardian_qualification' => 'Qualification',
-            'emp_guardian_occupation' => 'Occupation',
-            'emp_guardian_income' => 'Total Income',
-            'emp_guardian_homeadd' => 'Home Address',
-            'emp_guardian_officeadd' => 'Office Address',
-            'emp_guardian_mobile_no' => 'Mobile No',
-            'emp_guardian_phone_no' => 'Phone No',
-            'emp_guardian_email_id' => 'Email ID',
-            'emp_info_emp_master_id' => 'Info Emp Master ID',
-	    'emp_experience_year_temp' => 'Total Experience ',
+		'emp_info_id' => Yii::t('emp', 'Employee'),
+            'emp_unique_id' => Yii::t('emp', 'Employee ID'),
+            'emp_attendance_card_id' => Yii::t('emp', 'Attendance Card ID'),
+            'emp_title' => Yii::t('emp', 'Title'),
+            'emp_first_name' => Yii::t('emp', 'First Name'),
+            'emp_middle_name' => Yii::t('emp', 'Middle Name'),
+            'emp_last_name' => Yii::t('emp', 'Last Name'),
+            'emp_name_alias' => Yii::t('emp', 'Name Alias'),
+            'emp_mother_name' => Yii::t('emp', 'Mother Name'),
+            'emp_gender' => Yii::t('emp', 'Gender'),
+            'emp_dob' => Yii::t('emp', 'Emp Date of Birth'),
+            'emp_religion' => Yii::t('emp', 'Religion'),
+            'emp_bloodgroup' => Yii::t('emp', 'Blood Group'),
+            'emp_joining_date' => Yii::t('emp', 'Joining Date'),	
+   			'emp_birthplace' => Yii::t('emp', 'Birth Place'),
+            'emp_email_id' => Yii::t('emp', 'Email ID'),
+            'emp_maritalstatus' => Yii::t('emp', 'Marital Status'),
+            'emp_mobile_no' => Yii::t('emp', 'Mobile No'),
+            'emp_photo' => Yii::t('emp', 'Browse Photo'),
+            'emp_languages' => Yii::t('emp', 'Languages'),
+            'emp_bankaccount_no' => Yii::t('emp', 'Bank Account No'),
+            'emp_qualification' => Yii::t('emp', 'Qualification'),
+            'emp_specialization' => Yii::t('emp', 'Specialization'),
+            'emp_experience_year' => Yii::t('emp', 'Year'),
+            'emp_experience_month' => Yii::t('emp', 'Month'),
+            'emp_hobbies' => Yii::t('emp', 'Hobbies'),
+            'emp_reference' => Yii::t('emp', 'Reference'),
+            'emp_guardian_name' => Yii::t('emp', 'Full Name'),
+            'emp_guardian_relation' => Yii::t('emp', 'Relation'),
+            'emp_guardian_qualification' => Yii::t('emp', 'Qualification'),
+            'emp_guardian_occupation' => Yii::t('emp', 'Occupation'),
+            'emp_guardian_income' => Yii::t('emp', 'Total Income'),
+			'emp_guardian_homeadd' => Yii::t('emp', 'Home Address'),
+            'emp_guardian_officeadd' => Yii::t('emp', 'Office Address'),
+            'emp_guardian_mobile_no' => Yii::t('emp', 'Mobile No'),
+            'emp_guardian_phone_no' => Yii::t('emp', 'Phone No'),
+            'emp_guardian_email_id' => Yii::t('emp', 'Email ID'),
+            'emp_info_emp_master_id' => Yii::t('emp', 'Info Emp Master ID'),
+	    	'emp_experience_year_temp' => Yii::t('emp', 'Total Experience'),
         ];
     }
 
@@ -213,8 +213,8 @@ class EmpInfo extends \yii\db\ActiveRecord
     public static function getGenderOptions()
     {
 	return[
-	self::TYPE_MALE => 'MALE',
-	self::TYPE_FEMALE => 'FEMALE',
+	self::TYPE_MALE => Yii::t('emp', 'MALE'),
+	self::TYPE_FEMALE => Yii::t('emp', 'FEMALE'),
 	];
     }
 
@@ -233,15 +233,15 @@ class EmpInfo extends \yii\db\ActiveRecord
     public static function getBloodGroup()
     {
 	return[
-	self::TYPE_UNKNON => 'Unknown',
-	self::TYPE_APLUS => 'A+',
-	self::TYPE_AMINUS => 'A-',
-	self::TYPE_BPLUS => 'B+',
-	self::TYPE_BMINUS => 'B-',
-	self::TYPE_ABPLUS => 'AB+',
-	self::TYPE_ABMINUS => 'AB-',
-	self::TYPE_OPLUS => 'O+',
-	self::TYPE_OMINUS => 'O-',
+	self::TYPE_UNKNON => Yii::t('emp', 'Unknown'),
+	self::TYPE_APLUS => Yii::t('emp', 'A+'),
+	self::TYPE_AMINUS => Yii::t('emp', 'A-'),
+	self::TYPE_BPLUS => Yii::t('emp', 'B+'),
+	self::TYPE_BMINUS => Yii::t('emp', 'B-'),
+	self::TYPE_ABPLUS => Yii::t('emp', 'AB+'),
+	self::TYPE_ABMINUS => Yii::t('emp', 'AB-'),
+	self::TYPE_OPLUS => Yii::t('emp', 'O+'),
+	self::TYPE_OMINUS => Yii::t('emp', 'O-'),
 	];
      }
 
@@ -251,9 +251,9 @@ class EmpInfo extends \yii\db\ActiveRecord
      public static function getMaritialStatus()
      {
 	return[
-	self::TYPE_MARRIED => 'MARRIED',
-	self::TYPE_UNMARRIED => 'UNMARRIED',
-	self::TYPE_DIVORCED => 'DIVORCED',
+	self::TYPE_MARRIED => Yii::t('emp', 'MARRIED'),
+	self::TYPE_UNMARRIED => Yii::t('emp', 'UNMARRIED'),
+	self::TYPE_DIVORCED => Yii::t('emp', 'DIVORCED'),
 	];
      }
 	
@@ -263,11 +263,11 @@ class EmpInfo extends \yii\db\ActiveRecord
       public static function getTitleOptions()
       {
 	 return[
-	 self::TYPE_MR => 'Mr.',
-	 self::TYPE_MRS => 'Mrs.', 
-	 self::TYPE_MISS => 'Ms.',
-	 self::TYPE_PROF => 'Prof.',
-	 self::TYPE_DR => 'Dr.',
+	 self::TYPE_MR => Yii::t('emp', 'Mr.'),
+	 self::TYPE_MRS => Yii::t('emp', 'Mrs.'), 
+	 self::TYPE_MISS => Yii::t('emp', 'Ms.'),
+	 self::TYPE_PROF => Yii::t('emp', 'Prof.'),
+	 self::TYPE_DR => Yii::t('emp', 'Dr.'),
 	];
        }
 

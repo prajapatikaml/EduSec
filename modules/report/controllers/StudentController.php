@@ -114,7 +114,7 @@ class StudentController extends Controller
 		$command=$query1->createCommand();
 		$student_data=$command->queryAll();		
 		if(empty($student_data)){	
-			 \Yii::$app->getSession()->setFlash('studerror',"<i class='fa fa-exclamation-triangle'></i> <b> No Record For This Criteria.</b>");		
+			 \Yii::$app->getSession()->setFlash('studerror',"<i class='fa fa-exclamation-triangle'></i> <b> ".Yii::t('report', 'No Record Found For This Criteria.')."</b>");		
 				return $this->redirect(['stuinforeport']);
 		}		
 		return $this->render('stu_info_report',[

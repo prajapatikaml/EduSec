@@ -16,7 +16,7 @@ use app\modules\employee\models\EmpMaster;
 use app\modules\employee\models\EmpDepartment;
 use app\modules\employee\models\EmpDesignation;
 
-$this->title = Yii::t('app', 'Employee Info Report');
+$this->title = Yii::t('report', 'Employee Info Report');
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -26,30 +26,31 @@ if(!empty($employee_data))
 {
 	$cnt = count($selected_list)+1;
 	$emp_info = new EmpInfo();
+	echo "<meta http-equiv=\"Content-type\" content=\"text/html;charset=utf-8\" />";
 	echo "<table border='1' >";
-	echo "<tr ><th colspan=".$cnt."> <center> <h4 >Employee Info Report </h4> </center></th> </tr> ";
-	echo "<tr ><th >SI No.</th>";
+	echo "<tr ><th colspan=".$cnt."> <center> <h4 >".Yii::t('report', 'Employee Info Report')." </h4> </center></th> </tr> ";
+	echo "<tr ><th >".Yii::t('report', 'SI No.')."</th>";
 
 	foreach($selected_list as $s)
 	{
 		if($s=='emp_department_name')
-			echo "<th style='align:center; valign:'middle';' >Department</th>";
+			echo "<th style='align:center; valign:'middle';' >".Yii::t('report', 'Department')."</th>";
 		else if($s=='emp_designation_name')
-			echo "<th style='align:center; valign:'middle';'>Designation</th>";
+			echo "<th style='align:center; valign:'middle';'>".Yii::t('report', 'Designation')."</th>";
 		else if($s=='emp_cadd')
-			echo "<th style='align:center; valign:'middle';'>Local </br>Address</th>";
+			echo "<th style='align:center; valign:'middle';'>".Yii::t('report', 'Local')." </br>".Yii::t('report', 'Address')."</th>";
 		else if($s=='emp_padd')
-			echo "<th style='align:center; valign:'middle';'>International</br>Address</th>";
+			echo "<th style='align:center; valign:'middle';'>".Yii::t('report', 'International')."</br>".Yii::t('report', 'Address')."</th>";
 		else if($s=='emp_category_name')
-			echo "<th style='align:center; valign:'middle';'>Category</th>";
+			echo "<th style='align:center; valign:'middle';'>".Yii::t('report', 'Category')."</th>";
 		else if($s=='city')
-			echo "<th style='align:center; valign:'middle';'>City</th>";
+			echo "<th style='align:center; valign:'middle';'>".Yii::t('report', 'City')."</th>";
 		else if($s=='emp_bloodgroup')
-			echo "<th style='align:center; valign:'middle';'>Blood</br> Group</th>";
+			echo "<th style='align:center; valign:'middle';'>".Yii::t('report', 'Blood')."</br> ".Yii::t('report', 'Group')."</th>";
 		else if($s=='emp_joining_date')
-			echo "<th style='align:center; valign:'middle';'>Joining</br> Date </th>";
+			echo "<th style='align:center; valign:'middle';'>".Yii::t('report', 'Joining')."</br> ".Yii::t('report', 'Date')." </th>";
 		else if($s == 'emp_guardian_mobile_no')
-			echo "<th class='text-center'>Guardian <br>No</th>";
+			echo "<th class='text-center'>".Yii::t('report', 'Guardian')." <br>".Yii::t('report', 'No')."</th>";
 		else if($s=='emp_email_id')
 			echo "<th style='align:center; valign:'middle';'>".Html::activeLabel($emp_info,$s)."<br></th>";
 		else
@@ -201,4 +202,4 @@ if(!empty($employee_data))
 echo "</table></div>";
 }
 else
-	echo  "<h1 style=\"color:red;text-align:center;margin-top:10%;margin-right:60%\">No Record To Display</h1>";
+	echo  "<h1 style=\"color:red;text-align:center;margin-top:10%;margin-right:60%\">".Yii::t('report', 'No Record To Display')."</h1>";

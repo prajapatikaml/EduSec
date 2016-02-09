@@ -93,16 +93,16 @@ class FeesCategoryDetails extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'fees_category_details_id' => 'Fees Category Details ID',
-            'fees_details_name' => 'Name',
-            'fees_details_category_id' => 'Fees Category',
-            'fees_details_description' => 'Description',
-            'fees_details_amount' => 'Amount',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'is_status' => 'Is Status',
+			'fees_category_details_id' => Yii::t('fees', 'Fees Category Details ID'),
+            'fees_details_name' => Yii::t('fees', 'Name'),
+            'fees_details_category_id' => Yii::t('fees', 'Fees Category'),
+            'fees_details_description' => Yii::t('fees', 'Description'),
+            'fees_details_amount' => Yii::t('fees', 'Amount'),
+            'created_at' => Yii::t('fees', 'Created At'),
+            'created_by' => Yii::t('fees', 'Created By'),
+            'updated_at' => Yii::t('fees', 'Updated At'),
+            'updated_by' => Yii::t('fees', 'Updated By'),
+            'is_status' => Yii::t('fees', 'Is Status'),
         ];
     }
 

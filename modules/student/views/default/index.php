@@ -2,7 +2,7 @@
 use yii\helpers\Html; 
 use miloschuman\highcharts\Highcharts;
 use yii\web\JsExpression;
-$this->title = 'Student Module';
+$this->title = Yii::t('stu','Student Module');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="col-md-6">
    <div class="box box-success">
 	<div class="box-header with-border">
-		<h3 class="box-title"><i class="fa fa-graduation-cap"></i> Current Course Wise Total Student</h3>
+		<h3 class="box-title"><i class="fa fa-graduation-cap"></i> <?php echo Yii::t('stu', 'Current Course Wise Total Student'); ?></h3>
 		<div class="box-tools pull-right">
 			<button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		</div>
@@ -61,14 +61,14 @@ $this->params['breadcrumbs'][] = $this->title;
 				],
 				'series'=> [
 					[
-						'name'=>'Total Student',
+						'name'=>Yii::t('stu', 'Total Student'),
 						'data'=>$stuCount
 					]
 				]
 			],
 		]);
 	} else {
-		echo '<div class="alert alert-danger">No results found.</div>';
+		echo '<div class="alert alert-danger">'.Yii::t('stu', "No results found").'</div>';
 	}
 	?>
 	</div>
@@ -81,7 +81,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="col-md-6">
    <div class="box box-warning">
 	<div class="box-header with-border">
-		<h3 class="box-title"><i class="fa fa-bar-chart"></i> Year Wise Admission</h3>
+		<h3 class="box-title"><i class="fa fa-bar-chart"></i> <?php echo Yii::t('stu', 'Year Wise Admission'); ?></h3>
 		<div class="box-tools pull-right">
 			<button class="btn btn-warning btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		</div>
@@ -102,7 +102,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	    			'enabled'=>false,
 	  		],
 			'title'=>[
-				'text'=>'Monthly Average Admission'
+				'text'=>Yii::t('stu', 'Monthly Average Admission')
 			],
 			'subtitle'=>[
 				'text'=>'',
@@ -113,7 +113,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 			'yAxis'=>[
 				'title'=>[
-					'text'=>'Admission Count',
+					'text'=>Yii::t('stu', 'Admission Count'),
 				]
 			],
 			'plotOptions'=>[
@@ -126,7 +126,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		    ],
 		]);
 	} else {
-		echo '<div class="alert alert-danger">No results found.</div>';
+		echo '<div class="alert alert-danger">'.Yii::t('stu', "No results found.").'</div>';
 	}
 ?>
 	</div>
@@ -141,7 +141,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="col-md-12">
 	<div class="box box-info">
 		<div class="box-header with-border">
-			<h3 class="box-title"><i class="fa fa-list-ul"></i> Recently Added Student</h3>
+			<h3 class="box-title"><i class="fa fa-list-ul"></i> <?php echo Yii::t('stu', 'Recently Added Student'); ?></h3>
 			<div class="box-tools pull-right">
 				<button class="btn btn-info btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 				<button class="btn btn-info btn-sm" title="Remove" data-toggle="tooltip" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -151,12 +151,12 @@ $this->params['breadcrumbs'][] = $this->title;
 			<table class="table no-margin">
 				<thead>
 					<tr>
-						<th>Sr.No</th>
-						<th>Student Id</th>
-						<th>Student Name</th>
-						<th>Course</th>
-						<th>Batch</th>
-						<th>Created Date</th>
+						<th><?php echo Yii::t('stu', 'Sr.No'); ?></th>
+						<th><?php echo Yii::t('stu', 'Student Id'); ?></th>
+						<th><?php echo Yii::t('stu', 'Student Name'); ?></th>
+						<th><?php echo Yii::t('stu', 'Course'); ?></th>
+						<th><?php echo Yii::t('stu', 'Batch'); ?></th>
+						<th><?php echo Yii::t('stu', 'Created Date'); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -173,7 +173,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?php endforeach; ?>
 				<?php else : ?>
 					<tr>
-						<td colspan="6" class="text-danger text-center">No results found.</td>
+						<td colspan="6" class="text-danger text-center"><?php echo Yii::t('stu', 'No results found.'); ?></td>
 					</tr>
 				<?php endif; ?>
 				</tbody>
@@ -181,9 +181,9 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 		<div class="box-footer clearfix">
 			<?php if(Yii::$app->user->can("/student/stu-master/create")) { ?>
-			    <?php echo Html::a('Add Student', ['stu-master/create'], ['class'=>'btn btn-sm btn-info btn-flat pull-left']); ?>
+			    <?php echo Html::a(Yii::t('stu', 'Add Student'), ['stu-master/create'], ['class'=>'btn btn-sm btn-info btn-flat pull-left']); ?>
 			<?php } ?>
-			<?php echo Html::a('View All Students', ['stu-master/index'], ['class'=>'btn btn-sm btn-default btn-flat pull-right']); ?>
+			<?php echo Html::a(Yii::t('stu', 'View All Students'), ['stu-master/index'], ['class'=>'btn btn-sm btn-default btn-flat pull-right']); ?>
 		</div>
 	</div>	
 	

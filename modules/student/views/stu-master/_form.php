@@ -25,7 +25,7 @@ $(function () {
 <div class="col-xs-12 col-lg-12">
   <div class="box-success box view-item col-xs-12 col-lg-12">
     <div class="stu-master-form">
-     <p class="note">Fields with <span class="required"> <b style=color:red;>*</b></span> are required.</p>
+     <p class="note"><?php echo  Yii::t('stu', 'Fields with'); ?> <span class="required"> <b style=color:red;>*</b></span> <?php echo Yii::t('stu', 'are required'); ?>.</p>
     <?php $form = ActiveForm::begin([
 			'id' => 'stu-master-form',
 			'enableAjaxValidation' => true,
@@ -37,7 +37,7 @@ $(function () {
   
     <div class="box box-solid box-info col-xs-12 col-lg-12 no-padding">
       <div class="box-header with-border">
-         <h4 class="box-title"><i class="fa fa-info-circle"></i> Personal Details</h4>
+         <h4 class="box-title"><i class="fa fa-info-circle"></i> <?php echo Yii::t('stu', 'Personal Details'); ?></h4>
       </div>
     <div class="box-body">
 
@@ -53,7 +53,7 @@ $(function () {
    
    <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
 	<div class="col-xs-12 col-sm-4 col-lg-4">
-		<?= $form->field($info, 'stu_title')->dropDownList($info->getTitleOptions(),['prompt'=>'---Select Title---']); ?>
+		<?= $form->field($info, 'stu_title')->dropDownList($info->getTitleOptions(),['prompt'=>Yii::t('stu', '--- Select Title ---')]); ?>
 	</div>	
    </div>
 
@@ -72,7 +72,7 @@ $(function () {
 
    <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
      <div class="col-xs-12 col-sm-4 col-lg-4">
-	<?= $form->field($info, 'stu_gender')->dropDownList(['' => '---Select Gender---', 'Male' => 'Male','Female' => 'Female']) ?>
+	<?= $form->field($info, 'stu_gender')->dropDownList(['' => Yii::t('stu', '--- Select Gender ---'), 'Male' => 'Male','Female' => 'Female']) ?>
     </div>
 
     <div class="col-xs-12 col-sm-4 col-lg-4">
@@ -101,10 +101,10 @@ $(function () {
 	                 ],]) ?>		
 	</div> 
 	<div class="col-xs-12 col-sm-4 col-lg-4">
-		<?= $form->field($model, 'stu_master_category_id')->dropDownList(ArrayHelper::map(app\modules\student\models\StuCategory::find()->where(['is_status' => 0])->all(),'stu_category_id','stu_category_name'),['prompt'=>'---Select Category---']); ?>
+		<?= $form->field($model, 'stu_master_category_id')->dropDownList(ArrayHelper::map(app\modules\student\models\StuCategory::find()->where(['is_status' => 0])->all(),'stu_category_id','stu_category_name'),['prompt'=>Yii::t('stu', '---  Select Category ---')]); ?>
 	</div> 
 	<div class="col-xs-12 col-sm-4 col-lg-4">
-		<?= $form->field($model, 'stu_master_nationality_id')->dropDownList(ArrayHelper::map(app\models\Nationality::find()->where(['is_status' => 0])->all(),'nationality_id','nationality_name'),['prompt'=>'---Select Nationality---']); ?>
+		<?= $form->field($model, 'stu_master_nationality_id')->dropDownList(ArrayHelper::map(app\models\Nationality::find()->where(['is_status' => 0])->all(),'nationality_id','nationality_name'),['prompt'=>Yii::t('stu', '--- Select Nationality ---')]); ?>
 	</div> 
    </div>
  
@@ -114,14 +114,14 @@ $(function () {
 
 <div class="box box-solid box-warning col-xs-12 col-lg-12 no-padding">
   <div class="box-header with-border">
-    <h4 class="box-title"><i class="fa fa-info-circle"></i> Academic Details</h4>
+    <h4 class="box-title"><i class="fa fa-info-circle"></i> <?php echo Yii::t('stu', 'Academic Details'); ?></h4>
    </div>
    <div class="box-body">
    <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
     <div class="col-xs-12 col-sm-4 col-lg-4">
      <?= $form->field($model, 'stu_master_course_id')->dropDownList(ArrayHelper::map(app\modules\course\models\Courses::find()->where(['is_status' => 0])->all(),'course_id','course_name'),
 		[
-                    'prompt'=>'---Select Course---',
+                    'prompt'=>Yii::t('stu', '--- Select Course ---'),
                     'onchange'=>'
                         $.get( "'.Url::toRoute('dependent/studbatch').'", { id: $(this).val() } )
                             .done(function( data ) {
@@ -135,7 +135,7 @@ $(function () {
     <div class="col-xs-12 col-sm-4 col-lg-4">
     <?= $form->field($model, 'stu_master_batch_id')->dropDownList([],
 		[
-                    'prompt'=>'---Select Batch---',
+                    'prompt'=>Yii::t('stu', '--- Select Batch ---'),
                     'onchange'=>'
                         $.get( "'.Url::toRoute('dependent/studsection').'", { id: $(this).val() } )
                             .done(function( data ) {
@@ -145,7 +145,7 @@ $(function () {
                 ]); ?>
     </div>
     <div class="col-xs-12 col-sm-4 col-lg-4">
-    	<?= $form->field($model, 'stu_master_section_id')->dropDownList([''=>'---Select Section---']); ?>
+    	<?= $form->field($model, 'stu_master_section_id')->dropDownList([''=>Yii::t('stu', '--- Select Section ---')]); ?>
      </div>
    </div>
 
@@ -180,10 +180,10 @@ $(function () {
 
     <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
 	<div class="col-xs-6">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('stu' ,'Create') : Yii::t('stu', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-6">
-	    <?= Html::a('Cancel', ['index'], ['class' => 'btn btn-default btn-block']); ?>
+	    <?= Html::a(Yii::t('stu', 'Cancel'), ['index'], ['class' => 'btn btn-default btn-block']); ?>
 	</div>
     </div>
 

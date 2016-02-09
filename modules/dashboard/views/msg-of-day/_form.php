@@ -20,10 +20,10 @@ use yii\bootstrap\ActiveForm;
 			'enableAjaxValidation' => true,
     ]); ?>
 
-    <?= $form->field($model, 'msg_details')->textArea(['maxlength' => 100, 'placeholder'=>'Enter Message Details'])->label(false) ?>
+    <?= $form->field($model, 'msg_details')->textArea(['maxlength' => 100, 'placeholder'=> Yii::t('dash', 'Enter Message Details')])->label(false) ?>
 
     <?= $form->field($model, 'msg_user_type')
-                        ->radioList( ["S" => 'Student', "E" => 'Employee', '0' => 'General'],
+                        ->radioList( ["S" => Yii::t('dash', 'Student'), "E" => Yii::t('dash', 'Employee'), '0' => Yii::t('dash', 'General')],
                             [ 'item' => function($index, $label, $name, $checked, $value) {
                                     $return = '<label class="left-padding">';
                                     $return .= Html::radio($name, $checked, ['value' => $value]);
@@ -31,16 +31,16 @@ use yii\bootstrap\ActiveForm;
                                     $return .= '<span>&nbsp;&nbsp;&nbsp;' . ucwords($label) . '</span>';
                                     $return .= '</label>';
                                     return $return;
-                             }])->label('User Type'); ?>
+                             }]); ?>
 
-    <?= $form->field($model, 'is_status')->checkBox(['value'=>0, 'uncheck'=>1], true)->label("<b>&nbsp; Active</b>"); ?>
+    <?= $form->field($model, 'is_status')->checkBox(['value'=>0, 'uncheck'=>1], true)->label("<b>&nbsp;".Yii::t('dash', 'Active')."</b>"); ?>
 
     <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
 	<div class="col-xs-6">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('dash', 'Create') : Yii::t('dash', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-6">
-	<?= Html::a('Cancel', ['index'], ['class' => 'btn btn-default btn-block']) ?>
+	<?= Html::a(Yii::t('dash', 'Cancel'), ['index'], ['class' => 'btn btn-default btn-block']) ?>
 	</div>
     </div>
 

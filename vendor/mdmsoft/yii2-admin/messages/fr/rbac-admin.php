@@ -17,10 +17,14 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+	'ADD' => 'Ajouter',
+	'BACK' => 'Retourner',
+	'Back' => 'Retourner',
+	'User ID' => 'ID de l’utilisateur',
     'Assignments' => 'Assignements',
     'Users' => 'Utilisateurs',
     'User' => 'Utilisateur',
-    'Avaliable' => 'Disponible',
+    'Available' => 'Disponible',
     'Assigned' => 'Assigner',
     'Create' => 'Créer',
     'Update' => 'Modifier',

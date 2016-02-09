@@ -37,10 +37,10 @@ use yii\widgets\Pjax;
 </div>
      <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
 	<div class="col-xs-6">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('emp', 'Create') : Yii::t('emp', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-6">
-	<?= Html::resetButton('Reset', ['class' => 'btn btn-default btn-block']) ?>
+	<?= Html::resetButton(Yii::t('emp', 'Reset'), ['class' => 'btn btn-default btn-block']) ?>
 	</div>
      </div>
 

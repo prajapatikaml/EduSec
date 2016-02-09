@@ -11,11 +11,11 @@ use kartik\widgets\Select2;
 /* @var $this yii\web\View */
 /* @var $model app\modules\student\models\StuMaster */
 
-$this->title = 'Update Personal Details : ' . ' ' . $model->stuMasterStuInfo->getName();
-$this->params['breadcrumbs'][] = ['label' => 'Student', 'url' => ['default/index']];
-$this->params['breadcrumbs'][] = ['label' => 'Manage Students', 'url' => ['index']];
+$this->title = Yii::t('stu', 'Update Personal Details : ') . ' ' . $model->stuMasterStuInfo->getName();
+$this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Student'), 'url' => ['default/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Manage Students'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->stuMasterStuInfo->getName(), 'url' => ['view', 'id' => $model->stu_master_id]];
-$this->params['breadcrumbs'][] = 'Update Personal Details';
+$this->params['breadcrumbs'][] = Yii::t('stu', 'Update Personal Details');
 ?>
 <style>
 .box .box-solid {
@@ -36,7 +36,7 @@ $(function () {
 	<div class="col-xs-4"></div>
 	<div class="col-xs-4"></div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a('Back', ['view', 'id' => $model->stu_master_id], ['class' => 'btn btn-block btn-back']) ?>
+	<?= Html::a(Yii::t('stu', 'Back'), [Yii::t('stu', 'view'), 'id' => $model->stu_master_id], ['class' => 'btn btn-block btn-back']) ?>
 	</div>
   </div>
 </div>
@@ -53,7 +53,7 @@ $(function () {
     ]); ?>
     <div class="box box-solid box-info col-xs-12 col-lg-12 no-padding">
       <div class="box-header with-border">
-         <h4 class="box-title"><i class="fa fa-info-circle"></i> Personal Details</h4>
+         <h4 class="box-title"><i class="fa fa-info-circle"></i> <?php echo Yii::t('stu', 'Personal Details'); ?></h4>
       </div>
     <div class="box-body">
 
@@ -69,7 +69,7 @@ $(function () {
 
    <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
     <div class="col-xs-12 col-sm-4 col-lg-4">
-	<?= $form->field($info, 'stu_title')->dropDownList($info->getTitleOptions(),['prompt'=>'---Select Title---']); ?>
+	<?= $form->field($info, 'stu_title')->dropDownList($info->getTitleOptions(),['prompt'=>Yii::t('stu', '--- Select Title ---')]); ?>
     </div>
    </div>
 
@@ -88,7 +88,7 @@ $(function () {
 
    <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
     <div class="col-xs-12 col-sm-4 col-lg-4">
-   	<?= $form->field($info, 'stu_gender')->dropDownList(['' => '---Select Gender---', 'Male' => 'Male', 'Female' => 'Female']) ?>
+   	<?= $form->field($info, 'stu_gender')->dropDownList(['' => Yii::t('stu', '--- Select Gender ---'), 'Male' => 'Male', 'Female' => 'Female']) ?>
     </div>
     <div class="col-xs-12 col-sm-4 col-lg-4">
     	 <?= $form->field($info, 'stu_email_id')->textInput(['maxlength' => 65]) ?>
@@ -116,10 +116,10 @@ $(function () {
    
     </div>
     <div class="col-xs-12 col-sm-4 col-lg-4">
-    <?= $form->field($model, 'stu_master_category_id')->dropDownList(ArrayHelper::map(app\modules\student\models\StuCategory::find()->where(['is_status' => 0])->all(),'stu_category_id','stu_category_name'),['prompt'=>'---Select Category---']); ?>
+    <?= $form->field($model, 'stu_master_category_id')->dropDownList(ArrayHelper::map(app\modules\student\models\StuCategory::find()->where(['is_status' => 0])->all(),'stu_category_id','stu_category_name'),['prompt'=>Yii::t('stu', '--- Select Category ---')]); ?>
     </div>
     <div class="col-xs-12 col-sm-4 col-lg-4">
-    <?= $form->field($model, 'stu_master_nationality_id')->dropDownList(ArrayHelper::map(app\models\Nationality::find()->where(['is_status' => 0])->all(),'nationality_id','nationality_name'),['prompt'=>'---Select Nationality---']); ?>
+    <?= $form->field($model, 'stu_master_nationality_id')->dropDownList(ArrayHelper::map(app\models\Nationality::find()->where(['is_status' => 0])->all(),'nationality_id','nationality_name'),['prompt'=>Yii::t('stu', '--- Select Nationality ---')]); ?>
     </div>
    </div>
 
@@ -160,10 +160,10 @@ $(function () {
 
     <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
 	<div class="col-xs-6">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('stu', 'Create') : Yii::t('stu', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-6">
-	    <?= Html::a('Cancel', ['view', 'id' => $model->stu_master_id], ['class' => 'btn btn-default btn-block']); ?>
+	    <?= Html::a(Yii::t('stu', 'Cancel'), ['view', 'id' => $model->stu_master_id], ['class' => 'btn btn-default btn-block']); ?>
 	</div>
     </div>
 	<?php ActiveForm::end(); ?>

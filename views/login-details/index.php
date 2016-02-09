@@ -8,7 +8,7 @@ use app\models\User;
 /* @var $searchModel app\models\LoginDetailsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Login Details';
+$this->title = Yii::t('app', 'Login History');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-xs-12">
@@ -46,7 +46,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		        ],
 			'user_ip_address',
 			[
-				'label'=>'Status',
+				'label'=>Yii::t('app', 'Status'),
 				'format'=>'raw',
 				'value'=> function($model) { 
 						return ($model->login_status == 1) ? '<span class="glyphicon glyphicon-ok-sign" style="font-size:25px;color:#449D44"></span>' : '<span class="glyphicon glyphicon-remove-sign" style="font-size:25px;color:#C9302C"></span>';

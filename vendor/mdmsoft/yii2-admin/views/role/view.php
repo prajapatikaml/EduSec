@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
   <div class="col-xs-4"></div>
   <div class="col-lg-4 col-sm-4 col-xs-12 no-padding" style="padding-top: 20px !important;">
 	<div class="col-xs-4 left-padding">
-	<?= Html::a('Back', ['index'], ['class' => 'btn btn-block btn-back']) ?>
+	<?= Html::a(Yii::t('rbac-admin', 'Back'), ['index'], ['class' => 'btn btn-block btn-back']) ?>
 	</div>
 	<div class="col-xs-4 left-padding">
         <?= Html::a(Yii::t('rbac-admin', 'Update'), ['update', 'id' => $model->name], ['class' => 'btn btn-block btn-primary']) ?>
@@ -49,9 +49,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
    <div class="col-xs-12 col-lg-12">
     <div class="col-lg-5 col-sm-12 col-xs-12">
-        <?= Yii::t('rbac-admin', '<b>Available</b>') ?>:
+        <b><?= Yii::t('rbac-admin', 'Available') ?>:</b>
 		<div class="form-group has-feedback">
-			<input name="search_av" type="text" class="form-control role-search" placeholder="Search..." data-target="avaliable"/>
+			<input name="search_av" type="text" class="form-control role-search" placeholder="<?= Yii::t('rbac-admin', 'Search').'...' ?>" data-target="avaliable"/>
 			<span class="glyphicon glyphicon-search form-control-feedback"></span>
 		</div>
         <?php
@@ -71,9 +71,9 @@ $this->params['breadcrumbs'][] = $this->title;
 	<br><br>
     </div>
     <div class="col-lg-5 col-sm-12 col-xs-12">
-        <?= Yii::t('rbac-admin', '<b>Assigned</b>') ?>:
+        <b><?= Yii::t('rbac-admin', 'Assigned') ?>:</b>
 		<div class="form-group has-feedback">
-			<input name="search_asgn" type="text" class="form-control role-search" placeholder="Search..." data-target="assigned"/>
+			<input name="search_asgn" type="text" class="form-control role-search" placeholder="<?= Yii::t('rbac-admin', 'Search').'...' ?>" data-target="assigned"/>
 			<span class="glyphicon glyphicon-search form-control-feedback"></span>
 		</div>
         <?php

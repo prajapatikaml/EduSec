@@ -68,7 +68,7 @@ class ExportDataController extends Controller
 				'empAdd'=>$empAdd,
 			]);
 		$fName = $empInfo->emp_first_name."_".$empInfo->emp_last_name."_".date('Ymd_His');
-		return Yii::$app->pdf->exportData('Employee Profile',$fName,$html);
+		return Yii::$app->pdf->exportData(Yii::t('emp','Employee Profile'),$fName,$html);
 	}
 	
 }

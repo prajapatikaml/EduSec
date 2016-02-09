@@ -31,7 +31,7 @@ use yii\helpers\Url;
 	<div class="col-sm-4">
 	    <?php echo $form->field($model,'city_country_id',['inputOptions'=>[ 'class'=>'form-control'] ])->dropDownList(ArrayHelper::map(\app\models\Country::find()->all(),'country_id','country_name'),
 			[
-		            'prompt'=>'---Select Country---',
+		            'prompt'=> Yii::t('app', '--- Select Country ---'),
 		            'onchange'=>'
 		                $.get( "'.Url::toRoute('dependent/getstate').'", { id: $(this).val() } )
 		                    .done(function( data ) {
@@ -47,19 +47,19 @@ use yii\helpers\Url;
 
 		<?= $form->field($model, 'city_state_id',['inputOptions'=>[ 'class'=>'form-control'] ])->dropDownList(ArrayHelper::map(\app\models\State::find()->all(),'state_id','state_name'),['prompt'=>'---Select State---'])->label(false);  ?>
 	    <?php } else {   ?>
-		<?= $form->field($model, 'city_state_id',['inputOptions'=>[ 'class'=>'form-control'] ])->dropDownList(['prompt'=>'---Select State---'])->label(false);  ?>
+		<?= $form->field($model, 'city_state_id',['inputOptions'=>[ 'class'=>'form-control'] ])->dropDownList(['prompt'=>Yii::t('app', '--- Select State ---')])->label(false);  ?>
 	    <?php } ?>
 	</div>
 	<div class="col-sm-4">
-	    <?= $form->field($model, 'city_name',['inputOptions'=>[ 'class'=>'form-control', 'placeholder'=>'City/Town Name'] ])->textInput(['maxlength' => 35])->label(false); ?>
+	    <?= $form->field($model, 'city_name',['inputOptions'=>[ 'class'=>'form-control', 'placeholder'=>Yii::t('app', 'City/Town Name')] ])->textInput(['maxlength' => 35])->label(false); ?>
 	</div>
 </div>
     <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
 	<div class="col-xs-6">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-6">
-	<?= Html::resetButton('Reset',['class' => 'btn btn-default btn-block']) ?>
+	<?= Html::resetButton(Yii::t('app', 'Reset'),['class' => 'btn btn-default btn-block']) ?>
 	</div>
      </div>
 

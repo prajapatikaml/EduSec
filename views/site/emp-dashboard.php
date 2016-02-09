@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = "Employee Dashboard"; 
+$this->title = Yii::t('app', 'Employee Dashboard'); 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <script>
@@ -51,7 +51,7 @@ $this->registerJs(
 
 <?php
 	yii\bootstrap\Modal::begin([
-	    'header' => '<h4><i class="fa fa-eye"></i> View Notice Details</h4>',
+	    'header' => '<h4><i class="fa fa-eye"></i> '.Yii::t('app', 'View Notice Details').'</h4>',
 	    'id'=>'NoticeModal',
 	]);
 	echo '<div id="NoticeModalContent"></div>';
@@ -64,13 +64,13 @@ $this->registerJs(
 <?php		if(!empty($msg))
 		{ ?>				
 		<div class="callout callout-info show msg-of-day" >
-		    <h4><i class="fa fa-bullhorn"></i> Message of day box</h4>
+		    <h4><i class="fa fa-bullhorn"></i> <?php echo Yii::t('app', 'Message of day box') ?></h4>
 		    <marquee onmouseout="this.setAttribute('scrollamount', 6, 0);" onmouseover="this.setAttribute('scrollamount', 0, 0);" scrollamount="6" behavior="scroll" direction="left"><?php echo $msg->msg_details; ?></marquee>
 		    
 		</div>
 		<?php } else {   ?>
 		<div class="callout callout-info hide msg-of-day" >
-		    <h4>Message of day box</h4>
+		    <h4><?php echo Yii::t('app', 'Message of day box') ?></h4>
 		   	<marquee behavior="scroll" direction="left"></marquee>
 		   
 		</div>
@@ -85,7 +85,7 @@ $this->registerJs(
 	<div class="col-sm-4 col-xs-12">
 	      <div class="box box-info">
 		<div class="box-header with-border">
-			<h3 class="box-title"><i class="fa fa-info-circle"></i> My Information</h3>
+			<h3 class="box-title"><i class="fa fa-info-circle"></i> <?php echo Yii::t('app', 'My Information') ?> </h3>
 		</div>
 		<div class="box-body table-responsive no-padding">
 		<div class="col-md-12 text-center">
@@ -93,19 +93,19 @@ $this->registerJs(
 		</div>
 		<table class="table table-striped">
 			<tr>
-				<th>Employee ID</th>
+				<th><?php echo Yii::t('app', 'Employee ID') ?></th>
 				<td><?= Html::encode($EmpInfo->emp_unique_id) ?></td>
 			</tr>
 			<tr>
-				<th>Name</th>
+				<th><?php echo Yii::t('app', 'Name') ?></th>
 				<td><?= $EmpInfo->getEmpFullName()?></td>
 			</tr>
 			<tr>
-				<th>Department</th>
+				<th><?php echo Yii::t('app', 'Department') ?></th>
 				<td><?= $EmpMaster->empMasterDepartment->emp_department_name ?></td>	
 			</tr>
 			<tr>
-				<th>Designation</th>
+				<th><?php echo Yii::t('app', 'Designation') ?></th>
 				<td><?= (!empty($EmpMaster->empMasterDesignation->emp_designation_name) ? $EmpMaster->empMasterDesignation->emp_designation_name :"") ?></td>			
 			</tr>
 			
@@ -118,19 +118,19 @@ $this->registerJs(
 				<td><?= (!empty($EmpInfo->emp_email_id) ? $EmpInfo->emp_email_id : "") ?></td>
 			</tr>
 			<tr>
-				<th>Status</th>
+				<th><?php echo Yii::t('app', 'Status') ?></th>
 				<td>
 					<?php if($EmpMaster->is_status==0) : ?>
-					<span class="label label-success">Active</span>
+					<span class="label label-success"><?php echo Yii::t('app', 'Active') ?></span>
 					<?php else : ?>
-					<span class="label label-danger">InActive</span>
+					<span class="label label-danger"><?php echo Yii::t('app', 'InActive') ?></span>
 					<?php endif; ?>
 				</td>
 			</tr>
 		</table>
 	      </div><!---/. box-body--->
 	      <div class="box-footer text-right">
-			<?= Html::a('More Info <i class="fa fa-arrow-circle-right"></i>', ['/employee/emp-master/view', 'id' => $EmpMaster->emp_master_id], ['class' => 'btn btn-default btn-sm']) ?>
+			<?= Html::a(Yii::t('app', 'More Info').' <i class="fa fa-arrow-circle-right"></i>', ['/employee/emp-master/view', 'id' => $EmpMaster->emp_master_id], ['class' => 'btn btn-default btn-sm']) ?>
 	      </div>
 	     </div><!---/. box--->
 	    </div><!---/. col-sm-4-->
@@ -138,7 +138,7 @@ $this->registerJs(
 	    <div class="col-sm-8 col-xs-12">
 		<div class="box box-info">
 		   <div class="box-header with-border">
-			<h3 class="box-title"><i class="fa fa-calendar-o"></i> Holiday List</h3>
+			<h3 class="box-title"><i class="fa fa-calendar-o"></i> <?php echo Yii::t('app', 'Holiday List') ?> </h3>
 		   </div>
 		   <div class="box-body" id="holidayList">
 		     <div class="table-responsive">
@@ -147,8 +147,8 @@ $this->registerJs(
 				<col class="col-sm-3">
 				<col class="col-sm-9">
 				<tr>
-					<th>Date</th>
-					<th>Holiday</th>
+					<th><?php echo Yii::t('app', 'Date') ?></th>
+					<th><?php echo Yii::t('app', 'Holiday') ?></th>
 				</tr>
 				<?php foreach($holidayData as $v) : ?>	
 				<tr>
@@ -160,7 +160,7 @@ $this->registerJs(
 			<?php else : ?>
 			<div class="box-header bg-warning">
 				<div style="padding:5px">
-					No data available...
+					<?php echo Yii::t('app', 'No data available...'); ?>
 				</div>
 			</div>
 			<?php endif; ?>
@@ -179,10 +179,10 @@ $this->registerJs(
 	   <div class="nav-tabs-custom"><!-- .nav-tabs-custom -->
                 <!-- Tabs within a box -->
                 <ul class="nav nav-tabs pull-right">
-                    <li><a href="#emp-notice" data-toggle="tab">Employee</a></li>
+                    <li><a href="#emp-notice" data-toggle="tab"><?php echo Yii::t('app', 'Employee') ?></a></li>
                   <!--  <li><a href="#stu-notice" data-toggle="tab">Student</a></li> -->
-		    <li class="active"><a href="#all-notice" data-toggle="tab">General</a></li>
-                    <li class="pull-left header"><i class="fa fa-inbox"></i>Notice Board</li>
+		    <li class="active"><a href="#all-notice" data-toggle="tab"><?php echo Yii::t('app', 'General') ?></a></li>
+                    <li class="pull-left header"><i class="fa fa-inbox"></i><?php echo Yii::t('app', 'Notice Board') ?></li>
                 </ul>
                 <div class="tab-content">
                     <!-- Notice -->
@@ -203,7 +203,7 @@ $this->registerJs(
 			<?php endforeach; 
 		     } else {
 				echo '<div class="box-header bg-warning"><div style="padding:5px">';
-				echo "No Notice For You....";
+				echo Yii::t('app', 'No Notice....');
 				echo '</div></div>';
 		     }
 			?>
@@ -226,7 +226,7 @@ $this->registerJs(
 			<?php endforeach;
 		      } else {
 				echo '<div class="box-header bg-warning"><div style="padding:5px">';
-				echo "No Notice....";
+				echo Yii::t('app', 'No Notice....');
 				echo '</div></div>';
 		      }
 			?>
@@ -238,7 +238,7 @@ $this->registerJs(
             <div class="box box-info ">
                 <div class="box-header">
                     <i class="fa fa-calendar"></i>
-                    <h3 class="box-title">Calendar</h3>
+                    <h3 class="box-title"><?php echo Yii::t('app', 'Calendar') ?></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <!--The calendar -->
@@ -250,18 +250,22 @@ $this->registerJs(
 		    });
 		}
 EOF;
+	$eDetail = Yii::t('app', 'Event Detail');
+	$eType = Yii::t('app', 'Event Type');
+	$eStart = Yii::t('app', 'Start Time');
+	$eEnd = Yii::t('app', 'End Time');
 	$JsF = <<<EOF
 		function (event, element) {
 			var start_time = moment(event.start).format("DD-MM-YYYY, h:mm:ss a");
 		    	var end_time = moment(event.end).format("DD-MM-YYYY, h:mm:ss a");
 
-		        element.clickover({
+			element.clickover({
 		            title: event.title,
 		            placement: 'top',
 		            html: true,
 			    global_close: true,
 			    container: 'body',
-		            content: "<table class='table'><tr><th>Event Detail : </th><td>" + event.description + " </td></tr><tr><th> Event Type : </th><td>" + event.event_type + "</td></tr><tr><th> Start Time : </t><td>" + start_time + "</td></tr><tr><th> End Time : </th><td>" + end_time + "</td></tr></table>"
+		            content: "<table class='table'><tr><th>{$eDetail} : </th><td>" + event.description + " </td></tr><tr><th> {$eType} : </th><td>" + event.event_type + "</td></tr><tr><th> {$eStart} : </t><td>" + start_time + "</td></tr><tr><th> {$eEnd} : </th><td>" + end_time + "</td></tr></table>"
         		});
                }
 EOF;
@@ -289,10 +293,10 @@ EOF;
 		    ?>
 		   <div class="row">
 			<ul class="legend">
-			    <li><span class="holiday"></span> Holiday</li>
-			    <li><span class="importantnotice"></span> Important Notice</li>
-			    <li><span class="meeting"></span> Meeting</li>
-			    <li><span class="messages"></span> Messages</li>
+			    <li><span class="holiday"></span> <?php echo Yii::t('app', 'Holiday') ?></li>
+			    <li><span class="importantnotice"></span> <?php echo Yii::t('app', 'Important Notice') ?></li>
+			    <li><span class="meeting"></span> <?php echo Yii::t('app', 'Meeting') ?></li>
+			    <li><span class="messages"></span> <?php echo Yii::t('app', 'Messages') ?></li>
 			</ul>
 		   </div>
                 </div><!-- /.box-body -->
@@ -305,9 +309,9 @@ EOF;
 	    <div class="nav-tabs-custom"><!-- .nav-tabs-custom -->
                 <!-- Tabs within a box -->
                 <ul class="nav nav-tabs pull-right">
-                    <li><a href="#birth-upcoming" data-toggle="tab">Upcoming</a></li>
-		    <li class="active"><a href="#birth-taday" data-toggle="tab">Today's</a></li>
-                    <li class="pull-left header"><i class="fa fa-birthday-cake"></i>Birthdays</li>
+                    <li><a href="#birth-upcoming" data-toggle="tab"><?php echo Yii::t('app', 'Upcoming') ?></a></li>
+		    <li class="active"><a href="#birth-taday" data-toggle="tab"><?php echo Yii::t('app', "Today's") ?></a></li>
+                    <li class="pull-left header"><i class="fa fa-birthday-cake"></i><?php echo Yii::t('app', 'Birthdays') ?></li>
                 </ul>
                 <div class="tab-content">
                     <!-- Birthdays -->
@@ -328,7 +332,7 @@ EOF;
 				<?php endforeach; 
 			} else {
 				echo '<div class="box-header bg-warning"><div style="padding:5px">';
-				echo "No Birthday Today";
+				echo Yii::t('app', 'No Birthday Today');
 				echo '</div></div>';
 			}
 			?>
@@ -351,7 +355,7 @@ EOF;
 				<?php endforeach; 
 			} else {
 				echo '<div class="box-header bg-warning"><div style="padding:5px">';
-				echo "No Birthday within 30 days duration";
+				echo Yii::t('app', 'No Birthday within 30 days duration');
 				echo '</div></div>';
 			}
 			?>
@@ -363,7 +367,7 @@ EOF;
             <div class="box box-info ">
                 <div class="box-header">
                     <i class="ion ion-university"></i>
-                    <h3 class="box-title">Courses</h3>
+                    <h3 class="box-title"><?php echo Yii::t('app', 'Courses') ?></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <ul class="todo-list" id="coursList">

@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\employee\models\EmpMaster */
 
-$this->title = 'Add Employee';
-$this->params['breadcrumbs'][] = ['label' => 'Employee', 'url' => ['default/index']];
-$this->params['breadcrumbs'][] = ['label' => 'Manage Employee', 'url' => ['index']];
+$this->title = Yii::t('emp', 'Add Employee');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('emp', 'Employee'), 'url' => ['default/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('emp', 'Manage Employee'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-xs-12">

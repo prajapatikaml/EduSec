@@ -9,8 +9,8 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\modules\fees\models\FeesCollectCategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Manage Fees Categories';
-$this->params['breadcrumbs'][] = ['label' => 'Fees', 'url' => ['default/index']];
+$this->title = Yii::t('fees', 'Manage Fees Categories');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('fees', 'Fees'), 'url' => ['default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php
@@ -36,13 +36,13 @@ endif;
   <div class="col-xs-4"></div>
   <div class="col-lg-4 col-sm-4 col-xs-12 no-padding" style="padding-top: 20px !important;">
 	<div class="col-xs-4 left-padding">
-        <?= Html::a('ADD', ['create'], ['class' => 'btn btn-block btn-success']) ?>
+        <?= Html::a(Yii::t('fees', 'ADD'), ['create'], ['class' => 'btn btn-block btn-success']) ?>
 	</div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a('PDF', ['/export-data/export-to-pdf', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-warning', 'target'=>'_blank']) ?>
+	<?= Html::a(Yii::t('fees', 'PDF'), ['/export-data/export-to-pdf', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-warning', 'target'=>'_blank']) ?>
 	</div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a('EXCEL', ['/export-data/export-excel', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-primary', 'target'=>'_blank']) ?>
+	<?= Html::a(Yii::t('fees', 'EXCEL'), ['/export-data/export-excel', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-primary', 'target'=>'_blank']) ?>
 	</div>
   </div>
 </div>
@@ -138,7 +138,7 @@ endif;
 		    ],
 		 
 		    [
-			'header' => 'Add Fees Details',
+			'header' => Yii::t('fees', 'Add Fees Details'),
 			'class' => 'yii\grid\ActionColumn',
 			'template' => '{add_sub_head}',
 			'buttons'=>[

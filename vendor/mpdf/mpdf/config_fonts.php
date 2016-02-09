@@ -259,6 +259,10 @@ $this->fontdata = array(
 		'R' => "Pothana2000.ttf",
 		'useOTL' => 0xFF,
 		),
+	"lohitgujarati" => array(
+		'R' => "Lohit-Gujarati.ttf",
+		'useOTL' => 0xFF,
+		),
 
 
 

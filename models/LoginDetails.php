@@ -82,12 +82,12 @@ class LoginDetails extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'login_detail_id' => 'Login Detail ID',
-            'login_user_id' => 'Username',
-            'login_status' => 'Status',
-            'login_at' => 'Login At',
-            'logout_at' => 'Logout At',
-            'user_ip_address' => 'IP Address',
+            'login_detail_id' => Yii::t('app', 'Login Detail ID'),
+            'login_user_id' => Yii::t('app', 'Username'),
+            'login_status' => Yii::t('app', 'Status'),
+            'login_at' => Yii::t('app', 'Login At'),
+            'logout_at' => Yii::t('app', 'Logout At'),
+            'user_ip_address' => Yii::t('app', 'IP Address'),
         ];
     }
 

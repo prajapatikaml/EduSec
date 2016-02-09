@@ -20,7 +20,7 @@ use app\modules\employee\models\EmpDesignation;
 if(!empty($employee_data))
 {
 	$emp_info = new EmpInfo();
-	echo "</br></br><h3>Employee List</h3>";		
+	echo "</br></br><h3>".Yii::t('report', 'Employee List')."</h3>";		
 	$i = 1;
 	foreach($employee_data as $t=>$sd)
 	{ 
@@ -28,16 +28,16 @@ if(!empty($employee_data))
 	  	 echo "<table>";
 		
 		echo '<tr>';
-		echo "<td class='label'>Sr.No</td><td>".$i."</td>";
+		echo "<td class='label'>".Yii::t('report', 'Sr.No')."</td><td>".$i."</td>";
 		
 		foreach($selected_list as $s)
 		{
 			if($s=='emp_department_name'){
-			echo "<tr><td class='label'>Department</td><td>".EmpDepartment::findOne($sd['emp_master_department_id'])->emp_department_name."</td></tr>";
+			echo "<tr><td class='label'>".Yii::t('report', 'Department')."</td><td>".EmpDepartment::findOne($sd['emp_master_department_id'])->emp_department_name."</td></tr>";
 			}
 			else if($s == 'emp_designation_name'){
 				if($sd['emp_master_designation_id']!= null)
-					echo "<tr><td class='label'>Designation </td><td class='text-center'>".EmpDesignation::findOne($sd['emp_master_designation_id'])->emp_designation_name."</td></tr>";
+					echo "<tr><td class='label'>".Yii::t('report', 'Designation')." </td><td class='text-center'>".EmpDesignation::findOne($sd['emp_master_designation_id'])->emp_designation_name."</td></tr>";
 				else
 					echo "<tr><td> &nbsp;</td></tr>";
 			}
@@ -45,7 +45,7 @@ if(!empty($employee_data))
 			{	
 				if($sd['emp_master_emp_address_id']!=0)
 				{
-					echo "<tr><td class='label'>Local Address</td>";
+					echo "<tr><td class='label'>".Yii::t('report', 'Local Address')."</td>";
 					if(!empty(EmpAddress::findOne($sd['emp_master_emp_address_id'])->emp_cadd_city))
 					{
 						$add_c = "<br/>".City::findOne(EmpAddress::findOne($sd['emp_master_emp_address_id'])->emp_cadd_city)->city_name.", ";	
@@ -80,7 +80,7 @@ if(!empty($employee_data))
 			{	
 				if($sd['emp_master_emp_address_id']!=0)
 				{
-					echo "<tr><td class='label'>International Address</td>";
+					echo "<tr><td class='label'>".Yii::t('report', 'International Address')."</td>";
 					if(!empty(EmpAddress::findOne($sd['emp_master_emp_address_id'])->emp_padd_city))
 					{
 						$add_c = "<br/>".City::findOne(EmpAddress::findOne($sd['emp_master_emp_address_id'])->emp_padd_city)->city_name.", ";	
@@ -115,7 +115,7 @@ if(!empty($employee_data))
 			}
 			else if($s=='emp_category_name')
 			{
-				echo "<tr><td class='label'>Category Name </td>";
+				echo "<tr><td class='label'>".Yii::t('report', 'Category Name')." </td>";
 				if($sd['emp_master_category_id'] !=0)
 				echo "<td>".Category::findOne($sd['emp_master_category_id'])->emp_category_name."</td></tr>";
 				else
@@ -123,7 +123,7 @@ if(!empty($employee_data))
 			}
 			else if($s=='city')
 			{
-				echo "<tr><td class='label'>City</td>";
+				echo "<tr><td class='label'>".Yii::t('report', 'City')."</td>";
 				if($sd['emp_master_emp_address_id'] !=0)
 				{
 					$add = EmpAddress::findOne($sd['emp_master_emp_address_id']);
@@ -137,12 +137,12 @@ if(!empty($employee_data))
 			}
 			else if($s=='emp_guardian_mobile_no')
 			{
-				echo "<tr><td class='label'>Guardian No </td>";
+				echo "<tr><td class='label'>".Yii::t('report', 'Guardian No')." </td>";
 					echo "<td>".($sd[$s])."</td></tr>";
 				
 			}
 			else if($s=='emp_bloodgroup')
-				echo "<tr><td class='label'>Blood Group</td><td>".$sd[$s]."</td></tr>";
+				echo "<tr><td class='label'>".Yii::t('report', 'Blood Group')."</td><td>".$sd[$s]."</td></tr>";
 			else
 				echo "<tr><td class='label'>".Html::ActiveLabel($emp_info,$s)." </td><td>".$sd[$s]."</td></tr>";
 	
@@ -155,6 +155,6 @@ if(!empty($employee_data))
 
 }
 else
-	echo  "<h1 style=\"color:red;text-align:center;margin-top:10%;margin-right:60%\">No Record To Display</h1>";
+	echo  "<h1 style=\"color:red;text-align:center;margin-top:10%;margin-right:60%\">".Yii::t('report', 'No Record To Display')."</h1>";
 ?>
 </div>

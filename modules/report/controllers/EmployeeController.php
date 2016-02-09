@@ -106,7 +106,7 @@ class EmployeeController extends Controller
 
 		if(empty($employee_data))
 		{		
-		 \Yii::$app->getSession()->setFlash('emperror',"<i class='fa fa-exclamation-triangle'></i> <b> No Record Found For This Criteria.</b>");		
+		 \Yii::$app->getSession()->setFlash('emperror',"<i class='fa fa-exclamation-triangle'></i> <b>".Yii::t('report', 'No Record Found For This Criteria.')."</b>");		
 			return $this->redirect(['empinforeport']);			
 		}					
 		return $this->render('emp_info_report',[

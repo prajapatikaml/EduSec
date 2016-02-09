@@ -85,15 +85,16 @@ class EmpDocs extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'emp_docs_id' => 'Document',
-            'emp_docs_details' => 'Document Details',
-            'emp_docs_category_id' => 'Category ',
-            'emp_docs_path' => 'Document',
-            'emp_docs_submited_at' => 'Submited Date',
-            'emp_docs_status' => 'Status',
-            'emp_docs_emp_master_id' => 'Employee',
-            'created_by' => 'Created By',
-	    'emp_docs_category_id_temp' => 'Category',	
+            'emp_docs_id' => Yii::t('emp', 'Document'),
+            'emp_docs_details' => Yii::t('emp', 'Document Details'),
+            'emp_docs_category_id' => Yii::t('emp', 'Category'),
+            'emp_docs_path' => Yii::t('emp', 'Document'),
+            'emp_docs_submited_at' => Yii::t('emp', 'Submited Date'),
+            'emp_docs_status' => Yii::t('emp', 'Status'),
+            'emp_docs_emp_master_id' => Yii::t('emp', 'Employee'),
+            'created_by' => Yii::t('emp', 'Created By'),
+	   		'emp_docs_category_id_temp' => Yii::t('emp', 'Category'),	
+			
         ];
     }
 

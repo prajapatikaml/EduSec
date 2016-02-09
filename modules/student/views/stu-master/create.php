@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\student\models\StuMaster */
 
-$this->title = 'Add Student';
-$this->params['breadcrumbs'][] = ['label' => 'Student', 'url' => ['default/index']];
-$this->params['breadcrumbs'][] = ['label' => 'Manage Students', 'url' => ['index']];
+$this->title = Yii::t('stu', 'Add Student');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Student'), 'url' => ['default/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Manage Students'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-xs-12">

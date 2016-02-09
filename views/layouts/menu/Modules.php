@@ -1,7 +1,7 @@
 <?php use yii\helpers\Html; ?>
 
 	<?php if(Yii::$app->user->can('Configuration')) { ?>
-	    <li><?= Html::a('<i class="fa fa-cogs"></i> <span>Configuration</span>', ['/default/index']); ?></li>
+	    <li><?= Html::a('<i class="fa fa-cogs"></i> <span>'.Yii::t('app', 'Configuration').'</span>', ['/default/index']); ?></li>
 	<?php } 
 	      if(Yii::$app->user->can('/dashboard/default/index')) {
 	?>

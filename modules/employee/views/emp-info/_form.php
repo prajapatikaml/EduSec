@@ -32,7 +32,7 @@ $(document).ready(function(){
  
     <?= $form->field($model, 'emp_unique_id')->textInput(['maxlength' => 50]) ?>
 
-    <?= $form->field($model, 'emp_title')->dropDownList($model->getTitleOptions(),['prompt'=>'Select Title']) ?>
+    <?= $form->field($model, 'emp_title')->dropDownList($model->getTitleOptions(),['prompt'=>Yii::t('stu', '--- Select Title ---')]) ?>
 
     <?= $form->field($model, 'emp_first_name')->textInput(['maxlength' => 35]) ?>
 
@@ -96,8 +96,8 @@ $(document).ready(function(){
 
    
     <div class="form-group col-sm-offset-1 col-lg-10">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-	<?= Html::a('Cancel', ['index'], ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('emp', 'Create') : Yii::t('emp', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	<?= Html::a(Yii::t('emp', 'Cancel'), ['index'], ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

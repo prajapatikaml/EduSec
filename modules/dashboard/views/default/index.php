@@ -1,7 +1,7 @@
 <?php 
 use yii\helpers\Html; 
 use yii\helpers\Url;
-$this->title = 'Dashboard Modules';
+$this->title = Yii::t('dash', 'Dashboard Modules');
 $this->params['breadcrumbs'][] = $this->title;
 $this->registerCss(".popover{max-width:500px}");
 ?>
@@ -9,7 +9,7 @@ $this->registerCss(".popover{max-width:500px}");
 
 <div class="box box-default">
 	<div class="box-header with-border">
-		<h3 class="box-title"><i class="glyphicon glyphicon-dashboard"></i> Manage Users Dashboard</h3>
+		<h3 class="box-title"><i class="glyphicon glyphicon-dashboard"></i> <?php echo Yii::t('dash', 'Manage Users Dashboard') ?></h3>
 	</div>
 	<div class="box-body">
 
@@ -18,10 +18,10 @@ $this->registerCss(".popover{max-width:500px}");
 		      <div class="edusec-link-box">
 		        <span class="edusec-link-box-icon bg-yellow"><i class="fa fa-envelope"></i></span>
 		        <div class="edusec-link-box-content">
-		          <span class="edusec-link-box-text"><?= Html::a('Massage Of The Day', ['/dashboard/msg-of-day']);?></span>
-		          <span class="edusec-link-box-number"><?php $msgOfDay = app\modules\dashboard\models\MsgOfDay::find()->where(['is_status'=>0])->count(); echo "Status : ".(($msgOfDay==1) ? "Active" : "Deactive"); ?></span>
+		          <span class="edusec-link-box-text"><?= Html::a(Yii::t('dash', 'Massage Of The Day'), ['/dashboard/msg-of-day']);?></span>
+		          <span class="edusec-link-box-number"><?php $msgOfDay = app\modules\dashboard\models\MsgOfDay::find()->where(['is_status'=>0])->count(); echo Yii::t('dash', 'Status').' : '; echo(($msgOfDay==1) ? Yii::t("dash", "Active") : Yii::t("dash", "Deactive")); ?></span>
 			 <span class="edusec-link-box-desc"></span>
-			  <span class="edusec-link-box-bottom"><?= Html::a('<i class="fa fa-plus-square"></i> Create New', ['/dashboard/msg-of-day/create']); ?></span>
+			  <span class="edusec-link-box-bottom"><?= Html::a('<i class="fa fa-plus-square"></i> '.Yii::t('dash', 'Create New'), ['/dashboard/msg-of-day/create']); ?></span>
 		        </div><!-- /.info-box-content -->
 		      </div><!-- /.info-box -->
 		</div>
@@ -30,10 +30,10 @@ $this->registerCss(".popover{max-width:500px}");
 		      <div class="edusec-link-box">
 		        <span class="edusec-link-box-icon bg-teal"><i class="fa fa-clipboard"></i></span>
 		        <div class="edusec-link-box-content">
-		          <span class="edusec-link-box-text"><?= Html::a('Notice', ['/dashboard/notice']);?></span>
+		          <span class="edusec-link-box-text"><?= Html::a(Yii::t('dash', 'Notice'), ['/dashboard/notice']);?></span>
 		          <span class="edusec-link-box-number"><?= app\modules\dashboard\models\Notice::find()->where(['is_status'=>0])->count(); ?></span>
-			 <span class="edusec-link-box-desc">Manage Student/Employee Dashboard Notice</span>
-			  <span class="edusec-link-box-bottom"><?= Html::a('<i class="fa fa-plus-square"></i> Create New', ['/dashboard/notice/create']); ?></span>
+			 <span class="edusec-link-box-desc"><?php echo Yii::t('dash', 'Manage Student/Employee Dashboard Notice'); ?></span>
+			  <span class="edusec-link-box-bottom"><?= Html::a('<i class="fa fa-plus-square"></i> '.Yii::t('dash', 'Create New'), ['/dashboard/notice/create']); ?></span>
 		        </div><!-- /.info-box-content -->
 		      </div><!-- /.info-box -->
 		</div>
@@ -47,13 +47,13 @@ $this->registerCss(".popover{max-width:500px}");
 <!---Start event management block--->
 <div class="box box-info box-solid">
 	<div class="box-header with-border">
-		<h3 class="box-title"><i class="ion ion-calendar"></i> Manage Event Schedule</h3>
+		<h3 class="box-title"><i class="ion ion-calendar"></i> <?php echo Yii::t('dash', 'Manage Event Schedule') ?></h3>
 	</div>
 	<div class="box-body">
 <?php 
 $AEurl = Url::to(["events/add-event"]);
 $UEurl = Url::to(["events/update-event"]);
-
+$AddEvent = Yii::t('dash', 'Add Event');
 		$JSEvent = <<<EOF
 	function(start, end, allDay) {
 		var start = moment(start).unix();
@@ -64,14 +64,14 @@ $UEurl = Url::to(["events/update-event"]);
 		   type: "GET",
 		   success: function(data) {
 			   $(".modal-body").addClass("row");
-			   $(".modal-header").html('<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button><h3>Add Event</h3>');
+			   $(".modal-header").html('<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button><h3>{$AddEvent}</h3>');
 			   $('.modal-body').html(data);
 			   $('#eventModal').modal();
 		   }
 	   	});
 			}
 EOF;
-
+$updateEvent = Yii::t('dash', 'Update Event');
 $JSEventClick = <<<EOF
 	function(calEvent, jsEvent, view) {
 	    var eventId = calEvent.id;
@@ -81,7 +81,7 @@ $JSEventClick = <<<EOF
 		   type: "GET",
 		   success: function(data) {
 			   $(".modal-body").addClass("row");
-			   $(".modal-header").html('<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button><h3>Update Event</h3>');
+			   $(".modal-header").html('<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button><h3> {$updateEvent} </h3>');
 			   $('.modal-body').html(data);
 			   $('#eventModal').modal();
 		   }
@@ -89,7 +89,10 @@ $JSEventClick = <<<EOF
 		$(this).css('border-color', 'red');
 	}
 EOF;
-
+$eDetail = Yii::t('app', 'Event Detail');
+$eType = Yii::t('app', 'Event Type');
+$eStart = Yii::t('app', 'Start Time');
+$eEnd = Yii::t('app', 'End Time');
 $JsF = <<<EOF
 		function (event, element) {
 			var start_time = moment(event.start).format("DD-MM-YYYY, h:mm:ss a");
@@ -103,7 +106,7 @@ $JsF = <<<EOF
 			    container: 'body',
 			    trigger: 'hover',
 			    delay: {"show": 500},
-		            content: "<table class='table'><tr><th>Event Detail : </th><td>" + event.description + " </td></tr><tr><th> Event Type : </th><td>" + event.event_type + "</td></tr><tr><th> Start Time : </t><td>" + start_time + "</td></tr><tr><th> End Time : </th><td>" + end_time + "</td></tr></table>"
+		            content: "<table class='table'><tr><th> {$eDetail} : </th><td>" + event.description + " </td></tr><tr><th> {$eType} : </th><td>" + event.event_type + "</td></tr><tr><th> {$eStart} : </t><td>" + start_time + "</td></tr><tr><th> {$eEnd} : </th><td>" + end_time + "</td></tr></table>"
         		});
                }
 EOF;
@@ -140,10 +143,10 @@ EOF;
    <div class="row">
       <div class="col-sm-12 col-xs-12">
 	<ul class="legend">
-	    <li><span class="holiday"></span> Holiday</li>
-	    <li><span class="importantnotice"></span> Important Notice</li>
-	    <li><span class="meeting"></span> Meeting</li>
-	    <li><span class="messages"></span> Messages</li>
+	    <li><span class="holiday"></span> <?php echo Yii::t('dash', 'Holiday') ?></li>
+	    <li><span class="importantnotice"></span> <?php echo Yii::t('dash', 'Important Notice') ?></li>
+	    <li><span class="meeting"></span> <?php echo Yii::t('dash', 'Meeting') ?></li>
+	    <li><span class="messages"></span> <?php echo Yii::t('dash', 'Messages') ?></li>
 	</ul>
      </div>
    </div>
@@ -155,7 +158,7 @@ EOF;
 <?php
 	yii\bootstrap\Modal::begin([
 		'id' => 'eventModal',
-		'header' => "<h3>Add Event</h3>",
+		'header' => "<h3>".Yii::t('dash', 'Add Event')."</h3>",
 	]);
 
 	yii\bootstrap\Modal::end(); 

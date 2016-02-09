@@ -84,14 +84,14 @@ class MsgOfDay extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'msg_of_day_id' => 'Msg Of Day ID',
-            'msg_details' => 'Details',
-            'msg_user_type' => 'User Type',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'is_status' => 'Status',
+			'msg_of_day_id' => Yii::t('dash', 'Msg Of Day ID'),
+            'msg_details' => Yii::t('dash', 'Details'),
+            'msg_user_type' => Yii::t('dash', 'User Type'),
+            'created_at' => Yii::t('dash', 'Created At'),
+            'created_by' => Yii::t('dash', 'Created By'),
+            'updated_at' => Yii::t('dash', 'Updated At'),
+            'updated_by' => Yii::t('dash', 'Updated By'),
+            'is_status' => Yii::t('dash', 'Status'),
         ];
     }
 

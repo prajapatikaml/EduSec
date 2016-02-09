@@ -3,8 +3,8 @@ use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
 
-$this->title = "Student Fees Data";
-$this->params['breadcrumbs'][] = "Fees";
+$this->title = Yii::t('fees', "Student Fees Data");
+$this->params['breadcrumbs'][] = Yii::t('fees', "Fees");
 $this->params['breadcrumbs'][] = ['label' => $this->title];
 ?>
 <!--div class="table-responsive"-->
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
 <div class="col-xs-12" style="padding-top: 10px;">
   <div class="box-success box col-xs-12 col-lg-12 no-padding">
    <div class="box-header with-border">
-	<h3 class="box-title"><i class="fa fa-user"></i><sub><i class="fa fa-info-circle"></i></sub> Student Details</h3>
+	<h3 class="box-title"><i class="fa fa-user"></i><sub><i class="fa fa-info-circle"></i></sub> <?php echo Yii::t('fees', 'Student Details'); ?></h3>
    </div>
    <div class="box-body no-padding"> 
     <table class="table detail-view">
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
 	</tr>
 	<tr>
 		<td rowspan="5" class="hidden-xs"><?= $displayImg ?></td>
-		<th>Name</th>
+		<th><?php echo Yii::t('fees', 'Name'); ?></th>
 		<td><?php echo $stuData->stuMasterStuInfo->name; ?></td>
 	</tr>
 	<tr>
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
 
 <div class="col-xs-12" style="padding-top: 10px;">
    <div class="box box-info col-xs-12 col-lg-12 no-padding">
-    <div class="box-header with-border"><h4 class="box-title"><i class="fa fa-inr"></i> Current Fees Details</h4></div>
+    <div class="box-header with-border"><h4 class="box-title"><i class="fa fa-inr"></i> <?php echo Yii::t('fees', 'Current Fees Details'); ?></h4></div>
     <div class="box-body table-responsive">
 <?php 
 $currFeesData = new ActiveDataProvider([
@@ -80,7 +80,7 @@ echo GridView::widget([
 	'dataProvider' => $currFeesData,
 	'layout' => "{items}\n{pager}",
 	'showOnEmpty'=>true,
-	'emptyText'=>'No current fees data available.',
+	'emptyText'=>Yii::t('fees', 'No current fees data available.'),
 	'columns' => [
 		['class' => 'yii\grid\SerialColumn'],
 		'fees_collect_name',
@@ -117,13 +117,13 @@ echo GridView::widget([
 		}
 		], 
 		[
-		'header'=>'Total Amount',
+		'header'=>Yii::t('fees', 'Total Amount'),
 		'value'=>function($data) {
 			return \app\modules\fees\models\FeesCategoryDetails::getFeeCategoryTotal($data->fees_collect_category_id);
 		}
 		], 
 		[
-		'header'=>'Total Paid Fees',
+		'header'=>Yii::t('fees', 'Total Paid Fees'),
 		'value'=>function($data) use ($model, $stuData) {
 			return $model->getStuTotalPayFees($stuData->stu_master_id, $data->fees_collect_category_id);
 		}
@@ -140,7 +140,7 @@ echo GridView::widget([
 <div class="col-xs-12" style="padding-top: 10px;">
     <div class="box box-info col-xs-12 col-lg-12 no-padding">
      <div class="box-header with-border">
-	<h3 class="box-title"><i class="fa fa-inr"></i><sup><i class="fa fa-clock-o"></i></sup> Student Payment History</h3>
+	<h3 class="box-title"><i class="fa fa-inr"></i><sup><i class="fa fa-clock-o"></i></sup> <?php echo Yii::t('fees', 'Student Payment History'); ?></h3>
      </div>
      <div class="box-body table-responsive">
 <?php
@@ -160,7 +160,7 @@ echo GridView::widget([
 	'dataProvider' => $dataProvider,
 	'showOnEmpty'=>true,
 	'showFooter'=>false,
-	'emptyText'=>'No fees results found.',
+	'emptyText'=>Yii::t('fees', 'No fees results found.'),
 	'columns' => [
 		['class' => 'yii\grid\SerialColumn'],
 		'fees_pay_tran_id',

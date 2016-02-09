@@ -100,17 +100,17 @@ class Batches extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'batch_id' => 'Batch ID',
-            'batch_name' => 'Batch Name',
-            'batch_course_id' => 'Batch Course ',
-            'batch_alias' => 'Batch Alias',
-            'start_date' => 'Start Date',
-            'end_date' => 'End Date',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'is_status' => 'Status',
+            'batch_id' => Yii::t('course', 'Batch ID'),
+            'batch_name' => Yii::t('course', 'Batch Name'),
+            'batch_course_id' => Yii::t('course', 'Batch Course'),
+            'batch_alias' => Yii::t('course', 'Batch Alias'),
+            'start_date' => Yii::t('course', 'Start Date'),
+            'end_date' => Yii::t('course', 'End Date'),
+            'created_at' => Yii::t('course', 'Created At'),
+            'created_by' => Yii::t('course', 'Created By'),
+            'updated_at' => Yii::t('course', 'Updated At'),
+            'updated_by' => Yii::t('course', 'Updated By'),
+            'is_status' => Yii::t('course', 'Status'),
         ];
     }
 

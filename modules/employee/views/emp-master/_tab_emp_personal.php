@@ -6,11 +6,11 @@ $role = Yii::$app->AuthManager->getRoles();
 <div class="row">
   <div class="col-xs-12">
 	<h2 class="page-header">	
-	<i class="fa fa-info-circle"></i> Personal Details
+	<i class="fa fa-info-circle"></i> <?php echo Yii::t('emp', 'Personal Details'); ?>
 	<div class="pull-right">
 	<?php if(Yii::$app->user->can("/employee/emp-master/update") && (Yii::$app->session->get('emp_id') == $_REQUEST['id']) || in_array('SuperAdmin',$admin) || Yii::$app->user->can("updateAllEmpInfo")) 
 		{ ?>
-		<?= Html::a('<i class="fa fa-pencil-square-o"></i> Edit', ['update', 'empid' => $model->emp_master_id, 'tab' => 'personal'], ['class' => 'btn btn-primary btn-sm', 'id' => 'update-data']) ?></div>
+		<?= Html::a('<i class="fa fa-pencil-square-o"></i> '. Yii::t('emp', 'Edit'), ['update', 'empid' => $model->emp_master_id, 'tab' => 'personal'], ['class' => 'btn btn-primary btn-sm', 'id' => 'update-data']) ?></div>
 		<?php } ?>
 	</h2>
   </div><!-- /.col -->

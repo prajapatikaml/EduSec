@@ -91,14 +91,14 @@ class BankMaster extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'bank_master_id' => 'Bank ',
-            'bank_master_name' => 'Bank Name',
-            'bank_alias' => 'Bank Alias',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'is_status' => 'Is Status',
+			'bank_master_id' => Yii::t('fees', 'Bank'),
+            'bank_master_name' => Yii::t('fees', 'Bank Name'),
+            'bank_alias' => Yii::t('fees', 'Bank Alias'),
+            'created_at' => Yii::t('fees', 'Created At'),
+            'created_by' => Yii::t('fees', 'Created By'),
+            'updated_at' => Yii::t('fees', 'Updated At'),
+            'updated_by' => Yii::t('fees', 'Updated By'),
+            'is_status' => Yii::t('fees', 'Is Status'),
         ];
     }
 

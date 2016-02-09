@@ -6,10 +6,8 @@ use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $model app\modules\student\models\StudentDocsTrans */
 
-$this->title = Yii::t('app', '{modelClass}', [
-    'modelClass' => 'Reset Employee Login',
-]);
-$this->params['breadcrumbs'][] = ['label' => 'Employee', 'url'=>['/employee']];
+$this->title = Yii::t('app', 'Reset Employee Login');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Employee'), 'url'=>['/employee']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
   
@@ -27,8 +25,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <?php $dataProvider = $model->search(Yii::$app->request->queryParams); ?>
 
 <div class="col-xs-12">
-  <div class="col-lg-4 col-sm-4 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-th-list"></i> <?= $this->title ?></h3></div>
-  <div class="col-xs-4"></div>
+  <div class="col-lg-8 col-sm-8 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-th-list"></i> <?= $this->title ?></h3></div>
   <div class="col-lg-4 col-sm-4 col-xs-12 no-padding" style="padding-top: 20px !important;"></div>
 </div>
 
@@ -45,34 +42,34 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 		
 		[
-			'label' => 'Employee ID',
+			'label' => Yii::t('emp', 'Employee ID'),
 			'attribute' => 'emp_unique_id',
 			'value' => 'empMasterEmpInfo.emp_unique_id',
  	        ],
 		[
-			'label' => 'First Name',
+			'label' => Yii::t('emp', 'First Name'),
 			'attribute' => 'emp_first_name',
 			'value' => 'empMasterEmpInfo.emp_first_name',
  	        ],
 		[
-			'label' => 'Last Name',
+			'label' => Yii::t('emp', 'Last Name'),
 			'attribute' => 'emp_last_name',
 			'value' => 'empMasterEmpInfo.emp_last_name',
  	        ],
 		[
-			'label' => 'Department',
+			'label' => Yii::t('emp', 'Department'),
 			'attribute' => 'emp_master_department_id',
 			'value' => 'empMasterDepartment.emp_department_name',
 			'filter' =>ArrayHelper::map(app\modules\employee\models\EmpDepartment::find()->all(),'emp_department_id','emp_department_name')
                 ],
 		[
-			'label' => 'Designation',
+			'label' => Yii::t('emp', 'Designation'),
 			'attribute' => 'emp_master_designation_id',
 			'value' => 'empMasterDesignation.emp_designation_name',
 			'filter' => ArrayHelper::map(app\modules\employee\models\EmpDesignation::find()->all(),'emp_designation_id','emp_designation_name')
                 ],
 		[
-		      'label' => 'User Login Id',
+		      'label' => Yii::t('app', 'User Login Id'),
 		      'attribute' => 'user_login_id',
 	              'value' => 'empMasterUser.user_login_id',
 		      'options'=>['style'=>'min-width:140px'],

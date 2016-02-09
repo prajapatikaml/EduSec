@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\modules\employee\models\EmpDocs */
 
 $this->title = $model->emp_docs_id;
-$this->params['breadcrumbs'][] = ['label' => 'Documents', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('emp', 'Documents'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="emp-docs-view">
@@ -15,12 +15,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-	<?= Html::a('<i class="fa fa-chevron-left"></i> Back', ['index'], ['class' => 'btn btn-warning']) ?>
-        <?= Html::a('Update', ['update', 'id' => $model->emp_docs_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->emp_docs_id], [
+	<?= Html::a('<i class="fa fa-chevron-left"></i>'. Yii::t('emp', 'Back'), ['index'], ['class' => 'btn btn-warning']) ?>
+        <?= Html::a(Yii::t('emp', 'Update'), ['update', 'id' => $model->emp_docs_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('emp', 'Delete'), ['delete', 'id' => $model->emp_docs_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => Yii::t('emp', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>

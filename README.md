@@ -13,14 +13,20 @@ Point release 3.0.0: 04/10/2014
 # EduSec 4.0.0 #
 Point release 4.0.0: 31/05/2015
 
-# EduSec 4.1.1 # 
-Point release 4.1.1: 02/08/2015 
+# EduSec 4.1.1 #
+Point release 4.1.1: 02/08/2015
 
-# EduSec 4.2.0 # 
-Point release 4.2.0: 30/09/2015 
+# EduSec 4.2.0 #
+Point release 4.2.0: 30/09/2015
 
 # EduSec 4.2.1 #
 Point release 4.2.1: 04/10/2015
+
+# EduSec 4.2.2 #
+Point release 4.2.2: 20/10/2015
+
+EduSec 4.2.2 support Multiple Languages. Right now English, French, Hindi & Gujarati language supported & few bugs resolved
+
 
 Edusec - College Management Software
 ====================================

@@ -8,8 +8,8 @@ use yii\helpers\Url;
 /* @var $searchModel app\models\EventsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Manage Events';
-$this->params['breadcrumbs'][] = ['label' => 'Dashboard', 'url' => ['default/index']];
+$this->title = Yii::t('dash', 'Manage Events');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('dash', 'Dashboard'), 'url' => ['default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
@@ -34,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	yii\bootstrap\Modal::begin([
 		'id' => 'eventModal',
 		//'header' => "<div class='row'><div class='col-xs-6'><h3>Add Event</h3></div><div class='col-xs-6'>".Html::a('Delete', ['#'], ['class' => 'btn btn-danger pull-right', 'style' => 'margin-top:5px'])."</div></div>",
-		'header' => "<h3>Add Event</h3>",
+		'header' => "<h3>".Yii::t('dash', 'Add Event')."</h3>",
 	]);
 
 	yii\bootstrap\Modal::end(); 
@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
   <div class="col-xs-12">
 	<h2 class="page-header">	
-		<?= Html::encode($this->title) ?>
+		<?php echo Yii::t('dash', 'Manage Events') ?>
 	</h2>
   </div><!-- /.col -->
 </div>
@@ -69,14 +69,14 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="box box-solid box-warning">
   <div class="box-header">
     <i class="ion ion-calendar"></i>
-    <h3 class="box-title">Event Schedule</h3>
+    <h3 class="box-title"><?php echo Yii::t('dash', 'Event Schedule') ?></h3>
   </div><!-- /.box-header -->
   <div class="box-body">
    <div class="events-index">
     <?php 
 	$AEurl = Url::to(["events/add-event"]);
 	$UEurl = Url::to(["events/update-event"]);
-	
+	$AddEvent = Yii::t('dash', 'Add Event');
 	$JSEvent = <<<EOF
 function(start, end, allDay) {
 	var start = moment(start).unix();
@@ -87,14 +87,14 @@ function(start, end, allDay) {
 	   type: "GET",
 	   success: function(data) {
 		   $(".modal-body").addClass("row");
-		   $(".modal-header").html('<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button><h3>Add Event</h3>');
+		   $(".modal-header").html('<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button><h3>{$AddEvent}</h3>');
 		   $('.modal-body').html(data);
 		   $('#eventModal').modal();
 	   }
    	});
 		}
 EOF;
-
+$updateEvent = Yii::t('dash', 'Update Event');
 	$JSEventClick = <<<EOF
 function(calEvent, jsEvent, view) {
     var eventId = calEvent.id;
@@ -104,7 +104,7 @@ function(calEvent, jsEvent, view) {
 	   type: "GET",
 	   success: function(data) {
 		   $(".modal-body").addClass("row");
-		   $(".modal-header").html('<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button><h3>Update Event</h3>');
+		   $(".modal-header").html('<button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button><h3> {$updateEvent} </h3>');
 		   $('.modal-body').html(data);
 		   $('#eventModal').modal();
 	   }
@@ -112,6 +112,10 @@ function(calEvent, jsEvent, view) {
 	$(this).css('border-color', 'red');
 }
 EOF;
+	$eDetail = Yii::t('app', 'Event Detail');
+	$eType = Yii::t('app', 'Event Type');
+	$eStart = Yii::t('app', 'Start Time');
+	$eEnd = Yii::t('app', 'End Time');
 	$JsF = <<<EOF
 		function (event, element) {
 			var start_time = moment(event.start).format("DD-MM-YYYY, h:mm:ss a");
@@ -125,7 +129,7 @@ EOF;
 			    container: 'body',
 			    trigger: 'hover',
 			    delay: {"show": 500},
-		            content: "<table class='table'><tr><th>Event Detail : </th><td>" + event.description + " </td></tr><tr><th> Event Type : </th><td>" + event.event_type + "</td></tr><tr><th> Start Time : </t><td>" + start_time + "</td></tr><tr><th> End Time : </th><td>" + end_time + "</td></tr></table>"
+		            content: "<table class='table'><tr><th> {$eDetail} : </th><td>" + event.description + " </td></tr><tr><th> {$eType} : </th><td>" + event.event_type + "</td></tr><tr><th> {$eStart} : </t><td>" + start_time + "</td></tr><tr><th> {$eEnd} : </th><td>" + end_time + "</td></tr></table>"
         		});
                }
 EOF;
@@ -157,10 +161,10 @@ EOF;
    </div>
    <div class="row">
 	<ul class="legend">
-	    <li><span class="holiday"></span> Holiday</li>
-	    <li><span class="importantnotice"></span> Important Notice</li>
-	    <li><span class="meeting"></span> Meeting</li>
-	    <li><span class="messages"></span> Messages</li>
+	    <li><span class="holiday"></span> <?php echo Yii::t('dash', 'Holiday') ?></li>
+	    <li><span class="importantnotice"></span> <?php echo Yii::t('dash', 'Important Notice') ?></li>
+	    <li><span class="meeting"></span> <?php echo Yii::t('dash', 'Meeting') ?></li>
+	    <li><span class="messages"></span> <?php echo Yii::t('dash', 'Messages') ?></li>
 	</ul>
    </div>
   </div>

@@ -1,7 +1,7 @@
 <?php
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-$this->title = 'EduSec | Login';
+$this->title = Yii::t('app', 'EduSec | Login');
 ?>
 <div class="login-box">
       <div class="login-logo">
@@ -12,24 +12,24 @@ $this->title = 'EduSec | Login';
       </div>
       <div class="login-box-body">
   	
-        <p class="login-box-msg">Please fill out the following fields to login</p>
+        <p class="login-box-msg"><?php echo Yii::t('app', 'Please fill out the following fields to login') ?></p>
 	<?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
           <div class="form-group has-feedback">
-	     <?= $form->field($model, 'username')->textInput(['placeholder'=>'Username', 'class'=>'form-control'])->label(false) ?>
+	     <?= $form->field($model, 'username')->textInput(['placeholder'=>Yii::t('app', 'Username'), 'class'=>'form-control'])->label(false) ?>
             <span class="glyphicon glyphicon-user form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-	    <?= $form->field($model, 'password')->passwordInput(['class'=>'form-control', 'placeholder'=>'Password'])->label(false) ?>
+	    <?= $form->field($model, 'password')->passwordInput(['class'=>'form-control', 'placeholder'=>Yii::t('app', 'Password')])->label(false) ?>
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
           </div>
           <div class="row">
-            <div class="col-xs-8">    
+            <div class="col-xs-7">    
               <div class="checkbox icheck">
 		<?= $form->field($model, 'rememberMe')->checkbox() ?>
               </div>                        
             </div><!-- /.col -->
-            <div class="col-xs-4">
-	      <?= Html::submitButton('Login', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
+            <div class="col-xs-5">
+	      <?= Html::submitButton(Yii::t('app', 'Login'), ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
             </div><!-- /.col -->
           </div>
        <?php ActiveForm::end(); ?>

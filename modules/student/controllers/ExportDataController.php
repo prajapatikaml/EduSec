@@ -86,6 +86,6 @@ class ExportDataController extends Controller
 				'sDocs' => $sDocs,
 			]);
 		$fName = $stuInfo->stu_first_name."_".$stuInfo->stu_last_name."_".date('Ymd-His');
-		return Yii::$app->pdf->exportData('Student Report',$fName,$html);
+		return Yii::$app->pdf->exportData(Yii::t('report','Student Report'),$fName,$html);
 	}
 }

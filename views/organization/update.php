@@ -6,8 +6,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Update Institute Setup'];
 ?>
 
 <div class="col-sm-12 col-xs-12">
-	<h2 class="page-header edusec-page-header-btn"><i class="fa fa-edit"></i> Update Institute Setup
-		<div class="pull-right"><?= Html::a('Back', ['index'], ['class' => 'btn btn-back']) ?></div>
+	<h2 class="page-header edusec-page-header-btn"><i class="fa fa-edit"></i> <?php echo Yii::t('app', 'Update Institute Setup') ?>
+		<div class="pull-right"><?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-back']) ?></div>
 	</h2>
 </div>
 

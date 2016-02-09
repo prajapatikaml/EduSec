@@ -93,13 +93,13 @@ class Nationality extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'nationality_id' => 'Nationality ID',
-            'nationality_name' => 'Nationality Name',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'is_status' => 'Is Status',
+            'nationality_id' => Yii::t('app', 'Nationality ID'),
+            'nationality_name' => Yii::t('app', 'Nationality Name'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'created_by' => Yii::t('app', 'Created By'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+            'updated_by' => Yii::t('app', 'Updated By'),
+            'is_status' => Yii::t('app', 'Is Status'),
         ];
     }
 

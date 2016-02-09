@@ -22,4 +22,14 @@ class Route extends \yii\base\Model
             [['route'],'safe'],
         ];
     }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'route' => \Yii::t('rbac-admin', 'Route'),
+        ];
+    }
 }

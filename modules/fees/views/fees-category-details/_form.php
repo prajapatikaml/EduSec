@@ -33,10 +33,10 @@ use yii\helpers\ArrayHelper;
 
     <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
 	<div class="col-xs-6">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('fees', 'Create') : Yii::t('fees', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-6">
-	    <?= Html::a('Cancel', ['fees-collect-category/view', 'id' => $_REQUEST['fcc_id']], ['class' => 'btn btn-default btn-block']) ?>
+	    <?= Html::a(Yii::t('fees','Cancel'), ['fees-collect-category/view', 'id' => $_REQUEST['fcc_id']], ['class' => 'btn btn-default btn-block']) ?>
 	</div>
     </div>
 

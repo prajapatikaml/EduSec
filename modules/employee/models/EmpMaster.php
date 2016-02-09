@@ -108,20 +108,20 @@ class EmpMaster extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'emp_master_id' => 'Employee ID',
-            'emp_master_emp_info_id' => 'Emp Master Emp Info ID',
-            'emp_master_user_id' => 'User ',
-            'emp_master_department_id' => 'Department',
-            'emp_master_designation_id' => 'Designation ',
-            'emp_master_category_id' => 'Category ',
-            'emp_master_nationality_id' => 'Nationality ',
-            'emp_master_emp_address_id' => 'Address',
-            'emp_master_status_id' => 'Status',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'is_status' => 'Active/InActive',
+			'emp_master_id' => Yii::t('emp', 'Employee ID'),
+            'emp_master_emp_info_id' => Yii::t('emp', 'Emp Master Emp Info ID'),
+            'emp_master_user_id' => Yii::t('emp', 'User'),
+            'emp_master_department_id' => Yii::t('emp', 'Department'),
+            'emp_master_designation_id' => Yii::t('emp', 'Designation'),
+            'emp_master_category_id' => Yii::t('emp', 'Category'),
+            'emp_master_nationality_id' => Yii::t('emp', 'Nationality'),
+            'emp_master_emp_address_id' => Yii::t('emp', 'Address'),
+            'emp_master_status_id' => Yii::t('emp', 'Status'),
+            'created_at' => Yii::t('emp', 'Created At'),
+            'created_by' => Yii::t('emp', 'Created By'),
+            'updated_at' => Yii::t('emp', 'Updated At'),
+            'updated_by' => Yii::t('emp', 'Updated By'),
+            'is_status' => Yii::t('emp', 'Active/InActive'),
         ];
     }
 
