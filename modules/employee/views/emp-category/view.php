@@ -7,23 +7,23 @@ use yii\widgets\DetailView;
 /* @var $model app\modules\employee\models\EmpCategory */
 
 $this->title = $model->emp_category_name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('emp', 'Employee'), 'url' => ['default/index']];
-$this->params['breadcrumbs'][] = ['label' => Yii::t('emp', 'Employee Categories'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Employee', 'url' => ['default/index']];
+$this->params['breadcrumbs'][] = ['label' => 'Employee Categories', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
   <div class="col-xs-12">
-  <div class="col-lg-4 col-sm-4 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-search"></i> <?php echo Yii::t('emp', 'View Category'); ?></h3></div>
+  <div class="col-lg-4 col-sm-4 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-search"></i> View Category</h3></div>
   <div class="col-xs-4"></div>
   <div class="col-lg-4 col-sm-4 col-xs-12 no-padding" style="padding-top: 20px !important;">
 	<div class="col-xs-4 left-padding">
-	<?= Html::a(Yii::t('emp', 'Back'), ['index'], ['class' => 'btn btn-block btn-back']) ?>
+	<?= Html::a('Back', ['index'], ['class' => 'btn btn-block btn-back']) ?>
 	</div>
 	<div class="col-xs-4 left-padding">
-        <?= Html::a(Yii::t('emp', 'Update'), ['update', 'id' => $model->emp_category_id], ['class' => 'btn btn-block btn-info']) ?>
+        <?= Html::a('Update', ['update', 'id' => $model->emp_category_id], ['class' => 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-4 left-padding">
-        <?= Html::a(Yii::t('emp', 'Delete'), ['delete', 'id' => $model->emp_category_id], [
+        <?= Html::a('Delete', ['delete', 'id' => $model->emp_category_id], [
             'class' => 'btn btn-block btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -48,17 +48,17 @@ $this->params['breadcrumbs'][] = $this->title;
 		'attribute' => 'created_at',
 		'value' => Yii::$app->formatter->asDateTime($model->created_at),
 	    ],
-        [
-		'attribute' => 'created_by',
-		'value' => $model->createdBy->user_login_id,
+            [
+		'label' => 'Created By',
+		'attribute' => 'createdBy.user_login_id',
 	    ],
 	    [
 		'attribute' => 'updated_at',
 		'value' => ($model->updated_at == null) ? " - ": Yii::$app->formatter->asDateTime($model->updated_at),
 	    ],
 	    [
-		'attribute' => 'updated_by',
-        'value' => ($model->updated_by == null) ? " - ": $model->updatedBy->user_login_id,
+		'label' => 'Updated By',
+            	'attribute' => 'updatedBy.user_login_id',
 	    ],
           //  'is_status',
         ],

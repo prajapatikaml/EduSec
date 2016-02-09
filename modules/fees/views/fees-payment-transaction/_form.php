@@ -47,7 +47,7 @@ use yii\grid\GridView;
 
   <div class="<?php echo $model->isNewRecord ? 'box-success' : 'box-info'; ?> box col-xs-12 col-lg-12 no-padding">
    <div class="box-header with-border">
-	<h3 class="box-title"><i class="fa fa-user"></i><sub><i class="fa fa-info-circle"></i></sub><?php echo Yii::t('fees',  'Student Details'); ?></h3>
+	<h3 class="box-title"><i class="fa fa-user"></i><sub><i class="fa fa-info-circle"></i></sub> Student Details</h3>
    </div>
    <div class="box-body no-padding">
     <table class="table">
@@ -62,7 +62,7 @@ use yii\grid\GridView;
 	</tr>
 	<tr>
 		<td rowspan="5" class="hidden-xs"><?= $displayImg ?></td>
-		<th><?php echo Yii::t('fees', 'Name'); ?></th>
+		<th>Name</th>
 		<td><?php echo $stuData->stuMasterStuInfo->name; ?></td>
 	</tr>
 	<tr>
@@ -90,7 +90,7 @@ use yii\grid\GridView;
 <!---Start Display Block For Fees Collection Category Details--->
 <div class="<?php echo $model->isNewRecord ? 'box-success' : 'box-info'; ?> box col-xs-12 col-lg-12 no-padding">
 <div class="box-header with-border">
-	<h3 class="box-title"><i class="fa fa-inr"></i><sub><i class="fa fa-info-circle"></i></sub> <?php echo Yii::t('fees', 'Fees Collection Category'); ?> :  <?php echo $FccModel->fees_collect_name;?></h3>
+	<h3 class="box-title"><i class="fa fa-inr"></i><sub><i class="fa fa-info-circle"></i></sub> Fees Collection Category :  <?php echo $FccModel->fees_collect_name;?></h3>
 </div>
 <div class="box-body table-responsive">
 <?php
@@ -101,9 +101,9 @@ $feesDetails = \app\modules\fees\models\FeesCategoryDetails::find()->where(['fee
   	echo '<col class="col-xs-9">';
 	echo '<col class="col-xs-2">';
 	echo '<tr>';
-	echo '<th class="">'.Yii::t('fees', 'SI No.').'</th>';
-	echo '<th>'.Yii::t('fees', 'Fees Details').'</th>';
-	echo '<th>'.Yii::t('fees', 'Amount').'</th>';
+	echo '<th class="">SI No.</th>';
+	echo '<th>Fees Details</th>';
+	echo '<th>Amount</th>';
 	echo '</tr>';
 	foreach($feesDetails as $key=>$value) {
 		echo '<tr>';
@@ -113,9 +113,9 @@ $feesDetails = \app\modules\fees\models\FeesCategoryDetails::find()->where(['fee
 		echo '</tr>';
 		$totalAmount+=$value['fees_details_amount'];
 	}
-	echo '<tr><th colspan=2 class="text-right col-md-9">'.Yii::t('fees', 'Total Amount').'</th><td>'.$totalAmount.'</td></tr>';
-	echo '<tr><th colspan=2 class="text-right">'.Yii::t('fees', 'Total Paid Fees').'</th><td>'.$totalPay = $model->getStuTotalPayFees($stuData->stu_master_id, $FccModel->fees_collect_category_id).'</th></tr>';
-	echo '<tr class="warning"><th colspan=2 class="text-right">'.Yii::t('fees', 'Total Unpaid Fees').'</th><td>'.($totalAmount-$totalPay).'</td></tr>';
+	echo '<tr><th colspan=2 class="text-right col-md-9">Total Amount</th><td>'.$totalAmount.'</td></tr>';
+	echo '<tr><th colspan=2 class="text-right">Total Paid Fees</th><td>'.$totalPay = $model->getStuTotalPayFees($stuData->stu_master_id, $FccModel->fees_collect_category_id).'</th></tr>';
+	echo '<tr class="warning"><th colspan=2 class="text-right">Total Unpaid Fees</th><td>'.($totalAmount-$totalPay).'</td></tr>';
 	echo '</table>';
 ?>	
 <?php
@@ -224,11 +224,11 @@ $feesDetails = \app\modules\fees\models\FeesCategoryDetails::find()->where(['fee
 </div><!---End box-body div---->
 <div class="box-footer">
 	<div class="pull-right" style="padding-bottom:10px">
-	<?php if($collectOn) { echo Html::submitButton($model->isNewRecord ? '<i class="fa fa-plus-circle"></i> '.Yii::t('fees', ' Take Fees') : '<i class="fa fa-pencil-square-o"></i> '.Yii::t('fees', 'Update Fees'), ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-info']); } ?>
+	<?php if($collectOn) { echo Html::submitButton($model->isNewRecord ? '<i class="fa fa-plus-circle"></i> Take Fees' : '<i class="fa fa-pencil-square-o"></i> Update Fees', ['class' => $model->isNewRecord ? 'btn btn-primary' : 'btn btn-info']); } ?>
 		     
-	<?php if($printOn & $model->isNewRecord) { echo Html::a('<i class="fa fa-print"></i> '.Yii::t('fees', 'Print receipt'),['print-common-receipt', 'sid'=>$stuData->stu_master_id, 'fcid'=>$FccModel->fees_collect_category_id], ['class' => 'btn btn-warning', 'target'=>'_blank']); } ?>
+	<?php if($printOn & $model->isNewRecord) { echo Html::a('<i class="fa fa-print"></i> Print receipt',['print-common-receipt', 'sid'=>$stuData->stu_master_id, 'fcid'=>$FccModel->fees_collect_category_id], ['class' => 'btn btn-warning', 'target'=>'_blank']); } ?>
 
-	<?php if(!$model->isNewRecord) { echo Html::a(Yii::t('fees', 'Cancel'),['pay-fees', 'sid'=>$stuData->stu_master_id, 'fcid'=>$FccModel->fees_collect_category_id], ['class' => 'btn btn-default']); } ?>
+	<?php if(!$model->isNewRecord) { echo Html::a('Cancel',['pay-fees', 'sid'=>$stuData->stu_master_id, 'fcid'=>$FccModel->fees_collect_category_id], ['class' => 'btn btn-default']); } ?>
 	</div>
 </div>
 </div><!---End box div---->
@@ -240,7 +240,7 @@ $feesDetails = \app\modules\fees\models\FeesCategoryDetails::find()->where(['fee
 <!---Start Student Payment History Block--->
 <div class="<?php echo $model->isNewRecord ? 'box-success' : 'box-info'; ?> box col-xs-12 col-lg-12 no-padding">
 <div class="box-header with-border">
-	<h3 class="box-title"><i class="fa fa-inr"></i><sup><i class="fa fa-clock-o"></i></sup> <?= Yii::t('fees', 'Payment History') ?></h3>
+	<h3 class="box-title"><i class="fa fa-inr"></i><sup><i class="fa fa-clock-o"></i></sup> Payment History</h3>
 </div>
 <div class="box-body table-responsive no-padding">
 <?php
@@ -261,7 +261,7 @@ echo GridView::widget([
 	'dataProvider' => $dataProvider,
 	'layout' => "{items}\n{pager}",
 	'showOnEmpty'=>true,
-	'emptyText' => Yii::t('fees', 'No fees results found.'),
+	'emptyText'=>'No fees results found.',
 	'columns' => [
 		['class' => 'yii\grid\SerialColumn'],
 		'fees_pay_tran_id',

@@ -23,30 +23,29 @@ if(!empty($student_data))
 {
 	$s_info = new StuInfo();
 	$cnt = count($selected_list)+1;
-	echo "<meta http-equiv=\"Content-type\" content=\"text/html;charset=utf-8\" />";
 	echo "<table  border='1'>";	
-	echo "<tr><th colspan=".$cnt."> <center> <h4 >".Yii::t('report', 'Student Info Report')." </h4> </center></th> </tr> ";
-	echo "<tr  class=success ><th >".Yii::t('report', 'SI No.')."</th>";
+	echo "<tr><th colspan=".$cnt."> <center> <h4 >Student Info Report </h4> </center></th> </tr> ";
+	echo "<tr  class=success ><th >SI No.</th>";
 	foreach($selected_list as $s)
 	{
 		if($s=='batch_name')
-			echo "<th style='text-align:center;'>".Yii::t('report', 'Batch Name')."</th>";
+			echo "<th style='text-align:center;'>Batch Name</th>";
 		else if($s=='stu_cadd')
-			echo "<th style='text-align:center;width: 400px;'>".Yii::t('report', 'Local Address')."</th>";
+			echo "<th style='text-align:center;width: 400px;'>Local Address</th>";
 		else if($s=='stu_padd')
-			echo "<th style='text-align:center;width: 400px;'>".Yii::t('report', 'International Address')."</th>";
+			echo "<th style='text-align:center;width: 400px;'>International Address</th>";
 		else if($s=='stu_email_id')
-			echo "<th style='text-align:center;width: 250px;'>".Yii::t('report', 'Email ID')."</th>";
+			echo "<th style='text-align:center;width: 250px;'>Email ID</th>";
 		else if($s=='city')
-			echo "<th style='text-align:center;'>".Yii::t('report', 'City')."</th>";
+			echo "<th style='text-align:center;'>City</th>";
 		else if($s=='stu_bloodgroup')
-			echo "<th style='text-align:center;'>".Yii::t('report', 'Blood Group')."</th>";
+			echo "<th style='text-align:center;'>Blood Group</th>";
 		else if($s=='batch_name')
-			echo "<th style='text-align:center;'>".Yii::t('report', 'Batch')."</th>";
+			echo "<th style='text-align:center;'>Batch</th>";
 		else if($s=='course_name')
-			echo "<th style='text-align:center;'>".Yii::t('report', 'Course')."</th>";
+			echo "<th style='text-align:center;'>Course</th>";
 		else if($s=='section_name')
-			echo "<th style='text-align:center;'>".Yii::t('report', 'Section Name')."</th>";
+			echo "<th style='text-align:center;'>Section Name</th>";
 		else
 			echo "<th style='text-align:center;'>".Html::activeLabel($s_info,$s)."</th>";			
 	}
@@ -70,21 +69,21 @@ if(!empty($student_data))
 			if($s == 'batch_name')
 			{
 				if($sd['stu_master_batch_id']==0)
-					echo "<td style='text-align:center;'><i>".Yii::t('report', 'Not Set')."</i></td>";
+					echo "<td style='text-align:center;'><i>Not Set</i></td>";
 				else
 				echo "<td style='text-align:center;'>".Batches::findOne($sd['stu_master_batch_id'])->$s."</td>";
 			}
 			else if($s == 'course_name')
 			{
 				if($sd['stu_master_course_id']==0 )
-					echo "<td></i> ".Yii::t('report', 'Not Set')."</i></td>";
+					echo "<td></i> Not Set</i></td>";
 				else
 					echo "<td>".Courses::findOne($sd['stu_master_course_id'])->$s."</td>";
 			}
 			else if($s == 'section_name')
 			{
 				if($sd['stu_master_section_id']== 0)
-					echo "<td> ".Yii::t('report', 'Not Set')." </td>";
+					echo "<td> Not Set </td>";
 				else
 					echo "<td>". Section::findOne($sd['stu_master_section_id'])->$s."</td>";
 			}
@@ -213,4 +212,4 @@ if(!empty($student_data))
 echo "</table>";
 }
 else
-	echo  "<h1 style=\"color:red;text-align:center;margin-top:10%;margin-right:60%\">".Yii::t('report', 'No Record To Display')."</h1>";
+	echo  "<h1 style=\"color:red;text-align:center;margin-top:10%;margin-right:60%\">No Record To Display</h1>";

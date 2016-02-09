@@ -7,14 +7,14 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\UserSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Users');
+$this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
    <div class="col-lg-12 header">
     <h3><?= Html::encode($this->title) ?></h3>
     <div class="operation">
-        <?= Html::a(Yii::t('app', 'ADD'), ['create'], ['class' => 'btn add']) ?>
+        <?= Html::a('ADD', ['create'], ['class' => 'btn add']) ?>
     </div>
 </div>
 

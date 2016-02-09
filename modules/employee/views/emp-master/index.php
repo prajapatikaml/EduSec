@@ -11,8 +11,8 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\modules\employee\models\EmpMasterSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('emp', 'Manage Employees');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('emp', 'Employee'), 'url' => ['default/index']];
+$this->title = 'Manage Employees';
+$this->params['breadcrumbs'][] = ['label' => 'Employee', 'url' => ['default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 $info = new EmpInfo();
@@ -24,17 +24,17 @@ $info = new EmpInfo();
   <div class="col-lg-4 col-sm-4 col-xs-12 no-padding" style="padding-top: 20px !important;">
 	<div class="col-xs-4 left-padding">
 	<?php if(Yii::$app->user->can("/employee/emp-master/create")) { ?>
-            <?= Html::a(Yii::t('emp', 'ADD'), ['create'], ['class' => 'btn btn-block btn-success']) ?>
+            <?= Html::a('ADD', ['create'], ['class' => 'btn btn-block btn-success']) ?>
 	<?php } ?>
 	</div>
 	<div class="col-xs-4 left-padding">
 	<?php if(Yii::$app->user->can("/export-data/export-to-pdf")) { ?>
-	    <?= Html::a(Yii::t('emp', 'PDF'), ['/export-data/export-to-pdf', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-warning', 'target'=>'_blank']) ?>
+	    <?= Html::a('PDF', ['/export-data/export-to-pdf', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-warning', 'target'=>'_blank']) ?>
 	<?php } ?>
 	</div>
 	<div class="col-xs-4 left-padding">
 	<?php if(Yii::$app->user->can("/export-data/export-excel")) { ?>
-	    <?= Html::a(Yii::t('emp', 'EXCEL'), ['/export-data/export-excel', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-primary', 'target'=>'_blank']) ?>
+	    <?= Html::a('EXCEL', ['/export-data/export-excel', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-primary', 'target'=>'_blank']) ?>
 	<?php } ?>
 	</div>
   </div>
@@ -57,40 +57,40 @@ $info = new EmpInfo();
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 		[
-			'label' => Yii::t('emp', 'Employee ID'),
+			'label' => 'Employee ID',
 			'attribute' => 'emp_unique_id',
 			'value' => 'empMasterEmpInfo.emp_unique_id',
  	        ],
 		[
-			'label' => Yii::t('emp', 'First Name'),
+			'label' => 'First Name',
 			'attribute' => 'emp_first_name',
 			'value' => 'empMasterEmpInfo.emp_first_name',
  	        ],
 		[
-			'label' => Yii::t('emp', 'Middle Name'),
+			'label' => 'Middle Name',
 			'attribute' => 'emp_middle_name',
 			'value' => 'empMasterEmpInfo.emp_middle_name',
  	        ],
 		[
-			'label' => Yii::t('emp', 'Last Name'),
+			'label' => 'Last Name',
 			'attribute' => 'emp_last_name',
 			'value' => 'empMasterEmpInfo.emp_last_name',
  	        ],
 		[
-			'label' => Yii::t('emp', 'Department'),
+			'label' => 'Department',
 			'attribute' => 'emp_master_department_id',
 			'value' => 'empMasterDepartment.emp_department_name',
 			'filter' =>ArrayHelper::map(app\modules\employee\models\EmpDepartment::find()->where(['is_status' => 0 ])->all(),'emp_department_id','emp_department_name')
                 ],	
 		[
-			'label' => Yii::t('emp', 'Designation'),
+			'label' => 'Designation',
 			'attribute' => 'emp_master_designation_id',
 			'value' => 'empMasterDesignation.emp_designation_name',
 			'filter' => ArrayHelper::map(app\modules\employee\models\EmpDesignation::find()->where(['is_status' => 0 ])->all(),'emp_designation_id','emp_designation_name')
 	
                 ],
 		[
-			'label' => Yii::t('emp', 'Category'),
+			'label' => 'Category',
 			'attribute' => 'emp_master_category_id',
 			'value' => 'empMasterCategory.emp_category_name',
 			'filter' => ArrayHelper::map(app\modules\employee\models\EmpCategory::find()->where(['is_status' => 0 ])->all(),'emp_category_id','emp_category_name')
@@ -101,10 +101,10 @@ $info = new EmpInfo();
 			'template' => '{view}{delete}',
 			'buttons' => [
 				'view' => function ($url, $model) {
-				        return ((Yii::$app->user->can("/employee/emp-master/view")) ? Html::a('<span class="glyphicon glyphicon-search"></span>', $url, ['title' => Yii::t('emp', 'View'),]) : '');
+				        return ((Yii::$app->user->can("/employee/emp-master/view")) ? Html::a('<span class="glyphicon glyphicon-search"></span>', $url, ['title' => Yii::t('app', 'View'),]) : '');
 				    },
 				'delete' => function ($url, $model) {
-				        return ((Yii::$app->user->can("/employee/emp-master/delete")) ? Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, ['title' => Yii::t('emp', 'Delete'), 'data' => ['confirm' => 'Are you sure you want to delete this item?','method' => 'post'],]) : '');
+				        return ((Yii::$app->user->can("/employee/emp-master/delete")) ? Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, ['title' => Yii::t('app', 'Delete'), 'data' => ['confirm' => 'Are you sure you want to delete this item?','method' => 'post'],]) : '');
 				    }
 			],
 		     'visible' => $visible,

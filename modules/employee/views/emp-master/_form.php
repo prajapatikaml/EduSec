@@ -34,7 +34,7 @@ for($j=0;$j<=11;$j++)
 <div class="col-xs-12 col-lg-12">
   <div class="box-success box view-item col-xs-12 col-lg-12">
     <div class="emp-master-form">
-	<p class="note"><?php echo Yii::t('emp', 'Fields with'); ?> <span class="required"> <b style=color:red;>*</b></span> <?php echo Yii::t('emp', 'are required.'); ?></p>
+	<p class="note">Fields with <span class="required"> <b style=color:red;>*</b></span> are required.</p>
      	<?php $form = ActiveForm::begin([
 			'id' => 'emp-master-form',
 			'enableAjaxValidation' => true,
@@ -45,7 +45,7 @@ for($j=0;$j<=11;$j++)
 
 <div class="box box-solid box-info col-xs-12 col-lg-12 no-padding">
     <div class="box-header with-border">
-	<h4 class="box-title"><i class="fa fa-info-circle"></i> <?php echo Yii::t('emp', 'Personal Details'); ?></h4>
+	<h4 class="box-title"><i class="fa fa-info-circle"></i> Personal Details</h4>
     </div>
     <div class="box-body">
 	
@@ -61,7 +61,7 @@ for($j=0;$j<=11;$j++)
 
 <div class="col-xs-12 col-lg-12 col-sm-12">
 	<div class = "col-sm-4 col-xs-12">
-	    <?= $form->field($info, 'emp_title',['inputOptions'=>[ 'class'=>'form-control','placeholder' => $model->getAttributeLabel('emp_title')] ])->dropDownList($info->getTitleOptions(),['prompt'=>Yii::t('stu', '--- Select Title ---')]) ?>
+	    <?= $form->field($info, 'emp_title',['inputOptions'=>[ 'class'=>'form-control','placeholder' => $model->getAttributeLabel('emp_title')] ])->dropDownList($info->getTitleOptions(),['prompt'=>'Select Title']) ?>
 	</div>
 </div>
 
@@ -82,7 +82,7 @@ for($j=0;$j<=11;$j++)
 	    <?= $form->field($info, 'emp_name_alias')->textInput(['maxlength' => 10]) ?>
 	</div>
 	<div class = "col-sm-4 col-xs-12">
-	    <?= $form->field($info, 'emp_gender',['inputOptions'=>[ 'class'=>'form-control','placeholder' => $model->getAttributeLabel('emp_gender')] ])->dropDownList($info->getGenderOptions(),['prompt'=>Yii::t('stu', '--- Select Gender ---')]) ?>
+	    <?= $form->field($info, 'emp_gender',['inputOptions'=>[ 'class'=>'form-control','placeholder' => $model->getAttributeLabel('emp_gender')] ])->dropDownList($info->getGenderOptions(),['prompt'=>'Select Gender']) ?>
 	</div>
 	  <div class = "col-sm-4 col-xs-12">
 		<?= $form->field($info, 'emp_dob')->widget(yii\jui\DatePicker::className(),
@@ -122,16 +122,16 @@ for($j=0;$j<=11;$j++)
                          ],])->label(true) ?>
 	</div>
 	<div class = "col-sm-4 col-xs-12">
-	      <?= $form->field($model, 'emp_master_department_id')->dropDownList(ArrayHelper::map(app\modules\employee\models\EmpDepartment::find()->where(['is_status'=>0])->all(),'emp_department_id','emp_department_name'),['prompt'=>Yii::t('emp', '--- Select Department ---')]) ?>
+	      <?= $form->field($model, 'emp_master_department_id')->dropDownList(ArrayHelper::map(app\modules\employee\models\EmpDepartment::find()->where(['is_status'=>0])->all(),'emp_department_id','emp_department_name'),['prompt'=>'Select Department']) ?>
 	</div>
 	<div class="col-sm-4 col-xs-12">
-	    <?= $form->field($model, 'emp_master_designation_id')->dropDownList(ArrayHelper::map(app\modules\employee\models\EmpDesignation::find()->where(['is_status'=>0])->all(),'emp_designation_id','emp_designation_name'),['prompt'=>Yii::t('emp', '--- Select Designation ---')]) ?>
+	    <?= $form->field($model, 'emp_master_designation_id')->dropDownList(ArrayHelper::map(app\modules\employee\models\EmpDesignation::find()->where(['is_status'=>0])->all(),'emp_designation_id','emp_designation_name'),['prompt'=>'Select Designation']) ?>
 	</div>
 </div>
 
 <div class="col-xs-12 col-lg-12 col-sm-12">
 	<div class ="col-sm-4 col-xs-12">
-	    <?= $form->field($model, 'emp_master_category_id')->dropDownList(ArrayHelper::map(app\modules\employee\models\EmpCategory::find()->where(['is_status'=>0])->all(),'emp_category_id','emp_category_name'),['prompt'=>Yii::t('stu', '--- Select Category ---')]) ?>
+	    <?= $form->field($model, 'emp_master_category_id')->dropDownList(ArrayHelper::map(app\modules\employee\models\EmpCategory::find()->where(['is_status'=>0])->all(),'emp_category_id','emp_category_name'),['prompt'=>'Select Category']) ?>
 	</div>
 	<div class ="col-sm-4 col-xs-12">
 	    <?= $form->field($info, 'emp_email_id',['inputOptions'=>[ 'class'=>'form-control','placeholder'=>'abc@example.com']])->textInput(['maxlength' => 65]) ?>
@@ -144,21 +144,21 @@ for($j=0;$j<=11;$j++)
 
 <div class="col-xs-12 col-lg-12 col-sm-12">
 	<div class ="col-sm-4 col-xs-12">
-	    <?=  $form->field($info, 'emp_maritalstatus',['inputOptions'=>[ 'class'=>'form-control',] ])->dropDownList($info->getMaritialStatus(),['prompt'=>Yii::t('stu', '--- Select Status ---')]) ?>
+	    <?=  $form->field($info, 'emp_maritalstatus',['inputOptions'=>[ 'class'=>'form-control',] ])->dropDownList($info->getMaritialStatus(),['prompt'=>'Select Status']) ?>
 	   
 	</div>
 	<div class ="col-sm-4 col-xs-12">
-	    <?= $form->field($model, 'emp_master_nationality_id')->dropDownList(ArrayHelper::map(app\models\Nationality::find()->where(['is_status'=>0])->all(),'nationality_id','nationality_name'),['prompt'=>Yii::t('stu', '--- Select Nationality ---')]) ?>
+	    <?= $form->field($model, 'emp_master_nationality_id')->dropDownList(ArrayHelper::map(app\models\Nationality::find()->where(['is_status'=>0])->all(),'nationality_id','nationality_name'),['prompt'=>'Select Nationality']) ?>
 	</div>
 	<div class ="col-sm-4 col-xs-12">
 	    	<div class ="">
-	     		<label for="totalExperience"><?php echo Yii::t('emp', 'Total Experience'); ?></label>
+	     		<label for="totalExperience">Total Experience</label>
 		</div>
 		<div class = "col-sm-6 no-padding">
-	  		<?= $form->field($info,'emp_experience_year')->dropDownList($year,['prompt'=>Yii::t('emp', 'Year')])->label(false) ?>
+	  		<?= $form->field($info,'emp_experience_year')->dropDownList($year,['prompt'=>'Year'])->label(false) ?>
 		</div>
 		<div class = "col-sm-6 no-padding">
-	  		<?= $form->field($info,'emp_experience_month')->dropDownList($month,['prompt'=>Yii::t('emp', 'Month')])->label(false) ?>
+	  		<?= $form->field($info,'emp_experience_month')->dropDownList($month,['prompt'=>'Month'])->label(false) ?>
 		</div>
 	</div>
 </div>      
@@ -168,10 +168,10 @@ for($j=0;$j<=11;$j++)
 
    <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
 	<div class="col-xs-6 col-xs-12">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('emp', 'Create') : Yii::t('emp', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-6 col-xs-12">
-	<?= Html::a(Yii::t('emp', 'Cancel'), ['index'], ['class' => 'btn btn-default btn-block']) ?>
+	<?= Html::a('Cancel', ['index'], ['class' => 'btn btn-default btn-block']) ?>
 	</div>
   </div>
 

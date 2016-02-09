@@ -96,14 +96,14 @@ class State extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-			'state_id' => Yii::t('app', 'State ID'),
-            'state_name' => Yii::t('app', 'State/Province'),
-            'state_country_id' => Yii::t('app', 'Country'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'created_by' => Yii::t('app', 'Created By'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'updated_by' => Yii::t('app', 'Updated By'),
-            'is_status' => Yii::t('app', 'Is Status'),
+            'state_id' => 'State ID',
+            'state_name' => 'State/Province',
+            'state_country_id' => 'Country',
+            'created_at' => 'Created At',
+            'created_by' => 'Created By',
+            'updated_at' => 'Updated At',
+            'updated_by' => 'Updated By',
+            'is_status' => 'Is Status',
         ];
     }
 

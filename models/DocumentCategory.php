@@ -93,14 +93,14 @@ class DocumentCategory extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'doc_category_id' => Yii::t('app', 'Doc Category ID'),
-            'doc_category_name' => Yii::t('app', 'Category'),
-            'doc_category_user_type' => Yii::t('app', 'User Type'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'created_by' => Yii::t('app', 'Created By'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'updated_by' => Yii::t('app', 'Updated By'),
-            'is_status' => Yii::t('app', 'Is Status'),
+            'doc_category_id' => 'Doc Category ID',
+            'doc_category_name' => 'Category',
+            'doc_category_user_type' => 'User Type',
+            'created_at' => 'Created At',
+            'created_by' => 'Created By',
+            'updated_at' => 'Updated At',
+            'updated_by' => 'Updated By',
+            'is_status' => 'Is Status',
         ];
     }
 

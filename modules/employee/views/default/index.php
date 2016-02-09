@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use miloschuman\highcharts\Highcharts;
 use yii\web\JsExpression;
 
-$this->title = Yii::t('emp', 'Employee Module');
+$this->title = 'Employee Module';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="col-md-6">
    <div class="box box-success">
 	<div class="box-header with-border">
-		<h3 class="box-title"><i class="fa  fa-sitemap"></i> <?php echo Yii::t('emp', 'Department Wise Employee'); ?></h3>
+		<h3 class="box-title"><i class="fa  fa-sitemap"></i> Department Wise Employee</h3>
 		<div class="box-tools pull-right">
 			<button class="btn btn-success btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		</div>
@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 		]);
 	} else {
-		echo '<div class="alert alert-danger">'.Yii::t('emp', 'No results found.').'</div>';
+		echo '<div class="alert alert-danger">No results found.</div>';
 	}
 	?>
 	</div>
@@ -83,7 +83,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="col-md-6">
    <div class="box box-info">
 	<div class="box-header with-border">
-		<h3 class="box-title"><i class="fa  fa-sitemap"></i> <?php echo Yii::t('emp', 'Designation Wise Employee'); ?></h3>
+		<h3 class="box-title"><i class="fa  fa-sitemap"></i> Designation Wise Employee</h3>
 		<div class="box-tools pull-right">
 			<button class="btn btn-info btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		</div>
@@ -162,7 +162,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="col-md-12">
 	<div class="box box-warning">
 		<div class="box-header with-border">
-			<h3 class="box-title"><i class="fa fa-list-ul"></i> <?php echo Yii::t('emp', 'Recently Added Employee'); ?></h3>
+			<h3 class="box-title"><i class="fa fa-list-ul"></i> Recently Added Employee</h3>
 			<div class="box-tools pull-right">
 				<button class="btn btn-warning btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 				<button class="btn btn-warning btn-sm" title="Remove" data-toggle="tooltip" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -172,11 +172,11 @@ $this->params['breadcrumbs'][] = $this->title;
 			<table class="table no-margin">
 				<thead>
 					<tr>
-						<th><?php echo Yii::t('emp', 'Sr.No'); ?></th>
-						<th><?php echo Yii::t('emp', 'Employee Id'); ?></th>
-						<th><?php echo Yii::t('emp', 'Employee Name'); ?></th>
-						<th><?php echo Yii::t('emp', 'Department'); ?></th>
-						<th><?php echo Yii::t('emp', 'Created Date'); ?></th>
+						<th>Sr.No</th>
+						<th>Employee Id</th>
+						<th>Employee Name</th>
+						<th>Department</th>
+						<th>Created Date</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -192,7 +192,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?php endforeach; ?>
 				<?php else : ?>
 					<tr>
-						<td colspan="5" class="text-danger text-center"><?php echo Yii::t('emp', 'No results found.'); ?></td>
+						<td colspan="5" class="text-danger text-center">No results found.</td>
 					</tr>
 				<?php endif;?>
 				</tbody>
@@ -200,9 +200,9 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 		<div class="box-footer clearfix">
 			<?php if(Yii::$app->user->can("/employee/emp-master/create")) { ?>
-			   <?php echo Html::a(Yii::t('emp', 'Add Employee'), ['emp-master/create'], ['class'=>'btn btn-sm btn-info btn-flat pull-left']); ?>
+			   <?php echo Html::a('Add Employee', ['emp-master/create'], ['class'=>'btn btn-sm btn-info btn-flat pull-left']); ?>
 			<?php } ?>
-			<?php echo Html::a(Yii::t('emp', 'View All Employees'), ['emp-master/index'], ['class'=>'btn btn-sm btn-default btn-flat pull-right']); ?>
+			<?php echo Html::a('View All Employees', ['emp-master/index'], ['class'=>'btn btn-sm btn-default btn-flat pull-right']); ?>
 		</div>
 	</div>	
 	

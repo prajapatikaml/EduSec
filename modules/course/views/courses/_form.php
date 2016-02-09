@@ -9,9 +9,9 @@ use yii\jui\DatePicker;
 /* @var $model app\modules\course\models\Courses */
 /* @var $form yii\widgets\ActiveForm */
 if(Yii::$app->controller->action->id == 'create')
-	$label = Yii::t('course', 'Add');
+	$label = 'Add';
 else
-	$label = Yii::t('course', 'Update');
+	$label = 'Update';
 ?>
 
 <div class="col-xs-12 col-lg-12">
@@ -103,10 +103,10 @@ else
 
     <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
 	<div class="col-xs-6">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('course', 'Create') : Yii::t('course', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-6">
-	<?= Html::a(Yii::t('course', 'Cancel'), ['index'], ['class' => 'btn btn-default btn-block']) ?>
+	<?= Html::a('Cancel', ['index'], ['class' => 'btn btn-default btn-block']) ?>
 	</div>
     </div>
 

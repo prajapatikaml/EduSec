@@ -96,18 +96,18 @@ class FeesCollectCategory extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-			'fees_collect_category_id' => Yii::t('fees', 'Fees Collect Category'),
-            'fees_collect_name' => Yii::t('fees', 'Name'),
-            'fees_collect_batch_id' => Yii::t('fees', 'Batch'),
-            'fees_collect_details' => Yii::t('fees', 'Description'),
-            'fees_collect_start_date' => Yii::t('fees', 'Start Date'),
-            'fees_collect_end_date' => Yii::t('fees', 'End Date'),
-            'fees_collect_due_date' => Yii::t('fees', 'Due Date'),
-            'created_at' => Yii::t('fees', 'Created At'),
-            'created_by' => Yii::t('fees', 'Created By'),
-            'updated_at' => Yii::t('fees', 'Updated At'),
-            'updated_by' => Yii::t('fees', 'Updated By'),
-            'is_status' => Yii::t('fees', 'Status'),
+            'fees_collect_category_id' => 'Fees Collect Category',
+            'fees_collect_name' => 'Name',
+            'fees_collect_batch_id' => 'Batch',
+            'fees_collect_details' => 'Description',
+            'fees_collect_start_date' => 'Start Date',
+            'fees_collect_end_date' => 'End Date',
+            'fees_collect_due_date' => 'Due Date',
+            'created_at' => 'Created At',
+            'created_by' => 'Created By',
+            'updated_at' => 'Updated At',
+            'updated_by' => 'Updated By',
+            'is_status' => 'Status',
         ];
     }
 

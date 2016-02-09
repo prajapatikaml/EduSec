@@ -6,10 +6,10 @@ use yii\helpers\Html;
 /* @var $model app\modules\employee\models\EmpMaster */
 
 
-$this->title = Yii::t('emp', 'Update : ') . ' ' . $model->empMasterEmpInfo->emp_first_name." ".$model->empMasterEmpInfo->emp_last_name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('emp', 'Employee'), 'url' => ['index']];
+$this->title = 'Update : ' . ' ' . $model->empMasterEmpInfo->emp_first_name." ".$model->empMasterEmpInfo->emp_last_name;
+$this->params['breadcrumbs'][] = ['label' => 'Employee', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->empMasterEmpInfo->emp_first_name." ".$model->empMasterEmpInfo->emp_last_name, 'url' => ['view', 'id' => $model->emp_master_id]];
-$this->params['breadcrumbs'][] = Yii::t('emp', 'Update');
+$this->params['breadcrumbs'][] = 'Update';
 ?>
 
 <div class="emp-master-update">

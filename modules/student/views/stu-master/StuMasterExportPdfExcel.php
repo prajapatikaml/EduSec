@@ -10,7 +10,6 @@ use yii\helpers\ArrayHelper;
 	$model->sort = false; 
 	$dispColumn = false;
 	if($type == 'Excel') {
-		echo "<meta http-equiv=\"Content-type\" content=\"text/html;charset=utf-8\" />";
 		echo "<table><tr> <th colspan='11'><h3>".$org['org_name']."</h3> </th> </tr> </table>";
 		$dispColumn = true;
 	}
@@ -22,41 +21,41 @@ use yii\helpers\ArrayHelper;
             ['class' => 'yii\grid\SerialColumn'],
 
 	    [
-		'label' => Yii::t('stu', 'Unique ID'),
+		'label' => 'Unique ID',
 		'attribute' => 'stu_unique_id',
 		'value' => 'stuMasterStuInfo.stu_unique_id',
  	    ],
 	
 	    [
-		'label' => Yii::t('stu', 'First Name'),
+		'label' => 'First Name',
 		'attribute' => 'stu_first_name',
 		'value' => 'stuMasterStuInfo.stu_first_name',
  	    ],
             [
-		'label' => Yii::t('stu', 'Last Name'),
+		'label' => 'Last Name',
 		'attribute' => 'stu_last_name',
 		'value' => 'stuMasterStuInfo.stu_last_name',
  	    ],
 	 
 	    [
-		//'label' => 'Section',
+		'label' => 'Section',
 		'attribute' => 'stu_master_section_id',
 		'value' => 'stuMasterSection.section_name',
             ],
     
 	    [
-		//'label' => 'Batch',
+		'label' => 'Batch',
 		'attribute' => 'stu_master_batch_id',
 		'value' => 'stuMasterBatch.batch_name',
             ],
  
 	    [
-		//'label' => 'Course',
+		'label' => 'Course',
 		'attribute' => 'stu_master_course_id',
 		'value' => 'stuMasterCourse.course_name',
             ],
 	    [
-	    //  'label' => 'Created At',
+	      'label' => 'Created At',
 	      'attribute' => 'created_at',
               'value' => function ($data) {
 				return Yii::$app->formatter->asDateTime($data->created_at);
@@ -64,13 +63,13 @@ use yii\helpers\ArrayHelper;
 	      'visible'=>$dispColumn,
             ],
 	    [
-	   //   'label' => 'Created By',
+	      'label' => 'Created By',
 	      'attribute' => 'created_by',
               'value' => 'createdBy.user_login_id',
 	      'visible'=>$dispColumn,
             ],
 	    [
-	     // 'label' => 'Updated At',
+	      'label' => 'Updated At',
 	      'attribute' => 'updated_at',
               'value' => function ($data) {
 				return (!empty($data->updated_at) ? Yii::$app->formatter->asDateTime($data->updated_at) : " (not set) ");
@@ -78,7 +77,7 @@ use yii\helpers\ArrayHelper;
 	      'visible'=>$dispColumn,
             ],
 	    [
-	   //   'label' => 'Updated By',
+	      'label' => 'Updated By',
 	      'attribute' => 'updated_by',
               'value' => 'updatedBy.user_login_id',
 	      'visible'=>$dispColumn,

@@ -167,12 +167,8 @@ class SiteController extends Controller
 		$login->user_ip_address=$_SERVER['REMOTE_ADDR'];
 		$login->save(false);
 		
-		if($model->login()) {
-			if(!isset(Yii::$app->request->cookies['language'])) {
-				return $this->redirect(['language']);
-			} else
+		if($model->login()) 
 	            return $this->goBack();
-		}
 		else
 		    return $this->render('login', ['model' => $model,]);
         } else {
@@ -223,23 +219,6 @@ class SiteController extends Controller
 		echo $model[0]['org_logo'];  
 	
     }
-
-	public function actionLanguage()
-	{
-		if(isset($_REQUEST['language'])) {
-			$language = Yii::$app->request->post()['language'];
-			Yii::$app->language = $language;
-
-			$languageCookie = new \yii\web\Cookie([
-				'name' => 'language',
-				'value' => $language,
-				'expire' => time() + 60 * 60 * 24 * 30, // 30 days
-			]);
-			\Yii::$app->response->cookies->add($languageCookie);
-			return $this->goBack();
-		}
-		return $this->renderAjax('language-form');
-	}
 
     public function actionAbout()
     {

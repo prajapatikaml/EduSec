@@ -9,7 +9,6 @@ use yii\grid\GridView;
 	$dispColumn = false;
 	if($type == 'Excel') {
 		$dispColumn = true;
-		echo "<meta http-equiv=\"Content-type\" content=\"text/html;charset=utf-8\" />";
 		echo "<table><tr> <th colspan='7'><h3>".$org['org_name']."</h3> </th> </tr> </table>";
 	}
     ?>
@@ -22,7 +21,7 @@ use yii\grid\GridView;
             'bank_master_name',
             'bank_alias',
 	    [
-	     // 'label' => 'Created At',
+	      'label' => 'Created At',
 	      'attribute' => 'created_at',
               'value' => function ($data) {
 				return Yii::$app->formatter->asDateTime($data->created_at);
@@ -30,13 +29,13 @@ use yii\grid\GridView;
 			'visible'=>$dispColumn,
             ],
 	    [
-	      //'label' => 'Created By',
+	      'label' => 'Created By',
 	      'attribute' => 'created_by',
               'value' => 'createdBy.user_login_id',
 			  'visible'=>$dispColumn,
             ],
 	    [
-	    //  'label' => 'Updated At',
+	      'label' => 'Updated At',
 	      'attribute' => 'updated_at',
               'value' => function ($data) {
 				return (!empty($data->updated_at) ? Yii::$app->formatter->asDateTime($data->updated_at) : " (not set) ");
@@ -44,7 +43,7 @@ use yii\grid\GridView;
 			'visible'=>$dispColumn,
             ],
 	    [
-	     // 'label' => 'Updated By',
+	      'label' => 'Updated By',
 	      'attribute' => 'updated_by',
               'value' => 'updatedBy.user_login_id',
 			  'visible'=>$dispColumn,

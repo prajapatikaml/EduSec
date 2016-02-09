@@ -9,11 +9,11 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $model app\modules\student\models\StuMaster */
 
-$this->title = Yii::t('stu', 'Update Address Details : ') . ' ' . $model->stuMasterStuInfo->getName();
-$this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Student'), 'url' => ['default/index']];
-$this->params['breadcrumbs'][] = ['label' => Yii::t('stu','Manage Students'), 'url' => ['index']];
+$this->title = 'Update Address Details : ' . ' ' . $model->stuMasterStuInfo->getName();
+$this->params['breadcrumbs'][] = ['label' => 'Student', 'url' => ['default/index']];
+$this->params['breadcrumbs'][] = ['label' => 'Manage Students', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->stuMasterStuInfo->stu_first_name." ".$model->stuMasterStuInfo->stu_last_name, 'url' => ['view', 'id' => $model->stu_master_id]];
-$this->params['breadcrumbs'][] = Yii::t('stu', 'Update Address Details');
+$this->params['breadcrumbs'][] = 'Update Address Details';
 ?>
 <style>
 .box .box-solid {
@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = Yii::t('stu', 'Update Address Details');
 	<div class="col-xs-4"></div>
 	<div class="col-xs-4"></div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a(Yii::t('stu', 'Back'), '', ['class' => 'btn btn-block btn-back', 'onclick'=>'js:history.go(-1);return false;']) ?>
+	<?= Html::a('Back', '', ['class' => 'btn btn-block btn-back', 'onclick'=>'js:history.go(-1);return false;']) ?>
 	</div>
   </div>
 </div>
@@ -45,7 +45,7 @@ $this->params['breadcrumbs'][] = Yii::t('stu', 'Update Address Details');
 
 <div class="box box-solid box-info col-xs-12 col-lg-12 no-padding">
       <div class="box-header with-border">
-         <h4 class="box-title"><i class="fa fa-info-circle"></i> <?php echo Yii::t('stu', 'Current Address'); ?></h4>
+         <h4 class="box-title"><i class="fa fa-info-circle"></i> Current Address</h4>
       </div>
 
 <div class="box-body">    
@@ -59,7 +59,7 @@ $this->params['breadcrumbs'][] = Yii::t('stu', 'Update Address Details');
       <div class="col-xs-12 col-sm-6 col-lg-6">	
 	    <?php echo $form->field($address,'stu_cadd_country')->dropDownList(ArrayHelper::map(\app\models\Country::find()->where(['is_status' => 0])->all(),'country_id','country_name'),
 		[
-                    'prompt'=>Yii::t('stu', '--- Select Country ---'),
+                    'prompt'=>'---Select Country---',
                     'onchange'=>'
                         $.get( "'.Url::toRoute('dependent/ustud_c_state').'", { id: $(this).val() } )
                             .done(function( data ) {
@@ -72,7 +72,7 @@ $this->params['breadcrumbs'][] = Yii::t('stu', 'Update Address Details');
        <div class="col-xs-12 col-sm-6 col-lg-6">
    	 <?php echo $form->field($address,'stu_cadd_state')->dropDownList(ArrayHelper::map(\app\models\State::find()->where(['state_country_id' => $address->stu_cadd_country, 'is_status' => 0])->all(),'state_id','state_name'),
 		[
-                    'prompt'=>Yii::t('stu', '--- Select State ---'),
+                    'prompt'=>'---Select State---',
                     'onchange'=>'
                         $.get( "'.Url::toRoute('dependent/ustud_c_city').'", { id: $(this).val() } )
                             .done(function( data ) {
@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = Yii::t('stu', 'Update Address Details');
 
 <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
     <div class="col-xs-12 col-sm-6 col-lg-6">
-    	<?php echo $form->field($address,'stu_cadd_city')->dropDownList(ArrayHelper::map(\app\models\City::find()->where(['city_state_id' => $address->stu_cadd_state, 'is_status' => 0])->all(),'city_id','city_name'), ['prompt'=> Yii::t('stu', '--- Select City ---')]); 
+    	<?php echo $form->field($address,'stu_cadd_city')->dropDownList(ArrayHelper::map(\app\models\City::find()->where(['city_state_id' => $address->stu_cadd_state, 'is_status' => 0])->all(),'city_id','city_name'), ['prompt'=>'---Select City---']); 
     ?>
     </div>
     <div class="col-xs-12 col-sm-6 col-lg-6">
@@ -108,7 +108,7 @@ $this->params['breadcrumbs'][] = Yii::t('stu', 'Update Address Details');
 
     <div class="box box-solid box-info col-xs-12 col-lg-12 no-padding">
       <div class="box-header with-border">
-         <h4 class="box-title"><i class="fa fa-info-circle"></i> <?php echo Yii::t('stu', 'Permanent Address'); ?></h4>
+         <h4 class="box-title"><i class="fa fa-info-circle"></i> Permanent Address</h4>
      </div>
 <div class="box-body">   
 
@@ -122,7 +122,7 @@ $this->params['breadcrumbs'][] = Yii::t('stu', 'Update Address Details');
       <div class="col-xs-12 col-sm-6 col-lg-6">	
     	<?php echo $form->field($address,'stu_padd_country')->dropDownList(ArrayHelper::map(\app\models\Country::find()->where(['is_status' => 0])->all(),'country_id','country_name'),
 		[
-                    'prompt'=>Yii::t('stu', '--- Select Country ---'),
+                    'prompt'=>'---Select Country---',
                     'onchange'=>'
                         $.get( "'.Url::toRoute('dependent/ustud_p_state').'", { id: $(this).val() } )
                             .done(function( data ) {
@@ -135,7 +135,7 @@ $this->params['breadcrumbs'][] = Yii::t('stu', 'Update Address Details');
 	<div class="col-xs-12 col-sm-6 col-lg-6">	
 	    <?php echo $form->field($address,'stu_padd_state')->dropDownList(ArrayHelper::map(\app\models\State::find()->where(['state_country_id' => $address->stu_padd_country, 'is_status' => 0])->all(),'state_id','state_name'),
 		[
-                    'prompt'=>Yii::t('stu', '--- Select State ---'),
+                    'prompt'=>'---Select State---',
                     'onchange'=>'
                         $.get( "'.Url::toRoute('dependent/ustud_p_city').'", { id: $(this).val() } )
                             .done(function( data ) {
@@ -148,7 +148,7 @@ $this->params['breadcrumbs'][] = Yii::t('stu', 'Update Address Details');
  </div>
   <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
       <div class="col-xs-12 col-sm-6 col-lg-6">	
-  	  <?php echo $form->field($address,'stu_padd_city')->dropDownList(ArrayHelper::map(\app\models\City::find()->where(['city_state_id' => $address->stu_padd_state, 'is_status' => 0])->all(),'city_id','city_name'), ['prompt'=> Yii::t('stu', '--- Select City ---')]); 
+  	  <?php echo $form->field($address,'stu_padd_city')->dropDownList(ArrayHelper::map(\app\models\City::find()->where(['city_state_id' => $address->stu_padd_state, 'is_status' => 0])->all(),'city_id','city_name'), ['prompt'=>'---Select City---']); 
     ?>
      </div>
       <div class="col-xs-12 col-sm-6 col-lg-6">			
@@ -169,10 +169,10 @@ $this->params['breadcrumbs'][] = Yii::t('stu', 'Update Address Details');
 
     <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
 	<div class="col-xs-6">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('stu', 'Create') : Yii::t('stu', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-6">
-	    <?= Html::a(Yii::t('stu', 'Cancel'), ['view', 'id' => $model->stu_master_id], ['class' => 'btn btn-default btn-block']); ?>
+	    <?= Html::a('Cancel', ['view', 'id' => $model->stu_master_id], ['class' => 'btn btn-default btn-block']); ?>
 	</div>
     </div>
    <?php ActiveForm::end(); ?>

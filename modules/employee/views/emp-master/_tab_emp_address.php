@@ -7,9 +7,9 @@ $role = Yii::$app->AuthManager->getRoles();
 <div class="row">
   <div class="col-xs-12">
 	<h2 class="page-header">	
-		<i class="fa fa-info-circle"></i> <?php echo Yii::t('emp', 'Address Info'); ?>
+		<i class="fa fa-info-circle"></i> Address Info
 		<?php if(Yii::$app->user->can("/employee/emp-master/update") && (Yii::$app->session->get('emp_id') == $_REQUEST['id']) || in_array('SuperAdmin',$admin) || Yii::$app->user->can("updateAllEmpInfo")) 			  { ?>
-			<div class="pull-right"><?= Html::a('<i class="fa fa-pencil-square-o"></i>'.Yii::t('emp', 'Edit'), ['update', 'empid' => $model->emp_master_id, 'tab' => 'address'], ['class' => 'btn btn-primary btn-sm', 'id' => 'update-data']) ?></div>
+			<div class="pull-right"><?= Html::a('<i class="fa fa-pencil-square-o"></i> Edit', ['update', 'empid' => $model->emp_master_id, 'tab' => 'address'], ['class' => 'btn btn-primary btn-sm', 'id' => 'update-data']) ?></div>
 
 		<?php } ?>
 		
@@ -20,7 +20,7 @@ $role = Yii::$app->AuthManager->getRoles();
 <div class="row">
   <div class="col-xs-12">
 	<h4 class="edusec-border-bottom-warning page-header edusec-profile-title-1">	
-		<?= Html::encode(Yii::t('emp', 'Current Address')) ?>
+		<?= Html::encode('Current Address') ?>
 	</h4>
   </div><!-- /.col -->
 </div>
@@ -70,7 +70,7 @@ $role = Yii::$app->AuthManager->getRoles();
 <div class="row">
   <div class="col-xs-12">
 	<h4 class="edusec-border-bottom-warning page-header edusec-profile-title-1">	
-		<?= Html::encode(Yii::t('stu', 'Permenant Address')) ?>
+		<?= Html::encode('Permenant Address') ?>
 	</h4>
   </div><!-- /.col -->
 </div>

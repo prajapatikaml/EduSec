@@ -43,7 +43,7 @@ table tr:nth-child(odd) {
 </style>
 
 <!------------Start Student Details Block---------------->
-<h3 class="title"><?php echo Yii::t('stu', 'Student Detail'); ?></h3>
+<h3 class="title">Student Detail</h3>
 <table class="no_border">
 	<tr>
 		<td  rowspan='4' width="135px" align="center" style="border:none">
@@ -53,7 +53,7 @@ table tr:nth-child(odd) {
 		<td><?php echo $stuInfo->stu_unique_id;?></td>
 	</tr>
 	<tr style="background:none">
-		<td class="label" style="border:1.5px solid white;"><b><?php echo Yii::t('stu', 'Name'); ?></b></td>
+		<td class="label" style="border:1.5px solid white;"><b>Name</b></td>
 		<td><?php echo $stuInfo->stu_title." ". $stuInfo->stu_first_name." ".$stuInfo->stu_middle_name." ".$stuInfo->stu_last_name;?></td>
 	</tr>
 	<tr>
@@ -68,7 +68,7 @@ table tr:nth-child(odd) {
 
 <!----------Start Student personal information--------------> 
 <div class="profile-data">
-<h4 class="title"><?php echo Yii::t('stu', 'Personal Profile'); ?></h4>
+<h4 class="title">Personal Profile</h4>
 <table>
 <tr>
 	<td class="label"><?= $stuInfo->getAttributeLabel('stu_gender') ?></td>
@@ -98,7 +98,7 @@ table tr:nth-child(odd) {
 </table>
 
 <!---------Start Student academic details block--------------> 
-<h4 class="title"><?php echo Yii::t('stu', 'Academic Details'); ?></h4>
+<h4 class="title">Academic Details</h4>
 <table>
 <tr>
 	<td class="label"><?= $stuInfo->getAttributeLabel('stu_admission_date') ?></td>
@@ -114,17 +114,17 @@ table tr:nth-child(odd) {
 </tr>
 </table>
 <!--------Start Student guardian info----------------->
-<h4 class="title"><?php echo Yii::t('stu', 'Guardian Info'); ?></h4>
+<h4 class="title">Guardian Info</h4>
 <?php
 if(!empty($stuGuard)) : 
 $sr_no = 0;
 foreach($stuGuard as $key => $guardData) : ?>
 <table>
 <tr>
-	<td class="label"> <?php echo Yii::t('stu', 'Guardian'); ?> </td>
+	<td class="label"> Guardian </td>
 	<td><?php echo ++$sr_no; ?></td>
 	<td class="label"> <?= $guardData->getAttributeLabel('is_emp_contact') ?> </td>
-	<td><?php echo ( ($guardData->is_emg_contact == 1) ? Yii::t('stu','Yes') : Yii::t('stu', 'No') ); ?></td>
+	<td><?php echo ( ($guardData->is_emg_contact == 1) ? "Yes" : "No" ); ?></td>
 </tr>
 <tr>
 	<td class="label"><?= $guardData->getAttributeLabel('guardian_name') ?></td>
@@ -158,14 +158,14 @@ foreach($stuGuard as $key => $guardData) : ?>
 <br/>
 <?php endforeach; ?>
 <?php else: ?>
-	<?php echo Yii::t('stu', 'No Guardian Info Available'); ?>
+	No Guardian Info Available
 <?php endif; ?>
 
 <!---------start Student address info block------------>
-<h4 class="title"><?php echo Yii::t('stu', 'Address Info'); ?></h4>
+<h4 class="title">Address Info</h4>
 <table>
 <tr>
-	<td class="label" colspan="4" align="center"><b><?php echo Yii::t('stu', 'Current Address'); ?></b></td>
+	<td class="label" colspan="4" align="center"><b>Current Address</b></td>
 </tr>
 <tr>	
 	<td class="label"><?= $stuAdd->getAttributeLabel('stu_cadd') ?></td><td colspan="3">
@@ -177,7 +177,7 @@ foreach($stuGuard as $key => $guardData) : ?>
 		if(!empty($stuAdd->stu_cadd_country))
 			echo app\models\Country::findOne($stuAdd->stu_cadd_country)->country_name;
 		else
-			echo Yii::t("stu", "(Not Set)");
+			echo "(Not Set)";
 	     ?>
 	</td>
 	<td class="label"><?= $stuAdd->getAttributeLabel('stu_cadd_state') ?></td>
@@ -185,7 +185,7 @@ foreach($stuGuard as $key => $guardData) : ?>
 		if(!empty($stuAdd->stu_cadd_state))
 			echo app\models\State::findOne($stuAdd->stu_cadd_state)->state_name;
 		else
-			echo Yii::t("stu", "(Not Set)");
+			echo "(Not Set)";
 	     ?>
 	</td>
 </tr>
@@ -195,7 +195,7 @@ foreach($stuGuard as $key => $guardData) : ?>
 		if(!empty($stuAdd->stu_cadd_city))
 			echo app\models\City::findOne($stuAdd->stu_cadd_city)->city_name;
 		else
-			echo Yii::t("stu", "(Not Set)");
+			echo "(Not Set)";
 	     ?>
 	</td>
 	<td class="label"><?= $stuAdd->getAttributeLabel('stu_cadd_pincode') ?></td><td><?php echo $stuAdd->stu_cadd_pincode;?></td>
@@ -205,7 +205,7 @@ foreach($stuGuard as $key => $guardData) : ?>
 	<td class="label"><?= $stuAdd->getAttributeLabel('stu_cadd_house_no') ?></td><td><?php echo $stuAdd->stu_cadd_house_no;?></td>
 </tr>
 <tr>
-	<td class="label" colspan="4" align="center"><b><?php echo Yii::t('stu', 'Permanent Address'); ?></b></td>
+	<td class="label" colspan="4" align="center"><b>Permanent Address</b></td>
 </tr>
 <tr>	
 	<td class="label"><?= $stuAdd->getAttributeLabel('stu_padd') ?></td>
@@ -217,7 +217,7 @@ foreach($stuGuard as $key => $guardData) : ?>
 		if(!empty($stuAdd->stu_padd_country))
 			echo app\models\Country::findOne($stuAdd->stu_padd_country)->country_name;
 		else
-			echo Yii::t("stu", "(Not Set)");
+			echo "(Not Set)";
 		?>
 	</td>
 	<td class="label"><?= $stuAdd->getAttributeLabel('stu_padd_state') ?></td>
@@ -225,7 +225,7 @@ foreach($stuGuard as $key => $guardData) : ?>
 		if(!empty($stuAdd->stu_padd_state))
 			echo app\models\State::findOne($stuAdd->stu_padd_state)->state_name;
 		else
-			echo Yii::t("stu", "(Not Set)");
+			echo "(Not Set)";
 		?>
 	</td>
 </tr>
@@ -235,7 +235,7 @@ foreach($stuGuard as $key => $guardData) : ?>
 		if(!empty($stuAdd->stu_padd_city))
 			echo app\models\City::findOne($stuAdd->stu_padd_city)->city_name;
 		else
-			echo Yii::t("stu", "(Not Set)");
+			echo "(Not Set)";
 	     ?>		
 	</td>
 	<td class="label"><?= $stuAdd->getAttributeLabel('stu_padd_pincode') ?></td><td><?php echo $stuAdd->stu_padd_pincode;?></td>
@@ -247,13 +247,13 @@ foreach($stuGuard as $key => $guardData) : ?>
 
 </table>
 <!------Start stu Document------------>
-<h4 class="title"><?php echo Yii::t('stu', 'Documents'); ?></h4>
+<h4 class="title">Documents</h4>
 <?php $k=0;
 if($stuDocs !== null) {
 ?>
 <table>
 	<tr>
-		<th><?= Yii::t('stu', 'Sr.No'); ?></th>
+		<th>SN.</th>
 		<th><?= $sDocs->getAttributeLabel('stu_docs_category_id') ?></th>
 		<th><?= $sDocs->getAttributeLabel('stu_docs_details') ?></th>
 		<th width="70px"><?= $sDocs->getAttributeLabel('stu_docs_status') ?></th>
@@ -264,7 +264,7 @@ if($stuDocs !== null) {
 			<td><?php echo ++$k; ?></td>
 			<td> <?php echo (!empty($sdoc->stuDocsCategory->doc_category_name) ? $sdoc->stuDocsCategory->doc_category_name : " ");?></td>
 			<td><?php echo (!empty($sdoc->stu_docs_details) ? $sdoc->stu_docs_details : " "); ?></td>
-			<td width="70px"><?php echo (($sdoc->stu_docs_status == 1) ? Yii::t("stu", "Approved") : (($sdoc->stu_docs_status == 2) ? Yii::t("stu", "Disapproved") : Yii::t("stu", "Pendding"))); ?></td>
+			<td width="70px"><?php echo (($sdoc->stu_docs_status == 1) ? "Approved" : (($sdoc->stu_docs_status == 2) ? "Disapproved" : "Pendding")); ?></td>
 			<td><?php echo Yii::$app->formatter->asDateTime($sdoc->stu_docs_submited_at); ?>
 			</td>
  		</tr> 
@@ -274,6 +274,6 @@ if($stuDocs !== null) {
 </table>
 <?php }
 	else 
-		echo Yii::t("stu", "No document available");
+		echo "No document available";
 ?>
 </div>

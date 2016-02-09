@@ -3,7 +3,7 @@ use yii\helpers\Html;
 ?>
 <html>
 <head>
-	<title><?php echo Yii::t('fees', 'Fees Collection Category Wise PDF Report'); ?></title>
+	<title>Fees Collection Category Wise PDF Report</title>
 </head>
 <body>
 <?php
@@ -22,11 +22,11 @@ use yii\helpers\Html;
 		echo '<table class="table table-striped">';
 		echo '<tr>';
 		echo '<th class="text-center">SI No.</th>';
-		echo '<th>'.Yii::t('fees', 'Student No').'</th>';
-		echo '<th>'.Yii::t('fees', 'Student Name').'</th>';
-		echo '<th>'.Yii::t('fees', 'Total Collection').'</th>';
-		echo '<th>'.Yii::t('fees', 'Paid Amount').'</th>';
-		echo '<th>'.Yii::t('fees', 'Unpaid Amount').'</th>';
+		echo '<th>Student No</th>';
+		echo '<th>Student Name</th>';
+		echo '<th>Total Collection</th>';
+		echo '<th>Paid Amount</th>';
+		echo '<th>Unpaid Amount</th>';
 		echo '</tr>';
 		$sr = 1;
 		foreach($stuData as $key=>$value) {
@@ -44,7 +44,7 @@ use yii\helpers\Html;
 			$gpayFees+=$payFees;
 			$gActualCollect+=$actualCollect;
 		}
-		echo '<tr class="bg-aqua"><th colspan="3" class="text-right">'.Yii::t('fees', 'GRAND TOTAL').' </th>';
+		echo '<tr class="bg-aqua"><th colspan="3" class="text-right">GRAND TOTAL </th>';
 		echo '<th>'.$gTotalAmount.'</th>';
 		echo '<th>'.$gpayFees.'</th>';
 		echo '<th>'.$gActualCollect.'</th>';
@@ -52,7 +52,7 @@ use yii\helpers\Html;
 		echo '</table>';	
 	}
 	else {
-		echo '<div class="alert alert alert-danger">'.Yii::t('fees', 'No student data available').'</div>';
+		echo '<div class="alert alert alert-danger">No student data available</div>';
 	}
    ?>
 </div>

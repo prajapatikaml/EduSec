@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\LoginDetails */
 
 $this->title = $model->login_detail_id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Login Details'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Login Details', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -16,16 +16,16 @@ $this->params['breadcrumbs'][] = $this->title;
   <div class="col-xs-4"></div>
   <div class="col-lg-4 col-sm-4 col-xs-12 no-padding" style="padding-top: 20px !important;">
 	<div class="col-xs-4 left-padding">
-	<?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-block btn-back']) ?>
+	<?= Html::a('Back', ['index'], ['class' => 'btn btn-block btn-back']) ?>
 	</div>
 	<div class="col-xs-4 left-padding">
-        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->login_detail_id], ['class' => 'btn btn-block btn-info']) ?>
+        <?= Html::a('Update', ['update', 'id' => $model->login_detail_id], ['class' => 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-4 left-padding">
-        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->login_detail_id], [
+        <?= Html::a('Delete', ['delete', 'id' => $model->login_detail_id], [
             'class' => 'btn btn-block btn-danger',
             'data' => [
-                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
+                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?> 

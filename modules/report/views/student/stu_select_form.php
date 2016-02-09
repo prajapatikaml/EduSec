@@ -13,11 +13,11 @@ $(function () {
 </script>
 <script>
 $(document).ready(function(){
-$('.btn.generate').click(function (e) {
+$('.btn').click(function (e) {
   if ($("input[type=checkbox]:checked").length === 0) {
 	
       e.preventDefault();
-      alert("<?php echo Yii::t('report', 'Please select atleast one checkbox') ?>");
+      alert('Please select atleast one checkbox');
       return false;
   }
 });
@@ -25,25 +25,25 @@ $('.btn.generate').click(function (e) {
 </script>
 
 <fieldset>
-   <div style="padding: 5px 5px 5px 19px;"><input type="checkbox" class="checkall" id="check_all_id"> <label for="check_all_id"> <?php echo Yii::t('report', 'Check All'); ?> </label></div>
+   <div style="padding: 5px 5px 5px 19px;"><input type="checkbox" class="checkall" id="check_all_id"> <label for="check_all_id"> Check All </label></div>
 <input  type="hidden" name="query" value="<?php echo $query;?>" />
 <div class="checkbox">
  <div class="col-xs-12 col-lg-12 col-sm-12">
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
 	   <label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_unique_id" value="stu_unique_id" /> &nbsp;<?php echo Yii::t('report', 'Student No'); ?> </label>
+		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_unique_id" value="stu_unique_id" /> &nbsp;Student No </label>
 	</div>
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
 	   <label class="checkbox-inline"> 
-		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_first_name" value="stu_first_name" /> &nbsp;<?php echo Yii::t('report', 'First Name'); ?></label>
+		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_first_name" value="stu_first_name" /> &nbsp;First Name</label>
 	</div>
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
             <label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]"  id="stu_middle_name" value="stu_middle_name" /> &nbsp;<?php echo Yii::t('report', 'Middle Name'); ?></label>
+		<input type="checkbox" class="checkbox" name="s_info[]"  id="stu_middle_name" value="stu_middle_name" /> &nbsp;Middle Name</label>
 	</div>
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
   	    <label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_last_name" value="stu_last_name" /> &nbsp;<?php echo Yii::t('report', 'Last Name'); ?> </label>
+		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_last_name" value="stu_last_name" /> &nbsp;Last Name </label>
 	</div>
   </div>
 </div>
@@ -52,19 +52,20 @@ $('.btn.generate').click(function (e) {
    <div class="col-xs-12 col-lg-12 col-sm-12">
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
 	    <label class="checkbox-inline">
-		<input type="checkbox" class="checkbox"  name="s_info[]" id="stu_gender" value="stu_gender" /> &nbsp;<?php echo Yii::t('report', 'Gender'); ?></label>
+		<input type="checkbox" class="checkbox"  name="s_info[]" id="stu_gender" value="stu_gender" /> &nbsp;Gender</label>
 	</div>
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
 	    <label class="checkbox-inline">
-		<input type="checkbox" class="checkbox"  name="s_info[]" id="stu_dob" value="stu_dob" /> &nbsp;<?php echo Yii::t('report', 'Birth Date'); ?></label>
+		<input type="checkbox" class="checkbox"  name="s_info[]" id="stu_dob" value="stu_dob" /> &nbsp;Birth Date</label>
 	</div>
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
           <label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_email_id" value="stu_email_id" /> &nbsp;<?php echo Yii::t('report', 'Email Id'); ?>  </label>
+		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_email_id" value="stu_email_id" /> &nbsp;Email Id  </label>
 	</div>
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
 	    <label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_bloodgroup" value="stu_bloodgroup" />&nbsp;<?php echo Yii::t('report', 'Blood Group'); ?> 	   </label>
+		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_bloodgroup" value="stu_bloodgroup" />&nbsp;Blood Group 
+	   </label>
 	</div>
    </div>	 
 </div>
@@ -74,22 +75,22 @@ $('.btn.generate').click(function (e) {
    <div class="col-xs-12 col-lg-12 col-sm-12">
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
     	 <label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_birthplace" value="stu_birthplace" />&nbsp;<?php echo Yii::t('report', 'Birth Place'); ?>
+		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_birthplace" value="stu_birthplace" />&nbsp;Birth Place
 	   </label>
 	</div>
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
           <label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_religion" value="stu_religion" /> &nbsp;<?php echo Yii::t('report', 'Religion'); ?> 
+		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_religion" value="stu_religion" /> &nbsp;Religion 
 	   </label>
 	</div>
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
         	<label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_admission_date" value="stu_admission_date" />&nbsp;<?php echo Yii::t('report', 'Admission Date'); ?>
+		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_admission_date" value="stu_admission_date" />&nbsp;Admission Date
 	   </label>
 	</div>
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
 		<label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_languages" value="stu_languages" />&nbsp;<?php echo Yii::t('report', 'Languages Known'); ?>
+		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_languages" value="stu_languages" />&nbsp;Languages Known
 	   </label>
 	</div>
    </div>
@@ -100,19 +101,19 @@ $('.btn.generate').click(function (e) {
    <div class="col-xs-12 col-lg-12 col-sm-12">
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
 	  <label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]" id="course_name" value="course_name" />&nbsp;<?php echo Yii::t('report', 'Course'); ?> </label> 
+		<input type="checkbox" class="checkbox" name="s_info[]" id="course_name" value="course_name" />&nbsp;Course </label> 
 	</div>
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
 	  <label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]" id="batch_name" value="batch_name" /> &nbsp;<?php echo Yii::t('report', 'Batch'); ?> </label>
+		<input type="checkbox" class="checkbox" name="s_info[]" id="batch_name" value="batch_name" /> &nbsp;Batch </label>
 	</div>
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
     	   <label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]" id="section_name" value="section_name" /> &nbsp;<?php echo Yii::t('report', 'Section'); ?> </label>          
+		<input type="checkbox" class="checkbox" name="s_info[]" id="section_name" value="section_name" /> &nbsp;Section </label>          
 	</div>
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
 		<label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_mobile_no" value="stu_mobile_no" /> &nbsp;<?php echo Yii::t('report', 'Mobile No'); ?>
+		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_mobile_no" value="stu_mobile_no" /> &nbsp;Mobile No
 	   </label>
 	</div>
    </div>
@@ -123,11 +124,11 @@ $('.btn.generate').click(function (e) {
    <div class="col-xs-12 col-lg-12 col-sm-12">
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
             <label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_cadd" value="stu_cadd"/>&nbsp;<?php echo Yii::t('report', 'Local Address'); ?></label>	
+		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_cadd" value="stu_cadd"/>&nbsp;Local Address</label>	
 	</div>
 	<div class = "col-sm-3 col-lg-3 col-xs-12" style="padding:3px;">
             <label class="checkbox-inline">
-		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_padd" value="stu_padd"/>&nbsp;<?php echo Yii::t('report', 'International Address'); ?></label>	
+		<input type="checkbox" class="checkbox" name="s_info[]" id="stu_padd" value="stu_padd"/>&nbsp;International Address</label>	
 	</div>
    </div>
 </div>

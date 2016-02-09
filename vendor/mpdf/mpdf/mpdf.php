@@ -14170,7 +14170,6 @@ function WriteHTML($html,$sub=0,$init=true,$close=true) {
 
 			$e = strcode2utf($e);
 			$e = $this->lesser_entity_decode($e);
-			//$e = preg_replace("/([\x{0A95}-\x{0AB9}])[\x{0ABF}]/u","\xe0\xaa\xbf\\1", $e);
 
 			if ($this->usingCoreFont) { 
 				// If core font is selected in document which is not onlyCoreFonts - substitute with non-core font

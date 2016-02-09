@@ -13,8 +13,8 @@ EduSecUserProfile::register($this);
 /* @var $model app\modules\student\models\StuMaster */
 
 $this->title = $model->stuMasterStuInfo->stu_first_name." ".$model->stuMasterStuInfo->stu_last_name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Student'), 'url' => ['default/index']];
-$this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Manage Students'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Student', 'url' => ['default/index']];
+$this->params['breadcrumbs'][] = ['label' => 'Manage Students', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <?php if(\Yii::$app->session->hasFlash('file_upload_err')) : ?>
@@ -27,10 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
   <div class="col-xs-12">
 	<h2 class="page-header">	
-		<i class="fa fa-user"></i>  <?php echo Yii::t('stu', 'Student Profile'); ?>
+		<i class="fa fa-user"></i> Student Profile
 		<div class="pull-right">
 		<?php if(Yii::$app->user->can("/student/export-data/student-profile-pdf")) { ?>
-		    <?= Html::a('<i class="fa fa-file-pdf-o"></i> '.Yii::t('stu', 'Generate PDF'), ['export-data/student-profile-pdf', 'sid' => $model->stu_master_id], ['class' => 'btn-sm btn btn-warning', 'id' => 'export-pdf', 'target' => 'blank']) ?>
+		    <?= Html::a('<i class="fa fa-file-pdf-o"></i> Generate PDF', ['export-data/student-profile-pdf', 'sid' => $model->stu_master_id], ['class' => 'btn-sm btn btn-warning', 'id' => 'export-pdf', 'target' => 'blank']) ?>
 		<?php } ?>
 		</div>
 	</h2>
@@ -56,15 +56,15 @@ $this->params['breadcrumbs'][] = $this->title;
 				<td><?= Html::encode($info->stu_unique_id) ?></td>
 			</tr>
 			<tr>
-				<th><?php echo Yii::t('stu', 'Name'); ?></th>
+				<th>Name</th>
 				<td><?= Html::encode($this->title) ?></td>
 			</tr>
 			<tr>
-				<th><?php echo Yii::t('stu', 'Course'); ?></th>
+				<th>Course</th>
 				<td><?= $model->stuMasterCourse->course_alias ?></td>
 			</tr>
 			<tr>
-				<th><?php echo Yii::t('stu', 'Batch'); ?></th>
+				<th>Batch</th>
 				<td><?= $model->stuMasterBatch->batch_name; ?></td>
 			</tr>
 			<tr>
@@ -76,12 +76,12 @@ $this->params['breadcrumbs'][] = $this->title;
 				<td><?= $info->stu_mobile_no ?></td>
 			</tr>
 			<tr>
-				<th><?php echo Yii::t('stu', 'Status'); ?></th>
+				<th>Status</th>
 				<td>
 					<?php if($model->is_status==0) : ?>
-					<span class="label label-success"><?php echo Yii::t('stu', 'Active'); ?></span>
+					<span class="label label-success">Active</span>
 					<?php else : ?>
-					<span class="label label-danger"><?php echo Yii::t('stu', 'InActive'); ?></span>
+					<span class="label label-danger">InActive</span>
 					<?php endif; ?>
 				</td>
 			</tr>
@@ -90,13 +90,13 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<div class="col-lg-9 profile-data">
 		<ul class="nav nav-tabs responsive" id = "profileTab">
-			<li class="active" id = "personal-tab"><a href="#personal" data-toggle="tab"><i class="fa fa-street-view"></i> <?php echo Yii::t('stu', 'Personal'); ?></a></li>
-			<li id = "academic-tab"><a href="#academic" data-toggle="tab"><i class="fa fa-graduation-cap"></i> <?php echo Yii::t('stu', 'Academic'); ?></a></li>
-			<li id = "guardians-tab"><a href="#guardians" data-toggle="tab"><i class="fa fa-user"></i> <?php echo Yii::t('stu', 'Guardians'); ?></a></li>
-			<li id = "address-tab"><a href="#address" data-toggle="tab"><i class="fa fa-home"></i> <?php echo Yii::t('stu', 'Address'); ?></a></li>
-			<li id = "documents-tab"><a href="#documents" data-toggle="tab"><i class="fa fa-file-text"></i> <?php echo Yii::t('stu', 'Documents'); ?></a></li>
+			<li class="active" id = "personal-tab"><a href="#personal" data-toggle="tab"><i class="fa fa-street-view"></i> Personal</a></li>
+			<li id = "academic-tab"><a href="#academic" data-toggle="tab"><i class="fa fa-graduation-cap"></i> Academic</a></li>
+			<li id = "guardians-tab"><a href="#guardians" data-toggle="tab"><i class="fa fa-user"></i> Guardians</a></li>
+			<li id = "address-tab"><a href="#address" data-toggle="tab"><i class="fa fa-home"></i> Address</a></li>
+			<li id = "documents-tab"><a href="#documents" data-toggle="tab"><i class="fa fa-file-text"></i> Documents</a></li>
 			 <?php if(!Yii::$app->session->get('stu_id')) : ?>
-				<li id = "fees-tab"><a href="#fees" data-toggle="tab"><i class="fa fa-inr"></i> <?php echo Yii::t('stu', 'Fees'); ?></a></li>
+				<li id = "fees-tab"><a href="#fees" data-toggle="tab"><i class="fa fa-inr"></i> Fees</a></li>
 			<?php endif; ?>
 		</ul>
 		 <div id='content' class="tab-content responsive">

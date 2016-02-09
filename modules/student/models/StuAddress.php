@@ -95,21 +95,21 @@ class StuAddress extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-			'stu_address_id' => Yii::t('stu', 'Stu Address ID'),
-            'stu_cadd' => Yii::t('stu', 'Address'),
-            'stu_cadd_city' => Yii::t('stu', 'City'),
-            'stu_cadd_state' => Yii::t('stu', 'State'),
-            'stu_cadd_country' => Yii::t('stu', 'Country'),
-            'stu_cadd_pincode' => Yii::t('stu', 'Pincode'),
-            'stu_cadd_house_no' => Yii::t('stu', 'House No'),
-            'stu_cadd_phone_no' => Yii::t('stu', 'Phone No'),
-            'stu_padd' => Yii::t('stu', 'Address'),
-            'stu_padd_city' => Yii::t('stu', 'City'),
-            'stu_padd_state' => Yii::t('stu', 'State'),
-            'stu_padd_country' => Yii::t('stu', 'Country'),
-            'stu_padd_pincode' => Yii::t('stu', 'Pincode'),
-            'stu_padd_house_no' => Yii::t('stu', 'House No'),
-            'stu_padd_phone_no' => Yii::t('stu', 'Phone No'),
+            'stu_address_id' => 'Stu Address ID',
+            'stu_cadd' => 'Address',
+            'stu_cadd_city' => 'City',
+            'stu_cadd_state' => 'State',
+            'stu_cadd_country' => 'Country',
+            'stu_cadd_pincode' => 'Pincode',
+            'stu_cadd_house_no' => 'House No',
+            'stu_cadd_phone_no' => 'Phone No',
+            'stu_padd' => 'Address',
+            'stu_padd_city' => 'City',
+            'stu_padd_state' => 'State',
+            'stu_padd_country' => 'Country',
+            'stu_padd_pincode' => 'Pincode',
+            'stu_padd_house_no' => 'House No',
+            'stu_padd_phone_no' => 'Phone No',
         ];
     }
 

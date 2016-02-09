@@ -10,8 +10,8 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\modules\student\models\StuMasterSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('stu', 'Manage Students');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Student'), 'url' => ['default/index']];
+$this->title = 'Manage Students';
+$this->params['breadcrumbs'][] = ['label' => 'Student', 'url' => ['default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 
 ?>
@@ -22,17 +22,17 @@ $this->params['breadcrumbs'][] = $this->title;
   <div class="col-lg-4 col-sm-4 col-xs-12 no-padding" style="padding-top: 20px !important;">
 	<div class="col-xs-4 left-padding">
 	<?php if(Yii::$app->user->can("/student/stu-master/create")) { ?>
-            <?= Html::a(Yii::t('stu', 'ADD'), ['create'], ['class' => 'btn btn-block btn-success']) ?>
+            <?= Html::a('ADD', ['create'], ['class' => 'btn btn-block btn-success']) ?>
 	<?php } ?>
 	</div>
 	<div class="col-xs-4 left-padding">
 	<?php if(Yii::$app->user->can("/export-data/export-to-pdf")) { ?>
-	<?= Html::a(Yii::t('stu', 'PDF'), ['/export-data/export-to-pdf', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-warning', 'target'=>'_blank']) ?>
+	<?= Html::a('PDF', ['/export-data/export-to-pdf', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-warning', 'target'=>'_blank']) ?>
 	<?php } ?>
 	</div>
 	<div class="col-xs-4 left-padding">
 	<?php if(Yii::$app->user->can("/export-data/export-excel")) { ?>
-	<?= Html::a(Yii::t('stu', 'EXCEL'), ['/export-data/export-excel', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-primary', 'target'=>'_blank']) ?>
+	<?= Html::a('EXCEL', ['/export-data/export-excel', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-primary', 'target'=>'_blank']) ?>
 	<?php } ?>
 	</div>
   </div>
@@ -52,38 +52,38 @@ $this->params['breadcrumbs'][] = $this->title;
 		    ['class' => 'yii\grid\SerialColumn'],
 
 		    [
-			'label' => Yii::t('stu', 'Student ID'),
+			'label' => 'Student ID',
 			'attribute' => 'stu_unique_id',
 			'value' => 'stuMasterStuInfo.stu_unique_id',
 	 	    ],
 	
 		    [
-			'label' => Yii::t('stu', 'First Name'),
+			'label' => 'First Name',
 			'attribute' => 'stu_first_name',
 			'value' => 'stuMasterStuInfo.stu_first_name',
 	 	    ],
 		    [
-			'label' => Yii::t('stu', 'Last Name'),
+			'label' => 'Last Name',
 			'attribute' => 'stu_last_name',
 			'value' => 'stuMasterStuInfo.stu_last_name',
 	 	    ],
 		 
 		    [
-			'label' => Yii::t('stu', 'Section'),
+			'label' => 'Section',
 			  'attribute' => 'stu_master_section_id',
 			'value' => 'stuMasterSection.section_name',
 			'filter' => ArrayHelper::map(app\modules\course\models\Section::find()->where(['is_status' => 0])->all(), 'section_id', 'section_name', 'sectionBatch.batch_name')
 		    ],
 	    
 		    [
-			'label' => Yii::t('stu', 'Batch'),
+			'label' => 'Batch',
 			'attribute' => 'stu_master_batch_id',
 			'value' => 'stuMasterBatch.batch_name',
 			'filter' => ArrayHelper::map(app\modules\course\models\Batches::find()->where(['is_status' => 0])->all(), 'batch_id', 'batch_name', 'batchCourse.course_name')
 		    ],
 	 
 		    [
-			'label' => Yii::t('stu', 'Course'),
+			'label' => 'Course',
 			'attribute' => 'stu_master_course_id',
 			'value' => 'stuMasterCourse.course_name',
 			'filter' => ArrayHelper::map(app\modules\course\models\Courses::find()->where(['is_status' => 0])->all(), 'course_id', 'course_name')
@@ -94,10 +94,10 @@ $this->params['breadcrumbs'][] = $this->title;
 			'template' => '{view} {delete}',
 			'buttons' => [
 				'view' => function ($url, $model) {
-				        return ((Yii::$app->user->can("/student/stu-master/view")) ? Html::a('<span class="glyphicon glyphicon-search"></span>', $url, ['title' => Yii::t('stu', 'View'),]) : '');
+				        return ((Yii::$app->user->can("/student/stu-master/view")) ? Html::a('<span class="glyphicon glyphicon-search"></span>', $url, ['title' => Yii::t('app', 'View'),]) : '');
 				    },
 				'delete' => function ($url, $model) {
-				        return ((Yii::$app->user->can("/student/stu-master/delete")) ? Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, ['title' => Yii::t('stu', 'Delete'), 'data' => ['confirm' => 'Are you sure you want to delete this item?','method' => 'post'],]) : '');
+				        return ((Yii::$app->user->can("/student/stu-master/delete")) ? Html::a('<span class="glyphicon glyphicon-remove"></span>', $url, ['title' => Yii::t('app', 'Delete'), 'data' => ['confirm' => 'Are you sure you want to delete this item?','method' => 'post'],]) : '');
 				    }
 			],
 			'visible' => $visible,

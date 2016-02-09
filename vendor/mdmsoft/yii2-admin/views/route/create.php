@@ -21,7 +21,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="col-xs-4"></div>
 	<div class="col-xs-4"></div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-block btn-back']) ?>
+	<?= Html::a('Back', ['index'], ['class' => 'btn btn-block btn-back']) ?>
 	</div>
    </div>
 </div>
@@ -38,7 +38,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		<?= Html::submitButton(Yii::t('rbac-admin', 'Create'), ['class' => 'btn btn-block btn-success']) ?>
 		</div>
 		<div class="col-xs-6">
-		<?= Html::a(Yii::t('app', 'Cancel'), ['index'], ['class' => 'btn btn-default btn-block']) ?>
+		<?= Html::a('Cancel', ['index'], ['class' => 'btn btn-default btn-block']) ?>
 		</div>
 	     </div>	
 	<?php ActiveForm::end(); ?>

@@ -6,9 +6,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\fees\models\FeesPaymentTransaction */
 
-$this->title = Yii::t('fees', 'Fees Collection');
-$this->params['breadcrumbs'][] = ['label'=>Yii::t('fees', 'Fees'), 'url'=>['/fees']];
-$this->params['breadcrumbs'][] = ['label' => Yii::t('fees', 'Fees Collection'), 'url' => ['collect']];
+$this->title = 'Fees Collection';
+$this->params['breadcrumbs'][] = ['label'=>'Fees', 'url'=>['/fees']];
+$this->params['breadcrumbs'][] = ['label' => 'Fees Collection', 'url' => ['collect']];
 $this->params['breadcrumbs'][] = $FccModel->fees_collect_name;
 $this->params['breadcrumbs'][] = $stuData->stuMasterStuInfo->name;
 ?>

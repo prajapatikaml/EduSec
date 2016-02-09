@@ -23,13 +23,13 @@ use yii\helpers\Url;
     ]); ?>
 
     <div class="bs-callout bs-callout-label-3" id="callout-input-needs-type">
-    <h5><?php echo Yii::t('stu', 'Current Address'); ?></h5>
+    <h5>Current Address</h5>
     </div>
     <?= $form->field($model, 'stu_cadd')->textArea(['maxlength' => 255]) ?>
 
     <?php echo $form->field($model,'stu_cadd_country')->dropDownList(ArrayHelper::map(\app\models\Country::find()->all(),'country_id','country_name'),
 		[
-                    'prompt'=>Yii::t('stu', '--- Select Country ---'),
+                    'prompt'=>'---Select Country---',
                     'onchange'=>'
                         $.get( "'.Url::toRoute('dependent/ustud_c_state').'", { id: $(this).val() } )
                             .done(function( data ) {
@@ -42,7 +42,7 @@ use yii\helpers\Url;
 
     <?php echo $form->field($model,'stu_cadd_state')->dropDownList(ArrayHelper::map(\app\models\State::findAll(['state_country_id' => $model->stu_cadd_country]),'state_id','state_name'),
 		[
-                    'prompt'=>Yii::t('stu', '--- Select State ---'),
+                    'prompt'=>'---Select State---',
                     'onchange'=>'
                         $.get( "'.Url::toRoute('dependent/ustud_c_city').'", { id: $(this).val() } )
                             .done(function( data ) {
@@ -53,7 +53,7 @@ use yii\helpers\Url;
 			); 
     ?>
   
-    <?php echo $form->field($model,'stu_cadd_city')->dropDownList(ArrayHelper::map(\app\models\City::findAll(['city_state_id' => $model->stu_cadd_state]),'city_id','city_name'), ['prompt'=>Yii::t('stu', '--- Select City ---')]); 
+    <?php echo $form->field($model,'stu_cadd_city')->dropDownList(ArrayHelper::map(\app\models\City::findAll(['city_state_id' => $model->stu_cadd_state]),'city_id','city_name'), ['prompt'=>'---Select City---']); 
     ?>
 
     <?= $form->field($model, 'stu_cadd_pincode')->textInput(['maxlength' => 6]) ?>
@@ -63,14 +63,14 @@ use yii\helpers\Url;
     <?= $form->field($model, 'stu_cadd_phone_no')->textInput(['maxlength' => 25]) ?>
   
     <div class="bs-callout bs-callout-label-1" id="callout-input-needs-type">
-    <h5><?php echo Yii::t('stu', 'Permenant Address'); ?></h5>
+    <h5>Permenant Address</h5>
     </div>
 
     <?= $form->field($model, 'stu_padd')->textArea(['maxlength' => 255]) ?>
 
     <?php echo $form->field($model,'stu_padd_country')->dropDownList(ArrayHelper::map(\app\models\Country::find()->all(),'country_id','country_name'),
 		[
-                    'prompt'=>Yii::t('stu', '--- Select Country ---'),
+                    'prompt'=>'---Select Country---',
                     'onchange'=>'
                         $.get( "'.Url::toRoute('dependent/ustud_p_state').'", { id: $(this).val() } )
                             .done(function( data ) {
@@ -83,7 +83,7 @@ use yii\helpers\Url;
 
     <?php echo $form->field($model,'stu_padd_state')->dropDownList(ArrayHelper::map(\app\models\State::findAll(['state_country_id' => $model->stu_padd_country]),'state_id','state_name'),
 		[
-                    'prompt'=>Yii::t('stu', '--- Select State ---'),
+                    'prompt'=>'---Select State---',
                     'onchange'=>'
                         $.get( "'.Url::toRoute('dependent/ustud_p_city').'", { id: $(this).val() } )
                             .done(function( data ) {
@@ -94,7 +94,7 @@ use yii\helpers\Url;
 			); 
     ?>
   
-    <?php echo $form->field($model,'stu_padd_city')->dropDownList(ArrayHelper::map(\app\models\City::findAll(['city_state_id' => $model->stu_padd_state]),'city_id','city_name'), ['prompt'=>Yii::t('stu', '--- Select City ---')]); 
+    <?php echo $form->field($model,'stu_padd_city')->dropDownList(ArrayHelper::map(\app\models\City::findAll(['city_state_id' => $model->stu_padd_state]),'city_id','city_name'), ['prompt'=>'---Select City---']); 
     ?>
 
     <?= $form->field($model, 'stu_padd_pincode')->textInput(['maxlength' => 6]) ?>
@@ -104,8 +104,8 @@ use yii\helpers\Url;
     <?= $form->field($model, 'stu_padd_phone_no')->textInput(['maxlength' => 25]) ?>
 
     <div class="form-group col-sm-offset-1 col-lg-10">
-        <?= Html::submitButton($model->isNewRecord ? Yii::t('stu', 'Create') : Yii::t('stu', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-	<?= Html::a(Yii::t('stu', 'Cancel'), ['index'], ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	<?= Html::a('Cancel', ['index'], ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

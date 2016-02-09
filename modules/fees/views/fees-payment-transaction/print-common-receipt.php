@@ -27,27 +27,27 @@ use yii\helpers\Html;
 		<th colspan=3 class="border-none"> 
 			<?php $paidAmount = $model->getStuTotalPayFees($_GET['sid'], $_GET['fcid']);
 			      $totalAmount = \app\modules\fees\models\FeesCategoryDetails::getFeeCategoryTotal($_GET['fcid']);
-			      echo ($paidAmount<$totalAmount) ? Yii::t('fees', "Partial Payment Fees Receipt") : Yii::t('fees', "Fees Receipt");?>
+			      echo ($paidAmount<$totalAmount) ? "Partial Payment Fees Receipt" : "Fees Receipt";?>
 		</th>
 	</tr>
 	<tr>
-		<td class="text-left padding-left"><?php echo "<b>".Yii::t('fees', "Student No :")."</b>".$stuData->stuMasterStuInfo->stu_unique_id;?></td>
+		<td class="text-left padding-left"><?php echo "<b>Student No : </b>".$stuData->stuMasterStuInfo->stu_unique_id;?></td>
 		<td></td>
-		<td class="text-right padding-right"><?php echo "<b>".Yii::t('fees', "Receipt Date :")." </b>".Yii::$app->formatter->asDate(date('Y-m-d')); ?></td>
+		<td class="text-right padding-right"><?php echo "<b>Receipt Date : </b>".Yii::$app->formatter->asDate(date('Y-m-d')); ?></td>
 	</tr>
 	<tr>
-		<td colspan=3 class="text-left padding-left"><?php echo "<b>".Yii::t('fees', "Name :")." </b>".$stuData->stuMasterStuInfo->name;?></td>
+		<td colspan=3 class="text-left padding-left"><?php echo "<b>Name : </b>".$stuData->stuMasterStuInfo->name;?></td>
 	</tr>
 	<tr>
-		<td colspan=3 class="text-left padding-left"><?php echo "<b>".Yii::t('fees', "Course :")." </b>".$stuData->stuMasterCourse->course_name; ?></td>
+		<td colspan=3 class="text-left padding-left"><?php echo "<b>Course : </b>".$stuData->stuMasterCourse->course_name; ?></td>
 	</tr>
 	<tr>
-		<td class="text-left padding-left"><?php echo "<b>".Yii::t('fees', "Batch :")." </b>".$stuData->stuMasterBatch->batch_name; ?></td>
+		<td class="text-left padding-left"><?php echo "<b>Batch : </b>".$stuData->stuMasterBatch->batch_name; ?></td>
 		<td></td>
-		<td class="text-right padding-right"><?php echo "<b>".Yii::t('fees', "Section :")." </b>".$stuData->stuMasterSection->section_name; ?></td>
+		<td class="text-right padding-right"><?php echo "<b>Section : </b>".$stuData->stuMasterSection->section_name; ?></td>
 	</tr>
 	<tr>
-		<th colspan=3 style="padding:1%;" class="border-none"><?php echo Yii::t('fees', "Fees Collection Category : ").$FccModel->fees_collect_name; ?></th>
+		<th colspan=3 style="padding:1%;" class="border-none"><?php echo "Fees Collection Category : ".$FccModel->fees_collect_name; ?></th>
 	</tr>
 	<!-----Start fees collection category fees details description---->
 	<tr>
@@ -56,9 +56,9 @@ use yii\helpers\Html;
 		$feesDetails = \app\modules\fees\models\FeesCategoryDetails::find()->where(['fees_details_category_id' => $FccModel->fees_collect_category_id, 'is_status'=>0])->asArray()->all(); ?>
 		<table border="1" class="table table-border" style="width:100%;">
 			<tr class="header">
-				<th><?php echo Yii::t('fees', 'SI.No'); ?></th>
-				<th><?php echo Yii::t('fees', 'Fees Details'); ?></th>
-				<th><?php echo Yii::t('fees', 'Amount'); ?></th>
+				<th>SI.No</th>
+				<th>Fees Details</th>
+				<th>Amount</th>
 			</tr>
 			<?php 
 			foreach($feesDetails as $key=>$value) {
@@ -71,15 +71,15 @@ use yii\helpers\Html;
 			}
 			?>
 			<tr>
-				<th class="text-right border-hide padding-right" colspan=2><?php echo Yii::t('fees', 'Total Amount'); ?></th>
+				<th class="text-right border-hide padding-right" colspan=2>Total Amount</th>
 				<th><?php echo $totalAmount; ?></th>
 			</tr>
 			<tr>
-				<th class="text-right border-hide padding-right" colspan=2><?php echo Yii::t('fees', 'Total Paid Fees'); ?></th>
+				<th class="text-right border-hide padding-right" colspan=2>Total Paid Fees</th>
 				<th><?php echo $paidAmount;?></th>
 			</tr>
 			<tr>
-				<th class="text-right border-hide padding-right" colspan=2><?php echo Yii::t('fees', 'Total Unpaid Fees'); ?></th>
+				<th class="text-right border-hide padding-right" colspan=2>Total Unpaid Fees</th>
 				<th><?php echo ($totalAmount-$paidAmount); ?></th>
 			</tr>
 		</table>
@@ -88,19 +88,19 @@ use yii\helpers\Html;
 	<!---End fees collection category fees details description--->
 	<!---Start payment history of this category--->
 	<tr>
-		<th class="border-none text-left padding-left" colspan=3 style="height:50px"><?php echo Yii::t('fees', 'Payment History'); ?></th>
+		<th class="border-none text-left padding-left" colspan=3 style="height:50px">Payment History</th>
 	</tr>
 	<tr>
 		<td colspan=3 class="padding-left padding-right" style="padding-bottom:2%;">
 		<?php $stuFeesData = app\modules\fees\models\FeesPaymentTransaction::find()->where(['fees_pay_tran_stu_id'=>$stuData->stu_master_id, 'fees_pay_tran_collect_id'=>$FccModel->fees_collect_category_id, 'is_status'=>0])->asArray()->all(); ?>
 		<table class="table table-border" style="width:100%;">
 			<tr class="header">
-				<th><?php echo Yii::t('fees', 'SI.No'); ?></th>
-				<th><?php echo Yii::t('fees', 'Recepit No'); ?></th>
-				<th><?php echo Yii::t('fees', 'Date'); ?></th>
-				<th><?php echo Yii::t('fees', 'Payment mode'); ?></th>
-				<th><?php echo Yii::t('fees', 'Cheque No'); ?></th>
-				<th><?php echo Yii::t('fees', 'Amount'); ?></th>
+				<th>SI.No</th>
+				<th>Recepit No</th>
+				<th>Date</th>
+				<th>Payment mode</th>
+				<th>Cheque No</th>
+				<th>Amount</th>
 			</tr>
 		<?php foreach($stuFeesData as $key=>$value) {
 				echo '<tr>';
@@ -119,7 +119,7 @@ use yii\helpers\Html;
 	<!----------Start footer signation------------>
 	<tr>
 		<td colspan=3 class="text-right vcenter" style="height:80px;padding-right:12%;font-weight:bold;border-top:1px solid #000;">
-			<?php echo Yii::t('fees', 'Signature :'); ?>
+			Signature :
 		</td>
 	</tr>
 	<!----------End footer signation------------>

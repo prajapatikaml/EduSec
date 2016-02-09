@@ -8,7 +8,6 @@ use yii\grid\GridView;
 	$model->sort = false; 
 
 	if($type == 'Excel') {
-		echo "<meta http-equiv=\"Content-type\" content=\"text/html;charset=utf-8\" />";
 		echo "<table><tr> <th colspan=6><h3>".$org['org_name']."</h3> </th> </tr> </table>";
 	}
     ?>
@@ -20,26 +19,26 @@ use yii\grid\GridView;
 
             'nationality_name',
             [
-	      //'label' => 'Created At',
+	      'label' => 'Created At',
 	      'attribute' => 'created_at',
               'value' => function ($data) {
 				return Yii::$app->formatter->asDateTime($data->created_at);
 			},
             ],
 	    [
-	     // 'label' => 'Created By',
+	      'label' => 'Created By',
 	      'attribute' => 'created_by',
               'value' => 'createdBy.user_login_id',
             ],
 	    [
-	     // 'label' => 'Updated At',
+	      'label' => 'Updated At',
 	      'attribute' => 'updated_at',
               'value' => function ($data) {
 				return (!empty($data->updated_at) ? Yii::$app->formatter->asDateTime($data->updated_at) : " (not set) ");
 			},
             ],
 	    [
-	      //'label' => 'Updated By',
+	      'label' => 'Updated By',
 	      'attribute' => 'updated_by',
               'value' => 'updatedBy.user_login_id',
             ],

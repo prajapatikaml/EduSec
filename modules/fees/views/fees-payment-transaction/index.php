@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\modules\fees\models\FeesPaymentTransactionSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('fees', 'Fees Payment Transactions');
+$this->title = 'Fees Payment Transactions';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="fees-payment-transaction-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('fees', 'Create Fees Payment Transaction'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Fees Payment Transaction', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

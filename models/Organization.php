@@ -103,22 +103,22 @@ class Organization extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-			'org_id' => Yii::t('app', 'Institute ID'),
-            'org_name' => Yii::t('app', 'Name'),
-            'org_alias' => Yii::t('app', 'Alias'),
-            'org_address_line1' => Yii::t('app', 'Address Line 1'),
-            'org_address_line2' => Yii::t('app', 'Address Line 2'),
-            'org_phone' => Yii::t('app', 'Phone'),
-            'org_email' => Yii::t('app', 'Email'),
-            'org_website' => Yii::t('app', 'Website'),
-            'org_logo' => Yii::t('app', 'Logo'),
-            'org_logo_type' => Yii::t('app', 'Logo Type'),
-            'org_stu_prefix' => Yii::t('app', 'Student Login Prefix'),
-            'org_emp_prefix' => Yii::t('app', 'Employee Login Prefix'),
-            'created_at' => Yii::t('app', 'Created Time'),
-            'created_by' => Yii::t('app', 'Created User'),
-            'updated_at' => Yii::t('app', 'Updated Time'),
-            'updated_by' => Yii::t('app', 'Updated User'),
+            'org_id' => 'Institute ID',
+            'org_name' => 'Name',
+            'org_alias' => 'Alias',
+            'org_address_line1' => 'Address Line 1',
+            'org_address_line2' => 'Address Line 2',
+            'org_phone' => 'Phone',
+            'org_email' => 'Email',
+            'org_website' => 'Website',
+            'org_logo' => 'Logo',
+            'org_logo_type' => 'Logo Type',
+            'created_at' => 'Created Time',
+            'created_by' => 'Created User',
+            'updated_at' => 'Updated Time',
+            'updated_by' => 'Updated User',
+	    'org_stu_prefix'=>'Student Login Prefix',
+	    'org_emp_prefix'=>'Employee Login Prefix',
         ];
     }
 

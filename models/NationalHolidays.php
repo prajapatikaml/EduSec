@@ -92,15 +92,15 @@ class NationalHolidays extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'national_holiday_id' => Yii::t('app', 'National Holiday ID'),
-            'national_holiday_name' => Yii::t('app', 'Name'),
-            'national_holiday_date' => Yii::t('app', 'Date'),
-            'national_holiday_remarks' => Yii::t('app', 'Remarks'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'created_by' => Yii::t('app', 'Created By'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'updated_by' => Yii::t('app', 'Updated By'),
-            'is_status' => Yii::t('app', 'Is Status'),
+            'national_holiday_id' => 'National Holiday ID',
+            'national_holiday_name' => 'Name',
+            'national_holiday_date' => 'Date',
+            'national_holiday_remarks' => 'Remarks',
+            'created_at' => 'Created At',
+            'created_by' => 'Created By',
+            'updated_at' => 'Updated At',
+            'updated_by' => 'Updated By',
+            'is_status' => 'Is Status',
         ];
     }
 

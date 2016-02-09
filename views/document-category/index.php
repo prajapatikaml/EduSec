@@ -8,8 +8,8 @@ use yii\helpers\ArrayHelper;
 /* @var $searchModel app\models\DocumentCategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Document Category List');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Configuration'), 'url' => ['default/index']];
+$this->title = 'Document Category List';
+$this->params['breadcrumbs'][] = ['label' => 'Configuration', 'url' => ['default/index']];
 
 ?>
   <?php if($model->isNewRecord) 
@@ -25,10 +25,10 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Configuration'), 'ur
        
 	</div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a(Yii::t('app', 'PDF'), ['export-data/export-to-pdf', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-warning', 'target'=>'_blank']) ?>
+	<?= Html::a('PDF', ['export-data/export-to-pdf', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-warning', 'target'=>'_blank']) ?>
 	</div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a(Yii::t('app', 'EXCEL'), ['export-data/export-excel', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-primary', 'target'=>'_blank']) ?>
+	<?= Html::a('EXCEL', ['export-data/export-excel', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-primary', 'target'=>'_blank']) ?>
 	</div>
   </div>
 </div>

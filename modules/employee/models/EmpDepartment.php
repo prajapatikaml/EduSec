@@ -91,14 +91,14 @@ class EmpDepartment extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-  			'emp_department_id' => Yii::t('emp', 'Department ID'),
-            'emp_department_name' => Yii::t('emp', 'Department Name'),
-            'emp_department_alias' => Yii::t('emp', 'Department Alias'),
-            'created_at' => Yii::t('emp', 'Created At'),
-            'created_by' => Yii::t('emp', 'Created By'),
-            'updated_at' => Yii::t('emp', 'Updated At'),
-            'updated_by' => Yii::t('emp', 'Updated By'),
-            'is_status' => Yii::t('emp', 'Is Status'),
+            'emp_department_id' => 'Department ID',
+            'emp_department_name' => 'Department Name',
+            'emp_department_alias' => 'Department Alias',
+            'created_at' => 'Created At',
+            'created_by' => 'Created By',
+            'updated_at' => 'Updated At',
+            'updated_by' => 'Updated By',
+            'is_status' => 'Is Status',
         ];
     }
 

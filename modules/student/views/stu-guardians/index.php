@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\modules\student\models\StuGuardiansSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('stu', 'Stu Guardians');
+$this->title = 'Stu Guardians';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="stu-guardians-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('stu', 'Create Stu Guardians'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Stu Guardians', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

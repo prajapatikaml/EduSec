@@ -39,19 +39,9 @@ $notifyCount = ($countT + count($eventsList));
 <div class="navbar-right">
 
 <ul class="nav navbar-nav">
-<li class="module-menu">
-	<?= Html::beginForm( yii\helpers\Url::to(['/site/language']), NULL, ['style' => 'margin-top: 10px;'] ) ?>
-	<div class="col-sm-6 no-padding">
-	<?= Html::label(Yii::t('app', 'Select Language'), 'language') ?>
-	</div>
-	<div class="col-sm-6" style="padding-left: 7px;">
-	<?= Html::dropDownList('language', Yii::$app->language, ['en' => Yii::t('app', 'English'), 'gu' => Yii::t('app', 'Gujarati (ગુજરાતી)')], ['class'=> 'form-control', 'onchange' => 'this.form.submit()', 'style' => 'padding: 5px;']) ?>
-	</div>
-	<?= Html::endForm() ?>
-</li>
 <?php if(!Yii::$app->session->get('stu_id')) : ?>
 <li class="dropdown module-menu">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="<?= Yii::t('app', 'Main Menu') ?>">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" title="Main Menu">
 		<i class="fa fa-th"></i>
     </a>
 	<?= $this->render(
@@ -68,7 +58,7 @@ $notifyCount = ($countT + count($eventsList));
     </a>
     <ul class="dropdown-menu">
 
-        <li class="header"><?= (($notifyCount) ? (Yii::t('app', "You have ").$notifyCount.Yii::t('app', " notifications")) : (Yii::t('app', "You have No notifications"))); ?></li>
+        <li class="header">You have <?= ($notifyCount) ? $notifyCount : "No ";?> notifications</li>
 	<?php if($notifyCount != 0) : ?>
         <li>
             <!-- inner menu: contains the actual data -->
@@ -78,28 +68,28 @@ $notifyCount = ($countT + count($eventsList));
 		      if(!empty($empList)) { ?>
                 <li>
                     <a href="#">
-                        <i class="fa fa-users info"></i><strong> <?= count($empList); ?> <?= Yii::t('app', 'new employee(s) added in week') ?> </strong>
+                        <i class="fa fa-users info"></i><strong> <?= count($empList); ?> new employee(s) added in week </strong>
                     </a>
                 </li>
 		<?php } ?>
 		<?php if(!empty($stuList)) { ?>
                 <li>
                     <a href="#">
-                        <i class="fa fa-user warning"></i><strong> <?= Html::encode($stuList); ?> <?= Yii::t('app', 'new student(s) added today') ?> </strong>
+                        <i class="fa fa-user warning"></i><strong> <?= Html::encode($stuList); ?> new student(s) added today </strong>
                     </a>
                 </li>
 		<?php } ?>
 		<?php if(!empty($empInfo)) { ?>
                 <li>
                     <a href="#">
-                        <i class="fa fa-users success"></i><strong> <?= Html::encode($empInfo); ?> <?= Yii::t('app', 'new employee(s) joined today') ?> </strong>
+                        <i class="fa fa-users success"></i><strong> <?= Html::encode($empInfo); ?> new employee(s) joined today </strong>
                     </a>
                 </li>
 		<?php } ?>
 		<?php if(!empty($events)) { ?>
                 <li>
                     <a href="#">
-                        <i class="fa fa-info success"></i><strong> <?= Html::encode($events); ?> <?= Yii::t('app', 'event(s) created today') ?> </strong>
+                        <i class="fa fa-info success"></i><strong> <?= Html::encode($events); ?> event(s) created today </strong>
                     </a>
                 </li>
 		<?php } 
@@ -110,7 +100,7 @@ $notifyCount = ($countT + count($eventsList));
 		?>
                 <li>
                     <a href="#">
-                        <i class="fa fa-calendar warning"></i> <?= '<strong style="word-wrap: break-word; width:50px">'.Yii::t('app', 'Event : ').'</strong>'.Html::encode(substr($event->event_title, 0, 10))."... &nbsp; <strong> ".Yii::t('app', 'Time : ')."</strong><small class='label label-info'>".Html::encode(date('d-M H:i A', strtotime($event->event_start_date)))."</small>";?>
+                        <i class="fa fa-calendar warning"></i> <?= '<strong style="word-wrap: break-word; width:50px">Event : </strong>'.Html::encode(substr($event->event_title, 0, 10))."... &nbsp; <strong> Time : </strong><small class='label label-info'>".Html::encode(date('d-M H:i A', strtotime($event->event_start_date)))."</small>";?>
                     </a>
                 </li>
 		<?php endforeach; } ?>
@@ -125,7 +115,7 @@ $notifyCount = ($countT + count($eventsList));
 if (Yii::$app->user->isGuest) {
     ?>
     <li class="footer">
-        <?= Html::a(Yii::t('app', 'Login'), ['/site/login']) ?>
+        <?= Html::a('Login', ['/site/login']) ?>
     </li>
 <?php
 } else {
@@ -175,17 +165,17 @@ if (Yii::$app->user->isGuest) {
             <!-- Menu Body -->
             <li class="user-body" style="<?= $linkStyle ?>">
                 <div class="col-xs-6 no-padding">
-		    <?= Html::a(Yii::t('app', 'View Profile'), $ProfileLink, ['class' => 'btn btn-default btn-flat', 'style' => 'font-size:13px']) ?>
+		    <?= Html::a('View Profile', $ProfileLink, ['class' => 'btn btn-default btn-flat', 'style' => 'font-size:13px']) ?>
                 </div>
             </li>
             <!-- Menu Footer-->
             <li class="user-footer">
                 <div class="pull-left">
-		    <?= Html::a(Yii::t('app', 'Change Password'), ['/user/change'], ['class' => 'btn btn-default btn-flat', 'style' => 'font-size:12px']) ?>
+		    <?= Html::a('Change Password', ['/user/change'], ['class' => 'btn btn-default btn-flat', 'style' => 'font-size:12px']) ?>
                 </div>
                 <div class="pull-right">
                     <?= Html::a(
-                            Yii::t('app', 'Sign out'),
+                            'Sign out',
                             ['/site/logout'],
                             ['data-method' => 'post','class'=>'btn btn-default btn-flat', 'style' => 'font-size:12px']
                         ) ?>

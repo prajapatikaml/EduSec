@@ -196,8 +196,6 @@ class FeesPaymentTransactionController extends Controller
 				
 		$imgSrc = Yii::$app->urlManager->createAbsoluteUrl('site/loadimage');
 		$mpdf = new mPDF('utf-8', 'A4',0,'',15,15,25,16,4,9,'P');
-		$mpdf->autoScriptToLang = true;
-		$mpdf->autoLangToFont = true;
 		$mpdf->WriteHTML('<watermarkimage src='.$imgSrc.' alpha="0.33" size="50,30"/>');
 		$mpdf->showWatermarkImage = true;
 		$mpdf->WriteHTML($html);

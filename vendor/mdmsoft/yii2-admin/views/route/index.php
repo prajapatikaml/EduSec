@@ -21,10 +21,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
    <div class="col-xs-12 col-lg-12">
     <div class="col-lg-5 col-sm-12 col-xs-12">
-        <?= "<b>".Yii::t('rbac-admin', 'Available')."</b>" ?>:
+        <?= Yii::t('rbac-admin', '<b>Avaliable</b>') ?>:
         <?php
         echo "<div class='input-group form-group col-lg-10 col-xs-8 pull-right no-padding'>".Html::textInput('search_av', '', ['class' => 'role-search form-control', 'data-target' => 'new']);
-        echo Html::a('<span class="glyphicon glyphicon-refresh"></span>', '', ['id'=>'btn-refresh', 'title' => Yii::t('rbac-admin', 'Refresh'), 'class' => 'input-group-addon']). "</div>";
+        echo Html::a('<span class="glyphicon glyphicon-refresh"></span>', '', ['id'=>'btn-refresh', 'title' => 'Refresh', 'class' => 'input-group-addon']). "</div>";
         echo '<br>';
         echo Html::listBox('routes', '', $new, [
             'id' => 'new',
@@ -42,7 +42,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	<br><br>
     </div>
     <div class="col-lg-5 col-sm-12 col-xs-12">
-        <?= "<b>".Yii::t('rbac-admin', 'Assigned')."</b>" ?>:
+        <?= Yii::t('rbac-admin', '<b>Assigned</b>') ?>:
         <?php
         echo "<div class='form-group col-lg-10 col-xs-8 pull-right no-padding'>".Html::textInput('search_asgn', '', ['class' => 'role-search form-control', 'data-target' => 'exists']) . '</div>';
         echo Html::listBox('routes', '', $exists, [

@@ -74,7 +74,7 @@ class City extends \yii\db\ActiveRecord
 
     public static function find()
     {
-		return parent::find()->andWhere(['<>', 'is_status', 2]);
+	return parent::find()->andWhere(['<>', 'is_status', 2]);
     }
 
     /**
@@ -97,15 +97,15 @@ class City extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-			'city_id' => Yii::t('app', 'City ID'),
-            'city_name' => Yii::t('app', 'City/Town'),
-            'city_state_id' => Yii::t('app', 'State/Province'),
-            'city_country_id' => Yii::t('app', 'Country'),
-            'created_at' => Yii::t('app', 'Created At'),
-            'created_by' => Yii::t('app', 'Created By'),
-            'updated_at' => Yii::t('app', 'Updated At'),
-            'updated_by' => Yii::t('app', 'Updated By'),
-            'is_status' => Yii::t('app', 'Is Status'),
+            'city_id' => 'City ID',
+            'city_name' => 'City/Town',
+            'city_state_id' => 'State/Province',
+            'city_country_id' => 'Country',
+            'created_at' => 'Created At',
+            'created_by' => 'Created By',
+            'updated_at' => 'Updated At',
+            'updated_by' => 'Updated By',
+            'is_status' => 'Is Status',
         ];
     }
 

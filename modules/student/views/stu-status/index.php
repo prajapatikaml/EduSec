@@ -8,8 +8,8 @@ use yii\grid\GridView;
 /* @var $searchModel app\modules\student\models\StuStatusSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('stu', 'Student Statuses');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Student'), 'url' => ['default/index']];
+$this->title = 'Student Statuses';
+$this->params['breadcrumbs'][] = ['label' => 'Student', 'url' => ['default/index']];
 ?>
 
 <?php if($model->isNewRecord) 
@@ -26,10 +26,10 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Student'), 'url' => 
 	<div class="col-xs-4 left-padding">
 	</div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a(Yii::t('stu', 'PDF'), ['/export-data/export-to-pdf', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-warning', 'target'=>'_blank']) ?>
+	<?= Html::a('PDF', ['/export-data/export-to-pdf', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-warning', 'target'=>'_blank']) ?>
 	</div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a(Yii::t('stu', 'EXCEL'), ['/export-data/export-excel', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-primary', 'target'=>'_blank']) ?>
+	<?= Html::a('EXCEL', ['/export-data/export-excel', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-primary', 'target'=>'_blank']) ?>
 	</div>
   </div>
 </div>

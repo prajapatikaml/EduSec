@@ -8,7 +8,7 @@ use yii\grid\GridView;
 <div class="row">
   <div class="col-xs-12">
 	<h4 class="edusec-border-bottom-warning page-header edusec-profile-title-1">	
-		<i class="fa fa-inr"></i> <?php echo Yii::t('stu', 'Current Fees Details'); ?>
+		<i class="fa fa-inr"></i> Current Fees Details
 	</h4>
   </div><!-- /.col -->
 </div>
@@ -55,7 +55,7 @@ echo GridView::widget([
 		}
 		],
 		[
-		'header'=>Yii::t('stu', 'Fees Details'),
+		'header'=>'Fees Details',
 		'format' => 'raw',
 		'value'=>function($data) {
 			$fcdModel = \app\modules\fees\models\FeesCategoryDetails::find()->where(['is_status'=>0, 'fees_details_category_id'=>$data->fees_collect_category_id])->asArray()->all();
@@ -68,13 +68,13 @@ echo GridView::widget([
 		}
 		], 
 		[
-		'header'=>Yii::t('stu', 'Total Amount'),
+		'header'=>'Total Amount',
 		'value'=>function($data) {
 			return \app\modules\fees\models\FeesCategoryDetails::getFeeCategoryTotal($data->fees_collect_category_id);
 		}
 		], 
 		[
-		'header'=>Yii::t('stu', 'Total Paid Fees'),
+		'header'=>'Total Paid Fees',
 		'value'=>function($data) use ($model, $stuData) {
 			return $model->getStuTotalPayFees($stuData->stu_master_id, $data->fees_collect_category_id);
 		}
@@ -91,7 +91,7 @@ echo GridView::widget([
 <div class="row">
   <div class="col-xs-12">
 	<h4 class="edusec-border-bottom-warning page-header edusec-profile-title-1">	
-		<i class="fa fa-inr"></i> <?php echo Yii::t('stu', 'Student Payment History'); ?>
+		<i class="fa fa-inr"></i> Student Payment History
 	</h4>
   </div><!-- /.col -->
 </div>
@@ -126,10 +126,10 @@ echo GridView::widget([
 				return Yii::$app->formatter->asDate($data['fees_pay_tran_date']);
 			}
 		],
-		/*[
+		[
 			'attribute'=>'fees_pay_tran_collect_id',
 			'value'=>'feesPayTranCollect.fees_collect_name',
-		],*/
+		],
 		[
 			'attribute'=>'fees_pay_tran_collect_id',
 			'value'=>'feesPayTranCollect.fees_collect_name',

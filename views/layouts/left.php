@@ -36,7 +36,7 @@ use yii\web\NotFoundHttpException;
                     <img src="<?= $Photo ?>" class="img-circle" alt="User Image"/>
                 </div>
                 <div class="pull-left info">
-                    <p> <?= Yii::t('app', 'Welcome') ?>, <?= @Yii::$app->user->identity->user_login_id ?></p>
+                    <p> Welcome, <?= @Yii::$app->user->identity->user_login_id ?></p>
                 </div>
             </div>
         <?php endif; ?>
@@ -46,7 +46,7 @@ use yii\web\NotFoundHttpException;
         <ul class="sidebar-menu">
             <li>
                 <a href="<?= Yii::$app->homeUrl ?>" class="navbar-link">
-                    <i class="fa fa-angle-down"></i> <span class="text-info"><?= Yii::t('app', 'Menu'); ?></span>
+                    <i class="fa fa-angle-down"></i> <span class="text-info">Menu</span>
                 </a>
             </li>
 	<?php

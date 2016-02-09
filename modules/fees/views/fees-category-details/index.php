@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\modules\fees\models\FeesCategoryDetailsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('fees', 'Fees Category Details');
+$this->title = 'Fees Category Details';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="fees-category-details-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('fees', 'Create Fees Category Details'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Fees Category Details', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

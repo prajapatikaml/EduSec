@@ -2,18 +2,18 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = 'Welcome EduSec Application Installer';
+$this->title = 'Welcome Edusec Application Installer';
 ?>
 
 <div class="installation-box-body installation-header">
-	<h1>EduSec<sup style="top: -1.5em;font-size: 10px;">TM</sup> Installation</h1>
+	<h1>EduSec Installation</h1>
 </div>
 <div class="installation-box-body">
 	<?php $form = ActiveForm::begin(); ?>
 	<h3>License Agreement</h3>
 <pre style="height: 200px;overflow-y: scroll;">
 
-EduSec<sup>TM</sup> - School/College Management System
+EduSec - School/College Management System
 	
 Developed by RudraSoftech
     

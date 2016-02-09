@@ -218,7 +218,7 @@
 	font-family: freeserif;
 }
 :lang("gu"), :lang("guj")  {	/* Gujarati */
-	font-family: lohitgujarati;
+	font-family: freeserif;
 }
 :lang("pa"), :lang("pan")  {	/* Panjabi, Punjabi GURMUKHI */
 	font-family: freeserif;

@@ -93,15 +93,15 @@ class Section extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-			'section_id' => Yii::t('course', 'Section ID'),
-            'section_name' => Yii::t('course', 'Section Name'),
-            'section_batch_id' => Yii::t('course', 'Section Batch'),
-            'intake' => Yii::t('course', 'Intake'),
-            'created_at' => Yii::t('course', 'Created At'),
-            'created_by' => Yii::t('course', 'Created By'),
-            'updated_at' => Yii::t('course', 'Updated At'),
-            'updated_by' => Yii::t('course', 'Updated By'),
-            'is_status' => Yii::t('course', 'Status'),
+            'section_id' => 'Section ID',
+            'section_name' => 'Section Name',
+            'section_batch_id' => 'Section Batch',
+            'intake' => 'Intake',
+            'created_at' => 'Created At',
+            'created_by' => 'Created By',
+            'updated_at' => 'Updated At',
+            'updated_by' => 'Updated By',
+            'is_status' => 'Status',
         ];
     }
 

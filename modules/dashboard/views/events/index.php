@@ -8,8 +8,8 @@ use yii\helpers\Url;
 /* @var $searchModel app\models\EventsSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('dash', 'Manage Events');
-$this->params['breadcrumbs'][] = ['label' => Yii::t('dash', 'Dashboard'), 'url' => ['default/index']];
+$this->title = 'Manage Events';
+$this->params['breadcrumbs'][] = ['label' => 'Dashboard', 'url' => ['default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <style>
@@ -44,7 +44,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
   <div class="col-xs-12">
 	<h2 class="page-header">	
-		<?php echo Yii::t('dash', 'Manage Events') ?>
+		<?= Html::encode($this->title) ?>
 	</h2>
   </div><!-- /.col -->
 </div>
@@ -69,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="box box-solid box-warning">
   <div class="box-header">
     <i class="ion ion-calendar"></i>
-    <h3 class="box-title"><?php echo Yii::t('dash', 'Event Schedule') ?></h3>
+    <h3 class="box-title">Event Schedule</h3>
   </div><!-- /.box-header -->
   <div class="box-body">
    <div class="events-index">
@@ -157,10 +157,10 @@ EOF;
    </div>
    <div class="row">
 	<ul class="legend">
-	    <li><span class="holiday"></span> <?php echo Yii::t('dash', 'Holiday') ?></li>
-	    <li><span class="importantnotice"></span> <?php echo Yii::t('dash', 'Important Notice') ?></li>
-	    <li><span class="meeting"></span> <?php echo Yii::t('dash', 'Meeting') ?></li>
-	    <li><span class="messages"></span> <?php echo Yii::t('dash', 'Messages') ?></li>
+	    <li><span class="holiday"></span> Holiday</li>
+	    <li><span class="importantnotice"></span> Important Notice</li>
+	    <li><span class="meeting"></span> Meeting</li>
+	    <li><span class="messages"></span> Messages</li>
 	</ul>
    </div>
   </div>

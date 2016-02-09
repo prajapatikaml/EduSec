@@ -6,8 +6,8 @@ use yii\bootstrap\Modal;
 /* @var $this yii\web\View */
 /* @var $model app\modules\fees\models\FeesPaymentTransaction */
 
-$this->title = Yii::t('fees', 'Receipt No - ').$model->fees_pay_tran_id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('fees', 'Fees Payment Transactions'), 'url' => ['collect']];
+$this->title = "Receipt No - ".$model->fees_pay_tran_id;
+$this->params['breadcrumbs'][] = ['label' => 'Fees Payment Transactions', 'url' => ['collect']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-xs-12">
@@ -15,16 +15,16 @@ $this->params['breadcrumbs'][] = $this->title;
   <div class="col-xs-4"></div>
   <div class="col-lg-4 col-sm-4 col-xs-12 no-padding" style="padding-top: 20px !important;">
 	<div class="col-xs-4 left-padding">
-	<?= Html::a(Yii::t('fees', 'Back'), ['pay-fees', 'sid' => $model->fees_pay_tran_stu_id, 'fcid'=>$model->fees_pay_tran_collect_id], ['class' => 'btn btn-block btn-back']) ?>
+	<?= Html::a('Back', ['pay-fees', 'sid' => $model->fees_pay_tran_stu_id, 'fcid'=>$model->fees_pay_tran_collect_id], ['class' => 'btn btn-block btn-back']) ?>
 	</div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a(Yii::t('fees', 'Update'), ['update', 'id' => $model->fees_pay_tran_id], ['class' => 'btn btn-block btn-info']) ?>
+	<?= Html::a('Update', ['update', 'id' => $model->fees_pay_tran_id], ['class' => 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-4 left-padding">
-        <?= Html::a(Yii::t('fees', 'Delete'), ['delete', 'id' => $model->fees_pay_tran_id], [
+        <?= Html::a('Delete', ['delete', 'id' => $model->fees_pay_tran_id], [
             'class' => 'btn btn-block btn-danger',
             'data' => [
-                'confirm' => Yii::t('fees', 'Are you sure you want to delete this item?'),
+                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>

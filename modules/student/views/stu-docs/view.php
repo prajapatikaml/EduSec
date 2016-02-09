@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\modules\student\models\StuDocs */
 
 $this->title = $model->stu_docs_id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Student Docs'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Student Docs', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="stu-docs-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', [Yii::t('stu', 'update'), 'id' => $model->stu_docs_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', [Yii::t('stu', 'delete'), 'id' => $model->stu_docs_id], [
+        <?= Html::a('Update', ['update', 'id' => $model->stu_docs_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->stu_docs_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('stu', 'Are you sure you want to delete this item?'),
+                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>

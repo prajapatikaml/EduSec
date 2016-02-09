@@ -90,14 +90,14 @@ class StuStatus extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-			'stu_status_id' => Yii::t('stu', 'Stu Status ID'),
-            'stu_status_name' => Yii::t('stu', 'Name'),
-            'stu_status_description' => Yii::t('stu', 'Description'),
-            'created_at' => Yii::t('stu', 'Created At'),
-            'created_by' => Yii::t('stu', 'Created By'),
-            'updated_at' => Yii::t('stu', 'Updated At'),
-            'updated_by' => Yii::t('stu', 'Updated By'),
-            'is_status' => Yii::t('stu', 'Is Status'),
+            'stu_status_id' => 'Stu Status ID',
+            'stu_status_name' => 'Name',
+            'stu_status_description' => 'Description',
+            'created_at' => 'Created At',
+            'created_by' => 'Created By',
+            'updated_at' => 'Updated At',
+            'updated_by' => 'Updated By',
+            'is_status' => 'Is Status',
         ];
     }
 

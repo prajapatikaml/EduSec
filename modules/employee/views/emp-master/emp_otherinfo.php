@@ -11,11 +11,11 @@ use kartik\widgets\Select2;
 /* @var $this yii\web\View */
 /* @var $model app\modules\student\models\StuMaster */
 
-$this->title = Yii::t('emp', 'Update : ') . ' ' . $model->empMasterEmpInfo->emp_first_name." ".$model->empMasterEmpInfo->emp_last_name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('emp', 'Employee'), 'url' => ['default/index']];
-$this->params['breadcrumbs'][] = ['label' => Yii::t('emp', 'Manage Employees'), 'url' => ['index']];
+$this->title = 'Update : ' . ' ' . $model->empMasterEmpInfo->emp_first_name." ".$model->empMasterEmpInfo->emp_last_name;
+$this->params['breadcrumbs'][] = ['label' => 'Employee', 'url' => ['default/index']];
+$this->params['breadcrumbs'][] = ['label' => 'Manage Employees', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->empMasterEmpInfo->emp_first_name." ".$model->empMasterEmpInfo->emp_last_name, 'url' => ['view', 'id' => $model->emp_master_id]];
-$this->params['breadcrumbs'][] = Yii::t('emp', 'Update Other Details');
+$this->params['breadcrumbs'][] = 'Update Other Details';
 ?>
 <div class="col-xs-12">
   <div class="col-lg-4 col-sm-4 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-edit"></i> <?= Html::encode($this->title) ?></h3>
@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = Yii::t('emp', 'Update Other Details');
 	<div class="col-xs-4"></div>
 	<div class="col-xs-4"></div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a(Yii::t('emp', 'Back'), ['index'], ['class' => 'btn btn-block btn-back']) ?>
+	<?= Html::a('Back', ['index'], ['class' => 'btn btn-block btn-back']) ?>
 	</div>
     </div>
  </div>
@@ -39,7 +39,7 @@ $this->params['breadcrumbs'][] = Yii::t('emp', 'Update Other Details');
 
 <div class="box box-solid box-info col-xs-12 col-lg-12 no-padding edusec-form-bg">
    <div class="box-header with-border">
-       <h4 class="box-title"><i class="fa fa-info-circle"></i> <?php echo Yii::t('emp', 'Other Info'); ?></h4>
+       <h4 class="box-title"><i class="fa fa-info-circle"></i> Other Info</h4>
    </div>
    <div class="box-body">
 	<div class="col-xs-12 col-lg-12 col-lg-12">
@@ -105,10 +105,10 @@ $this->params['breadcrumbs'][] = Yii::t('emp', 'Update Other Details');
  
     <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
 	<div class="col-xs-6 col-xs-12">
-	    <?= Html::submitButton($model->isNewRecord ? Yii::t('emp', 'Create') : Yii::t('emp', 'Update'), ['class' => $info->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
+	    <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $info->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-6">
-	    <?= Html::a(Yii::t('emp', 'Cancel'), ['view', 'id' => $model->emp_master_id], ['class' => 'btn btn-default btn-block']); ?>
+	    <?= Html::a('Cancel', ['view', 'id' => $model->emp_master_id], ['class' => 'btn btn-default btn-block']); ?>
 	</div>
     </div>	
 

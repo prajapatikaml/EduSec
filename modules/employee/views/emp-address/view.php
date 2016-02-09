@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\modules\employee\models\EmpAddress */
 
 $this->title = $model->emp_address_id;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('emp', 'Addresses'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Addresses', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="emp-address-view">
@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Delete', ['delete', 'id' => $model->emp_address_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => Yii::t('emp', 'Are you sure you want to delete this item?'),
+                'confirm' => 'Are you sure you want to delete this item?',
                 'method' => 'post',
             ],
         ]) ?>

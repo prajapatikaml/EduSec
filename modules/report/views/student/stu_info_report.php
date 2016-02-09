@@ -16,7 +16,7 @@ use app\modules\course\models\Courses;
 use app\modules\course\models\Batches;
 use app\modules\course\models\Section;
 
-$this->title = Yii::t('report', 'Student Info Report');
+$this->title = Yii::t('app', 'Student Info Report');
 $this->params['breadcrumbs'][] = $this->title;
 
 $_SESSION['query']=$query;
@@ -30,9 +30,9 @@ $_SESSION['selected_list']=$selected_list;
         <div class="box-header">
           <h3 class="box-title"><i class="fa fa-info-circle"></i> <?= $this->title ?></h3>
           <div class="box-tools pull-right">
-          	<?php echo Html::a('<i class="fa fa-arrow-circle-left"></i> ' .Yii::t('report', "Back"), ['student/stuinforeport'],['class'=>'btn btn-back', 'style'=>'color:#fff']);?>
-		<?php echo Html::a('<i class="fa fa-file-excel-o"></i> '.Yii::t('report', "Excel"),['student/selected-student-list','studentlistexcelexport'=>'studentlistexcel'],array('title'=>'Export to Excel','target'=>'_blank','class'=>'btn btn-info', 'style'=>'color:#fff'));?>
-		<?php echo Html::a('<i class="fa fa-file-pdf-o"></i> ' .Yii::t('report', "PDF"),array('student/selected-student-list','studentlistexport'=>'studentlistpdf'),array('title'=>'Export to PDF','target'=>'_blank','class'=>'btn btn-warning', 'style'=>'color:#fff')); ?> 	
+          	<?php echo Html::a('<i class="fa fa-arrow-circle-left"></i> Back', ['student/stuinforeport'],['class'=>'btn btn-back', 'style'=>'color:#fff']);?>
+		<?php echo Html::a('<i class="fa fa-file-excel-o"></i> Excel',['student/selected-student-list','studentlistexcelexport'=>'studentlistexcel'],array('title'=>'Export to Excel','target'=>'_blank','class'=>'btn btn-info', 'style'=>'color:#fff'));?>
+		<?php echo Html::a('<i class="fa fa-file-pdf-o"></i> PDF',array('student/selected-student-list','studentlistexport'=>'studentlistpdf'),array('title'=>'Export to PDF','target'=>'_blank','class'=>'btn btn-warning', 'style'=>'color:#fff')); ?> 	
           </div>
         </div><!-- /.box-header -->
 
@@ -44,25 +44,25 @@ if(!empty($student_data) && !empty($selected_list))
 {
 	$s_info = new StuInfo();
 	echo "<table class ='table-bordered table table-striped'>";
-	echo "<tr><th class='text-center'>".Yii::t('report', 'SI No.')."</th>";
+	echo "<tr><th class='text-center'>SI No.</th>";
 	foreach($selected_list as $s)
 	{
 		if($s=='batch_name')
-			echo "<th class='text-center'>".Yii::t('report', 'Batch')."</th>";
+			echo "<th class='text-center'>Batch </th>";
 		else if($s=='stu_cadd')
-			echo "<th class='text-center'>".Yii::t('report', 'Local Address')."</th>";
+			echo "<th class='text-center'>Local Address</th>";
 		else if($s=='stu_padd')
-			echo "<th class='text-center'>".Yii::t('report', 'International Address')."</th>";
+			echo "<th class='text-center'>International Address</th>";
 		else if($s=='stu_email_id')
-			echo "<th class='text-center'>".Yii::t('report', 'Email ID')."</th>";
+			echo "<th class='text-center'>Email ID</th>";
 		else if($s=='city')
-			echo "<th class='text-center'>".Yii::t('report', 'City')."</th>";
+			echo "<th class='text-center'>City</th>";
 		else if($s=='stu_bloodgroup')
-			echo "<th class='text-center'>".Yii::t('report', 'Blood Group')."</th>";
+			echo "<th class='text-center'>Blood Group</th>";
 		else if($s=='course_name')
-			echo "<th class='text-center'>".Yii::t('report', 'Course')."</th>";
+			echo "<th class='text-center'>Course</th>";
 		else if($s=='section_name')
-			echo "<th class='text-center'>".Yii::t('report', 'Section')."</th>";
+			echo "<th class='text-center'>Section</th>";
 		else
 			echo "<th class='text-center'>".Html::activeLabel($s_info,$s)."</th>";	
 		
@@ -78,21 +78,21 @@ if(!empty($student_data) && !empty($selected_list))
 			if($s == 'batch_name')
 			{
 				if($sd['stu_master_batch_id']==0)
-					echo "<td class='text-center'><i>".Yii::t('report', 'Not Set')."</i></td>";
+					echo "<td class='text-center'><i>Not Set</i></td>";
 				else
 				echo "<td class='text-center'>".Batches::findOne($sd['stu_master_batch_id'])->$s."</td>";
 			}
 			else if($s == 'course_name')
 			{
 				if($sd['stu_master_course_id'] == 0 )
-					echo "<td></i> ".Yii::t('report', 'Not Set')."</i></td>";
+					echo "<td></i> Not Set</i></td>";
 				else
 					echo "<td>".Courses::findOne($sd['stu_master_course_id'])->$s."</td>";
 			}
 			else if($s == 'section_name')
 			{
 				if($sd['stu_master_section_id'] == 0)
-					echo "<td> ".Yii::t('report', 'Not Set')." </td>";
+					echo "<td> Not Set </td>";
 				else
 					echo "<td>". Section::findOne($sd['stu_master_section_id'])->$s."</td>";
 			}

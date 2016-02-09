@@ -7,10 +7,10 @@ $adminUser = array_keys(\Yii::$app->authManager->getRolesByUser(Yii::$app->user-
 <div class="row">
   <div class="col-xs-12">
 	<h2 class="page-header">	
-	<i class="fa fa-info-circle"></i> <?php echo Yii::t('stu', 'Personal Details'); ?>
+	<i class="fa fa-info-circle"></i> Personal Details
 	<div class="pull-right">
 	<?php if((Yii::$app->user->can("/student/stu-master/update") && ($_REQUEST['id'] == Yii::$app->session->get('stu_id'))) || (in_array("SuperAdmin", $adminUser)) || Yii::$app->user->can("updateAllStuInfo")) { ?>
-		<?= Html::a('<i class="fa fa-pencil-square-o"></i> '.Yii::t('stu', 'Edit'), ['update', 'sid' => $model->stu_master_id, 'tab' => 'personal'], ['class' => 'btn btn-primary btn-sm', 'id' => 'update-data']) ?>
+		<?= Html::a('<i class="fa fa-pencil-square-o"></i> Edit', ['update', 'sid' => $model->stu_master_id, 'tab' => 'personal'], ['class' => 'btn btn-primary btn-sm', 'id' => 'update-data']) ?>
 	<?php } ?>
 	</div>
 	</h2>
@@ -25,7 +25,7 @@ $adminUser = array_keys(\Yii::$app->authManager->getRolesByUser(Yii::$app->user-
 <div class="row">
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="col-md-3 col-sm-3 col-xs-6 edusec-profile-label"><?= $info->getAttributeLabel('stu_title') ?></div>
-		<div class="col-md-9 col-sm-9 col-xs-6 edusec-profile-text"><?= ($info->stu_title) ? $info->stu_title : Yii::t("stu", "Not Set") ?></div>
+		<div class="col-md-9 col-sm-9 col-xs-6 edusec-profile-text"><?= ($info->stu_title) ? $info->stu_title : "Not Set" ?></div>
 	</div>
 
 	<div class="col-md-12 col-xs-12 col-sm-12">
@@ -57,7 +57,7 @@ $adminUser = array_keys(\Yii::$app->authManager->getRolesByUser(Yii::$app->user-
 	  </div>
 	  <div class="col-lg-6 col-sm-6 col-xs-12 no-padding">
 		<div class="col-lg-6 col-xs-6 edusec-profile-label"><?= $model->getAttributeLabel('stu_master_nationality_id') ?></div>
-		<div class="col-lg-6 col-xs-6 edusec-profile-text"><?= !empty($model->stuMasterNationality->nationality_name) ? $model->stuMasterNationality->nationality_name : Yii::t("stu", "Not Set") ?></div>
+		<div class="col-lg-6 col-xs-6 edusec-profile-text"><?= !empty($model->stuMasterNationality->nationality_name) ? $model->stuMasterNationality->nationality_name : "Not Set" ?></div>
 	  </div>
 	</div>
 
@@ -65,7 +65,7 @@ $adminUser = array_keys(\Yii::$app->authManager->getRolesByUser(Yii::$app->user-
 	<div class="col-md-12 col-xs-12 col-sm-12">
 	  <div class="col-lg-6 col-sm-6 col-xs-12 no-padding">
 		<div class="col-lg-6 col-xs-6 edusec-profile-label"><?= $model->getAttributeLabel('stu_master_category_id') ?></div>
-		<div class="col-lg-6 col-xs-6 edusec-profile-text"><?= !empty($model->stuMasterCategory->stu_category_name) ? $model->stuMasterCategory->stu_category_name : Yii::t("stu", "Not Set") ?></div>
+		<div class="col-lg-6 col-xs-6 edusec-profile-text"><?= !empty($model->stuMasterCategory->stu_category_name) ? $model->stuMasterCategory->stu_category_name : "Not Set" ?></div>
 	  </div>
 	  <div class="col-lg-6 col-sm-6 col-xs-12 no-padding">
 		<div class="col-lg-6 col-xs-6 edusec-profile-label"><?= $info->getAttributeLabel('stu_religion') ?></div>

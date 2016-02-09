@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\modules\employee\models\EmpInfoSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('emp', 'Emp Infos');
+$this->title = 'Emp Infos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="emp-info-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a(Yii::t('emp', 'Create Emp Info'), ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Emp Info', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

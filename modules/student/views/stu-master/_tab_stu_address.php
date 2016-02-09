@@ -6,10 +6,10 @@ $adminUser = array_keys(\Yii::$app->authManager->getRolesByUser(Yii::$app->user-
 <div class="row">
   <div class="col-xs-12">
 	<h2 class="page-header">	
-	<i class="fa fa-info-circle"></i> <?php echo Yii::t('stu', 'Address Info'); ?>
+	<i class="fa fa-info-circle"></i> Address Info
 	<div class="pull-right">
 	<?php if(Yii::$app->user->can("/student/stu-master/update") && ($_REQUEST['id'] == Yii::$app->session->get('stu_id')) || (in_array("SuperAdmin", $adminUser)) || Yii::$app->user->can("updateAllStuInfo")) { ?>
-	    <?= Html::a('<i class="fa fa-pencil-square-o"></i>'.Yii::t('stu', 'Edit'), ['update', 'sid' => $model->stu_master_id, 'tab' => 'address'], ['class' => 'btn btn-primary btn-sm', 'id' => 'update-data']) ?>
+	    <?= Html::a('<i class="fa fa-pencil-square-o"></i> Edit', ['update', 'sid' => $model->stu_master_id, 'tab' => 'address'], ['class' => 'btn btn-primary btn-sm', 'id' => 'update-data']) ?>
 	<?php } ?>
 	</div>
 	</h2>
@@ -20,7 +20,7 @@ $adminUser = array_keys(\Yii::$app->authManager->getRolesByUser(Yii::$app->user-
 <div class="row">
   <div class="col-xs-12">
 	<h4 class="edusec-border-bottom-warning page-header edusec-profile-title-1">	
-		<?= Html::encode(Yii::t('stu', 'Current Address')) ?>
+		<?= Html::encode('Current Address') ?>
 	</h4>
   </div><!-- /.col -->
 </div>
@@ -69,7 +69,7 @@ $adminUser = array_keys(\Yii::$app->authManager->getRolesByUser(Yii::$app->user-
 <div class="row">
   <div class="col-xs-12">
 	<h4 class="edusec-border-bottom-warning page-header edusec-profile-title-1">	
-		<?= Html::encode(Yii::t('stu', 'Permenant Address')) ?>
+		<?= Html::encode('Permenant Address') ?>
 	</h4>
   </div><!-- /.col -->
 </div>

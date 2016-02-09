@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
-$this->title = Yii::t('app', "Change User Password"); 
+$this->title = "Change User Password"; 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-xs-12">
@@ -30,7 +30,7 @@ $this->params['breadcrumbs'][] = $this->title;
            <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Save'), ['class' =>'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-6">
-	   <?= Html::a(Yii::t('app', 'Cancel'), ['/site/index'], ['class' => 'btn btn-default btn-block']) ?>
+	   <?= Html::a('Cancel', ['/site/index'], ['class' => 'btn btn-default btn-block']) ?>
 	</div>
      </div>
  <?php ActiveForm::end(); ?>
