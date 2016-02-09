@@ -88,7 +88,7 @@ class Courses extends \yii\db\ActiveRecord
             [['course_name'], 'string', 'max' => 100],
             [['course_code'], 'string', 'max' => 50],
             [['course_alias'], 'string', 'max' => 35],
-	    [['course_name', 'course_code'], 'unique', 'targetAttribute' => ['course_name', 'course_code'], 'message' => 'Course Already Exists with this Course code.']
+	    [['course_name', 'course_code'], 'unique', 'targetAttribute' => ['course_name', 'course_code'], 'message' => Yii::t('course', 'Course Already Exists with this Course code.')]
         ];
     }
 
@@ -149,4 +149,14 @@ class Courses extends \yii\db\ActiveRecord
     {
         return $this->hasMany(StuMaster::className(), ['stu_master_course_id' => 'course_id']);
     }
+
+	/**
+	* @return all course
+	*/
+	public static function getStuCourse()
+	{
+		$dataTmp = Courses::find()->where(['is_status' => 0])->orderBy('course_name')->all();
+		$result = yii\helpers\ArrayHelper::map($dataTmp, 'course_id', 'course_name');
+		return $result;
+	}
 }

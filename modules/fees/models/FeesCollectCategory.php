@@ -86,7 +86,7 @@ class FeesCollectCategory extends \yii\db\ActiveRecord
 	    [['fees_collect_batch_id'], 'integer',],
             [['fees_collect_name'], 'string', 'max' => 70],
             [['fees_collect_details'], 'string', 'max' => 255],
-            [['fees_collect_name', 'fees_collect_batch_id'], 'unique', 'targetAttribute' => ['fees_collect_name', 'fees_collect_batch_id'], 'message' => 'The combination of Fees Category and Batch has already been taken.'],
+            [['fees_collect_name', 'fees_collect_batch_id'], 'unique', 'targetAttribute' => ['fees_collect_name', 'fees_collect_batch_id'], 'message' => Yii::t('fees', 'The combination of Fees Category and Batch has already been taken.')],
         ];
     }
 

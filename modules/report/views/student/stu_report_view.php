@@ -74,7 +74,7 @@ $city =new City();
 		 <?= $form->field($model,'report_city')->dropDownList(ArrayHelper::map(\app\models\City::findAll(['is_status'=>0]),'city_id','city_name'), ['prompt' => Yii::t('stu', '--- Select City ---')]);?>
 	</div>
 	<div class="col-xs-12 col-sm-4 col-lg-4">
-		 <?= $form->field($info, 'stu_gender')->dropDownList(['' => Yii::t('stu', '--- Select Gender ---'), 'Male' => 'Male','Female' => 'Female']) ?>
+		 <?= $form->field($info, 'stu_gender')->dropDownList(stuInfo::getGenderOptions(),['prompt' => Yii::t('stu', '--- Select Gender ---')]) ?>
 	</div>
       </div>
       <hr>

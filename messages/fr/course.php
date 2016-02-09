@@ -17,6 +17,8 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
+    'Course Already Exists with this Course code.' => 'Cours existe déjà avec ce code de cours.',
+    'Section Already Exists of this Batch.' => 'Section existe déjà de ce lot.',
     '--- Select Course ---' => '--- Choisir cours ---',
     'ADD' => 'Ajouter',
     'Active' => 'opérationnel',
@@ -51,6 +53,8 @@ return [
     'Edit Section Details' => 'Editer les détails de la section',
     'End Date' => 'Fin',
     'Inactive' => 'Inopérant',
+    'Initial Batch' => 'Collection initiale',
+    'Initial Section' => 'section initiale',
     'Intake' => 'Acceptation',
     'Manage Batches' => 'Gestion des lots',
     'Manage Course' => 'Gestion de la leçon',

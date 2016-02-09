@@ -80,7 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		'buttons' => [
 			    'Reset_password' => function ($url, $model) {
 				return Html::a('<span class="glyphicon glyphicon-edit"></span>', $url, [
-					    'title' => Yii::t('app', 'Reset Password'),
+					    'title' => Yii::t('app', 'Reset Login'),
 				]);
 			    }
 			],

@@ -88,7 +88,7 @@ $(function () {
 
    <div class="col-xs-12 col-sm-12 col-lg-12 no-padding">
     <div class="col-xs-12 col-sm-4 col-lg-4">
-   	<?= $form->field($info, 'stu_gender')->dropDownList(['' => Yii::t('stu', '--- Select Gender ---'), 'Male' => 'Male', 'Female' => 'Female']) ?>
+   	<?= $form->field($info, 'stu_gender')->dropDownList($info->getGenderOptions(), ['prompt' => Yii::t('stu', '--- Select Gender ---')]) ?>
     </div>
     <div class="col-xs-12 col-sm-4 col-lg-4">
     	 <?= $form->field($info, 'stu_email_id')->textInput(['maxlength' => 65]) ?>

@@ -142,7 +142,7 @@ $feesDetails = \app\modules\fees\models\FeesCategoryDetails::find()->where(['fee
 	<!---If select payment mode cash to show this block--->
 	<div class="col-xs-12 col-sm-12 col-lg-12 no-padding chk-cash">
 		<div class="col-xs-12 col-sm-4 col-lg-4">
-			<?= $form->field($model, 'fees_pay_tran_mode')->dropDownList(['1'=>'Cash', '2'=>'Cheque']);?>
+			<?= $form->field($model, 'fees_pay_tran_mode')->dropDownList(['1'=>Yii::t('fees', 'Cash'), '2'=>Yii::t('fees', 'Cheque')]);?>
 		</div>
 
 		<div class="col-xs-12 col-sm-4 col-lg-4">

@@ -159,4 +159,14 @@ class Country extends \yii\db\ActiveRecord
     {
         return $this->hasMany(StuAdmissionMaster::className(), ['stu_padd_country' => 'country_id']);
     }
+	
+	/**
+	* @return get all Country
+	*/ 
+	public static function getAllCountry()
+    {
+    	$dataTmp = self::find()->where(['is_status' => 0])->orderBy('country_name')->all();
+		$result = yii\helpers\ArrayHelper::map($dataTmp, 'country_id', 'country_name');
+		return $result;
+    }
 }

@@ -11,6 +11,7 @@ class LanguageSelector implements BootstrapInterface
     public function bootstrap($app)
     {
         $preferredLanguage = isset(Yii::$app->request->cookies['language']) ? (string)Yii::$app->request->cookies['language'] : null;
+		
         // or in case of database:
         // $preferredLanguage = $app->user->language;
 

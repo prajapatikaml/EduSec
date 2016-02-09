@@ -22,6 +22,12 @@ use yii\helpers\Html;
 		<?= Html::a('<i class="fa fa-angle-double-right"></i> '.Yii::t('stu', 'Student Status'),['/student/stu-status/index'])  ?>
 	    </li>
 	<?php endif; ?> 
+	
+	<?php if(Yii::$app->user->can('/student/stu-import/index')) : ?>
+            <li>
+		<?= Html::a('<i class="fa fa-angle-double-right"></i> '.Yii::t('stu', 'Import Student'),['/student/stu-import/index'])  ?>
+	    </li>
+	<?php endif; ?> 
 
 	<?php if(Yii::$app->user->can('/student/stu-category/index')) : ?>
             <li>

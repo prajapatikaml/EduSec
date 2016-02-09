@@ -17,7 +17,10 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Paid/Unpaid' => '',
+    'Cash' => 'કેશ',
+    'Cheque' => 'ચેક',
+    'Paid/Unpaid' => 'ચૂકવાયેલા/ન ચૂકવાયેલા',
+    'The combination of Fees Category and Batch has already been taken.' => 'ફી કેટેગરી અને બેચ જોડાણ એ પહેલાથી જ લેવામાં આવી છે.',
     ' Take Fees' => 'ફી લો',
     '(Not Set)' => '(સેટ નથી)',
     'ADD' => 'ઉમેરો',

@@ -64,7 +64,7 @@ use Yii;
  */
 class StuInfo extends \yii\db\ActiveRecord
 {
-	const TYPE_MALE='MALE';
+	const TYPE_MALE= 'MALE';
 	const TYPE_FEMALE='FEMALE';
 	const TYPE_APLUS='A+';
 	const TYPE_AMINUS='A-';
@@ -93,7 +93,7 @@ class StuInfo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['stu_unique_id', 'stu_first_name', 'stu_last_name', 'stu_admission_date',], 'required', 'message' => ''],
+            [['stu_unique_id', 'stu_first_name', 'stu_last_name', 'stu_admission_date',], 'required'],
 	    [['stu_unique_id'], 'unique'],
             [['stu_admission_date'], 'string', 'max' => 15],
 	    [['stu_info_stu_master_id'], 'safe'],
@@ -102,15 +102,16 @@ class StuInfo extends \yii\db\ActiveRecord
             [['stu_mobile_no', 'stu_info_stu_master_id', 'stu_unique_id'], 'integer'],
 	    [['stu_mobile_no'], 'integer', 'min' => 10],
             [['stu_first_name', 'stu_middle_name', 'stu_last_name', 'stu_religion', 'stu_email_id'], 'string', 'max' => 50],
-            [['stu_title'], 'string', 'max' => 5],
-            [['stu_gender', 'stu_bloodgroup'], 'string', 'max' => 10],
+            [['stu_title'], 'string', 'max' => 15],
+            [['stu_gender', 'stu_bloodgroup'], 'string', 'max' => 20],
             [['stu_email_id'], 'string', 'max' => 65],
             [['stu_birthplace'], 'string', 'max' => 45],
             [['stu_photo'], 'file', 'extensions' => 'jpg, jpeg, gif, png', 'skipOnEmpty' => false, 
 'checkExtensionByMimeType'=>false, 'on' => 'photo-upload'],
             [['stu_languages'], 'string', 'max' => 255],
 	    [['stu_email_id'], 'email'],
-            [['stu_email_id'], 'unique']
+            [['stu_email_id'], 'unique'],
+			[['stu_dob'], 'checkDateDob', 'on' => 'import-stu'],
         ];
     }
 
@@ -158,27 +159,35 @@ class StuInfo extends \yii\db\ActiveRecord
 
     public static function getTitleOptions()
     {
-	return [
-		self::TYPE_MR => Yii::t('stu', 'Mr.'),
-		self::TYPE_MRS => Yii::t('stu', 'Mrs.'), 
-		self::TYPE_MISS => Yii::t('stu', 'Ms.'),
-	];
+		return [
+			Yii::t('stu', self::TYPE_MR) => Yii::t('stu', 'Mr.'),
+			Yii::t('stu', self::TYPE_MRS) => Yii::t('stu', 'Mrs.'), 
+			Yii::t('stu', self::TYPE_MISS) => Yii::t('stu', 'Ms.'),
+		];
     }
 
     public static function getBloodGroup()
     {
-	return [
-		self::TYPE_UNKNON => Yii::t('stu', 'Unknown'),
-		self::TYPE_APLUS => Yii::t('stu', 'A+'),
-		self::TYPE_AMINUS => Yii::t('stu', 'A-'),
-		self::TYPE_BPLUS => Yii::t('stu', 'B+'),
-		self::TYPE_BMINUS => Yii::t('stu', 'B-'),
-		self::TYPE_ABPLUS => Yii::t('stu', 'AB+'),
-		self::TYPE_ABMINUS => Yii::t('stu', 'AB-'),
-		self::TYPE_OPLUS => Yii::t('stu', 'O+'),
-		self::TYPE_OMINUS => Yii::t('stu', 'O-'),
-	];
+		return [
+			Yii::t('stu', self::TYPE_UNKNON) => Yii::t('stu', 'Unknown'),
+			Yii::t('stu', self::TYPE_APLUS) => Yii::t('stu', 'A+'),
+			Yii::t('stu', self::TYPE_AMINUS) => Yii::t('stu', 'A-'),
+			Yii::t('stu', self::TYPE_BPLUS) => Yii::t('stu', 'B+'),
+			Yii::t('stu', self::TYPE_BMINUS) => Yii::t('stu', 'B-'),
+			Yii::t('stu', self::TYPE_ABPLUS) => Yii::t('stu', 'AB+'),
+			Yii::t('stu', self::TYPE_ABMINUS) => Yii::t('stu', 'AB-'),
+			Yii::t('stu', self::TYPE_OPLUS) => Yii::t('stu', 'O+'),
+			Yii::t('stu', self::TYPE_OMINUS) => Yii::t('stu', 'O-'),
+		];
     }
+
+	public static function getGenderOptions()
+	{
+		return [
+			Yii::t('stu', self::TYPE_MALE) => Yii::t('stu', 'MALE'),
+			Yii::t('stu', self::TYPE_FEMALE) => Yii::t('stu', 'FEMALE'), 
+		];	
+	}
 
     public static function getStuPhoto($imgName)
     {
@@ -186,29 +195,62 @@ class StuInfo extends \yii\db\ActiveRecord
 		return Yii::getAlias('@web')."/data/stu_images/".(($dispImg) ? $imgName : "no-photo.png");
     }
 
+	public function checkDateDob($attr,$param) 
+    {
+		$currentDate = strtotime(date('Y-m-d')); 
+		$bdDate = date('Y-m-d',strtotime($this->$attr));
+		if(strtotime($bdDate) > $currentDate) {					
+			$this->addError($attr, Yii::t('stu', 'Birth date must be less than current date.'));	
+			return false;	
+		}
+		
+		return true;
+    }
+
     public function Ckdate($attr,$param) {
 		
-	$curr_date = date('d-m-Y');
-	$dob = date('Y-m-d',strtotime($this->$attr));
-	$adm_date = date('Y-m-d',strtotime($this->stu_admission_date));
+		$curr_date = date('d-m-Y');
+		$dob = date('Y-m-d',strtotime($this->$attr));
+		$adm_date = date('Y-m-d',strtotime($this->stu_admission_date));
 	
-	if(empty($this->stu_admission_date)) {
-		return true;
-	}
-	else {
-	  $diff = $adm_date - $dob;
-	  $d = date('Y-m-d',strtotime($this->stu_admission_date)) - date('Y-m-d',strtotime($this->$attr));
-	   if($d <= 14) {
+		if(empty($this->stu_admission_date)) {
+			return true;
+		}
+		else {
+		  $diff = $adm_date - $dob;
+		  $d = date('Y-m-d',strtotime($this->stu_admission_date)) - date('Y-m-d',strtotime($this->$attr));
+		   if($d <= 14) {
 	
-		$this->addError($attr, "Birth date must be less than Admission date.");	
-		return false;
-	   }
-	   else
-		return true;
-	}
+			$this->addError($attr, "Birth date must be less than Admission date.");	
+			return false;
+		   }
+		   else
+			return true;
+		}
     }
 
     function getName() {
-	return $this->stu_first_name.' '.$this->stu_last_name;
+		return $this->stu_first_name.' '.$this->stu_last_name;
     }
+
+	/*
+	* get unique id of student
+	*/
+	public function getUniqueId()
+	{
+		$stud_uniq_no = \app\modules\student\models\StuInfo::find()->max('stu_unique_id');
+		$uniq_id = NULL;
+		if(empty($stud_uniq_no)) {
+			$uniq_id = $info->stu_unique_id = 1;
+		}
+		else {
+			$chk_id = StuInfo::find()->where(['stu_unique_id' => $stud_uniq_no])->exists(); 
+			if($chk_id)
+				$uniq_id = $stud_uniq_no + 1;
+			else
+				$uniq_id = $stud_uniq_no;		
+		}
+		
+		return $uniq_id;
+	}
 }

@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = ['label' => $this->title];
 
 <div class="col-xs-12" style="padding-top: 10px;">
    <div class="box box-info col-xs-12 col-lg-12 no-padding">
-    <div class="box-header with-border"><h4 class="box-title"><i class="fa fa-inr"></i> <?php echo Yii::t('fees', 'Current Fees Details'); ?></h4></div>
+    <div class="box-header with-border"><h4 class="box-title"><i class="fa fa-inr"> </i> <?php echo Yii::t('fees', 'Current Fees Details'); ?></h4></div>
     <div class="box-body table-responsive">
 <?php 
 $currFeesData = new ActiveDataProvider([

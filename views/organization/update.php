@@ -1,8 +1,8 @@
 <?php
 use yii\helpers\Html;
-$this->title = 'Institute Setup: ' . ' ' . $model->org_name;
-$this->params['breadcrumbs'][] = ['label' => 'Configuration', 'url'=>['/default/index']];
-$this->params['breadcrumbs'][] = ['label' => 'Update Institute Setup'];
+$this->title = Yii::t('app', 'Institute Setup')   . ' : ' . $model->org_name;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Configuration'), 'url'=>['/default/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Update Institute Setup')];
 ?>
 
 <div class="col-sm-12 col-xs-12">

@@ -8,7 +8,7 @@ use yii\grid\GridView;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = Yii::t('stu', 'Admission Categories');
-$this->params['breadcrumbs'][] = ['label' => 'Student', 'url' => ['default/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Student'), 'url' => ['default/index']];
 ?>
 
 <?php if($model->isNewRecord) 

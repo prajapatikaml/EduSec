@@ -41,7 +41,7 @@ $config = [
 			'log',
 			[
 		        'class' => 'app\components\LanguageSelector',
-		        'supportedLanguages' => ['en', 'gu', 'fr'],
+		        'supportedLanguages' => ['en', 'gu', 'fr', 'hi', 'es'],
 		    ],
 	],
     'components' => [
@@ -96,7 +96,7 @@ $config = [
 		        ],
 		        'yii*' => [
 		            'class' => 'yii\i18n\PhpMessageSource',
-		            'basePath' => '@app/messages',
+		            'basePath' => '@yii/messages',
 		        ],
 		        'course*' => [
 		            'class' => 'yii\i18n\PhpMessageSource',

@@ -83,7 +83,7 @@ class Section extends \yii\db\ActiveRecord
             [['section_batch_id', 'intake', 'created_by', 'updated_by', 'is_status'], 'integer', 'message' => ''],
             [['created_at', 'updated_at'], 'safe', 'message' => ''],
             [['section_name'], 'string', 'max' => 50],
-	    [['section_name', 'section_batch_id'], 'unique', 'targetAttribute' => ['section_name', 'section_batch_id'], 'message' => 'Section Already Exists of this Batch.']
+	    [['section_name', 'section_batch_id'], 'unique', 'targetAttribute' => ['section_name', 'section_batch_id'], 'message' => Yii::t('course', 'Section Already Exists of this Batch.')]
         ];
     }
 
@@ -136,4 +136,14 @@ class Section extends \yii\db\ActiveRecord
     {
         return $this->hasMany(StuMaster::className(), ['stu_master_section_id' => 'section_id']);
     }
+
+	/**
+	* @return all Section
+	*/
+	public static function getStuSection()
+	{
+		$dataTmp = Section::find()->where(['is_status' => 0])->orderBy('section_name')->all();
+		$result = yii\helpers\ArrayHelper::map($dataTmp, 'section_id', 'section_name');
+		return $result;
+	}
 }

@@ -79,7 +79,7 @@ class StuMaster extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public $report_batch_id,$report_section_id,$report_city;
+    public $report_batch_id,$report_section_id,$report_city,$importFile;
     public static function tableName()
     {
         return 'stu_master';
@@ -96,12 +96,13 @@ class StuMaster extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['stu_master_stu_info_id', 'stu_master_user_id', 'stu_master_course_id', 'stu_master_batch_id', 'stu_master_section_id', 'created_at', 'created_by'], 'required', 'message' => ''],
+            [['stu_master_stu_info_id', 'stu_master_user_id', 'stu_master_course_id', 'stu_master_batch_id', 'stu_master_section_id', 'created_at', 'created_by'], 'required'],
 	    	[['report_batch_id','report_section_id','report_city'],'integer'],	
             [['stu_master_stu_info_id', 'stu_master_user_id', 'stu_master_nationality_id', 'stu_master_category_id', 'stu_master_course_id', 'stu_master_batch_id', 'stu_master_section_id', 'stu_master_stu_status_id', 'stu_master_stu_address_id', 'created_by', 'updated_by', 'is_status'], 'integer', 'message' => ''],
             [['created_at', 'updated_at', 'stu_master_stu_status_id'], 'safe'],
             [['stu_master_stu_info_id'], 'unique'],
-            [['stu_master_user_id'], 'unique']
+            [['stu_master_user_id'], 'unique'],
+			[['importFile'], 'file', 'extensions' => 'xlsx, csv', 'skipOnEmpty' => false, 'checkExtensionByMimeType'=>false, 'uploadRequired' => Yii::t('stu', 'Please select file'), 'on' => 'import-student'],
         ];
     }
 	    
@@ -131,6 +132,31 @@ class StuMaster extends \yii\db\ActiveRecord
 	    'report_city' => Yii::t('stu', 'City'),
 			
         ];
+    }
+
+	/*
+	* get Import file path
+	*/
+	public function getImportFilePath()
+    {
+    	return Yii::getAlias('@webroot').'/data/import_files/student_files/';
+    }
+    
+	/*
+	* save import file
+	*/
+    public function saveImportFile()
+    {
+		if ($this->validate(['importFile'])) {
+			$newName = $this->importFile->basename.'_'.\Yii::$app->session->get('clg_id').'_'.\Yii::$app->user->id.'_'.time().'.'.$this->importFile->extension; 
+			//print_r($this->getImportFilePath()); exit;
+			$returnResults = $this->importFile->saveAs($this->getImportFilePath().$this->importFile = $newName);
+			
+			if($returnResults) {
+				return true;	
+			}
+		} 
+		return false;
     }
 
     /**
@@ -243,5 +269,5 @@ class StuMaster extends \yii\db\ActiveRecord
     public function getCreatedBy()
     {
         return $this->hasOne(User::className(), ['user_id' => 'created_by']);
-    }
+    }	
 }

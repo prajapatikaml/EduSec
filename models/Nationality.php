@@ -142,4 +142,14 @@ class Nationality extends \yii\db\ActiveRecord
     {
         return $this->hasMany(StuMaster::className(), ['stu_master_nationality_id' => 'nationality_id']);
     }
+		
+	/**
+     * @return all nationality data into array for dropdown
+     */
+    public static function getNationality()
+    {
+    	$dataTmp = self::find()->where(['is_status' => 0])->orderBy('nationality_name')->all();
+		$result = yii\helpers\ArrayHelper::map($dataTmp, 'nationality_id', 'nationality_name');
+		return $result;
+    }
 }

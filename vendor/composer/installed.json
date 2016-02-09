@@ -2880,7 +2880,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/mpdf/mpdf/zipball/69d1abdde39b5341c53c1498af4625f414f04625",
+            "url": "https://api.github.com/repos/mpdf/mpdf/zipball/9f2d761e7ac1d89a6752a18036a597fa9ce2d8c7",
             "reference": "69d1abdde39b5341c53c1498af4625f414f04625",
             "shasum": ""
         },
@@ -2926,7 +2926,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/miloschuman/yii2-highcharts/zipball/c6c2e163d2cb537b09c5f46b65fc73adc604e904",
+            "url": "https://api.github.com/repos/miloschuman/yii2-highcharts/zipball/b251a9e3491f5f18721cc36d36c310047408dfad",
             "reference": "c6c2e163d2cb537b09c5f46b65fc73adc604e904",
             "shasum": ""
         },
@@ -2959,6 +2959,326 @@
             "highmaps",
             "highstock",
             "widget",
+            "yii2"
+        ]
+    },
+    {
+        "name": "phpoffice/phpexcel",
+        "version": "1.8.1",
+        "version_normalized": "1.8.1.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/PHPOffice/PHPExcel.git",
+            "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/PHPOffice/PHPExcel/zipball/372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+            "reference": "372c7cbb695a6f6f1e62649381aeaa37e7e70b32",
+            "shasum": ""
+        },
+        "require": {
+            "ext-xml": "*",
+            "ext-xmlwriter": "*",
+            "php": ">=5.2.0"
+        },
+        "time": "2015-05-01 07:00:55",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "PHPExcel": "Classes/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "LGPL"
+        ],
+        "authors": [
+            {
+                "name": "Maarten Balliauw",
+                "homepage": "http://blog.maartenballiauw.be"
+            },
+            {
+                "name": "Mark Baker"
+            },
+            {
+                "name": "Franck Lefevre",
+                "homepage": "http://blog.rootslabs.net"
+            },
+            {
+                "name": "Erik Tilt"
+            }
+        ],
+        "description": "PHPExcel - OpenXML - Read, Create and Write Spreadsheet documents in PHP - Spreadsheet engine",
+        "homepage": "http://phpexcel.codeplex.com",
+        "keywords": [
+            "OpenXML",
+            "excel",
+            "php",
+            "spreadsheet",
+            "xls",
+            "xlsx"
+        ]
+    },
+    {
+        "name": "arogachev/yii2-excel",
+        "version": "0.1.0",
+        "version_normalized": "0.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/arogachev/yii2-excel.git",
+            "reference": "009d6acf734b1f603c96d97a3ea9663a35a3539f"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/arogachev/yii2-excel/zipball/009d6acf734b1f603c96d97a3ea9663a35a3539f",
+            "reference": "009d6acf734b1f603c96d97a3ea9663a35a3539f",
+            "shasum": ""
+        },
+        "require": {
+            "phpoffice/phpexcel": "1.8.*",
+            "yiisoft/yii2": "*"
+        },
+        "require-dev": {
+            "yiisoft/yii2-codeception": "~2.0"
+        },
+        "time": "2015-05-16 11:51:20",
+        "type": "yii2-extension",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "arogachev\\excel\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "BSD-3-Clause"
+        ],
+        "authors": [
+            {
+                "name": "Alexey Rogachev",
+                "email": "arogachev90@gmail.com"
+            }
+        ],
+        "description": "ActiveRecord import and export based on PHPExcel for Yii 2 framework",
+        "homepage": "https://github.com/arogachev/yii2-excel",
+        "keywords": [
+            "Active Record",
+            "PHPExcel",
+            "excel",
+            "export",
+            "import",
+            "yii2"
+        ]
+    },
+    {
+        "name": "fxp/composer-asset-plugin",
+        "version": "v1.0.3",
+        "version_normalized": "1.0.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/francoispluchino/composer-asset-plugin.git",
+            "reference": "c2b0406ac19e9ea2d9556987e827d4e7f6924fde"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/francoispluchino/composer-asset-plugin/zipball/c2b0406ac19e9ea2d9556987e827d4e7f6924fde",
+            "reference": "c2b0406ac19e9ea2d9556987e827d4e7f6924fde",
+            "shasum": ""
+        },
+        "require": {
+            "composer-plugin-api": "^1.0",
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "composer/composer": "~1.0@dev"
+        },
+        "time": "2015-07-29 12:23:21",
+        "type": "composer-plugin",
+        "extra": {
+            "class": "Fxp\\Composer\\AssetPlugin\\FxpAssetPlugin",
+            "branch-alias": {
+                "dev-master": "1.0-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Fxp\\Composer\\AssetPlugin\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "François Pluchino",
+                "email": "francois.pluchino@gmail.com"
+            }
+        ],
+        "description": "NPM/Bower Dependency Manager for Composer",
+        "homepage": "https://github.com/francoispluchino/composer-asset-plugin",
+        "keywords": [
+            "asset",
+            "bower",
+            "composer",
+            "dependency manager",
+            "nodejs",
+            "npm",
+            "package"
+        ]
+    },
+    {
+        "name": "bower-asset/datatables",
+        "version": "1.10.9",
+        "version_normalized": "1.10.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/DataTables/DataTables.git",
+            "reference": "b1bca78111d679b20cdee118292a1e4220f46b2a"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/DataTables/DataTables/zipball/b1bca78111d679b20cdee118292a1e4220f46b2a",
+            "reference": "b1bca78111d679b20cdee118292a1e4220f46b2a",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/jquery": ">=1.7.0"
+        },
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": [
+                "media/js/jquery.dataTables.js",
+                "media/css/jquery.dataTables.css",
+                "media/images/sort_asc.png",
+                "media/images/sort_asc_disabled.png",
+                "media/images/sort_both.png",
+                "media/images/sort_desc.png",
+                "media/images/sort_desc_disabled.png"
+            ],
+            "bower-asset-ignore": [
+                "/.*",
+                "examples",
+                "media/unit_testing",
+                "composer.json",
+                "dataTables.jquery.json",
+                "package.json"
+            ]
+        },
+        "installation-source": "dist",
+        "license": [
+            "MIT"
+        ],
+        "keywords": [
+            "datatables",
+            "javascript",
+            "jquery",
+            "library",
+            "table"
+        ]
+    },
+    {
+        "name": "bower-asset/datatables-tabletools",
+        "version": "2.2.4",
+        "version_normalized": "2.2.4.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/DataTables/TableTools.git",
+            "reference": "5fc9d457b673fe3f2d84f32660ee74e29ce6f84e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/DataTables/TableTools/zipball/5fc9d457b673fe3f2d84f32660ee74e29ce6f84e",
+            "reference": "5fc9d457b673fe3f2d84f32660ee74e29ce6f84e",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/datatables": ">=1.9.0",
+            "bower-asset/jquery": ">=1.7.0"
+        },
+        "type": "bower-asset-library",
+        "extra": {
+            "bower-asset-main": [
+                "js/dataTables.tableTools.js",
+                "css/dataTables.tableTools.css"
+            ]
+        },
+        "installation-source": "dist"
+    },
+    {
+        "name": "bower-asset/datatables-bootstrap3",
+        "version": "0.1",
+        "version_normalized": "0.1.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/Jowin/Datatables-Bootstrap3.git",
+            "reference": "06d78a732dfd1da928ff118dd26249ae94021495"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/Jowin/Datatables-Bootstrap3/zipball/06d78a732dfd1da928ff118dd26249ae94021495",
+            "reference": "06d78a732dfd1da928ff118dd26249ae94021495",
+            "shasum": ""
+        },
+        "type": "bower-asset-library",
+        "installation-source": "dist"
+    },
+    {
+        "name": "fedemotta/yii2-widget-datatables",
+        "version": "v1.3",
+        "version_normalized": "1.3.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fedemotta/yii2-widget-datatables.git",
+            "reference": "ee0c70a038302ca414fe01d51732ed217efdc772"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/fedemotta/yii2-widget-datatables/zipball/ee0c70a038302ca414fe01d51732ed217efdc772",
+            "reference": "ee0c70a038302ca414fe01d51732ed217efdc772",
+            "shasum": ""
+        },
+        "require": {
+            "bower-asset/datatables": ">= 1.9.4",
+            "bower-asset/datatables-bootstrap3": "*",
+            "bower-asset/datatables-tabletools": "*",
+            "bower-asset/jquery": ">= 1.7.0",
+            "yiisoft/yii2": "*"
+        },
+        "time": "2015-06-08 16:07:23",
+        "type": "yii2-extension",
+        "extra": {
+            "asset-installer-paths": {
+                "bower-asset-library": "vendor/bower"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "fedemotta\\datatables\\": ""
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Federico Nicolás Motta",
+                "email": "fedemotta@gmail.com"
+            }
+        ],
+        "description": "DataTables widget for Yii2",
+        "keywords": [
+            "datatables",
+            "extension",
+            "javascript",
+            "jquery",
+            "library",
+            "table",
             "yii2"
         ]
     }

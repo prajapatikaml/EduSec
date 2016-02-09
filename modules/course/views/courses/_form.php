@@ -43,7 +43,7 @@ else
 
     <?php if(Yii::$app->controller->action->id == 'create') { ?>
 
-    <h4 class="box-title text-aqua">Initial Batch</h4>
+    <h4 class="box-title text-aqua"><?php echo Yii::t('course', 'Initial Batch'); ?></h4>
 
    <div class="col-xs-12 col-lg-12 no-padding">
     <div class="col-xs-12 col-sm-6 col-lg-6">
@@ -87,7 +87,7 @@ else
     </div>
    </div>
 
-    <h4 class="box-title text-light-blue">Initial Section</h4>
+    <h4 class="box-title text-light-blue"><?php echo Yii::t('course', 'Initial Section'); ?></h4>
 
    <div class="col-xs-12 col-lg-12 no-padding">
     <div class="col-xs-12 col-sm-6 col-lg-6">

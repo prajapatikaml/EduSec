@@ -17,7 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Student Report' => '',
     'Reports Center' => '@@@@',
     '--- Select Department ---' => '--- विभाग चुनिए ---',
     '--- Select Designation ---' => '--- पद चुनिए ---',
@@ -95,6 +94,7 @@ return [
     'Student Count' => 'छात्र संख्या',
     'Student Info Report' => 'छात्र जानकारी रिपोर्ट',
     'Student No' => 'छात्र नं.',
+    'Student Report' => 'छात्र की रिपोर्ट',
     'Students List' => 'छात्र की सूची',
     'Total Employee' => 'कुल कर्मचारी',
     'Year Wise Joining Employees' => 'वर्षवार कर्मचारियों शामिल होने की औसत',

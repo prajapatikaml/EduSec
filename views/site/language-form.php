@@ -19,7 +19,8 @@ $this->registerJs("(function($) {
 ?>
 	<div class="modal-body">
 		<div class="row">
-			<?= Html::radioList('language', Yii::$app->language, ['en' => Yii::t('app', 'English'), 'gu' => Yii::t('app', 'Gujarati (ગુજરાતી)'), 'hi' => Yii::t('app', 'Hindi'), 'fr' => Yii::t('app', 'French')], 								[ 'item' => function($index, $label, $name, $checked, $value) {
+			<?= Html::radioList('language', Yii::$app->language, ['en' => Yii::t('app', 'English'), 'gu' => Yii::t('app', 'Gujarati (ગુજરાતી)'), 'hi' => Yii::t('app', 'Hindi (हिन्दी)'), 'fr' => Yii::t('app', 'French (français)'), 'es' => Yii::t('app', 'Spanish (Latin American)')], 								
+								[ 'item' => function($index, $label, $name, $checked, $value) {
 			                        $return = '<label class="left-padding">';
 			                        $return .= Html::radio($name, $checked, ['value' => $value]);
 			                        $return .= '<i></i>';

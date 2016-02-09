@@ -18,12 +18,14 @@
  */
 return [
     'Emp Master Emp Info ID' => '',
+    'Employee Login Note' => 'employé connexion note',
     'Info Emp Master ID' => '',
     'APPROVED' => '@@@@',
     'DISAPPROVED' => '@@Désapprouvé@@',
     'address' => '@@@@',
     'emp-photo' => '@@@@',
     'hidden' => '@@@@',
+    '{title}' => '@@@@',
     '--- Select Department ---' => '--- Choisir département ---',
     '--- Select Designation ---' => '--- Sélectionner/choisir appellation ---',
     'A+' => 'A+',

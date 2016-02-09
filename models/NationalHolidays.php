@@ -82,7 +82,7 @@ class NationalHolidays extends \yii\db\ActiveRecord
             [['created_by', 'updated_by', 'is_status'], 'integer'],
             [['national_holiday_name'], 'string', 'max' => 50],
             [['national_holiday_remarks'], 'string', 'max' => 100],
-            [['national_holiday_name', 'national_holiday_date'], 'unique', 'targetAttribute' => ['national_holiday_name', 'national_holiday_date'], 'message' => 'The combination of National Holiday Name and National Holiday Date has already been taken.']
+            [['national_holiday_name', 'national_holiday_date'], 'unique', 'targetAttribute' => ['national_holiday_name', 'national_holiday_date'], 'message' => Yii::t('app', 'The combination of National Holiday Name and National Holiday Date has already been taken.')]
         ];
     }
 

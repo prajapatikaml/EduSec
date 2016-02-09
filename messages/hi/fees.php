@@ -17,7 +17,9 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Current Active Fees Collection Category Wise' => 'वर्तमान सक्रिय फीस संग्रह श्रेणीवार',
+    'Cash' => 'नकद',
+    'Cheque' => 'चेक',
+    'The combination of Fees Category and Batch has already been taken.' => '',
     ' Take Fees' => 'फीस लीजियें',
     '(Not Set)' => '(सेट नहीं है)',
     'ADD' => 'नया जोड़ें',
@@ -53,6 +55,7 @@ return [
     'Create New' => 'नया बनाएँ',
     'Created At' => 'बनाने का समय',
     'Created By' => 'द्वारा बनाया गया',
+    'Current Active Fees Collection Category Wise' => 'वर्तमान सक्रिय फीस संग्रह श्रेणीवार',
     'Current Fees Details' => 'वर्तमान फीस की जानकारी ',
     'Date' => 'तारीख',
     'Delete' => 'मिटायें',
@@ -93,9 +96,9 @@ return [
     'No student data available' => 'कोई छात्र डेटा उपलब्ध नहीं है।',
     'PDF' => 'पीडीएफ',
     'Paid Amount' => 'अदा की गई राशि',
+    'Paid/Unpaid' => 'अदा/शेष राशि',
     'Paid/Unpaid Amount' => 'अदा/शेष राशि',
     'Partial Payment Fees Receipt' => 'आंशिक भुगतान की फीस रसीद',
-	'Paid/Unpaid' => 'अदा/शेष राशि',
     'Payment Date' => 'भुगतान की तारीख',
     'Payment History' => 'भुगतान का सारांश',
     'Payment Mode' => 'भुगतान का प्रकार',

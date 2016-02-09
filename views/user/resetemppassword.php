@@ -25,7 +25,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Reset Employee Passw
 
 <?php $dataProvider = $model->search(Yii::$app->request->queryParams); ?>
 <div class="col-xs-12">
-  <div class="col-lg-4 col-sm-4 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-th-list"></i> <?= $this->title ?></h3></div>
+  <div class="col-lg-8 col-sm-8 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-th-list"></i> <?= $this->title ?></h3></div>
   <div class="col-xs-4"></div>
   <div class="col-lg-4 col-sm-4 col-xs-12 no-padding" style="padding-top: 20px !important;"></div>
 </div>

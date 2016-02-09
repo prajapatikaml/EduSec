@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
 	    [
 		'attribute' => 'updated_by',
 		//'label' => 'Updated By',
-            	'value' => $model->updatedBy->user_login_id,
+         'value' => ($model->updated_by == null) ? " - ":$model->updatedBy->user_login_id,
 	    ],
           //  'is_status', 
         ],

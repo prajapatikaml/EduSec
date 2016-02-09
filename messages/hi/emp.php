@@ -18,6 +18,7 @@
  */
 return [
     'Emp Master Emp Info ID' => '',
+    'Employee Login Note' => 'कर्मचारी लॉगिन नोट',
     'Info Emp Master ID' => '',
     'Unique Id' => '',
     'APPROVED' => '@@स्वीकृत@@',
@@ -25,6 +26,7 @@ return [
     'address' => '@@@@',
     'emp-photo' => '@@@@',
     'hidden' => '@@@@',
+    '{title}' => '@@@@',
     '--- Select Department ---' => '--- विभाग चुनिए---',
     '--- Select Designation ---' => '--- पद चुनिए ---',
     'A+' => 'A+',

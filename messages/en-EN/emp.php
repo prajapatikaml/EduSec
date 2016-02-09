@@ -100,6 +100,7 @@ return [
     'Employee Detail' => '',
     'Employee ID' => '',
     'Employee Id' => '',
+    'Employee Login Note' => '',
     'Employee Module' => '',
     'Employee Name' => '',
     'Employee Profile' => '',
@@ -216,4 +217,5 @@ return [
     'address' => '@@@@',
     'emp-photo' => '@@@@',
     'hidden' => '@@@@',
+    '{title}' => '@@@@',
 ];

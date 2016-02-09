@@ -38,6 +38,7 @@
 
 namespace app\modules\report\controllers;
 use yii\helpers\Html;
+use Yii;
 
 class DependentController extends \yii\web\Controller
 {
@@ -45,7 +46,7 @@ class DependentController extends \yii\web\Controller
 	public function actionStudbatch($id)
 	{
 		$rows = \app\modules\course\models\Batches::find()->where(['batch_course_id' => $id, 'is_status' => 0])->all();	 
-		echo "<option value=''>---Select Batch---</option>";
+		echo "<option value=''>" .Yii::t('app', '--- Select Batch ---'). "</option>";
 	 
 		if(count($rows) > 0){
 		    foreach($rows as $row){
@@ -64,7 +65,7 @@ class DependentController extends \yii\web\Controller
 	{
 		$rows = \app\modules\course\models\Section::find()->where(['section_batch_id' => $id, 'is_status' => 0])->all();
 	 
-		echo "<option value=''>---Select Section---</option>";
+		echo "<option value=''>" .Yii::t('app', '--- Select Section ---'). "</option>";
 	 
 		if(count($rows) > 0){
 		    foreach($rows as $row){

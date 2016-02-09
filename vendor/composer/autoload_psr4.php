@@ -43,8 +43,11 @@ return array(
     'kartik\\base\\' => array($vendorDir . '/kartik-v/yii2-krajee-base'),
     'kartik\\alert\\' => array($vendorDir . '/kartik-v/yii2-widget-alert'),
     'kartik\\affix\\' => array($vendorDir . '/kartik-v/yii2-widget-affix'),
+    'fedemotta\\datatables\\' => array($vendorDir . '/fedemotta/yii2-widget-datatables'),
     'dosamigos\\switchinput\\' => array($vendorDir . '/2amigos/yii2-switch-widget/src'),
     'dmstr\\' => array($vendorDir . '/dmstr/yii2-adminlte-asset'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
+    'arogachev\\excel\\' => array($vendorDir . '/arogachev/yii2-excel/src'),
     '\\pheme\\grid\\' => array($vendorDir . '/pheme/yii2-toggle-column'),
+    'Fxp\\Composer\\AssetPlugin\\' => array($vendorDir . '/fxp/composer-asset-plugin'),
 );

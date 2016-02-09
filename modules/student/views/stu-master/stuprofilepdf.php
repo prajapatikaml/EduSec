@@ -78,22 +78,22 @@ table tr:nth-child(odd) {
 </tr>	
 <tr>
 	<td class="label"><?= $stuMaster->getAttributeLabel('stu_master_nationality_id') ?></td>
-	<td><?php echo (!empty($nationality)) ? $nationality : "(Not Set)"; ?></td>
+	<td><?php echo (!empty($nationality)) ? $nationality :  Yii::t('stu', '(Not Set)'); ?></td>
 	<td class="label"><?= $stuInfo->getAttributeLabel('stu_mobile_no') ?></td><td><?php echo $stuInfo->stu_mobile_no;?></td>
 </tr>
 <tr>
 	<td class="label"><?= $stuMaster->getAttributeLabel('stu_master_category_id') ?></td>
-	<td><?php echo (!empty($stuMaster->stu_master_category_id)) ? $stuMaster->stuMasterCategory->stu_category_name : "(Not Set)"; ?></td>
+	<td><?php echo (!empty($stuMaster->stu_master_category_id)) ? $stuMaster->stuMasterCategory->stu_category_name : Yii::t('stu', '(Not Set)'); ?></td>
 	<td class="label"><?= $stuInfo->getAttributeLabel('stu_religion') ?></td><td><?php echo $stuInfo->stu_religion;?></td>
 </tr>
 <tr>
 	<td class="label"><?= $stuInfo->getAttributeLabel('stu_bloodgroup') ?></td>
-	<td><?php echo (!empty($stuInfo->stu_bloodgroup)) ? $stuInfo->stu_bloodgroup : "(Not Set)"; ?></td>
+	<td><?php echo (!empty($stuInfo->stu_bloodgroup)) ? $stuInfo->stu_bloodgroup : Yii::t('stu', '(Not Set)'); ?></td>
 	<td class="label"><?= $stuInfo->getAttributeLabel('stu_birthplace') ?></td><td><?php echo $stuInfo->stu_birthplace;?></td>
 </tr>
 <tr>
 	<td class="label"><?= $stuInfo->getAttributeLabel('stu_languages') ?></td>
-	<td colspan="3"><?php echo (!empty($stuInfo->stu_languages)) ? $stuInfo->stu_languages : "(Not Set)"; ?></td>
+	<td colspan="3"><?php echo (!empty($stuInfo->stu_languages)) ? $stuInfo->stu_languages : Yii::t('stu', '(Not Set)'); ?></td>
 </tr>	
 </table>
 

@@ -89,7 +89,7 @@ class Batches extends \yii\db\ActiveRecord
             [['start_date', 'end_date', 'created_at', 'updated_at'], 'safe', 'message' => ''],
             [['batch_name'], 'string', 'max' => 120],
             [['batch_alias'], 'string', 'max' => 35],
-	    [['batch_name', 'batch_course_id'], 'unique', 'targetAttribute' => ['batch_name', 'batch_course_id'], 'message' => 'Batch Already Exists for this Course.', 'when' => function ($model){ return $model->is_status == 0;}],
+	    [['batch_name', 'batch_course_id'], 'unique', 'targetAttribute' => ['batch_name', 'batch_course_id'], 'message' => yii::t('course', 'Batch Already Exists for this Course.'), 'when' => function ($model){ return $model->is_status == 0;}],
             [['batch_alias'], 'unique', 'targetAttribute' => ['batch_alias'],]
         ];
     }
@@ -174,4 +174,14 @@ class Batches extends \yii\db\ActiveRecord
     {
 	return $this->is_status = 0;
     }
+
+	/**
+	* @return all batches
+	*/
+	public static function getStuBatches()
+	{
+		$dataTmp = Batches::find()->where(['is_status' => 0])->orderBy('batch_name')->all();
+		$result = yii\helpers\ArrayHelper::map($dataTmp, 'batch_id', 'batch_name');
+		return $result;
+	}
 }

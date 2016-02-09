@@ -5,12 +5,12 @@ use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 ?>
 <?php
-$this->title = Yii::t('app', Yii::t('app', 'Update Employee Login');
+$this->title = Yii::t('app', 'Update Employee Login');
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-xs-12">
-  <div class="col-lg-4 col-sm-4 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-edit"></i> <?php echo Yii::t('app', 'Update Employee Login'); ?> </h3></div>
+  <div class="col-lg-8 col-sm-8 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-edit"></i> <?php echo Yii::t('app', 'Update Employee Login'); ?> </h3></div>
 </div>
 <div class="col-xs-12 col-lg-12">
   <div class="<?php echo $model->isNewRecord ? 'box-success' : 'box-info'; ?> box view-item col-xs-12 col-lg-12">

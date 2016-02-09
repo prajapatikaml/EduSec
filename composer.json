@@ -28,7 +28,10 @@
 	"yiisoft/yii2-imagine": "~2.0.0",
 	"dmstr/yii2-adminlte-asset": "1.*",
 	"philippfrenzel/yii2fullcalendar":"*",
-        "miloschuman/yii2-highcharts-widget": "dev-master"
+        "miloschuman/yii2-highcharts-widget": "dev-master",
+        "arogachev/yii2-excel": "^0.1.0",
+        "fxp/composer-asset-plugin": "~1.0.0",
+        "fedemotta/yii2-widget-datatables": "*"
 	
     },
     "require-dev": {

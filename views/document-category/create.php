@@ -12,7 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Document Category Li
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-xs-12">
-  <div class="col-lg-4 col-sm-4 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-plus"></i> <?php echo Yii::t('app', 'Add Document Category') ?></h3></div>
+  <div class="col-lg-8 col-sm-8 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-plus"></i> <?php echo Yii::t('app', 'Add Document Category') ?></h3></div>
 
   <div class="col-xs-4"></div>
 

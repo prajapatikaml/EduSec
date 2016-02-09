@@ -6,7 +6,6 @@ $this->params['breadcrumbs'][] = $this->title;
 $this->registerCss(".popover{max-width:500px}");
 ?>
 
-
 <div class="box box-default">
 	<div class="box-header with-border">
 		<h3 class="box-title"><i class="glyphicon glyphicon-dashboard"></i> <?php echo Yii::t('dash', 'Manage Users Dashboard') ?></h3>

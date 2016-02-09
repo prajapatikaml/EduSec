@@ -83,7 +83,7 @@ class DocumentCategory extends \yii\db\ActiveRecord
             [['created_by', 'updated_by', 'is_status'], 'integer'],
             [['doc_category_name'], 'string', 'max' => 50],
             [['doc_category_user_type'], 'string', 'max' => 2],
-            [['doc_category_name', 'doc_category_user_type'], 'unique', 'targetAttribute' => ['doc_category_name', 'doc_category_user_type'], 'message' => 'The combination of Document Category and User Type has already been taken.']
+            [['doc_category_name', 'doc_category_user_type'], 'unique', 'targetAttribute' => ['doc_category_name', 'doc_category_user_type'], 'message' => Yii::t('app', 'The combination of Document Category and User Type has already been taken.')]
         ];
     }
 

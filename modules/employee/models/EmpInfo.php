@@ -85,7 +85,8 @@ use Yii;
 
 class EmpInfo extends \yii\db\ActiveRecord
 {
-	const TYPE_MALE='MALE';
+	
+	const TYPE_MALE= 'MALE';
 	const TYPE_FEMALE='FEMALE';
 	const TYPE_APLUS='A+';
 	const TYPE_AMINUS='A-';
@@ -125,9 +126,9 @@ class EmpInfo extends \yii\db\ActiveRecord
 			[['emp_attendance_card_id'], 'default', 'value' => NULL],
             [['emp_mobile_no', 'emp_experience_year', 'emp_experience_month', 'emp_guardian_mobile_no', 'emp_info_emp_master_id', 'emp_unique_id'], 'integer'],
             [['emp_attendance_card_id', 'emp_mother_name', 'emp_religion', 'emp_birthplace', 'emp_qualification', 'emp_guardian_qualification', 'emp_guardian_occupation', 'emp_guardian_income'], 'string', 'max' => 50],
-            [['emp_title'], 'string', 'max' => 5],
+            [['emp_title'], 'string', 'max' => 15],
             [['emp_first_name', 'emp_middle_name', 'emp_last_name', 'emp_maritalstatus', 'emp_reference'], 'string', 'max' => 35],
-            [['emp_name_alias', 'emp_gender', 'emp_bloodgroup'], 'string', 'max' => 10],
+            [['emp_name_alias', 'emp_gender', 'emp_bloodgroup'], 'string', 'max' => 20],
             [['emp_email_id', 'emp_guardian_name', 'emp_guardian_email_id'], 'string', 'max' => 65],
 			[['emp_photo'], 'file', 'extensions' => 'jpg, jpeg, gif, png', 'skipOnEmpty' => false, 'checkExtensionByMimeType'=>false, 'on' => 'photo-upload'],
             [['emp_languages', 'emp_specialization', 'emp_guardian_homeadd', 'emp_guardian_officeadd'], 'string', 'max' => 255],
@@ -213,8 +214,8 @@ class EmpInfo extends \yii\db\ActiveRecord
     public static function getGenderOptions()
     {
 	return[
-	self::TYPE_MALE => Yii::t('emp', 'MALE'),
-	self::TYPE_FEMALE => Yii::t('emp', 'FEMALE'),
+	Yii::t('emp', self::TYPE_MALE) => Yii::t('emp', 'MALE'),
+	Yii::t('emp', self::TYPE_FEMALE) => Yii::t('emp', 'FEMALE'),
 	];
     }
 
@@ -233,15 +234,15 @@ class EmpInfo extends \yii\db\ActiveRecord
     public static function getBloodGroup()
     {
 	return[
-	self::TYPE_UNKNON => Yii::t('emp', 'Unknown'),
-	self::TYPE_APLUS => Yii::t('emp', 'A+'),
-	self::TYPE_AMINUS => Yii::t('emp', 'A-'),
-	self::TYPE_BPLUS => Yii::t('emp', 'B+'),
-	self::TYPE_BMINUS => Yii::t('emp', 'B-'),
-	self::TYPE_ABPLUS => Yii::t('emp', 'AB+'),
-	self::TYPE_ABMINUS => Yii::t('emp', 'AB-'),
-	self::TYPE_OPLUS => Yii::t('emp', 'O+'),
-	self::TYPE_OMINUS => Yii::t('emp', 'O-'),
+	Yii::t('emp', self::TYPE_UNKNON) => Yii::t('emp', 'Unknown'),
+	Yii::t('emp', self::TYPE_APLUS) => Yii::t('emp', 'A+'),
+	Yii::t('emp', self::TYPE_AMINUS) => Yii::t('emp', 'A-'),
+	Yii::t('emp', self::TYPE_BPLUS) => Yii::t('emp', 'B+'),
+	Yii::t('emp', self::TYPE_BMINUS) => Yii::t('emp', 'B-'),
+	Yii::t('emp', self::TYPE_ABPLUS) => Yii::t('emp', 'AB+'),
+	Yii::t('emp', self::TYPE_ABMINUS) => Yii::t('emp', 'AB-'),
+	Yii::t('emp', self::TYPE_OPLUS) => Yii::t('emp', 'O+'),
+	Yii::t('emp', self::TYPE_OMINUS) => Yii::t('emp', 'O-'),
 	];
      }
 
@@ -251,9 +252,9 @@ class EmpInfo extends \yii\db\ActiveRecord
      public static function getMaritialStatus()
      {
 	return[
-	self::TYPE_MARRIED => Yii::t('emp', 'MARRIED'),
-	self::TYPE_UNMARRIED => Yii::t('emp', 'UNMARRIED'),
-	self::TYPE_DIVORCED => Yii::t('emp', 'DIVORCED'),
+	Yii::t('emp', self::TYPE_MARRIED) => Yii::t('emp', 'MARRIED'),
+	Yii::t('emp', self::TYPE_UNMARRIED) => Yii::t('emp', 'UNMARRIED'),
+	Yii::t('emp', self::TYPE_DIVORCED) => Yii::t('emp', 'DIVORCED'),
 	];
      }
 	
@@ -263,11 +264,11 @@ class EmpInfo extends \yii\db\ActiveRecord
       public static function getTitleOptions()
       {
 	 return[
-	 self::TYPE_MR => Yii::t('emp', 'Mr.'),
-	 self::TYPE_MRS => Yii::t('emp', 'Mrs.'), 
-	 self::TYPE_MISS => Yii::t('emp', 'Ms.'),
-	 self::TYPE_PROF => Yii::t('emp', 'Prof.'),
-	 self::TYPE_DR => Yii::t('emp', 'Dr.'),
+	 Yii::t('emp', self::TYPE_MR) => Yii::t('emp', 'Mr.'),
+	 Yii::t('emp', self::TYPE_MRS) => Yii::t('emp', 'Mrs.'), 
+	 Yii::t('emp', self::TYPE_MISS) => Yii::t('emp', 'Ms.'),
+	 Yii::t('emp', self::TYPE_PROF) => Yii::t('emp', 'Prof.'),
+	 Yii::t('emp', self::TYPE_DR) => Yii::t('emp', 'Dr.'),
 	];
        }
 

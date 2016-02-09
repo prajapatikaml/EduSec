@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'cebe\\gravatar\\' => array($vendorDir . '/cebe/yii2-gravatar'),
+    'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
     'Imagine' => array($vendorDir . '/imagine/imagine/lib'),
     'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
     'Faker\\PHPUnit' => array($vendorDir . '/fzaninotto/faker/test'),

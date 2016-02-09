@@ -131,4 +131,14 @@ class StuCategory extends \yii\db\ActiveRecord
     {
         return $this->hasMany(StuMaster::className(), ['stu_master_category_id' => 'stu_category_id']);
     }
+
+	/**
+	* @return student category
+	*/
+	public function getStuCategoryId()
+	{	
+		$dataTmp = StuCategory::find()->where(['is_status' => 0])->orderBy('stu_category_name')->all();
+		$result = yii\helpers\ArrayHelper::map($dataTmp, 'stu_category_id', 'stu_category_name');
+		return $result;
+	}
 }

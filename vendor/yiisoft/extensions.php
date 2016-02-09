@@ -327,4 +327,22 @@ return array (
       '@miloschuman/highcharts' => $vendorDir . '/miloschuman/yii2-highcharts-widget/src',
     ),
   ),
+  'arogachev/yii2-excel' => 
+  array (
+    'name' => 'arogachev/yii2-excel',
+    'version' => '0.1.0.0',
+    'alias' => 
+    array (
+      '@arogachev/excel' => $vendorDir . '/arogachev/yii2-excel/src',
+    ),
+  ),
+  'fedemotta/yii2-widget-datatables' => 
+  array (
+    'name' => 'fedemotta/yii2-widget-datatables',
+    'version' => '1.3.0.0',
+    'alias' => 
+    array (
+      '@fedemotta/datatables' => $vendorDir . '/fedemotta/yii2-widget-datatables',
+    ),
+  ),
 );

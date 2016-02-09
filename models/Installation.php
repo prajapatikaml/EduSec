@@ -52,8 +52,8 @@ class Installation extends Model
         return [
             [['db_host', 'db_user', 'db_name'], 'required', 'on'=>'dbConfig'],
 	    [['db_password'], 'safe', 'on'=>'dbConfig'],
-	    [['is_demo_db'], 'required', 'on'=>'dbImport', 'message'=>'Please select atleast one database'],
-	    ['is_agree', 'required', 'on' => 'agree', 'requiredValue' => 1, 'message' => 'Please agree terms and conditions'],
+	    [['is_demo_db'], 'required', 'on'=>'dbImport', 'message'=> Yii::t('app', 'Please select atleast one database')],
+	    ['is_agree', 'required', 'on' => 'agree', 'requiredValue' => 1, 'message' => Yii::t('app', 'Please agree terms and conditions')],
 	    [['db_password'], 'string'],
         ];
     }
@@ -64,12 +64,12 @@ class Installation extends Model
     public function attributeLabels()
     {
         return [
-            'db_host' => Yii::t('app', 'Database host'),
-            'db_user' => Yii::t('app', 'Database user'),
-	    'db_password' => Yii::t('app', 'Database password'),
-	    'db_name' => Yii::t('app', 'Database name'),
-	    'is_demo_db'=> Yii::t('app', 'Select Database'),
-	    'is_agree'=> Yii::t('app', 'I agree to these conditions?'),
+            'db_host' => 'Database host',
+            'db_user' => 'Database user',
+	    'db_password' => 'Database password',
+	    'db_name' => 'Database name',
+	    'is_demo_db'=> 'Select Database',
+	    'is_agree'=> 'I agree to these conditions?',
         ];
     }
 

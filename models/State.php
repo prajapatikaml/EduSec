@@ -86,7 +86,7 @@ class State extends \yii\db\ActiveRecord
             [['state_country_id', 'created_by', 'updated_by', 'is_status'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
             [['state_name'], 'string', 'max' => 35],
-            [['state_name', 'state_country_id'], 'unique', 'targetAttribute' => ['state_name', 'state_country_id'], 'message' => 'The combination of State Name and Country has already been taken.']
+            [['state_name', 'state_country_id'], 'unique', 'targetAttribute' => ['state_name', 'state_country_id'], 'message' => Yii::t('app', 'The combination of State Name and Country has already been taken.')]
         ];
     }
 
@@ -161,5 +161,15 @@ class State extends \yii\db\ActiveRecord
     public function getStuAdmissionMasters()
     {
         return $this->hasMany(StuAdmissionMaster::className(), ['stu_padd_state' => 'state_id']);
+    }
+
+	/**
+	* @return get all state
+	*/ 
+	public static function getAllState()
+    {
+    	$dataTmp = self::find()->where(['is_status' => 0])->orderBy('state_name')->all();
+		$result = yii\helpers\ArrayHelper::map($dataTmp, 'state_id', 'state_name');
+		return $result;
     }
 }

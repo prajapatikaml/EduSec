@@ -45,7 +45,7 @@ $notifyCount = ($countT + count($eventsList));
 	<?= Html::label(Yii::t('app', 'Select Language'), 'language') ?>
 	</div>
 	<div class="col-sm-6" style="padding-left:7px;">
-	<?= Html::dropDownList('language', Yii::$app->language, ['en' => Yii::t('app', 'English'), 'gu' => Yii::t('app', 'Gujarati (ગુજરાતી)'), 'hi' => Yii::t('app', 'Hindi (हिन्दी)'), 'fr' => Yii::t('app', 'French (français)')], ['class'=> 'form-control', 'onchange' => 'this.form.submit()', 'style' => 'padding: 5px;']) ?>
+	<?= Html::dropDownList('language', Yii::$app->language, ['en' => Yii::t('app', 'English'), 'gu' => Yii::t('app', 'Gujarati (ગુજરાતી)'), 'hi' => Yii::t('app', 'Hindi (हिन्दी)'), 'fr' => Yii::t('app', 'French (français)'), 'es' => Yii::t('app', 'Spanish (Latin American)'),], ['class'=> 'form-control', 'onchange' => 'this.form.submit()', 'style' => 'padding: 5px;']) ?>
 	</div>
 
 	<?= Html::endForm() ?>
@@ -182,13 +182,13 @@ if (Yii::$app->user->isGuest) {
             <!-- Menu Footer-->
             <li class="user-footer">
                 <div class="pull-left">
-		    <?= Html::a(Yii::t('app', 'Change Password'), ['/user/change'], ['class' => 'btn btn-default btn-flat', 'style' => 'font-size:12px'.((Yii::$app->language == 'fr') ? ';padding: 6px 3px;' : '')]) ?>
+		    <?= Html::a(Yii::t('app', 'Change Password'), ['/user/change'], ['class' => 'btn btn-default btn-flat', 'style' => 'font-size:12px'.((Yii::$app->language == 'fr' || Yii::$app->language == 'es') ? ';padding: 6px 3px;' : '')]) ?>
                 </div>
                 <div class="pull-right">
                     <?= Html::a(
                             Yii::t('app', 'Sign out'),
                             ['/site/logout'],
-                            ['data-method' => 'post','class'=>'btn btn-default btn-flat', 'style' => 'font-size:12px'.((Yii::$app->language == 'fr') ? ';padding: 6px 3px;' : '')]
+                            ['data-method' => 'post','class'=>'btn btn-default btn-flat', 'style' => 'font-size:12px'.((Yii::$app->language == 'fr' || Yii::$app->language == 'es') ? ';padding: 6px 3px;' : '')]
                         ) ?>
                 </div>
             </li>

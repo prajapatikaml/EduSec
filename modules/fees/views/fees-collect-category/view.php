@@ -18,6 +18,10 @@ $this->params['breadcrumbs'][] = $this->title;
 if(Yii::$app->language == 'fr' || Yii::$app->language == 'hi' || Yii::$app->language == 'gu') :
 $this->registerCss('a.btn{ padding: 6px 3px; font-size:13px}');
 endif;
+if(Yii::$app->language == 'es') :
+$this->registerCss('a.btn{ padding: 6px 3px; font-size:10px}');
+endif;
+
 ?>
 <div class="col-xs-12">
   <div class="col-lg-8 col-sm-8 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-search"></i> <?php echo Yii::t('fees', 'View Fees Collect Category'); ?></h3></div>

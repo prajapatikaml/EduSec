@@ -87,7 +87,7 @@ class City extends \yii\db\ActiveRecord
             [['city_state_id', 'city_country_id', 'created_by', 'updated_by', 'is_status'], 'integer', 'message' => ''],
             [['created_at', 'updated_at'], 'safe'],
             [['city_name'], 'string', 'max' => 35],
-            [['city_name', 'city_state_id'], 'unique', 'targetAttribute' => ['city_name', 'city_state_id'], 'message' => 'The combination of City Name and State has already been taken.']
+            [['city_name', 'city_state_id'], 'unique', 'targetAttribute' => ['city_name', 'city_state_id'], 'message' => Yii::t('app', 'The combination of City Name and State has already been taken.')]
         ];
     }
 
@@ -163,5 +163,15 @@ class City extends \yii\db\ActiveRecord
     public function getStuAdmissionMasters()
     {
         return $this->hasMany(StuAdmissionMaster::className(), ['stu_padd_city' => 'city_id']);
+    }
+
+	/**
+	* @return get all city
+	*/ 
+	public static function getAllCity()
+    {
+    	$dataTmp = self::find()->where(['is_status' => 0])->orderBy('city_name')->all();
+		$result = yii\helpers\ArrayHelper::map($dataTmp, 'city_id', 'city_name');
+		return $result;
     }
 }
