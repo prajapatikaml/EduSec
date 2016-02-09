@@ -44,7 +44,7 @@ table tr:nth-child(odd) {
 
 
 <!------------Start Employee Details Block---------------->
-<h3 class="title">Employee Detail</h3>
+<h3 class="title"><?php echo Yii::t('emp', 'Employee Detail'); ?></h3>
 <table class="no_border">
 	<tr>
 		<td  rowspan='4' width="135px" align="center" style="border:none">
@@ -55,53 +55,53 @@ table tr:nth-child(odd) {
 		<td><?php echo $empInfo->emp_unique_id;?></td>
 	</tr>
 	<tr style="background:none">
-		<td class="label" style="border:1.5px solid white;"><b>Name</b></td>
+		<td class="label" style="border:1.5px solid white;"><b><?php echo Yii::t('emp', 'Name'); ?></b></td>
 		<td><?php echo $empInfo->emp_title." ". $empInfo->emp_first_name." ".$empInfo->emp_middle_name." ".$empInfo->emp_last_name;?></td>
 	</tr>
 	<tr>
-		<td class="label" style="border:1.5px solid white;"><b>Department</b></td>
+		<td class="label" style="border:1.5px solid white;"><b><?php echo Yii::t('emp', 'Department'); ?></b></td>
 		<td><?php echo $empMaster->empMasterDepartment->emp_department_name;?>
 	</tr>
 	<tr style="background:none">
-		<td class="label" style="border:1.5px solid white;"><b>Designation<b></td>
+		<td class="label" style="border:1.5px solid white;"><b><?php echo Yii::t('emp', 'Designation'); ?><b></td>
 		<td><?php echo (empty($empMaster->emp_master_designation_id) ? "N/A" : $empMaster->empMasterDesignation->emp_designation_name);?></td>
 	</tr>
 </table>
 
 <!----------Start employee personal information--------------> 
 <div class="profile-data">
-<h4 class="title">Personal Profile</h4>
+<h4 class="title"><?php echo Yii::t('emp', 'Personal Profile'); ?></h4>
 <table>
 <tr>
-	<td class="label">Name Alias</td><td colspan="3"><?php echo $empInfo->emp_name_alias;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Name Alias'); ?></td><td colspan="3"><?php echo $empInfo->emp_name_alias;?></td>
 </tr>
 <tr>
-	<td class="label">Email Id</td><td><?php echo $empInfo->emp_email_id;?></td>
-	<td class="label">Mother Name</td><td><?php echo $empInfo->emp_mother_name;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Email Id'); ?></td><td><?php echo $empInfo->emp_email_id;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Mother Name'); ?></td><td><?php echo $empInfo->emp_mother_name;?></td>
 </tr>
 <tr>
-	<td class="label">Gender</td>	<td><?php echo $empInfo->emp_gender;?></td>
-	<td class="label">Joining Date</td>
+	<td class="label"><?php echo Yii::t('emp', 'Gender'); ?></td>	<td><?php echo $empInfo->emp_gender;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Joining Date'); ?></td>
 	<td><?php echo Yii::$app->formatter->asDate($empInfo->emp_joining_date);?></td>
 </tr>
 <tr>	
-	<td class="label">Date of Birth</td>
+	<td class="label"><?php echo Yii::t('emp', 'Date of Birth'); ?></td>
 	<td><?php if($empInfo->emp_dob != NULL)
 		echo Yii::$app->formatter->asDate($empInfo->emp_dob);?>
 	</td>
-	<td class="label">Birth Place</td><td><?php echo $empInfo->emp_birthplace;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Birth Place'); ?></td><td><?php echo $empInfo->emp_birthplace;?></td>
 </tr>	
 
 <tr>		
-	<td class="label">Blood Group</td><td><?php echo $empInfo->emp_bloodgroup;?></td>
-	<td class="label">Marital Status</td><td><?php echo $empInfo->emp_maritalstatus;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Blood Group'); ?></td><td><?php echo $empInfo->emp_bloodgroup;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Marital Status'); ?></td><td><?php echo $empInfo->emp_maritalstatus;?></td>
 </tr>
 <tr>		
-	<td class="label">Nationality</td><td><?php echo (!empty($nationality) ? $nationality : "");?></td>
-	<td class="label">Bank Account No</td><td><?php echo $empInfo->emp_bankaccount_no;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Nationality'); ?></td><td><?php echo (!empty($nationality) ? $nationality : "");?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Bank Account No'); ?></td><td><?php echo $empInfo->emp_bankaccount_no;?></td>
 </tr>	
 <tr>		
-	<td class="label">Category</td>
+	<td class="label"><?php echo Yii::t('emp', 'Category'); ?></td>
 	<td><?php  
 		if($empMaster->emp_master_category_id != null)
 			echo $empMaster->empMasterCategory->emp_category_name;
@@ -109,53 +109,61 @@ table tr:nth-child(odd) {
 			echo " - ";
 	    ?>
 	</td>
-	<td class="label">Mobile No</td><td><?php echo $empInfo->emp_mobile_no;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Mobile No'); ?></td><td><?php echo $empInfo->emp_mobile_no;?></td>
 </tr>	
 </table>
 <!--------Start employee guardian info----------------->
-<h4 class="title">Guardian Info</h4>
+<h4 class="title"><?php echo Yii::t('emp', 'Guardian Info'); ?></h4>
 <table>
 <tr>
-	<td class="label">Name</td><td width="40%"><?php echo $empInfo->emp_guardian_name;?></td>
-	<td class="label">Relation</td><td width="40%"><?php echo $empInfo->emp_guardian_relation;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Name'); ?></td><td width="40%"><?php echo $empInfo->emp_guardian_name;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Relation'); ?></td><td width="40%"><?php echo $empInfo->emp_guardian_relation;?></td>
 </tr>
 <tr>
-	<td class="label">Qualification</td><td><?php echo $empInfo->emp_guardian_qualification;?></td>
-	<td class="label">Occupation</td><td><?php echo $empInfo->emp_guardian_occupation;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Qualification'); ?></td><td><?php echo $empInfo->emp_guardian_qualification;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Occupation'); ?></td><td><?php echo $empInfo->emp_guardian_occupation;?></td>
 </tr>
 <tr>
-	<td class="label">Annual Income</td><td><?php echo $empInfo->emp_guardian_income;?></td>
-	<td class="label">Email Id</td><td><?php echo $empInfo->emp_guardian_email_id;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Annual Income'); ?></td><td><?php echo $empInfo->emp_guardian_income;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Email Id'); ?></td><td><?php echo $empInfo->emp_guardian_email_id;?></td>
 </tr>
 <tr>
-	<td class="label">Home Address</td><td><?php echo $empInfo->emp_guardian_homeadd;?></td>
-	<td class="label">Office Address</td><td><?php echo $empInfo->emp_guardian_officeadd;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Home Address'); ?></td><td><?php echo $empInfo->emp_guardian_homeadd;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Office Address'); ?></td><td><?php echo $empInfo->emp_guardian_officeadd;?></td>
 </tr>
 <tr>
-	<td class="label">Mobile No</td><td><?php echo $empInfo->emp_guardian_mobile_no;?></td>
-	<td class="label">Phone No</td><td><?php echo $empInfo->emp_guardian_phone_no;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Mobile No'); ?></td><td><?php echo $empInfo->emp_guardian_mobile_no;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Phone No'); ?></td><td><?php echo $empInfo->emp_guardian_phone_no;?></td>
 </tr>
 </table>
 
 </br></br>
 
 <!--------Start employee other info block----------------->
-<h4 class="title">Other Info</h4>
+<h4 class="title"><?php echo Yii::t('emp', 'Other Info'); ?></h4>
 <table>
 <tr>
-	<td class="label">Specialization</td><td colspan= "3"><?php echo $empInfo->emp_specialization;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Specialization'); ?></td><td colspan= "3"><?php echo $empInfo->emp_specialization;?></td>
 	
 </tr>
 <tr>
-	<td class="label">Reference</td><td><?php echo $empInfo->emp_reference;?></td>
-	<td class="label">Experience</td><td><?php echo (!empty($empInfo->emp_experience_year || $empInfo->emp_experience_month ) ? $empInfo->emp_experience_year." Year(s) ".$empInfo->emp_experience_month." Month(s)" : " ");?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Reference'); ?></td><td><?php echo $empInfo->emp_reference;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Experience'); ?></td>
+	<td>
+		<?php if(!empty($empInfo->emp_experience_year) || !empty($empInfo->emp_experience_month)) : ?>
+			<?= (!empty($empInfo->emp_experience_year) ? $empInfo->emp_experience_year : "0") ?> <?php echo Yii::t('emp', 'Year(s)'); ?> 
+			<?= (!empty($empInfo->emp_experience_month) ? $empInfo->emp_experience_month : "0") ?> <?php echo Yii::t('emp', 'Month(s)'); ?>
+		<?php else : ?>
+			&nbsp;
+		<?php endif; ?>
+	</td>
 </tr>
 <tr>
-	<td class="label">Religion</td><td><?php echo $empInfo->emp_religion;?></td>
-	<td class="label">Hobbies</td><td><?php echo $empInfo->emp_hobbies;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Religion'); ?></td><td><?php echo $empInfo->emp_religion;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Hobbies'); ?></td><td><?php echo $empInfo->emp_hobbies;?></td>
 </tr>
 <tr>
-	<td class="label">Language Known</td>
+	<td class="label"><?php echo Yii::t('emp', 'Language Known'); ?></td>
 	<td colspan="3"><?php 
 		if(!empty($empInfo->emp_languages))
 			echo $empInfo->emp_languages;
@@ -167,16 +175,16 @@ table tr:nth-child(odd) {
 
 </br></br>
 <!---------start employee address info block------------>
-<h4 class="title">Address Info</h4>
+<h4 class="title"><?php echo Yii::t('emp', 'Address Info'); ?></h4>
 <table>
 <tr>
-<td class="title" colspan="4" align="center"><b>Local Address</b></td>
+<td class="title" colspan="4" align="center"><b><?php echo Yii::t('emp', 'Local Address'); ?></b></td>
 </tr>
 <tr>	
-	<td class="label">Address</td><td colspan="3"><?php echo $empAdd->emp_cadd; ?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Address'); ?></td><td colspan="3"><?php echo $empAdd->emp_cadd; ?></td>
 </tr>
 <tr>	
-	<td class="label">Country</td>
+	<td class="label"><?php echo Yii::t('emp', 'Country'); ?></td>
 	<td><?php 
 		if($empAdd->emp_cadd_country !=0)
 		echo app\models\Country::findOne($empAdd->emp_cadd_country)->country_name;
@@ -184,7 +192,7 @@ table tr:nth-child(odd) {
 		echo "";
 		?>
 	</td>
-	<td class="label">State/Province</td>
+	<td class="label"><?php echo Yii::t('emp', 'State/Province'); ?></td>
 	<td><?php 
 		if($empAdd->emp_cadd_state != 0)
 		echo app\models\State::findOne($empAdd->emp_cadd_state)->state_name;
@@ -194,7 +202,7 @@ table tr:nth-child(odd) {
 	</td>
 </tr>
 <tr>	
-	<td class="label">Town</td>
+	<td class="label"><?php echo Yii::t('emp', 'Town'); ?></td>
 	<td><?php 
 		if($empAdd->emp_cadd_city !=0)
 		echo app\models\City::findOne($empAdd->emp_cadd_city)->city_name;
@@ -202,26 +210,26 @@ table tr:nth-child(odd) {
 		echo "";
 		?>
 	</td>
-	<td class="label">Post Code</td><td><?php echo $empAdd->emp_cadd_pincode;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Post Code'); ?></td><td><?php echo $empAdd->emp_cadd_pincode;?></td>
 </tr>
 <tr>
-	<td class="label">Phone</td><td><?php echo $empAdd->emp_cadd_phone_no;?></td>
-	<td class="label">House No</td><td><?php echo $empAdd->emp_cadd_house_no;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Phone'); ?></td><td><?php echo $empAdd->emp_cadd_phone_no;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'House No'); ?></td><td><?php echo $empAdd->emp_cadd_house_no;?></td>
 </tr>
 <tr>
-<td class="title" colspan="4" align="center"><b>International Address</b></td>
+<td class="title" colspan="4" align="center"><b><?php echo Yii::t('emp', 'International Address'); ?></b></td>
 </tr>
 <tr>	
-	<td class="label">Address</td><td colspan="3"><?php echo $empAdd->emp_padd;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Address'); ?></td><td colspan="3"><?php echo $empAdd->emp_padd;?></td>
 </tr>
 <tr>	
-	<td class="label">Country</td><td><?php 
+	<td class="label"><?php echo Yii::t('emp', 'Country'); ?></td><td><?php 
 		if($empAdd->emp_padd_country !=0)
 		echo app\models\Country::findOne($empAdd->emp_padd_country)->country_name;
 		else
 		echo "";	
 		?></td>
-	<td class="label">State/Province</td><td><?php 
+	<td class="label"><?php echo Yii::t('emp', 'State/Province'); ?></td><td><?php 
 		if($empAdd->emp_padd_state != 0)
 		echo app\models\State::findOne($empAdd->emp_padd_state)->state_name;
 		else
@@ -229,42 +237,42 @@ table tr:nth-child(odd) {
 		?></td>
 </tr>
 <tr>	
-	<td class="label">Town</td><td><?php 
+	<td class="label"><?php echo Yii::t('emp', 'Town'); ?></td><td><?php 
 		if($empAdd->emp_padd_city !=0)
 		echo app\models\City::findOne($empAdd->emp_padd_city)->city_name;
 		else
 		echo "";
 		?>
 	</td>
-	<td class="label">Post Code</td><td><?php echo $empAdd->emp_padd_pincode;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Post Code'); ?></td><td><?php echo $empAdd->emp_padd_pincode;?></td>
 </tr>
 <tr>
-	<td class="label">Phone</td><td><?php echo $empAdd->emp_padd_phone_no;?></td>
-	<td class="label">House No</td><td><?php echo $empAdd->emp_padd_house_no;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'Phone'); ?></td><td><?php echo $empAdd->emp_padd_phone_no;?></td>
+	<td class="label"><?php echo Yii::t('emp', 'House No'); ?></td><td><?php echo $empAdd->emp_padd_house_no;?></td>
 </tr>
 </table>
 </br></br>
 <!------Start employee document------------>
-<h4 class="title">Documents</h4>
+<h4 class="title"><?php echo Yii::t('emp', 'Documents'); ?></h4>
 <?php $k=0;
 if ($empDocs != null){
 ?>
 <table>
 	<tr>
 		<th>
-		      SN.		
+		       <?php echo Yii::t('emp', 'SN.'); ?>		
 		</th>
  		<th width="70px">
-		       Document	Category	
+		       <?php echo Yii::t('emp', 'Document Category'); ?>	
 		</th>
 		<th width="70px">
-		       Document	Detail	
+		       <?php echo Yii::t('emp', 'Document Detail'); ?>	
 		</th>
 		<th width="70px">
-		       Status	
+		       <?php echo Yii::t('emp', 'Status'); ?>	
 		</th>
  		<th width="70px">
-		       Submit Date	
+		       <?php echo Yii::t('emp', 'Submit Date'); ?>	
 		</th>
  		
  	</tr>
@@ -281,7 +289,7 @@ if ($empDocs != null){
 			      <?php echo $v->emp_docs_details; ?>		
 			</td>
 			<td width="70px">
-			      <?php echo (($v->emp_docs_status == 1) ? "Approved" : (($v->emp_docs_status == 2) ? "Disapproved" : "Pendding")); ?>		
+			      <?php echo (($v->emp_docs_status == 1) ? Yii::t('emp', 'Approved') : (($v->emp_docs_status == 2) ? Yii::t('emp', 'Disapproved') : Yii::t('emp', 'Pendding'))); ?>		
 			</td>
 				<td>
 				<?php echo Yii::$app->formatter->asDateTime($v->emp_docs_submited_at); ?>
@@ -295,6 +303,6 @@ if ($empDocs != null){
 </table>
 <?php }
 	else
-		echo "No document available";
+		echo  Yii::t('emp', 'No document available');
  ?>
 </div>

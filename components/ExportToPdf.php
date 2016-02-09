@@ -51,6 +51,8 @@ class ExportToPdf extends Component
 	public function exportData($title='',$filename='Edusec Pdf',$html=NULL)
 	{
 		$mpdf = new mPDF('utf-8', 'A4',0,'',15,15,25,16,4,9,'P');
+		$mpdf->autoScriptToLang = true;
+		$mpdf->autoLangToFont = true;
 		$org = Organization::find()->asArray()->one();
 		$src = Yii::$app->urlManager->createAbsoluteUrl('site/loadimage');
 		$org_image=Html::img($src,['alt'=>'No Image','width'=>90, 'height'=>70]); 

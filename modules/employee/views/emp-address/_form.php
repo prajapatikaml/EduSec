@@ -24,7 +24,7 @@ use yii\helpers\Url;
 			],
     ]); ?>
 
-	<div class="bs-callout bs-callout-label-5"><h5> Current Address</h5> </div>
+	<div class="bs-callout bs-callout-label-5"><h5> <?php echo Yii::t('emp', 'Current Address'); ?></h5> </div>
     <?= $form->field($model, 'emp_cadd')->textArea(['maxlength' => 255]) ?>
 	
     <?= $form->field($model, 'emp_cadd_country')->dropDownList(ArrayHelper::map(\app\models\Country::find()->all(),'country_id','country_name'),
@@ -101,8 +101,8 @@ use yii\helpers\Url;
     <?= $form->field($model, 'emp_padd_phone_no')->textInput(['maxlength' => 25]) ?>
 
     <div class="form-group col-sm-offset-1 col-lg-10">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-	<?= Html::a('Cancel', ['index'], ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('emp', 'Create') : Yii::t('emp', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	<?= Html::a(Yii::t('emp', 'Cancel'), ['index'], ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

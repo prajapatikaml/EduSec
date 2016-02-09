@@ -35,8 +35,15 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'EduSec',
+	//'language' => 'gu',
     'basePath' => dirname(__DIR__),
-    'bootstrap' => ['log'],
+    'bootstrap' => [
+			'log',
+			[
+		        'class' => 'app\components\LanguageSelector',
+		        'supportedLanguages' => ['en', 'gu'],
+		    ],
+	],
     'components' => [
 		'request' => [
 			'cookieValidationKey' => 'JDqkJaMgIITAKcsJY6yvLQdM9jf7WghX',
@@ -75,6 +82,51 @@ $config = [
 					'levels' => ['error', 'warning'],
 				],
 			],
+		],
+		'i18n' => [
+		    'translations' => [
+		        'app*' => [
+		            'class' => 'yii\i18n\PhpMessageSource',
+		            'basePath' => '@app/messages',
+		            //'sourceLanguage' => 'en-US',
+		            /*'fileMap' => [
+		                'app' => 'app.php',
+		                'app/error' => 'error.php',
+		            ],*/
+		        ],
+		        'yii*' => [
+		            'class' => 'yii\i18n\PhpMessageSource',
+		            'basePath' => '@app/messages',
+		        ],
+		        'course*' => [
+		            'class' => 'yii\i18n\PhpMessageSource',
+		            'basePath' => '@app/messages',
+		        ],
+		        'stu*' => [
+		            'class' => 'yii\i18n\PhpMessageSource',
+		            'basePath' => '@app/messages',
+		        ],
+		        'emp*' => [
+		            'class' => 'yii\i18n\PhpMessageSource',
+		            'basePath' => '@app/messages',
+		        ],
+		        'dash*' => [
+		            'class' => 'yii\i18n\PhpMessageSource',
+		            'basePath' => '@app/messages',
+		        ],
+		        'fees*' => [
+		            'class' => 'yii\i18n\PhpMessageSource',
+		            'basePath' => '@app/messages',
+		        ],
+		        'report*' => [
+		            'class' => 'yii\i18n\PhpMessageSource',
+		            'basePath' => '@app/messages',
+		        ],
+		        'urights*' => [
+		            'class' => 'yii\i18n\PhpMessageSource',
+		            'basePath' => '@app/messages',
+		        ],
+		    ],
 		],
 		'formatter' => [
 			'dateFormat' => 'dd-MM-yyyy',

@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\employee\models\EmpInfo */
 
-$this->title = 'Create Employee';
-$this->params['breadcrumbs'][] = ['label' => 'Employee ', 'url' => ['index']];
+$this->title = Yii::t('emp', 'Create Employee');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('emp', 'Employee'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="emp-info-create">

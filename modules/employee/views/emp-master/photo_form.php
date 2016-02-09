@@ -9,7 +9,7 @@ use yii\helpers\Url;
 /* @var $form yii\widgets\ActiveForm */
 
 $this->title =$model->empMasterEmpInfo->emp_first_name." ".$model->empMasterEmpInfo->emp_last_name;
-$this->params['breadcrumbs'][] = ['label' => 'Employee', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('emp', 'Employee'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <script>
@@ -61,7 +61,7 @@ $( document ).ready(function() {
 <div class="col-xs-12 col-lg-12">
   <div class="box box-info box-solid view-item col-xs-12 col-lg-12 no-padding">
    <div class="box-header with-border">
-         <h4 class="box-title"><i class="fa fa-picture-o"></i> Profile Photo</h4>
+         <h4 class="box-title"><i class="fa fa-picture-o"></i>&nbsp; <?php echo Yii::t('emp', 'Profile Photo'); ?></h4>
    </div>
    <div class="box-body">
     <div class="emp-photo-form">
@@ -78,15 +78,15 @@ $( document ).ready(function() {
     </div>
 
     <div class="col-xs-12 col-sm-12 col-lg-12 text-center no-padding"> 
-	<?= $form->field($info,'emp_photo')->fileInput(['data-filename-placement' => "inside", 'title' => 'Browse Photo', 'onchange'=>'uploadImage(this)', 'data-target'=>'#aImgShow']) ?>
+	<?= $form->field($info,'emp_photo')->fileInput(['data-filename-placement' => "inside", 'title' => Yii::t('stu', 'Browse Photo'), 'onchange'=>'uploadImage(this)', 'data-target'=>'#aImgShow']) ?>
     </div>
 
-    <div class="hint col-xs-12 col-sm-12" style="color:red;padding-top:15px"><b>Note:- </b>&nbsp;Only Upload Jpeg, Jpg, Png, Gif Type
+    <div class="hint col-xs-12 col-sm-12" style="color:red;padding-top:15px"><b><?php echo Yii::t('emp', 'Note'); ?>:- </b>&nbsp;<?php echo Yii::t('emp', 'Only Upload Jpeg, Jpg, Png, Gif Type'); ?>
     </div>
  
     <div class="form-group col-xs-12 col-sm-12 no-padding">
 	<hr>
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord  ? 'btn btn-success' : 'btn btn-info']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('emp', 'Create') : Yii::t('emp', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-success' : 'btn btn-info']) ?>
     </div>
     <?php ActiveForm::end(); ?>   
     </div><!---./end emp-photo-form--->

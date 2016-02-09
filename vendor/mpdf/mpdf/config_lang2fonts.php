@@ -218,7 +218,7 @@ function GetLangOpts($llcc, $adobeCJK, &$fontdata) {
 		$unifont = "freeserif";
 		break;
 	CASE "gu":  CASE "guj":	// Gujarati
-		$unifont = "freeserif";
+		$unifont = "lohitgujarati";
 		break;
 	CASE "pa":  CASE "pan":	// Panjabi, Punjabi GURMUKHI
 		$unifont = "freeserif";

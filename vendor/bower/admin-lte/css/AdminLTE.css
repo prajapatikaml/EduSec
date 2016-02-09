@@ -975,7 +975,7 @@ body > .header .logo .icon {
   border-radius: 0;
   padding: 1px 0 0 0;
   border-top-width: 0;
-  width: 225px; /* old 280 */
+  width: 235px; /* old 280 */
 }
 .navbar-nav > .user-menu > .dropdown-menu:after {
   bottom: 100%;

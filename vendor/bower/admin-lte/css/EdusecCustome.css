@@ -161,3 +161,31 @@ a.desc:after {
 body.modal-open {
     padding-right: 0px !important;
 }
+.navbar-nav > .module-menu > .dropdown-menu {
+  margin: 0 !important;
+  padding: 0 !important;
+  top: 100%;
+  width: 290px;
+}
+.navbar-nav > .module-menu > .dropdown-menu > li .menu {
+  padding: 5px !important;
+}
+.navbar-nav > .module-menu > .dropdown-menu > li .menu li {
+  list-style: none outside none;
+  float: left;
+  padding: 10px;
+  text-align: center;
+  width: 33%;
+}
+.navbar-nav > .module-menu > .dropdown-menu > li .menu > li > a:hover{ background: none; }
+.navbar-nav > .module-menu > .dropdown-menu > li .menu > li > a > h4 {
+  color: #444444;
+  font-size: 15px;
+  padding: 0;
+  position: relative;
+}
+
+.navbar-nav > .module-menu .dropdown-menu .slimScrollDiv,
+.navbar-nav > .module-menu .dropdown-menu .slimScrollDiv .menu {
+  height: 280px !important;
+}

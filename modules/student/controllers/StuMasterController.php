@@ -114,89 +114,88 @@ class StuMasterController extends Controller
      */
     public function actionCreate()
     {
-        $model = new StuMaster();
-	$info = new StuInfo();
-	$address = new StuAddress();
-	$user =new User();
-	$auth_assign = new AuthAssignment();
+		$model = new StuMaster();
+		$info = new StuInfo();
+		$address = new StuAddress();
+		$user =new User();
+		$auth_assign = new AuthAssignment();
 
-	if (Yii::$app->request->isAjax) {
-		if($info->load(Yii::$app->request->post())) {
-                	\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-                	return ActiveForm::validate($info);
+		if (Yii::$app->request->isAjax) {
+			if($info->load(Yii::$app->request->post())) {
+				\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+				return ActiveForm::validate($info);
+			}
+			if($model->load(Yii::$app->request->post())) {
+				\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+				return ActiveForm::validate($model);
+			}
 		}
-		if($model->load(Yii::$app->request->post())) {
-                	\Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-                	return ActiveForm::validate($model);
+
+		$stud_uniq_no = \app\modules\student\models\StuInfo::find()->max('stu_unique_id');
+		$uniq_id = NULL;
+		if(empty($stud_uniq_no)) {
+			$uniq_id = $info->stu_unique_id = 1;
 		}
-       	}
+		else {
+			$chk_id = StuInfo::find()->where(['stu_unique_id' => $stud_uniq_no])->exists(); 
+			if($chk_id)
+				$uniq_id = $stud_uniq_no + 1;
+			else
+				$uniq_id = $stud_uniq_no;		
+		}
 
-	$stud_uniq_no = \app\modules\student\models\StuInfo::find()->max('stu_unique_id');
-	$uniq_id = NULL;
-	if(empty($stud_uniq_no)) {
-		$uniq_id = $info->stu_unique_id = 1;
-	}
-	else {
-		$chk_id = StuInfo::find()->where(['stu_unique_id' => $stud_uniq_no])->exists(); 
-		if($chk_id)
-			$uniq_id = $stud_uniq_no + 1;
-		else
-			$uniq_id = $stud_uniq_no;		
-	}
-	
-        if($model->load(Yii::$app->request->post()) || $info->load(Yii::$app->request->post())) 
-	{
+		if($model->load(Yii::$app->request->post()) || $info->load(Yii::$app->request->post())) 
+		{
+			$login_id = \app\models\Organization::find()->one()->org_stu_prefix.$uniq_id;
 
-		$login_id = \app\models\Organization::find()->one()->org_stu_prefix.$uniq_id;
+			$model->attributes = $_POST['StuMaster'];			
+			$info->attributes = $_POST['StuInfo'];
 
-		$model->attributes = $_POST['StuMaster'];			
-		$info->attributes = $_POST['StuInfo'];
-
-		$info->stu_dob = Yii::$app->dateformatter->getDateFormat($_POST['StuInfo']['stu_dob']);
-		$info->stu_admission_date = Yii::$app->dateformatter->getDateFormat($_POST['StuInfo']['stu_admission_date']);
-		if(empty($_POST['StuInfo']['stu_email_id']))
+			$info->stu_dob = Yii::$app->dateformatter->getDateFormat($_POST['StuInfo']['stu_dob']);
+			$info->stu_admission_date = Yii::$app->dateformatter->getDateFormat($_POST['StuInfo']['stu_admission_date']);
+			if(empty($_POST['StuInfo']['stu_email_id']))
 			$info->stu_email_id = NULL;
-		else
+			else
 			$info->stu_email_id = strtolower($_POST['StuInfo']['stu_email_id']);
 
-		$user->user_login_id = $login_id;
-		$user->user_password =  md5($user->user_login_id.$user->user_login_id); 
-		$user->user_type = "S";
-		$user->created_by = Yii::$app->getid->getId();
-		$user->created_at = new \yii\db\Expression('NOW()');
-		
-		if($info->save(false))  
-		{  
+			$user->user_login_id = $login_id;
+			$user->user_password =  md5($user->user_login_id.$user->user_login_id); 
+			$user->user_type = "S";
+			$user->created_by = Yii::$app->getid->getId();
+			$user->created_at = new \yii\db\Expression('NOW()');
+
+			if($info->save(false))  
+			{  
 			$user->save(false);
 			$address->save(false);
-		}
+			}
 
-		$model->stu_master_stu_address_id = $address->stu_address_id;
-		$model->stu_master_stu_info_id = $info->stu_info_id;
-		$model->stu_master_user_id = $user->user_id;
-		$model->created_by = Yii::$app->getid->getId();
-		$model->created_at = new \yii\db\Expression('NOW()');
-		$model->save(false);
+			$model->stu_master_stu_address_id = $address->stu_address_id;
+			$model->stu_master_stu_info_id = $info->stu_info_id;
+			$model->stu_master_user_id = $user->user_id;
+			$model->created_by = Yii::$app->getid->getId();
+			$model->created_at = new \yii\db\Expression('NOW()');
+			$model->save(false);
 
-		$s_info = StuInfo::findOne($model->stu_master_stu_info_id);
-		$s_info->stu_info_stu_master_id = $model->stu_master_id;
-		$s_info->save(false);
+			$s_info = StuInfo::findOne($model->stu_master_stu_info_id);
+			$s_info->stu_info_stu_master_id = $model->stu_master_id;
+			$s_info->save(false);
 
-		$auth_assign->item_name = 'Student';
-		$auth_assign->user_id = $user->user_id;
-		$auth_assign->created_at =  date_format(date_create(),'U');
-		$auth_assign->save(false);
-		
-		if ($model->save()) {
+			$auth_assign->item_name = 'Student';
+			$auth_assign->user_id = $user->user_id;
+			$auth_assign->created_at =  date_format(date_create(),'U');
+			$auth_assign->save(false);
+
+			if ($model->save()) {
 			return $this->redirect(['view', 'id'=>$model->stu_master_id]);
-		}
-		else
+			}
+			else
 			return $this->render('create', ['model' => $model, 'info' => $info, 'uniq_id'=>$uniq_id]);
-        } else {
-            return $this->render('create', [
-                'model' => $model, 'info' => $info, 'uniq_id'=>$uniq_id
-            ]);
-        }
+		} else {
+			return $this->render('create', [
+			'model' => $model, 'info' => $info, 'uniq_id'=>$uniq_id
+			]);
+		}
     }
 
     /**

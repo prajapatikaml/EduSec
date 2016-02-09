@@ -56,7 +56,7 @@ $requiredData = $resultsData['requirements'];
 <body>
 <div class="container">
     <div class="header">
-        <h1>EduSec Application Requirement Checker</h1>
+        <h1>EduSec<sup style="top: -1.5em;font-size: 12px;">TM</sup> Application Requirement Checker</h1>
     </div>
     <hr>
 

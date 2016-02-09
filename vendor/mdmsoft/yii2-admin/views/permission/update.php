@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = Yii::t('rbac-admin', 'Update');
 	<div class="col-xs-4"></div>
 	<div class="col-xs-4"></div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a('Back', ['index'], ['class' => 'btn btn-block btn-back']) ?>
+	<?= Html::a(Yii::t('app', 'Back'), ['index'], ['class' => 'btn btn-block btn-back']) ?>
 	</div>
    </div>
 </div>

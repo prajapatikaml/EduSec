@@ -33,8 +33,8 @@ use yii\helpers\Url;
 
    
     <div class="form-group col-sm-offset-1 col-lg-10">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-	<?= Html::a('Cancel', ['index'], ['class' => 'btn btn-default']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('emp', 'Create') : Yii::t('emp', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+	<?= Html::a(Yii::t('emp', 'Cancel'), ['index'], ['class' => 'btn btn-default']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

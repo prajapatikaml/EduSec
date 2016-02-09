@@ -64,12 +64,12 @@ class Installation extends Model
     public function attributeLabels()
     {
         return [
-            'db_host' => 'Database host',
-            'db_user' => 'Database user',
-	    'db_password' => 'Database password',
-	    'db_name' => 'Database name',
-	    'is_demo_db'=>'Select Database',
-	    'is_agree'=>'I agree to these conditions?',
+            'db_host' => Yii::t('app', 'Database host'),
+            'db_user' => Yii::t('app', 'Database user'),
+	    'db_password' => Yii::t('app', 'Database password'),
+	    'db_name' => Yii::t('app', 'Database name'),
+	    'is_demo_db'=> Yii::t('app', 'Select Database'),
+	    'is_agree'=> Yii::t('app', 'I agree to these conditions?'),
         ];
     }
 

@@ -94,17 +94,17 @@ class Notice extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'notice_id' => 'Notice ID',
-            'notice_title' => 'Title',
-            'notice_description' => 'Description',
-            'notice_user_type' => 'User Type',
-            'notice_date' => 'Date',
-            'notice_file_path' => 'Notice File',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'is_status' => 'Active',
+			'notice_id' => Yii::t('dash', 'Notice ID'),
+            'notice_title' => Yii::t('dash', 'Title'),
+            'notice_description' => Yii::t('dash', 'Description'),
+            'notice_user_type' => Yii::t('dash', 'User Type'),
+            'notice_date' => Yii::t('dash', 'Date'),
+            'notice_file_path' => Yii::t('dash', 'Notice File'),
+            'created_at' => Yii::t('dash', 'Created At'),
+            'created_by' => Yii::t('dash', 'Created By'),
+            'updated_at' => Yii::t('dash', 'Updated At'),
+            'updated_by' => Yii::t('dash', 'Updated By'),
+            'is_status' => Yii::t('dash', 'Active'),
         ];
     }
 

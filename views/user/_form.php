@@ -30,7 +30,7 @@ use yii\widgets\ActiveForm;
 
     <div class="col-sm-offset-1 col-lg-10">
      <div class="form-group">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' =>'btn btn-submit']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' =>'btn btn-submit']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

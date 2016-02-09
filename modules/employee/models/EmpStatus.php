@@ -90,14 +90,14 @@ class EmpStatus extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'emp_status_id' => 'Status ID',
-            'emp_status_name' => 'Status Name',
-            'emp_status_description' => 'Status Description',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'is_status' => 'Is Status',
+            'emp_status_id' => Yii::t('emp', 'Status ID'),
+            'emp_status_name' => Yii::t('emp', 'Status Name'),
+            'emp_status_description' => Yii::t('emp', 'Status Description'),
+            'created_at' => Yii::t('emp', 'Created At'),
+            'created_by' => Yii::t('emp', 'Created By'),
+            'updated_at' => Yii::t('emp', 'Updated At'),
+            'updated_by' => Yii::t('emp', 'Updated By'),
+            'is_status' => Yii::t('emp', 'Is Status'),
         ];
     }
 

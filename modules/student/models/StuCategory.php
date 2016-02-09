@@ -90,13 +90,13 @@ class StuCategory extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'stu_category_id' => 'Stu Category ID',
-            'stu_category_name' => 'Category',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'is_status' => 'Is Status',
+			'stu_category_id' => Yii::t('app', 'Stu Category ID'),
+            'stu_category_name' => Yii::t('app', 'Category'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'created_by' => Yii::t('app', 'Created By'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+            'updated_by' => Yii::t('app', 'Updated By'),
+            'is_status' => Yii::t('app', 'Is Status'),
         ];
     }
 

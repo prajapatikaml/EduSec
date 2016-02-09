@@ -136,21 +136,22 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
     public function attributeLabels()
     {
         return [
-            'user_id' => 'User ID',
-            'user_login_id' => 'User Login ID',
-            'user_password' => 'Password',
-            'user_type' => 'User Type',
-            'is_block' => 'Is Block',
-	    'current_pass' => 'Current Password',
-	    'new_pass' => 'New Password',
-	    'retype_pass' => 'Retype Password',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-	    'admin_user' => 'Admin Username',
-	    'create_password' => 'Admin Password',
-	    'confirm_password' => 'Confirm Password',
+            'user_id' => Yii::t('app', 'User ID'),
+            'user_login_id' => Yii::t('app', 'User Login ID'),
+            'user_password' => Yii::t('app', 'Password'),
+            'user_type' => Yii::t('app', 'User Type'),
+            'is_block' => Yii::t('app', 'Is Block'),
+            'created_at' => Yii::t('app', 'Created At'),
+            'created_by' => Yii::t('app', 'Created By'),
+            'updated_at' => Yii::t('app', 'Updated At'),
+            'updated_by' => Yii::t('app', 'Updated By'),
+			'current_pass' => Yii::t('app','Current Password'),
+			'new_pass' => Yii::t('app','New Password'),
+			'retype_pass' => Yii::t('app', 'Retype Password'),
+			'admin_user' => Yii::t('app', 'Admin Username'),
+			'create_password' => Yii::t('app', 'Admin Password'),
+			'confirm_password' => Yii::t('app', 'Confirm Password'),
+			
         ];
     }
 
@@ -159,7 +160,7 @@ class User extends \yii\db\ActiveRecord implements IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return static::findOne($id);
+       return static::findOne($id);
     }
 
     /**

@@ -7,8 +7,8 @@ use yii\grid\GridView;
 /* @var $searchModel app\modules\fees\models\BankMasterSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Manage Banks';
-$this->params['breadcrumbs'][] = ['label' => 'Fees', 'url' => ['default/index']];
+$this->title = Yii::t('fees', 'Manage Banks');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('fees', 'Fees'), 'url' => ['default/index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -25,10 +25,10 @@ $this->params['breadcrumbs'][] = $this->title;
 	<div class="col-xs-4 left-padding">
 	</div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a('PDF', ['/export-data/export-to-pdf', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-warning', 'target'=>'_blank']) ?>
+	<?= Html::a(Yii::t('fees', 'PDF'), ['/export-data/export-to-pdf', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-warning', 'target'=>'_blank']) ?>
 	</div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a('EXCEL', ['/export-data/export-excel', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-primary', 'target'=>'_blank']) ?>
+	<?= Html::a(Yii::t('fees', 'EXCEL'), ['/export-data/export-excel', 'model'=>get_class($searchModel)], ['class' => 'btn btn-block btn-primary', 'target'=>'_blank']) ?>
 	</div>
   </div>
 </div>

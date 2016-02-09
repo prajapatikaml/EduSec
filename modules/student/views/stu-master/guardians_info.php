@@ -11,7 +11,7 @@ use yii\helpers\Url;
 /*
 */
 
-$this->title = 'Update Guardian : ' . ' ' . $guard->guardian_name;
+$this->title = Yii::t('stu', 'Update Guardian : ') . ' ' . $guard->guardian_name;
 ?>
 <script>
 $(document).ready(function(){
@@ -84,7 +84,7 @@ $(document).ready(function(){
 
     <div class="form-group col-xs-12 col-sm-6 col-lg-6 no-padding">
 	<div class="col-xs-6 col-sm-6">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('stu', 'Create') : Yii::t('stu', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<!--div class="col-xs-6">
 	    <?php // Html::a('Cancel', ['view', 'id' => $model->stu_master_id], ['class' => 'btn btn-default btn-block']); ?>

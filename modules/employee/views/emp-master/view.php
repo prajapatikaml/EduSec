@@ -13,8 +13,8 @@ $role = Yii::$app->AuthManager->getRoles();
 	
 
 $this->title = $model->empMasterEmpInfo->emp_first_name." ".$model->empMasterEmpInfo->emp_last_name;
-$this->params['breadcrumbs'][] = ['label' => 'Employee', 'url' => ['default/index']];
-$this->params['breadcrumbs'][] = ['label' => 'Manage Employees', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('emp', 'Employee'), 'url' => ['default/index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('emp', 'Manage Employees'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <!----------------------------------------------------------------------->
@@ -22,10 +22,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="row">
   <div class="col-xs-12">
 	<h2 class="page-header">	
-		<i class="fa fa-user"></i> Employee Profile
+		<i class="fa fa-user"></i> <?php echo Yii::t('emp', 'Employee Profile'); ?>
 		<div class="pull-right">
 		<?php if(Yii::$app->user->can("/employee/export-data/employee-profile-pdf")) { ?>
-		    <?= Html::a('<i class="fa fa-file-pdf-o"></i> Generate PDF', ['export-data/employee-profile-pdf', 'eid' => $model->emp_master_id], ['class' => 'btn-sm btn btn-warning', 'id' => 'export-pdf', 'target' => 'blank']) ?>
+		    <?= Html::a('<i class="fa fa-file-pdf-o"></i> '.Yii::t('emp', 'Generate PDF'), ['export-data/employee-profile-pdf', 'eid' => $model->emp_master_id], ['class' => 'btn-sm btn btn-warning', 'id' => 'export-pdf', 'target' => 'blank']) ?>
 		<?php } ?>
 		</div>
 	</h2>
@@ -47,23 +47,23 @@ $this->params['breadcrumbs'][] = $this->title;
 		</div>
 		<table class="table table-striped">
 			<tr>
-				<th>Employee ID</th>
+				<th><?php echo Yii::t('emp', 'Employee ID'); ?></th>
 				<td><?= Html::encode($info->emp_unique_id) ?></td>
 			</tr>
 			<tr>
-				<th>Name</th>
+				<th><?php echo Yii::t('emp', 'Name'); ?></th>
 				<td><?= Html::encode($this->title) ?></td>
 			</tr>
 			<tr>
-				<th>Department</th>
+				<th><?php echo Yii::t('emp', 'Department'); ?></th>
 				<td><?= $model->empMasterDepartment->emp_department_alias ?></td>	
 			</tr>
 			<tr>
-				<th>Designation</th>
+				<th><?php echo Yii::t('emp', 'Designation'); ?></th>
 				<td><?= (!empty($model->empMasterDesignation->emp_designation_alias) ? $model->empMasterDesignation->emp_designation_alias :"") ?></td>			
 			</tr>
 			<tr>
-				<th>Category</th>
+				<th><?php echo Yii::t('emp', 'Category'); ?></th>
 				<td><?= (!empty($model->empMasterCategory->emp_category_name) ? $model->empMasterCategory->emp_category_name : "") ?></td>		
 			</tr>
 			<tr>
@@ -75,12 +75,12 @@ $this->params['breadcrumbs'][] = $this->title;
 				<td><?= (!empty($info->emp_email_id) ? $info->emp_email_id : "") ?></td>
 			</tr>
 			<tr>
-				<th>Status</th>
+				<th><?php echo Yii::t('emp', 'Status'); ?></th>
 				<td>
 					<?php if($model->is_status==0) : ?>
-					<span class="label label-success">Active</span>
+					<span class="label label-success"><?php echo Yii::t('emp', 'Active'); ?></span>
 					<?php else : ?>
-					<span class="label label-danger">InActive</span>
+					<span class="label label-danger"><?php echo Yii::t('emp', 'InActive'); ?></span>
 					<?php endif; ?>
 				</td>
 			</tr>
@@ -89,12 +89,12 @@ $this->params['breadcrumbs'][] = $this->title;
 
 	<div class="col-md-9 profile-data">
 		<ul class="nav nav-tabs responsive" id = "profileTab">
-			<li class="active" id = "personal-tab"><a href="#personal" data-toggle="tab"><i class="fa fa-street-view"></i> Personal</a></li>
-			<li id = "guardians-tab"><a href="#guardians" data-toggle="tab"><i class="fa fa-user"></i> Guardians</a></li>
-			<li id = "address-tab"><a href="#address" data-toggle="tab"><i class="fa fa-home"></i> Address</a></li>
+			<li class="active" id = "personal-tab"><a href="#personal" data-toggle="tab"><i class="fa fa-street-view"></i> <?php echo Yii::t('emp', 'Personal'); ?></a></li>
+			<li id = "guardians-tab"><a href="#guardians" data-toggle="tab"><i class="fa fa-user"></i> <?php echo Yii::t('emp', 'Guardians'); ?></a></li>
+			<li id = "address-tab"><a href="#address" data-toggle="tab"><i class="fa fa-home"></i> <?php echo Yii::t('emp', 'Address'); ?></a></li>
 			<li id = "academic-tab"><a href="#otherinfo" data-toggle="tab"><i class="fa fa-cogs"></i>
- Other Info</a></li>
-			<li id = "documents-tab"><a href="#documents" data-toggle="tab"><i class="fa fa-file-text"></i> Documents</a></li>
+ <?php echo Yii::t('emp', 'Other Info'); ?></a></li>
+			<li id = "documents-tab"><a href="#documents" data-toggle="tab"><i class="fa fa-file-text"></i> <?php echo Yii::t('emp', 'Documents'); ?></a></li>
 		</ul>
 		 <div id='content' class="tab-content responsive">
 			<div class="tab-pane active" id="personal">

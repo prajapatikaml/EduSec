@@ -9,7 +9,7 @@ use yii\bootstrap\Modal;
 		$action = ['update', 'id'=>$_REQUEST['id']];
 	else
 		$action = ['create'];
-    ?>
+    	?>
 
 
 <div class="col-xs-12 col-lg-12">
@@ -23,14 +23,14 @@ use yii\bootstrap\Modal;
 			
     ]); ?>
 
-    	<?= $form->field($model, 'country_name', ['inputOptions'=>[ 'class'=>'form-control', 'placeholder'=>'Country Name'] ] )->textInput(['maxlength' => 35])->label(false); ?>
+    	<?= $form->field($model, 'country_name', ['inputOptions'=>[ 'class'=>'form-control', 'placeholder' => Yii::t('app', 'Country Name')] ] )->textInput(['maxlength' => 35])->label(false); ?>
 
      <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
 	<div class="col-xs-6">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-6">
-	<?= Html::resetButton('Reset', ['class' => 'btn btn-default btn-block']) ?>
+	<?= Html::resetButton(Yii::t('app', 'Reset'), ['class' => 'btn btn-default btn-block']) ?>
 	</div>
      </div>
 

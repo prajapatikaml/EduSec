@@ -7,7 +7,7 @@ $role = Yii::$app->AuthManager->getRoles();
 <div class="row">
   <div class="col-xs-12">
 	<h4 class="edusec-border-bottom-warning page-header edusec-profile-title-1">	
-		<i class="fa fa-files-o"></i> <?= Html::encode('Uploaded Documents') ?>
+		<i class="fa fa-files-o"></i> <?= Html::encode(Yii::t('stu', 'Uploaded Documents')) ?>
 	</h4>
   </div><!-- /.col -->
 </div>
@@ -17,7 +17,7 @@ $role = Yii::$app->AuthManager->getRoles();
 	$display = "";	
       }
       else {
-	$display = "hidden";
+	$display = 'hidden';
       }
 ?>
 <div class="table-responsive disp-doc">
@@ -40,13 +40,13 @@ foreach($s_doc_data as $d_data) :
 	<td class="text-center"><?= ($d_data->emp_docs_details) ? $d_data->emp_docs_details : ""?></td>
 	<?php $d = ''; $s = '';?>
 	<td class="text-center"><?php if($d_data->emp_docs_status == 1) { ?>
-		<span class="label label-success">Approved</span>
+		<span class="label label-success"><?php echo Yii::t('emp', 'Approved'); ?></span>
 		<?php $d = 'display:none'; $s = "display:block";  ?>
 		<?php } elseif($d_data->emp_docs_status == 2) { ?>
-		<span class="label label-danger">Disapproved</span>
+		<span class="label label-danger"><?php echo Yii::t('emp', 'Disapproved'); ?></span>
 		<?php $d = 'display:block'; $s = "display:none"; ?>
 		<?php } else { ?>
-		<span class="label label-info">Pendding</span>
+		<span class="label label-info"><?php echo Yii::t('emp', 'Pendding'); ?></span>
 		<?php } ?>
 	</td>
 
@@ -56,13 +56,13 @@ foreach($s_doc_data as $d_data) :
 	<div class="col-lg-4 col-xs-12 col-sm-4 col-md-4 no-padding">
 		<div class="dropdown" style="width:100%">
 		  <button class="btn-block btn-sm btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-		    Action
+		    <?php echo Yii::t('emp', 'Action'); ?>
 		    <span class="caret"></span>
 		  </button>
 
 		  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-		    <li role="presentation" style="<?= $d ?>"><?= Html::a('Approved', ['change-status', 'emp_doc' => $d_data->emp_docs_id, 'eid' =>$d_data->emp_docs_emp_master_id, 'd_status' => 'APPROVED'], ['class' => 'btn btn-success btn-block', 'role' => 'menuitem']) ?></li>
-		    <li role="presentation" style="<?= $s ?>"><?= Html::a('Disapproved', ['change-status', 'emp_doc' => $d_data->emp_docs_id, 'eid' =>$d_data->emp_docs_emp_master_id, 'd_status' => 'DISAPPROVED'], ['class' => 'btn btn-warning btn-block', 'role' => 'menuitem']) ?></li>	
+		    <li role="presentation" style="<?= $d ?>"><?= Html::a(Yii::t('emp', 'Approved'), ['change-status', 'emp_doc' => $d_data->emp_docs_id, 'eid' =>$d_data->emp_docs_emp_master_id, 'd_status' => Yii::t('emp', 'APPROVED')], ['class' => 'btn btn-success btn-block', 'role' => 'menuitem']) ?></li>
+		    <li role="presentation" style="<?= $s ?>"><?= Html::a(Yii::t('emp', 'Disapproved'), ['change-status', 'emp_doc' => $d_data->emp_docs_id, 'eid' =>$d_data->emp_docs_emp_master_id, 'd_status' => Yii::t('emp', 'DISAPPROVED')], ['class' => 'btn btn-warning btn-block', 'role' => 'menuitem']) ?></li>	
 
 		  </ul>
 	      </div>
@@ -75,10 +75,10 @@ foreach($s_doc_data as $d_data) :
 	<?php }
 	      if(Yii::$app->user->can("/employee/emp-master/delete-doc")&& ($_REQUEST['id'] == Yii::$app->session->get('emp_id')) || (in_array("SuperAdmin", $admin)) || Yii::$app->user->can("updateAllEmpInfo")) { ?>
 	<div class="col-lg-4 col-xs-12 col-sm-4 col-md-4 no-padding">
-		<?=  Html::a('<i class="fa fa-trash-o"></i> Delete', ['delete-doc', 'emp_doc_id' => $d_data->emp_docs_id], [
+		<?=  Html::a('<i class="fa fa-trash-o"></i> '.Yii::t('emp', 'Delete'), ['delete-doc', 'emp_doc_id' => $d_data->emp_docs_id], [
 		    'class' => 'btn-sm btn btn-danger btn-block',
 		    'data' => [
-			'confirm' => 'Are you sure you want to delete this item?',
+			'confirm' => Yii::t('emp', 'Are you sure you want to delete this item?'),
 			'method' => 'post',
 		    ],
 		])  ?>

@@ -2,7 +2,8 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = "Student Dashboard"; 
+
+$this->title = Yii::t('app', 'Student Dashboard'); 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <script>
@@ -53,7 +54,7 @@ $this->registerJs(
 
 <?php
 	yii\bootstrap\Modal::begin([
-	    'header' => '<h4><i class="fa fa-eye"></i> View Notice Details</h4>',
+	    'header' => '<h4><i class="fa fa-eye"></i> '.Yii::t("app", "View Notice Details").'</h4>',
 	    'id'=>'NoticeModal',
 	]);
 	echo '<div id="NoticeModalContent"></div>';
@@ -77,7 +78,7 @@ $stuInfo = app\modules\student\models\StuInfo::findOne($stuMaster->stu_master_st
 	if(!empty($stuMsg)) :
 	?>
 	<div class="callout callout-info msg-of-day">
-		    <h4><i class="fa fa-bullhorn"></i> Message of day box</h4>
+		    <h4><i class="fa fa-bullhorn"></i> <?php echo Yii::t('app', 'Message of day box') ?></h4>
 		    <p><marquee onmouseout="this.setAttribute('scrollamount', 6, 0);" onmouseover="this.setAttribute('scrollamount', 0, 0);" scrollamount="6" behavior="scroll" direction="left"><?= $stuMsg->msg_details; ?></marquee></p>
 	</div>
 	<?php endif; ?>
@@ -88,7 +89,7 @@ $stuInfo = app\modules\student\models\StuInfo::findOne($stuMaster->stu_master_st
 	   <div class="col-sm-4 col-xs-12">
 	      <div class="box box-info">
 		<div class="box-header with-border">
-			<h3 class="box-title"><i class="fa fa-info-circle"></i> My Information</h3>
+			<h3 class="box-title"><i class="fa fa-info-circle"></i> <?php echo Yii::t('app', 'My Information') ?></h3>
 		</div>
 		<div class="box-body table-responsive no-padding">
 		<div class="col-md-12 text-center">
@@ -96,19 +97,19 @@ $stuInfo = app\modules\student\models\StuInfo::findOne($stuMaster->stu_master_st
 		</div>
 		<table class="table table-striped">
 			<tr>
-				<th>Student ID</th>
+				<th><?php echo Yii::t('app', 'Student ID') ?></th>
 				<td><?= Html::encode($stuInfo->stu_unique_id) ?></td>
 			</tr>
 			<tr>
-				<th>Name</th>
+				<th><?php echo Yii::t('app', 'Name') ?></th>
 				<td><?= $stuInfo->getName(); ?></td>
 			</tr>
 			<tr>
-				<th>Course</th>
+				<th><?php echo Yii::t('app', 'Course') ?></th>
 				<td><?= $stuMaster->stuMasterCourse->course_alias; ?></td>
 			</tr>
 			<tr>
-				<th>Batch</th>
+				<th><?php echo Yii::t('app', 'Batch') ?></th>
 				<td><?= $stuMaster->stuMasterBatch->batch_name; ?></td>
 			</tr>
 			<tr>
@@ -120,32 +121,32 @@ $stuInfo = app\modules\student\models\StuInfo::findOne($stuMaster->stu_master_st
 				<td><?= $stuInfo->stu_mobile_no ?></td>
 			</tr>
 			<tr>
-				<th>Status</th>
+				<th><?php echo Yii::t('app', 'Status') ?></th>
 				<td>
 					<?php if($stuMaster->is_status==0) : ?>
-					<span class="label label-success">Active</span>
+					<span class="label label-success"><?php echo Yii::t('app', 'Active') ?></span>
 					<?php else : ?>
-					<span class="label label-danger">InActive</span>
+					<span class="label label-danger"><?php echo Yii::t('app', 'InActive') ?></span>
 					<?php endif; ?>
 				</td>
 			</tr>
 		</table>
 	      </div><!---/. box-body--->
 	      <div class="box-footer text-right">
-			<?= Html::a('More Info <i class="fa fa-arrow-circle-right"></i>', ['/student/stu-master/view', 'id' => $stuMaster->stu_master_id], ['class' => 'btn btn-default btn-sm']) ?>
+			<?= Html::a(Yii::t('app', 'More Info'). ' <i class="fa fa-arrow-circle-right"></i>', ['/student/stu-master/view', 'id' => $stuMaster->stu_master_id], ['class' => 'btn btn-default btn-sm']) ?>
 	      </div>
 	     </div><!---/. box--->
 	    </div><!---/. col-sm-4-->
 	    <div class="col-sm-3 col-xs-12">
 		<div class="box box-warning">
 		   <div class="box-header with-border">
-			<h3 class="box-title"><i class="fa fa-inr"></i> Fees Details</h3>
+			<h3 class="box-title"><i class="fa fa-inr"></i> <?php echo Yii::t('app', 'Fees Details') ?></h3>
 		   </div>
 		   <div class="box-body">
 			<div class="small-box bg-aqua">
 			   <div class="inner">
 				<h3>&#8377; <?= ($payFees) ? $payFees : 0 ?></h3>
-				<p>Total Paid Fees</p>
+				<p><?php echo Yii::t('app', 'Total Paid Fees') ?></p>
 			    </div>
 			    <div class="icon">
 				<i class="fa fa-inr" style="font-size:55px"></i>
@@ -154,7 +155,7 @@ $stuInfo = app\modules\student\models\StuInfo::findOne($stuMaster->stu_master_st
 			<div class="small-box bg-yellow">
 			   <div class="inner">
 				<h3>&#8377; <?= ($currentFeesData['paidFees']) ? $currentFeesData['paidFees'] : 0 ?></h3>
-				<p>Total paid Fees in active fees category </p>
+				<p><?php echo Yii::t('app', 'Total paid Fees in active fees category') ?> </p>
 			    </div>
 			    <div class="icon">
 				<i class="fa fa-inr" style="font-size:65px"></i>
@@ -163,7 +164,7 @@ $stuInfo = app\modules\student\models\StuInfo::findOne($stuMaster->stu_master_st
 			<div class="small-box bg-red">
 			   <div class="inner">
 				<h3>&#8377; <?= ($currentFeesData['unPaidFees']) ? $currentFeesData['unPaidFees'] : 0 ?></h3>
-				<p>Total unpaid Fees in active fees category </p>
+				<p><?php echo Yii::t('app', 'Total unpaid Fees in active fees category') ?> </p>
 			    </div>
 			    <div class="icon">
 				<i class="fa fa-inr" style="font-size:65px"></i>
@@ -171,14 +172,14 @@ $stuInfo = app\modules\student\models\StuInfo::findOne($stuMaster->stu_master_st
 			</div><!---/. small-box-3---> 	
 		   </div><!---/. box-body---> 	
 		   <div class="box-footer text-center">
-			 <?= Html::a('More Info', ['/fees/fees-payment-transaction/stu-fees-data'], ['class' => 'small-box-footer', 'style' => 'font-size:13px', 'target' => '_blank']) ?>
+			 <?= Html::a(Yii::t('app', 'More Info'), ['/fees/fees-payment-transaction/stu-fees-data'], ['class' => 'small-box-footer', 'style' => 'font-size:13px', 'target' => '_blank']) ?>
 		   </div>
 		</div><!---/. box--->	
 	    </div> <!---/.col-sm-3---->
 	    <div class="col-sm-5 col-xs-12">
 		<div class="box box-info">
 		   <div class="box-header with-border">
-			<h3 class="box-title"><i class="fa fa-calendar-o"></i> Holiday List</h3>
+			<h3 class="box-title"><i class="fa fa-calendar-o"></i> <?php echo Yii::t('app', 'Holiday List') ?></h3>
 		   </div>
 		   <div class="box-body" id="holidayList">
 		     <div class="table-responsive">
@@ -187,8 +188,8 @@ $stuInfo = app\modules\student\models\StuInfo::findOne($stuMaster->stu_master_st
 				<col class="col-sm-3">
 				<col class="col-sm-9">
 				<tr>
-					<th>Date</th>
-					<th>Holiday</th>
+					<th><?php echo Yii::t('app', 'Date') ?></th>
+					<th><?php echo Yii::t('app', 'Holiday') ?></th>
 				</tr>
 				<?php foreach($holidayData as $v) : ?>	
 				<tr>
@@ -200,7 +201,7 @@ $stuInfo = app\modules\student\models\StuInfo::findOne($stuMaster->stu_master_st
 			<?php else : ?>
 			<div class="box-header bg-warning">
 				<div style="padding:5px">
-					No data available...
+					<?php echo Yii::t('app', 'No data available...'); ?>
 				</div>
 			</div>
 			<?php endif; ?>
@@ -220,9 +221,9 @@ $stuInfo = app\modules\student\models\StuInfo::findOne($stuMaster->stu_master_st
 	   <div class="nav-tabs-custom"><!-- .nav-tabs-custom -->
                 <!-- Tabs within a box -->
                 <ul class="nav nav-tabs pull-right">
-		    <li><a href="#all-notice" data-toggle="tab">General</a></li>
-                    <li class="active"><a href="#stu-notice" data-toggle="tab">Student</a></li>
-                    <li class="pull-left header"><i class="fa fa-inbox"></i>Notice Board</li>
+		    <li><a href="#all-notice" data-toggle="tab"><?php echo Yii::t('app', 'General') ?></a></li>
+                    <li class="active"><a href="#stu-notice" data-toggle="tab"><?php echo Yii::t('app', 'Student') ?></a></li>
+                    <li class="pull-left header"><i class="fa fa-inbox"></i><?php echo Yii::t('app', 'Notice Board') ?></li>
                 </ul>
                 <div class="tab-content">
                     <!-- Notice -->
@@ -233,7 +234,8 @@ $stuInfo = app\modules\student\models\StuInfo::findOne($stuMaster->stu_master_st
 		    if(!empty($noticeList)) {
 			foreach($noticeList as $nl) : ?>
 			 <div class="notice-main bg-light-blue">
-				<div class="notice-disp-date">				        		<small class="label label-success"><i class="fa fa-calendar"></i> <?= (!empty($nl->notice_date) ? Yii::$app->formatter->asDate($nl->notice_date) : "Not Set"); ?></small>	
+				<div class="notice-disp-date">				       
+					<small class="label label-success"><i class="fa fa-calendar"></i> <?= (!empty($nl->notice_date) ? Yii::$app->formatter->asDate($nl->notice_date) : Yii::t('app', "Not Set")); ?></small>	
 				</div>
 				<div class="notice-body">
 					 <div class="notice-title"><?= Html::a($nl->notice_title, '#', ['style' => 'color:#FFF', 'class'=>'noticeModalLink', 'data-value'=>Url::to(['dashboard/notice/view-popup','id'=>$nl->notice_id])]); ?>&nbsp; </div>
@@ -243,7 +245,7 @@ $stuInfo = app\modules\student\models\StuInfo::findOne($stuMaster->stu_master_st
 			<?php endforeach; 
 		     } else {
 				echo '<div class="box-header bg-warning"><div style="padding:5px">';
-				echo "No Notice....";
+				echo Yii::t('app', 'No Notice....');
 				echo '</div></div>';
 		     }
 			?>
@@ -265,7 +267,7 @@ $stuInfo = app\modules\student\models\StuInfo::findOne($stuMaster->stu_master_st
 			<?php endforeach;
 		      } else {
 				echo '<div class="box-header bg-warning"><div style="padding:5px">';
-				echo "No Notice....";
+				echo Yii::t('app', 'No Notice....');
 				echo '</div></div>';
 		      }
 			?>
@@ -277,7 +279,7 @@ $stuInfo = app\modules\student\models\StuInfo::findOne($stuMaster->stu_master_st
             <div class="box box-info">
                 <div class="box-header with-border">
                     <i class="fa fa-calendar"></i>
-                    <h3 class="box-title">Calendar</h3>
+                    <h3 class="box-title"><?php echo Yii::t('app', 'Calendar') ?></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <!--The calendar -->
@@ -328,10 +330,10 @@ EOF;
 		    ?>
 		   <div class="row">
 			<ul class="legend">
-			    <li><span class="holiday"></span> Holiday</li>
-			    <li><span class="importantnotice"></span> Important Notice</li>
-			    <li><span class="meeting"></span> Meeting</li>
-			    <li><span class="messages"></span> Messages</li>
+			    <li><span class="holiday"></span> <?php echo Yii::t('app', 'Holiday') ?></li>
+			    <li><span class="importantnotice"></span> <?php echo Yii::t('app', 'Important Notice') ?></li>
+			    <li><span class="meeting"></span> <?php echo Yii::t('app', 'Meeting') ?></li>
+			    <li><span class="messages"></span> <?php echo Yii::t('app', 'Messages') ?></li>
 			</ul>
 		   </div>
                 </div><!-- /.box-body -->
@@ -344,9 +346,9 @@ EOF;
 	    <div class="nav-tabs-custom"><!-- .nav-tabs-custom -->
                 <!-- Tabs within a box -->
                 <ul class="nav nav-tabs pull-right">
-                    <li><a href="#birth-upcoming" data-toggle="tab">Upcoming</a></li>
-		    <li class="active"><a href="#birth-taday" data-toggle="tab">Today's</a></li>
-                    <li class="pull-left header"><i class="fa fa-birthday-cake"></i>Birthdays</li>
+                    <li><a href="#birth-upcoming" data-toggle="tab"><?php echo Yii::t('app', 'Upcoming') ?></a></li>
+		    <li class="active"><a href="#birth-taday" data-toggle="tab"><?php echo Yii::t('app', "Today's") ?></a></li>
+                    <li class="pull-left header"><i class="fa fa-birthday-cake"></i><?php echo Yii::t('app', 'Birthdays') ?></li>
                 </ul>
                 <div class="tab-content">
                     <!-- Birthdays -->
@@ -367,7 +369,7 @@ EOF;
 				<?php endforeach; 
 			} else {
 				echo '<div class="box-header bg-warning"><div style="padding:5px">';
-				echo "No Birthday Today";
+				echo Yii::t('app', 'No Birthday Today');
 				echo '</div></div>';
 			}
 			?>
@@ -390,7 +392,7 @@ EOF;
 				<?php endforeach; 
 			} else {
 				echo '<div class="box-header bg-warning"><div style="padding:5px">';
-				echo "No Birthday within 30 days duration";
+				echo Yii::t('app', 'No Birthday within 30 days duration');
 				echo '</div></div>';
 			}
 			?>
@@ -402,7 +404,7 @@ EOF;
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <i class="ion ion-university"></i>
-                    <h3 class="box-title">Courses</h3>
+                    <h3 class="box-title"><?php echo Yii::t('app', 'Courses') ?></h3>
                 </div><!-- /.box-header -->
                 <div class="box-body">
                     <ul class="todo-list" id="coursList">

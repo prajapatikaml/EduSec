@@ -10,7 +10,8 @@ use yii\helpers\ArrayHelper;
 	$model->sort = false; 
 	$dispColumn = false;
 	if($type == 'Excel') {
-		echo "<table><tr><th colspan='11'><h3>".$org['org_name']."</h3> </th> </tr> </table>";
+		echo "<meta http-equiv=\"Content-type\" content=\"text/html;charset=utf-8\" />";
+		echo "<table><tr><th colspan='12'><h3>".$org['org_name']."</h3> </th> </tr> </table>";
 		$dispColumn = true;
 	}
     ?>
@@ -53,7 +54,7 @@ use yii\helpers\ArrayHelper;
 		'value' => 'empMasterCategory.emp_category_name',
             ],
 	    [
-	      'label' => 'Created At',
+	    //  'label' => 'Created At',
 	      'attribute' => 'created_at',
               'value' => function ($data) {
 				return Yii::$app->formatter->asDateTime($data->created_at);
@@ -61,13 +62,13 @@ use yii\helpers\ArrayHelper;
 	      'visible'=>$dispColumn,
             ],
 	    [
-	      'label' => 'Created By',
+	     // 'label' => 'Created By',
 	      'attribute' => 'created_by',
               'value' => 'createdBy.user_login_id',
 	      'visible'=>$dispColumn,
             ],
 	    [
-	      'label' => 'Updated At',
+	     // 'label' => 'Updated At',
 	      'attribute' => 'updated_at',
               'value' => function ($data) {
 				return (!empty($data->updated_at) ? Yii::$app->formatter->asDateTime($data->updated_at) : " (not set) ");
@@ -75,7 +76,7 @@ use yii\helpers\ArrayHelper;
 	      'visible'=>$dispColumn,
             ],
 	    [
-	      'label' => 'Updated By',
+	      //'label' => 'Updated By',
 	      'attribute' => 'updated_by',
               'value' => 'updatedBy.user_login_id',
 	      'visible'=>$dispColumn,

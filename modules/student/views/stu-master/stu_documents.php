@@ -26,7 +26,7 @@ else
   <div class="row">
 	  <div class="col-xs-12">
 	    <h4 class="edusec-border-bottom-warning page-header edusec-profile-title-1">	
-		<i class="fa fa-upload"></i> <?= Html::encode('Remaining Uploaded Documents') ?>
+		<i class="fa fa-upload"></i> <?= Html::encode(Yii::t('stu', 'Upload Remaining Documents')) ?>
 	     </h4>
 	  </div><!-- /.col -->
   </div>
@@ -82,7 +82,7 @@ else
 	     endforeach; 
 	?>
     <div class="form-group col-xs-12 col-sm-3" style="<?= $st; ?>;margin-top: 10px;">
-		<?= Html::submitButton('<i class="fa fa-upload"></i> Upload', ['class' => $stu_docs->isNewRecord ? 'btn btn-success btn-block' : 'btn btn-primary btn-block']) ?>
+		<?= Html::submitButton('<i class="fa fa-upload"></i>'. Yii::t('stu', 'Upload'), ['class' => $stu_docs->isNewRecord ? 'btn btn-success btn-block' : 'btn btn-primary btn-block']) ?>
     </div>
 	<?php ActiveForm::end(); ?>
     </div>

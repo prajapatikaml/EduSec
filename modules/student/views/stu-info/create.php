@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\student\models\StuInfo */
 
-$this->title = 'Create Stu Info';
-$this->params['breadcrumbs'][] = ['label' => 'Stu Infos', 'url' => ['index']];
+$this->title = Yii::t('stu', 'Create Stu Info');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Stu Infos'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="stu-info-create">

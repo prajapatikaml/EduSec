@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\student\models\StuDocs */
 
-$this->title = 'Update Student Docs: ' . ' ' . $model->stu_docs_id;
-$this->params['breadcrumbs'][] = ['label' => 'Student Docs', 'url' => ['index']];
+$this->title = Yii::t('stu','Update Student Docs: ') . ' ' . $model->stu_docs_id;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Student Docs'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->stu_docs_id, 'url' => ['view', 'id' => $model->stu_docs_id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = Yii::t('stu', 'Update');
 ?>
 <div class="stu-docs-update">
 

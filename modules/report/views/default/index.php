@@ -2,7 +2,7 @@
 use yii\helpers\Html; 
 use miloschuman\highcharts\Highcharts;
 use yii\web\JsExpression;
-$this->title = 'Report Center';
+$this->title = Yii::t('report', 'Report Center');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="row">
@@ -13,12 +13,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="small-box bg-green">
         <div class="inner">
              <h3><?php echo \app\modules\student\models\StuMaster::find()->where(['is_status'=>0])->count(); ?></h3>
-            <p>Active Students</p>
+            <p><?php echo Yii::t('report', 'Active Students'); ?></p>
         </div>
         <div class="icon">
               <i class="fa fa-toggle-on" style="font-size: 60px;"></i>
         </div>
-	  <?php echo Html::a('More Info <i class="fa fa-arrow-circle-right"></i>', ['/report/student/stuinforeport'], ['class'=>'small-box-footer']); ?>
+	  <?php echo Html::a(Yii::t('report', "More Info").' <i class="fa fa-arrow-circle-right"></i>', ['/report/student/stuinforeport'], ['class'=>'small-box-footer']); ?>
     </div>
 </div>
 
@@ -28,12 +28,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="small-box bg-red">
         <div class="inner">
            <h3><?php echo \app\modules\student\models\StuMaster::find()->where(['is_status'=>1])->count(); ?></h3>
-            <p>Deactive Students</p>
+            <p><?php echo Yii::t('report', 'Deactive Students'); ?></p>
         </div>
         <div class="icon">
             <i class="fa fa-toggle-off" style="font-size: 60px;"></i>
         </div>
-        <?php echo Html::a('More Info <i class="fa fa-arrow-circle-right"></i>', ['/report/student/stuinforeport'], ['class'=>'small-box-footer']); ?>
+        <?php echo Html::a(Yii::t('report', "More Info").' <i class="fa fa-arrow-circle-right"></i>', ['/report/student/stuinforeport'], ['class'=>'small-box-footer']); ?>
     </div>
 </div>
 
@@ -43,12 +43,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="small-box bg-green">
         <div class="inner">
             <h3><?php echo \app\modules\employee\models\EmpMaster::find()->where(['is_status'=>0])->count(); ?></h3>
-            <p>Active Employee</p>
+            <p><?php echo Yii::t('report', 'Active Employee'); ?></p>
         </div>
         <div class="icon">
             <i class="fa fa-toggle-on" style="font-size: 60px;"></i>
         </div>
-	<?php echo Html::a('More Info <i class="fa fa-arrow-circle-right"></i>', ['/report/employee/empinforeport'], ['class'=>'small-box-footer']); ?>
+	<?php echo Html::a(Yii::t('report', "More Info").' <i class="fa fa-arrow-circle-right"></i>', ['/report/employee/empinforeport'], ['class'=>'small-box-footer']); ?>
     </div>
 </div>
 
@@ -58,12 +58,12 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="small-box bg-red">
         <div class="inner">
             <h3><?php echo \app\modules\employee\models\EmpMaster::find()->where(['is_status'=>1])->count(); ?></h3>
-            <p>Deactive Employee</p>
+            <p><?php echo Yii::t('report', 'Deactive Employee'); ?></p>
         </div>
         <div class="icon">
            <i class="fa fa-toggle-off" style="font-size: 60px;"></i>
         </div>
-	    <?php echo Html::a('More Info <i class="fa fa-arrow-circle-right"></i>', ['/report/employee/empinforeport'], ['class'=>'small-box-footer']); ?>
+	    <?php echo Html::a(Yii::t('report', "More Info").' <i class="fa fa-arrow-circle-right"></i>', ['/report/employee/empinforeport'], ['class'=>'small-box-footer']); ?>
     </div>
 </div>
 
@@ -75,7 +75,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="col-md-12">
 <div class="box box-info">
 	<div class="box-header with-border">
-		<h3 class="box-title"><i class="fa fa-bar-chart"></i> Course Wise Student Status</h3>
+		<h3 class="box-title"><i class="fa fa-bar-chart"></i> <?php echo Yii::t('report', 'Course Wise Student Status'); ?></h3>
 	</div>
 	<div class="box-body">
 
@@ -126,7 +126,7 @@ echo Highcharts::widget([
 		],
 		'yAxis'=>[
 			'title'=>[
-				'text'=>'Student Count',
+				'text'=>Yii::t('report', 'Student Count'),
 			]
 		],
 		'series' => $stuStatusData,
@@ -147,7 +147,7 @@ echo Highcharts::widget([
 <div class="col-md-4">
 	<div class="box box-info">
 	<div class="box-header with-border">
-		<h3 class="box-title"><i class="fa fa-pie-chart"></i> Gender Wise Student</h3>
+		<h3 class="box-title"><i class="fa fa-pie-chart"></i> <?php echo Yii::t('report', 'Gender Wise Student'); ?></h3>
 	</div>
 	<div class="box-body">
 <?php
@@ -205,7 +205,7 @@ echo Highcharts::widget([
 <div class="col-md-8">
 	<div class="box box-info">
 	<div class="box-header with-border">
-		<h3 class="box-title"><i class="fa fa-bar-chart"></i> Category Wise Student</h3>
+		<h3 class="box-title"><i class="fa fa-bar-chart"></i> <?php echo Yii::t('report', 'Category Wise Student'); ?></h3>
 	</div>
 	<div class="box-body">
 <?php
@@ -248,7 +248,7 @@ echo Highcharts::widget([
 			],
 			'yAxis'=>[
 				'title'=>[
-					'text'=>'Student Count',
+					'text'=>Yii::t('report', 'Student Count'),
 				]
 			],
 			'series'=> [
@@ -280,7 +280,7 @@ echo Highcharts::widget([
 <div class="col-md-4">
 	<div class="box box-info">
 	<div class="box-header with-border">
-		<h3 class="box-title"><i class="fa fa-pie-chart"></i> Gender Wise Employee</h3>
+		<h3 class="box-title"><i class="fa fa-pie-chart"></i> <?php echo Yii::t('report', 'Gender Wise Employee'); ?></h3>
 	</div>
 	<div class="box-body">
 <?php
@@ -325,7 +325,7 @@ echo Highcharts::widget([
 			],
 			'series'=> [
 				[
-					'name'=>'Total Employee',
+					'name'=>Yii::t('report', 'Total Employee'),
 					'data'=>$empGenWise
 				]
 			]
@@ -340,7 +340,7 @@ echo Highcharts::widget([
 <div class="col-md-8">
 	<div class="box box-info">
 	<div class="box-header with-border">
-		<h3 class="box-title"><i class="fa fa-bar-chart"></i> Year Wise Joining Employees</h3>
+		<h3 class="box-title"><i class="fa fa-bar-chart"></i> <?php echo Yii::t('report', 'Year Wise Joining Employees'); ?></h3>
 	</div>
 	<div class="box-body">
 <?php
@@ -357,7 +357,7 @@ echo Highcharts::widget([
     			'enabled'=>false,
   		],
 		'title'=>[
-			'text'=>'Department Wise Joining Average'
+			'text'=>Yii::t('report', 'Department Wise Joining Average')
 		],
 		'subtitle'=>[
 			'text'=>'',
@@ -368,7 +368,7 @@ echo Highcharts::widget([
 		],
 		'yAxis'=>[
 			'title'=>[
-				'text'=>'Total Employee',
+				'text'=>Yii::t('report', 'Total Employee'),
 			]
 		],
 		'plotOptions'=>[

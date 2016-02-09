@@ -6,12 +6,12 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\modules\employee\models\EmpStatus */
 
-$this->title = 'Add Status';
+$this->title = Yii::t('emp', 'Add Status');
 //$this->params['breadcrumbs'][] = ['label' => 'Status', 'url' => ['index']];
 //$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-xs-12">
-  <div class="col-lg-4 col-sm-4 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-plus"></i> Add Status </h3></div>
+  <div class="col-lg-4 col-sm-4 col-xs-12 no-padding"><h3 class="box-title"><i class="fa fa-plus"></i> <?php echo Yii::t('emp', 'Add Status'); ?> </h3></div>
 
   <div class="col-xs-4"></div>
 
@@ -19,7 +19,7 @@ $this->title = 'Add Status';
 	<div class="col-xs-4"></div>
 	<div class="col-xs-4"></div>
 	<div class="col-xs-4 left-padding">
-	<?= Html::a('Back', ['index'], ['class' => 'btn btn-block btn-back']) ?>
+	<?= Html::a(Yii::t('emp', 'Back'), ['index'], ['class' => 'btn btn-block btn-back']) ?>
 	</div>
    </div>
 

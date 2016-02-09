@@ -14,10 +14,10 @@ $adminUser = array_keys(\Yii::$app->authManager->getRolesByUser(Yii::$app->user-
 <div class="row">
   <div class="col-xs-12 col-md-12 col-lg-12">
 	<h2 class="page-header">	
-	<i class="fa fa-info-circle"></i> <?= Html::encode('Guardians Details') ?>
+	<i class="fa fa-info-circle"></i> <?= Html::encode(Yii::t('stu', 'Guardians Details')) ?>
 	<div class="pull-right">
 	<?php if(Yii::$app->user->can('/student/stu-master/addguardian')) { ?>
-		<?= Html::a('<i class="fa fa-user-plus"></i> Add Guardian', ['addguardian', 'sid' => $model->stu_master_id], ['class' => 'btn-sm btn btn-primary text-warning', 'id' => 'update-guard-data']) ?>
+		<?= Html::a('<i class="fa fa-user-plus"></i> '. Yii::t('stu', 'Add Guardian'), ['addguardian', 'sid' => $model->stu_master_id], ['class' => 'btn-sm btn btn-primary text-warning', 'id' => 'update-guard-data']) ?>
 	<?php } ?>
 	</div>
 	</h2>
@@ -42,13 +42,13 @@ $adminUser = array_keys(\Yii::$app->authManager->getRolesByUser(Yii::$app->user-
 	<?= $i."-".$sd['guardian_name'] ?>
 	<div class="pull-right">
 		<?php if(Yii::$app->user->can("/student/stu-master/update") && ($_REQUEST['id'] == Yii::$app->session->get('stu_id')) || (in_array("SuperAdmin", $adminUser)) || Yii::$app->user->can("updateAllStuInfo")) { ?>
-		    <?= Html::a('<i class="fa fa-pencil-square-o"></i> Edit', '#', ['class' => 'btn btn-primary btn-sm', 'onclick' => "updateGuard(".$sd['stu_guardian_id'].",".$model->stu_master_id.", 'guardians');return false;"]) ?>
+		    <?= Html::a('<i class="fa fa-pencil-square-o"></i> '.Yii::t('stu', 'Edit'), '#', ['class' => 'btn btn-primary btn-sm', 'onclick' => "updateGuard(".$sd['stu_guardian_id'].",".$model->stu_master_id.", 'guardians');return false;"]) ?>
 		<?php } ?>
 		<?php if(Yii::$app->user->can('/student/stu-guardians/delete') && ($_REQUEST['id'] == Yii::$app->session->get('stu_id')) || (in_array("SuperAdmin", $adminUser)) || Yii::$app->user->can("updateAllStuInfo")) { ?>
-		    <?= Html::a('<i class="fa fa-trash-o"></i> Delete', ['stu-guardians/delete', 'id' => $sd['stu_guardian_id'], 'sid'=>$model->stu_master_id], [
+		    <?= Html::a('<i class="fa fa-trash-o"></i> '.Yii::t('stu', 'Delete'), ['stu-guardians/delete', 'id' => $sd['stu_guardian_id'], 'sid'=>$model->stu_master_id], [
 			'class' => 'btn btn-danger btn-sm',
 			'data' => [
-				'confirm' => 'Are you sure you want to delete this item?',
+				'confirm' => Yii::t('stu', 'Are you sure you want to delete this item?'),
 				'method' => 'post',
 			],
 		    ]) ?> 
@@ -80,7 +80,7 @@ EOF;
 <div class="row">
   <div class="col-xs-12 col-md-12 col-lg-12">
 	<div class="pull-right edusec-stu-emg-gur">
-		<span class="edusec-emg-ct-label">Is Emergency Contact</span>
+		<span class="edusec-emg-ct-label"><?php echo Yii::t('stu', 'Is Emergency Contact'); ?></span>
 		<?php if((Yii::$app->user->can('/student/stu-master/emg-change-status') && ($_REQUEST['id'] == Yii::$app->session->get('stu_id'))) || ( $adminUser == "SuperAdmin" ) || Yii::$app->user->can("updateAllStuInfo")) { ?>
 		   <?= \dosamigos\switchinput\SwitchRadio::widget([
 			    'name' => 'is_emg_contact',
@@ -97,7 +97,7 @@ EOF;
 			    'labelOptions' => ['style' => 'font-size:14px;']
 		   ]);?>
 		<?php } else { 
-			echo (($sd['is_emg_contact'] == 1) ? "<span class='label label-success'>Yes</span>" : "<span class='label label-warning'>No</span>");
+			echo (($sd['is_emg_contact'] == 1) ? "<span class='label label-success'>".Yii::t('stu','Yes')."</span>" : "<span class='label label-warning'>".Yii::t('stu','No')."</span>");
 		}?>
         </div>
   </div><!-- /.col -->
@@ -167,7 +167,7 @@ EOF;
 ?>
 <table width="100%" cellpadding="0" cellspacing="0" class="table table-striped table-bordered table-hover table-responsive">
 	<tr>
-		<th class="table-cell-title text-center" colspan = 4><?= "No Data Available" ?></th>
+		<th class="table-cell-title text-center" colspan = 4><?= Yii::t("stu", "No Data Available") ?></th>
 	</tr>
 </table>
 <?php

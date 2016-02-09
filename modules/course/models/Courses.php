@@ -98,15 +98,15 @@ class Courses extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'course_id' => 'Course ID',
-            'course_name' => 'Course Name',
-            'course_code' => 'Course Code',
-            'course_alias' => 'Course Alias',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'is_status' => 'Status',
+			'course_id' => Yii::t('course', 'Course ID'),
+            'course_name' => Yii::t('course', 'Course Name'),
+            'course_code' => Yii::t('course', 'Course Code'),
+            'course_alias' => Yii::t('course', 'Course Alias'),
+            'created_at' => Yii::t('course', 'Created At'),
+            'created_by' => Yii::t('course', 'Created By'),
+            'updated_at' => Yii::t('course', 'Updated At'),
+            'updated_by' => Yii::t('course', 'Updated By'),
+            'is_status' => Yii::t('course', 'Status'),
         ];
     }
 

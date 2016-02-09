@@ -2,7 +2,7 @@
 use yii\helpers\Html;
 use yii\helpers\Url;
 
-$this->title = "Admin Dashboard"; 
+$this->title = Yii::t('app', 'Admin Dashboard'); 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <script>
@@ -67,7 +67,7 @@ $this->registerJs(
 		if(!empty($stuMsg)) :
 		?>
 		<div class="callout callout-info msg-of-day">
-			    <h4><i class="fa fa-bullhorn"></i> Message of day box</h4>
+			    <h4><i class="fa fa-bullhorn"></i> <?php echo Yii::t('app', 'Message of day box') ?></h4>
 			    <p><marquee onmouseout="this.setAttribute('scrollamount', 6, 0);" onmouseover="this.setAttribute('scrollamount', 0, 0);" scrollamount="6" behavior="scroll" direction="left"><?= $stuMsg->msg_details; ?></marquee></p>
 		</div>
 		<?php endif; ?>
@@ -81,13 +81,13 @@ $this->registerJs(
                                       <?= app\modules\student\models\StuMaster::find()->where(['is_status' => 0])->count(); ?>
                                     </h3>
                                     <p>
-                                        Students
+                                        <?php echo Yii::t('app', 'Students') ?>
                                     </p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-ios-people"></i>
                                 </div>
-				<?= Html::a('More info <i class="fa fa-arrow-circle-right"></i>', ['/student/stu-master/index'], ['target' => '_blank', 'class' => 'small-box-footer']); ?>
+								<?= Html::a(Yii::t('app', 'More info').' <i class="fa fa-arrow-circle-right"></i>', ['/student/stu-master/index'], ['target' => '_blank', 'class' => 'small-box-footer']); ?>
                             </div>
                         </div><!-- ./col -->
                         <div class="col-lg-3 col-xs-6">
@@ -98,13 +98,13 @@ $this->registerJs(
                                        <?= app\modules\employee\models\EmpMaster::find()->where(['is_status' => 0])->count(); ?>
                                     </h3>
                                     <p>
-                                        Employees
+                                        <?php echo Yii::t('app', 'Employees') ?>
                                     </p>
                                 </div>
                                 <div class="icon">
                                     <i class="ion ion-person"></i>
                                 </div>
-				<?= Html::a('More info <i class="fa fa-arrow-circle-right"></i>', ['/employee/emp-master/index'], ['target' => '_blank', 'class' => 'small-box-footer']); ?>
+				<?= Html::a(Yii::t('app', 'More info').'<i class="fa fa-arrow-circle-right"></i>', ['/employee/emp-master/index'], ['target' => '_blank', 'class' => 'small-box-footer']); ?>
                             </div>
                         </div><!-- ./col -->
                         <div class="col-lg-3 col-xs-6">
@@ -115,13 +115,13 @@ $this->registerJs(
                                         <?= app\modules\course\models\Courses::find()->where(['is_status' => 0])->count(); ?>
                                     </h3>
                                     <p>
-                                        Active Courses
+                                        <?php echo Yii::t('app', 'Active Courses') ?>
                                     </p>
                                 </div>
                                 <div class="icon">
                                     <i class="fa fa-graduation-cap"></i>
                                 </div>
-				<?= Html::a('More info <i class="fa fa-arrow-circle-right"></i>', ['/course/courses/index'], ['target' => '_blank', 'class' => 'small-box-footer']); ?>
+				<?= Html::a(Yii::t('app', 'More info').' <i class="fa fa-arrow-circle-right"></i>', ['/course/courses/index'], ['target' => '_blank', 'class' => 'small-box-footer']); ?>
                             </div>
                         </div><!-- ./col -->
                         <div class="col-lg-3 col-xs-6">
@@ -132,13 +132,13 @@ $this->registerJs(
                                         <?= app\modules\course\models\Batches::find()->where(['is_status' => 0])->count(); ?>
                                     </h3>
                                     <p>
-                                        Active Batches
+                                        <?php echo Yii::t('app', 'Active Batches') ?>
                                     </p>
                                 </div>
                                 <div class="icon">
                                     <i class="fa fa-sitemap"></i>
                                 </div>
-                                <?= Html::a('More info <i class="fa fa-arrow-circle-right"></i>', ['/course/batches/index'], ['target' => '_blank', 'class' => 'small-box-footer']); ?>
+                                <?= Html::a(Yii::t('app', 'More info').' <i class="fa fa-arrow-circle-right"></i>', ['/course/batches/index'], ['target' => '_blank', 'class' => 'small-box-footer']); ?>
                             </div>
                         </div><!-- ./col -->
                     </div><!-- /.row -->
@@ -151,10 +151,10 @@ $this->registerJs(
 			   <div class="nav-tabs-custom"><!-- .nav-tabs-custom -->
                                 <!-- Tabs within a box -->
                                 <ul class="nav nav-tabs pull-right">
-                                    <li><a href="#emp-notice" data-toggle="tab">Employee</a></li>
-                                    <li><a href="#stu-notice" data-toggle="tab">Student</a></li>
-				    <li class="active"><a href="#all-notice" data-toggle="tab">General</a></li>
-                                    <li class="pull-left header"><i class="fa fa-inbox"></i>Notice Board</li>
+                                    <li><a href="#emp-notice" data-toggle="tab"><?php echo Yii::t('app', 'Employee') ?></a></li>
+                                    <li><a href="#stu-notice" data-toggle="tab"><?php echo Yii::t('app', 'Student') ?></a></li>
+				    <li class="active"><a href="#all-notice" data-toggle="tab"><?php echo Yii::t('app', 'General') ?></a></li>
+                                    <li class="pull-left header"><i class="fa fa-inbox"></i><?php echo Yii::t('app', 'Notice Board') ?></li>
                                 </ul>
                                 <div class="tab-content">
                                     <!-- Notice -->
@@ -176,7 +176,7 @@ $this->registerJs(
 					<?php endforeach; 
 				     } else {
 						echo '<div class="box-header bg-warning"><div style="padding:5px">';
-						echo "No Notice....";
+						echo Yii::t('app', 'No Notice....');
 						echo '</div></div>';
 				     }
 					?>
@@ -199,7 +199,7 @@ $this->registerJs(
 					<?php endforeach;
 				      } else {
 						echo '<div class="box-header bg-warning"><div style="padding:5px">';
-						echo "No Notice....";
+						echo Yii::t('app', 'No Notice....');
 						echo '</div></div>';
 				      }
 					?>
@@ -222,7 +222,7 @@ $this->registerJs(
 					<?php endforeach;
 				      } else {
 						echo '<div class="box-header bg-warning"><div style="padding:5px">';
-						echo "No Notice....";
+						echo Yii::t('app', 'No Notice....');
 						echo '</div></div>';
 				      }
 					?>
@@ -234,7 +234,7 @@ $this->registerJs(
                             <div class="box box-info">
                                 <div class="box-header with-border">
                                     <i class="fa fa-calendar"></i>
-                                    <h3 class="box-title">Calendar</h3>
+                                    <h3 class="box-title"><?php echo Yii::t('app', 'Calendar') ?></h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <!--The calendar -->
@@ -285,10 +285,10 @@ EOF;
 			    ?>
 				   <div class="row">
 					<ul class="legend">
-					    <li><span class="holiday"></span> Holiday</li>
-					    <li><span class="importantnotice"></span> Important Notice</li>
-					    <li><span class="meeting"></span> Meeting</li>
-					    <li><span class="messages"></span> Messages</li>
+					    <li><span class="holiday"></span> <?php echo Yii::t('app', 'Holiday') ?></li>
+					    <li><span class="importantnotice"></span> <?php echo Yii::t('app', 'Important Notice') ?></li>
+					    <li><span class="meeting"></span> <?php echo Yii::t('app', 'Meeting') ?></li>
+					    <li><span class="messages"></span> <?php echo Yii::t('app', 'Messages') ?></li>
 					</ul>
 				   </div>
                                 </div><!-- /.box-body -->
@@ -301,9 +301,9 @@ EOF;
 			    <div class="nav-tabs-custom"><!-- .nav-tabs-custom -->
                                 <!-- Tabs within a box -->
                                 <ul class="nav nav-tabs pull-right">
-                                    <li><a href="#birth-upcoming" data-toggle="tab">Upcoming</a></li>
-				    <li class="active"><a href="#birth-taday" data-toggle="tab">Today's</a></li>
-                                    <li class="pull-left header"><i class="fa fa-birthday-cake"></i>Birthdays</li>
+                                    <li><a href="#birth-upcoming" data-toggle="tab"><?php echo Yii::t('app', 'Upcoming') ?></a></li>
+				    <li class="active"><a href="#birth-taday" data-toggle="tab"><?php echo Yii::t('app', "Today's") ?></a></li>
+                                    <li class="pull-left header"><i class="fa fa-birthday-cake"></i><?php echo Yii::t('app', 'Birthdays') ?></li>
                                 </ul>
                                 <div class="tab-content">
                                     <!-- Birthdays -->
@@ -324,7 +324,7 @@ EOF;
 						<?php endforeach; 
 					} else {
 						echo '<div class="box-header bg-warning"><div style="padding:5px">';
-						echo "No Birthday Today";
+						echo Yii::t('app', 'No Birthday Today');
 						echo '</div></div>';
 					}
 					?>
@@ -347,7 +347,7 @@ EOF;
 						<?php endforeach; 
 					} else {
 						echo '<div class="box-header bg-warning"><div style="padding:5px">';
-						echo "No Birthday within 30 days duration";
+						echo Yii::t('app', 'No Birthday within 30 days duration');
 						echo '</div></div>';
 					}
 					?>
@@ -359,7 +359,7 @@ EOF;
                             <div class="box box-primary">
                                 <div class="box-header with-border">
                                     <i class="ion ion-university"></i>
-                                    <h3 class="box-title">Courses</h3>
+                                    <h3 class="box-title"><?php echo Yii::t('app', 'Courses') ?></h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                     <ul class="todo-list" id="coursList">

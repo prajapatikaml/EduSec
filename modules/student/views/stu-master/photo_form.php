@@ -8,7 +8,7 @@ use yii\helpers\Url;
 /* @var $this yii\web\View */
 /* @var $form yii\widgets\ActiveForm */
 
-$this->title = Html::encode("Upload Photo of ").$model->stuMasterStuInfo->getName();
+$this->title = Html::encode(Yii::t('stu', 'Upload Photo of ')).$model->stuMasterStuInfo->getName();
 
 $this->params['breadcrumbs'][] = ['label' => 'Student Master', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => 'Student Photo'];
@@ -62,7 +62,7 @@ $(document).ready(function(){
 <div class="col-xs-12 col-lg-12">
   <div class="box box-info box-solid view-item col-xs-12 col-lg-12 no-padding">
    <div class="box-header with-border">
-         <h4 class="box-title"><i class="fa fa-picture-o"></i> Profile Photo</h4>
+         <h4 class="box-title"><i class="fa fa-picture-o"></i>&nbsp;<?php echo Yii::t('stu', 'Profile Photo'); ?> </h4>
    </div>
    <div class="box-body">
     <div class="stu-photo-form">
@@ -79,15 +79,15 @@ $(document).ready(function(){
     </div>
 
     <div class="col-xs-12 col-sm-12 col-lg-12 text-center no-padding"> 
-	   <?= $form->field($info,'stu_photo')->fileInput(['data-filename-placement' => "inside", 'title' => 'Browse Photo', 'onchange'=>'uploadImage(this)', 'data-target'=>'#stu-photo-prev']) ?>
+	   <?= $form->field($info,'stu_photo')->fileInput(['data-filename-placement' => "inside", 'title' => Yii::t('stu', 'Browse Photo'), 'onchange'=>'uploadImage(this)', 'data-target'=>'#stu-photo-prev']) ?>
     </div>
 
-    <div class="hint col-xs-12 col-sm-12" style="color:red;padding-top:15px"><b>Note:- </b>&nbsp;Only Upload Jpeg, Jpg, Png, Gif Type
+    <div class="hint col-xs-12 col-sm-12" style="color:red;padding-top:15px"><b><?php echo Yii::t('stu', 'Note:-'); ?> </b>&nbsp;<?php echo Yii::t('stu', 'Only Upload Jpeg, Jpg, Png, Gif Type'); ?>
     </div>
  
     <div class="form-group col-xs-12 col-sm-12 no-padding">
 	<hr>
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord  ? 'btn btn-success' : 'btn btn-info']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('stu', 'Create') : Yii::t('stu', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-success' : 'btn btn-info']) ?>
     </div>
     <?php ActiveForm::end(); ?>   
     </div> 

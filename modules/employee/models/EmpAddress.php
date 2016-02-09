@@ -97,21 +97,21 @@ class EmpAddress extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'emp_address_id' => 'Address',
-            'emp_cadd' => 'Address',
-            'emp_cadd_city' => 'City/Town',
-            'emp_cadd_state' => 'State/Province',
-            'emp_cadd_country' => 'Country',
-            'emp_cadd_pincode' => 'Pincode',
-            'emp_cadd_house_no' => 'House No',
-            'emp_cadd_phone_no' => 'Phone No',
-            'emp_padd' => 'Address',
-            'emp_padd_city' => 'City/Town',
-            'emp_padd_state' => 'State/Province',
-            'emp_padd_country' => 'Country',
-            'emp_padd_pincode' => 'Pincode',
-            'emp_padd_house_no' => 'House No',
-            'emp_padd_phone_no' => 'Phone No',
+			'emp_address_id' => Yii::t('emp', 'Address'),
+            'emp_cadd' => Yii::t('emp', 'Address'),
+            'emp_cadd_city' => Yii::t('emp', 'City/Town'),
+            'emp_cadd_state' => Yii::t('emp', 'State/Province'),
+            'emp_cadd_country' => Yii::t('emp', 'Country'),
+            'emp_cadd_pincode' => Yii::t('emp', 'Pincode'),
+            'emp_cadd_house_no' => Yii::t('emp', 'House No'),
+            'emp_cadd_phone_no' => Yii::t('emp', 'Phone No'),
+            'emp_padd' => Yii::t('emp', 'Address'),
+            'emp_padd_city' => Yii::t('emp', 'City/Town'),
+            'emp_padd_state' => Yii::t('emp', 'State/Province'),
+            'emp_padd_country' => Yii::t('emp', 'Country'),
+            'emp_padd_pincode' => Yii::t('emp', 'Pincode'),
+            'emp_padd_house_no' => Yii::t('emp', 'House No'),
+            'emp_padd_phone_no' => Yii::t('emp', 'Phone No'),
         ];
     }
 

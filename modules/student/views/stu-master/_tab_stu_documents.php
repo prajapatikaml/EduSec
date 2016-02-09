@@ -7,7 +7,7 @@ $adminUser = array_keys(\Yii::$app->authManager->getRolesByUser(Yii::$app->user-
 <div class="row">
   <div class="col-xs-12">
 	<h4 class="edusec-border-bottom-warning page-header edusec-profile-title-1">	
-		<i class="fa fa-files-o"></i> <?= Html::encode('Uploaded Documents') ?>
+		<i class="fa fa-files-o"></i> <?= Html::encode(Yii::t('stu', 'Uploaded Documents')) ?>
 	</h4>
   </div><!-- /.col -->
 </div>
@@ -27,7 +27,7 @@ $adminUser = array_keys(\Yii::$app->authManager->getRolesByUser(Yii::$app->user-
 	<th class="text-center"><?= Html::activeLabel($stu_docs, 'stu_docs_category_id') ?></th>
 	<th class="text-center"><?= Html::activeLabel($stu_docs, 'stu_docs_details') ?></th>
 	<th class="text-center"><?= Html::activeLabel($stu_docs, 'stu_docs_status') ?></th>
-	<th class="text-center <?= $display ?>" style="width: 34%;"><?= Html::encode('Action') ?></th>
+	<th class="text-center <?= $display ?>" style="width: 34%;"><?= Html::encode(Yii::t('stu', 'Action')) ?></th>
 </tr>
 <?php
 $s_doc_data = app\modules\student\models\StuDocs::find()->where(['stu_docs_stu_master_id' => $_REQUEST['id']])->join('join','document_category dc', 'dc.doc_category_id = stu_docs_category_id AND dc.is_status <> 2')->all();
@@ -40,13 +40,13 @@ foreach($s_doc_data as $d_data) :
 	<td class="text-center"><?= ($d_data->stu_docs_details) ? $d_data->stu_docs_details : ""?></td>
 	<?php $d = ''; $s = '';?>
 	<td class="text-center"><?php if($d_data->stu_docs_status == 1) { ?>
-		<span class="label label-success">Approved</span>
+		<span class="label label-success"><?php echo Yii::t('stu', 'Approved'); ?></span>
 		<?php $d = 'display:none'; $s = "display:block";  ?>
 		<?php } elseif($d_data->stu_docs_status == 2) { 
 		$d = 'display:block'; $s = "display:none"; ?>
-		<span class="label label-danger">Disapproved</span>
+		<span class="label label-danger"><?php echo Yii::t('stu', 'Disapproved'); ?></span>
 		<?php } else { ?>
-		<span class="label label-info">Pendding</span>
+		<span class="label label-info"><?php echo Yii::t('stu', 'Pendding'); ?></span>
 		<?php } ?>
 	</td>
 
@@ -56,7 +56,7 @@ foreach($s_doc_data as $d_data) :
 	<div class="col-lg-4 col-xs-12 col-sm-4 col-md-4 no-padding">
 		<div class="dropdown" style="width:100%">
 		  <button class="btn-block btn-sm btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-expanded="true">
-		    Action
+		    <?php echo Yii::t('stu', 'Action'); ?>
 		    <span class="caret"></span>
 		  </button>
 		  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
@@ -73,10 +73,10 @@ foreach($s_doc_data as $d_data) :
 	<?php }
 	      if(Yii::$app->user->can("/student/stu-master/delete-doc") && ($_REQUEST['id'] == Yii::$app->session->get('stu_id')) || (in_array("SuperAdmin", $adminUser)) || Yii::$app->user->can("updateAllStuInfo")) { ?>
 	<div class="col-lg-4 col-xs-12 col-sm-4 col-md-4 no-padding">
-		<?=  Html::a('<i class="fa fa-trash-o"></i> Delete', ['delete-doc', 'stu_doc_id' => $d_data->stu_docs_id], [
+		<?=  Html::a('<i class="fa fa-trash-o"></i> '. Yii::t('stu','Delete'), ['delete-doc', 'stu_doc_id' => $d_data->stu_docs_id], [
 		    'class' => 'btn-sm btn btn-danger btn-block',
 		    'data' => [
-			'confirm' => 'Are you sure you want to delete this item?',
+			'confirm' => Yii::t('stu', 'Are you sure you want to delete this item?'),
 			'method' => 'post',
 		    ],
 		])  ?>
@@ -91,7 +91,7 @@ endforeach;
 }
 else { ?>
 <tr>
-	<th class="text-center" colspan="4"><?= Html::encode('No Documents Uploaded..') ?></th>
+	<th class="text-center" colspan="4"><?= Html::encode(Yii::t('stu', 'No Documents Uploaded..')) ?></th>
 </tr>		
 <?php	}
 echo "</table></div>";

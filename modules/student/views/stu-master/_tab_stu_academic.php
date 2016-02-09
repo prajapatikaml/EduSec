@@ -7,10 +7,10 @@ $adminUser = array_keys(\Yii::$app->authManager->getRolesByUser(Yii::$app->user-
 <div class="row">
   <div class="col-xs-12 col-md-12 col-lg-12">
 	<h2 class="page-header">	
-	<i class="fa fa-info-circle"></i> <?= Html::encode('Academic Details') ?>
+	<i class="fa fa-info-circle"></i> <?= Html::encode(Yii::t('stu', 'Academic Details')) ?>
 	<div class="pull-right">
 	<?php if(Yii::$app->user->can("/student/stu-master/update") && ($_REQUEST['id'] == Yii::$app->session->get('stu_id'))  || (in_array("SuperAdmin", $adminUser)) || Yii::$app->user->can("updateAllStuInfo")) { ?>
-		<?= Html::a('<i class="fa fa-pencil-square-o"></i> Edit', ['update', 'sid' => $model->stu_master_id, 'tab' => 'academic'], ['class' => 'btn-sm btn btn-primary text-warning', 'id' => 'update-data']) ?>
+		<?= Html::a('<i class="fa fa-pencil-square-o"></i>'. Yii::t('stu', 'Edit'), ['update', 'sid' => $model->stu_master_id, 'tab' => 'academic'], ['class' => 'btn-sm btn btn-primary text-warning', 'id' => 'update-data']) ?>
 	<?php } ?>
 	</div>
 	</h2>

@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\User */
 
 $this->title = $model->user_id;
-$this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Users'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
    <div class="col-lg-12 header">
     <h3><?= Html::encode($this->title) ?></h3>
     <div class="operation">
-        <?= Html::a('Update', ['update', 'id' => $model->user_id], ['class' => 'btn update']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->user_id], [
+        <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $model->user_id], ['class' => 'btn update']) ?>
+        <?= Html::a(Yii::t('app', 'Delete'), ['delete', 'id' => $model->user_id], [
             'class' => 'btn delete',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => Yii::t('app', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>

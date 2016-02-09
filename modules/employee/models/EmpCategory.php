@@ -91,14 +91,14 @@ class EmpCategory extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'emp_category_id' => 'Category ID',
-            'emp_category_name' => 'Category Name',
-            'emp_category_alias' => 'Category Alias',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'is_status' => 'Is Status',
+			'emp_category_id' => Yii::t('emp', 'Category ID'),
+            'emp_category_name' => Yii::t('emp', 'Category Name'),
+            'emp_category_alias' => Yii::t('emp', 'Category Alias'),
+            'created_at' => Yii::t('emp', 'Created At'),
+            'created_by' => Yii::t('emp', 'Created By'),
+            'updated_at' => Yii::t('emp', 'Updated At'),
+            'updated_by' => Yii::t('emp', 'Updated By'),
+            'is_status' => Yii::t('emp', 'Is Status'),
         ];
     }
 

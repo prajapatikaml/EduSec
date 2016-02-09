@@ -6,8 +6,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\LoginDetails */
 
-$this->title = 'Create Login Details';
-$this->params['breadcrumbs'][] = ['label' => 'Login Details', 'url' => ['index']];
+$this->title = Yii::t('app', 'Create Login Details');
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Login Details'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="col-lg-12 header">

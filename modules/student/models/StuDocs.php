@@ -84,15 +84,15 @@ class StuDocs extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'stu_docs_id' => 'Stu Docs ID',
-            'stu_docs_details' => 'Document Details',
-            'stu_docs_category_id' => 'Category',
-            'stu_docs_path' => 'Document',
-            'stu_docs_submited_at' => 'Submited Date',
-            'stu_docs_status' => 'Status',
-	    'stu_docs_category_id_temp' => 'Category',
-            'stu_docs_stu_master_id' => 'Student',
-            'created_by' => 'Created By',
+            'stu_docs_id' => Yii::t('stu', 'Stu Docs ID'),
+            'stu_docs_details' => Yii::t('stu', 'Document Details'),
+            'stu_docs_category_id' => Yii::t('stu', 'Category'),
+            'stu_docs_path' => Yii::t('stu', 'Document'),
+            'stu_docs_submited_at' => Yii::t('stu', 'Submited Date'),
+            'stu_docs_status' => Yii::t('stu', 'Status'),
+            'stu_docs_category_id_temp' => Yii::t('stu', 'Category'),
+            'stu_docs_stu_master_id' => Yii::t('stu', 'Student'),
+            'created_by' => Yii::t('stu', 'Created By'),
         ];
     }
 

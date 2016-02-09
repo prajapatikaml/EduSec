@@ -97,7 +97,6 @@ class CountryController extends Controller
      */
     public function actionCreate()
     {
-	//echo "hi..";exit;
         $model = new Country();
 	$searchModel = new CountrySearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);

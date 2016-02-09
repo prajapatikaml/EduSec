@@ -120,23 +120,23 @@ class StuInfo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'stu_info_id' => 'Stu Info ID',
-            'stu_unique_id' => 'Student ID',
-            'stu_title' => 'Title',
-            'stu_first_name' => 'First Name',
-            'stu_middle_name' => 'Middle Name',
-            'stu_last_name' => 'Last Name',
-            'stu_gender' => 'Gender',
-            'stu_dob' => 'Birth Date',
-            'stu_email_id' => 'Email ID',
-            'stu_bloodgroup' => 'Bloodgroup',
-            'stu_birthplace' => 'Birthplace',
-            'stu_religion' => 'Religion',
-            'stu_admission_date' => 'Admission Date',
-            'stu_photo' => 'Photo',
-            'stu_languages' => 'Languages',
-            'stu_mobile_no' => 'Mobile No',
-            'stu_info_stu_master_id' => 'Stu Info Stu Master ID',
+			'stu_info_id' => Yii::t('stu', 'Stu Info ID'),
+            'stu_unique_id' => Yii::t('stu', 'Student ID'),
+            'stu_title' => Yii::t('stu', 'Title'),
+            'stu_first_name' => Yii::t('stu', 'First Name'),
+            'stu_middle_name' => Yii::t('stu', 'Middle Name'),
+            'stu_last_name' => Yii::t('stu', 'Last Name'),
+            'stu_gender' => Yii::t('stu', 'Gender'),
+            'stu_dob' => Yii::t('stu', 'Date of Birth'),
+            'stu_email_id' => Yii::t('stu', 'Email ID'),
+            'stu_bloodgroup' => Yii::t('stu', 'Bloodgroup'),
+            'stu_birthplace' => Yii::t('stu', 'Birthplace'),
+            'stu_religion' => Yii::t('stu', 'Religion'),
+            'stu_admission_date' => Yii::t('stu', 'Admission Date'),
+            'stu_photo' => Yii::t('stu', 'Photo'),
+            'stu_languages' => Yii::t('stu', 'Languages'),
+            'stu_mobile_no' => Yii::t('stu', 'Mobile No'),
+            'stu_info_stu_master_id' => Yii::t('stu', 'Stu Info Stu Master ID'),
         ];
     }
 
@@ -159,24 +159,24 @@ class StuInfo extends \yii\db\ActiveRecord
     public static function getTitleOptions()
     {
 	return [
-		self::TYPE_MR=>'Mr.',
-		self::TYPE_MRS=>'Mrs.', 
-		self::TYPE_MISS=>'Ms.',
+		self::TYPE_MR => Yii::t('stu', 'Mr.'),
+		self::TYPE_MRS => Yii::t('stu', 'Mrs.'), 
+		self::TYPE_MISS => Yii::t('stu', 'Ms.'),
 	];
     }
 
     public static function getBloodGroup()
     {
 	return [
-		self::TYPE_UNKNON => 'Unknown',
-		self::TYPE_APLUS => 'A+',
-		self::TYPE_AMINUS => 'A-',
-		self::TYPE_BPLUS => 'B+',
-		self::TYPE_BMINUS => 'B-',
-		self::TYPE_ABPLUS => 'AB+',
-		self::TYPE_ABMINUS => 'AB-',
-		self::TYPE_OPLUS => 'O+',
-		self::TYPE_OMINUS => 'O-',
+		self::TYPE_UNKNON => Yii::t('stu', 'Unknown'),
+		self::TYPE_APLUS => Yii::t('stu', 'A+'),
+		self::TYPE_AMINUS => Yii::t('stu', 'A-'),
+		self::TYPE_BPLUS => Yii::t('stu', 'B+'),
+		self::TYPE_BMINUS => Yii::t('stu', 'B-'),
+		self::TYPE_ABPLUS => Yii::t('stu', 'AB+'),
+		self::TYPE_ABMINUS => Yii::t('stu', 'AB-'),
+		self::TYPE_OPLUS => Yii::t('stu', 'O+'),
+		self::TYPE_OMINUS => Yii::t('stu', 'O-'),
 	];
     }
 

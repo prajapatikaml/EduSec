@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 use yii\helpers\ArrayHelper;
 
-$this->title = "Update Student Login : ".$model->user_login_id;
+$this->title = Yii::t('app', 'Update Student Login : ').$model->user_login_id;
 ?>
 
 <div class="col-xs-12">
 	<h3 class="box-title"><i class="fa fa-plus"></i> <?= Html::encode($this->title) ?>
 		<div class="pull-right">
-			<?= Html::a('Back', ['resetstudloginid'], ['class' => 'btn btn-block btn-back']) ?>
+			<?= Html::a(Yii::t('app', 'Back'), ['resetstudloginid'], ['class' => 'btn btn-block btn-back']) ?>
 		</div>
 	</h3>
 </div>
@@ -34,7 +34,7 @@ $this->title = "Update Student Login : ".$model->user_login_id;
         <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-6">
-	<?= Html::a('Cancel', ['user/resetstudloginid'], ['class' => 'btn btn-default btn-block']) ?>
+	<?= Html::a(Yii::t('app', 'Cancel'), ['user/resetstudloginid'], ['class' => 'btn btn-default btn-block']) ?>
 	</div>
     </div>
 

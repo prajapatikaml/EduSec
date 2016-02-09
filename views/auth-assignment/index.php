@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel app\models\AuthAssignmentSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Auth Assignments';
+$this->title = Yii::t('app', 'Auth Assignments');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="auth-assignment-index">
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
-        <?= Html::a('Create Auth Assignment', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a(Yii::t('app', 'Create Auth Assignment'), ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= GridView::widget([

@@ -5,10 +5,8 @@ use yii\helpers\ArrayHelper;
 /* @var $this yii\web\View */
 /* @var $model app\modules\student\models\StudentDocsTrans */
 
-$this->title = Yii::t('app', '{modelClass}', [
-    'modelClass' => 'Reset Student Password',
-]);
-$this->params['breadcrumbs'][] = ['label' => 'Student', 'url'=>['/student']];
+$this->title = Yii::t('app', Yii::t('app', 'Reset Student Password'));
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Student'), 'url'=>['/student']];
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Reset Student Password')];
 ?>
 <?php if(\Yii::$app->session->hasFlash('resetstudpassword')) 
@@ -43,35 +41,35 @@ $dataProvider = $model->search(Yii::$app->request->queryParams);
 		    ['class' => 'yii\grid\SerialColumn'],
 		
 		    [
-			'label' => 'Student ID',
+			'label' => Yii::t('stu', 'Student ID'),
 			'attribute' => 'stu_unique_id',
 			'value' => 'stuMasterStuInfo.stu_unique_id',
 	 	    ],
 	
 		    [
-			'label' => 'First Name',
+			'label' => Yii::t('stu', 'First Name'),
 			'attribute' => 'stu_first_name',
 			'value' => 'stuMasterStuInfo.stu_first_name',
 	 	    ],
 		    [
-			'label' => 'Last Name',
+			'label' => Yii::t('stu', 'Last Name'),
 			'attribute' => 'stu_last_name',
 			'value' => 'stuMasterStuInfo.stu_last_name',
 	 	    ],
 		    [
-			'label' => 'Course',
+			'label' => Yii::t('course', 'Course'),
 			'attribute' => 'stu_master_course_id',
 			'value' => 'stuMasterCourse.course_name',
 			'filter' => ArrayHelper::map(app\modules\course\models\Courses::find()->all(), 'course_id', 'course_name')
 		    ],
 		    [
-			'label' => 'Batch',
+			'label' => Yii::t('course', 'Batch'),
 			'attribute' => 'stu_master_batch_id',
 			'value' => 'stuMasterBatch.batch_name',
 			'filter' => ArrayHelper::map(app\modules\course\models\Batches::find()->all(), 'batch_id', 'batch_name')
 		    ],
 		    [
-			      'label' => 'User Login Id',
+			      'label' => Yii::t('app', 'User Login Id'),
 			      'attribute' => 'user_login_id',
 			      'value' => 'stuMasterUser.user_login_id',
 		        ],

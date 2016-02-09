@@ -91,14 +91,14 @@ class EmpDesignation extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'emp_designation_id' => 'Designation ID',
-            'emp_designation_name' => 'Designation Name',
-            'emp_designation_alias' => 'Designation Alias',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'is_status' => 'Is Status',
+			'emp_designation_id' => Yii::t('emp', 'Designation ID'),
+            'emp_designation_name' => Yii::t('emp', 'Designation Name'),
+            'emp_designation_alias' => Yii::t('emp', 'Designation Alias'),
+            'created_at' => Yii::t('emp', 'Created At'),
+            'created_by' => Yii::t('emp', 'Created By'),
+            'updated_at' => Yii::t('emp', 'Updated At'),
+            'updated_by' => Yii::t('emp', 'Updated By'),
+            'is_status' => Yii::t('emp', 'Is Status'),
         ];
     }
 

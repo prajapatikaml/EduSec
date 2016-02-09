@@ -43,7 +43,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'is_emg_contact')->textInput() ?>
 
     <div class="form-group col-sm-offset-1 col-lg-10">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('stu', 'Create') : Yii::t('stu', 'Update'), ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

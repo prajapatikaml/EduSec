@@ -97,7 +97,7 @@ class StuMaster extends \yii\db\ActiveRecord
     {
         return [
             [['stu_master_stu_info_id', 'stu_master_user_id', 'stu_master_course_id', 'stu_master_batch_id', 'stu_master_section_id', 'created_at', 'created_by'], 'required', 'message' => ''],
-	    [['report_batch_id','report_section_id','report_city'],'integer'],	
+	    	[['report_batch_id','report_section_id','report_city'],'integer'],	
             [['stu_master_stu_info_id', 'stu_master_user_id', 'stu_master_nationality_id', 'stu_master_category_id', 'stu_master_course_id', 'stu_master_batch_id', 'stu_master_section_id', 'stu_master_stu_status_id', 'stu_master_stu_address_id', 'created_by', 'updated_by', 'is_status'], 'integer', 'message' => ''],
             [['created_at', 'updated_at', 'stu_master_stu_status_id'], 'safe'],
             [['stu_master_stu_info_id'], 'unique'],
@@ -111,24 +111,25 @@ class StuMaster extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'stu_master_id' => 'Stu Master ID',
-            'stu_master_stu_info_id' => 'Stu Info ID',
-            'stu_master_user_id' => 'User',
-            'stu_master_nationality_id' => 'Nationality',
-            'stu_master_category_id' => 'Admission Category',
-            'stu_master_course_id' => 'Course',
-            'stu_master_batch_id' => 'Batch',
-            'stu_master_section_id' => 'Section',
-            'stu_master_stu_status_id' => 'Student Status',
-            'stu_master_stu_address_id' => 'Stu Address ID',
-            'created_at' => 'Created At',
-            'created_by' => 'Created By',
-            'updated_at' => 'Updated At',
-            'updated_by' => 'Updated By',
-            'is_status' => 'Active/InActive',
-	    'report_batch_id' => 'Batch',	
-	    'report_section_id' => 'Section',	
-	    'report_city' => 'City',
+            'stu_master_id' => Yii::t('stu', 'Stu Master ID'),
+            'stu_master_stu_info_id' => Yii::t('stu', 'Stu Info ID'),
+            'stu_master_user_id' => Yii::t('stu', 'User'),
+            'stu_master_nationality_id' => Yii::t('stu', 'Nationality'),
+            'stu_master_category_id' => Yii::t('stu', 'Admission Category'),
+            'stu_master_course_id' => Yii::t('stu', 'Course'),
+            'stu_master_batch_id' => Yii::t('stu', 'Batch'),
+            'stu_master_section_id' => Yii::t('stu', 'Section'),
+            'stu_master_stu_status_id' => Yii::t('stu', 'Student Status'),
+            'stu_master_stu_address_id' => Yii::t('stu', 'Stu Address ID'),
+            'created_at' => Yii::t('stu', 'Created At'),
+            'created_by' => Yii::t('stu', 'Created By'),
+            'updated_at' => Yii::t('stu', 'Updated At'),
+            'updated_by' => Yii::t('stu', 'Updated By'),
+            'is_status' => Yii::t('stu', 'Active/InActive'),
+	    'report_batch_id' => Yii::t('stu', 'Batch'),	
+	    'report_section_id' => Yii::t('stu', 'Section'),	
+	    'report_city' => Yii::t('stu', 'City'),
+			
         ];
     }
 

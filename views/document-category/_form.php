@@ -26,10 +26,10 @@ use yii\helpers\ArrayHelper;
     ]); ?>
 
 
-    <?= $form->field($model, 'doc_category_name',['inputOptions'=>[ 'class'=>'form-control','placeholder'=>'Document Category'] ])->textInput(['maxlength' => 50])->label(false) ?>
+    <?= $form->field($model, 'doc_category_name',['inputOptions'=>[ 'class'=>'form-control','placeholder'=>Yii::t('app', 'Document Category')] ])->textInput(['maxlength' => 50])->label(false) ?>
 
     <?= $form->field($model, 'doc_category_user_type')
-                        ->radioList( ["S" => 'Student', "E" => 'Employee', '0' => 'Both'],
+                        ->radioList( ["S" => Yii::t('app', 'Student'), "E" => Yii::t('app', 'Employee'), '0' => Yii::t('app', 'Both')],
                             [ 'item' => function($index, $label, $name, $checked, $value) {
                                     $return = '<label class="left-padding">';
                                     $return .= Html::radio($name, $checked, ['value' => $value]);
@@ -37,14 +37,14 @@ use yii\helpers\ArrayHelper;
                                     $return .= '<span>&nbsp;&nbsp;&nbsp;' . ucwords($label) . '</span>';
                                     $return .= '</label>';
                                     return $return;
-                             }])->label('User Type'); ?>
+                             }])?>
 
   <div class="form-group col-xs-12 col-sm-6 col-lg-4 no-padding">
 	<div class="col-xs-6">
-        <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
+        <?= Html::submitButton($model->isNewRecord ? Yii::t('app', 'Create') : Yii::t('app', 'Update'), ['class' => $model->isNewRecord  ? 'btn btn-block btn-success' : 'btn btn-block btn-info']) ?>
 	</div>
 	<div class="col-xs-6">
-	<?= Html::resetButton('Reset',['class' => 'btn btn-default btn-block']) ?>
+	<?= Html::resetButton(Yii::t('app', 'Reset'),['class' => 'btn btn-default btn-block']) ?>
 	</div>
      </div>
 

@@ -7,7 +7,7 @@ use yii\widgets\DetailView;
 /* @var $model app\modules\student\models\StuAddress */
 
 $this->title = $model->stu_address_id;
-$this->params['breadcrumbs'][] = ['label' => 'Stu Addresses', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('stu', 'Stu Addresses'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="stu-address-view">
@@ -15,11 +15,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->stu_address_id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->stu_address_id], [
+        <?= Html::a(Yii::t('stu', 'Update'), ['update', 'id' => $model->stu_address_id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a(Yii::t('stu', 'Delete'), ['delete', 'id' => $model->stu_address_id], [
             'class' => 'btn btn-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => Yii::t('stu', 'Are you sure you want to delete this item?'),
                 'method' => 'post',
             ],
         ]) ?>

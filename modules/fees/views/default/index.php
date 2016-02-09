@@ -3,7 +3,7 @@ use yii\helpers\Html;
 use miloschuman\highcharts\Highcharts;
 use yii\web\JsExpression;
 
-$this->title = 'Fees Module';
+$this->title = Yii::t('fees', 'Fees Module');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
@@ -13,10 +13,10 @@ $this->params['breadcrumbs'][] = $this->title;
 	      <div class="edusec-link-box">
 	        <span class="edusec-link-box-icon bg-yellow"><i class="fa fa-university"></i></i></span>
 	        <div class="edusec-link-box-content">
-	          <span class="edusec-link-box-text"><?= Html::a('Bank Master', ['/fees/bank-master']);?></span>
+	          <span class="edusec-link-box-text"><?= Html::a(Yii::t('fees', 'Bank Master'), ['/fees/bank-master']);?></span>
 	          <span class="edusec-link-box-number"><?= app\modules\fees\models\BankMaster::find()->andWhere(['is_status'=>0])->count(); ?></span>
-		 <span class="edusec-link-box-desc">Manage Bank Details</span>
-		  <span class="edusec-link-box-bottom"><?= Html::a('<i class="fa fa-plus-square"></i> Create New', ['/fees/bank-master/create']); ?></span>
+		 <span class="edusec-link-box-desc"><?php echo Yii::t('fees', 'Manage Bank Details'); ?></span>
+		  <span class="edusec-link-box-bottom"><?= Html::a('<i class="fa fa-plus-square"></i> '.Yii::t('fees', 'Create New'), ['/fees/bank-master/create']); ?></span>
 	        </div><!-- /.info-box-content -->
 	      </div><!-- /.info-box -->
 	</div>
@@ -25,21 +25,21 @@ $this->params['breadcrumbs'][] = $this->title;
 	      <div class="edusec-link-box">
 	        <span class="edusec-link-box-icon bg-teal"><i class="fa fa-cog"></i></span>
 	        <div class="edusec-link-box-content">
-	          <span class="edusec-link-box-text"><?= Html::a('Fees Category', ['/fees/fees-collect-category']);?></span>
+	          <span class="edusec-link-box-text"><?= Html::a(Yii::t('fees', 'Fees Category'), ['/fees/fees-collect-category']);?></span>
 	          <span class="edusec-link-box-number"><?= app\modules\fees\models\FeesCollectCategory::find()->andWhere(['is_status'=>0])->count(); ?></span>
 		 <span class="edusec-link-box-desc"></span>
-		  <span class="edusec-link-box-bottom"><?= Html::a('<i class="fa fa-plus-square"></i> Create New', ['/fees/fees-collect-category/create']); ?></span>
+		  <span class="edusec-link-box-bottom"><?= Html::a('<i class="fa fa-plus-square"></i> '.Yii::t('fees', 'Create New'), ['/fees/fees-collect-category/create']); ?></span>
 	        </div><!-- /.info-box-content -->
 	      </div><!-- /.info-box -->
 	</div>
 
 	<div class="col-md-4 col-sm-6 col-xs-12">
 	      <div class="edusec-link-box">
-	        <span class="edusec-link-box-icon bg-aqua"><i class="fa fa-inr"></i></span>
+	        <span class="edusec-link-box-icon bg-aqua"><i class="fa fa-money"></i></span>
 	        <div class="edusec-link-box-content">
-	          <span class="edusec-link-box-text"><?= Html::a('Collect Fees', ['/fees/fees-payment-transaction/collect']);?></span>
+	          <span class="edusec-link-box-text"><?= Html::a(Yii::t('fees', 'Collect Fees'), ['/fees/fees-payment-transaction/collect']);?></span>
 	          <span class="edusec-link-box-number">&nbsp;</span>
-		 <span class="edusec-link-box-desc">Category Wise Fees Collect</span>
+		 <span class="edusec-link-box-desc"><?php echo Yii::t('fees', 'Category Wise Fees Collect'); ?></span>
 		  <span class="edusec-link-box-bottom"></span>
 	        </div><!-- /.info-box-content -->
 	      </div><!-- /.info-box -->
@@ -52,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="col-sm-6">
    <div class="box box-info">
 	<div class="box-header with-border">
-		<h3 class="box-title"><i class="fa fa-pie-chart"></i> Course Wise Collect Fees</h3>
+		<h3 class="box-title"><i class="fa fa-pie-chart"></i> <?php echo Yii::t('fees', 'Course Wise Collect Fees'); ?></h3>
 		<div class="box-tools pull-right">
 			<button class="btn btn-info btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		</div>
@@ -111,7 +111,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 		]);
 	} else {
-		echo '<div class="alert alert-danger">No results found.</div>';
+		echo '<div class="alert alert-danger">'.Yii::t('fees', 'No results found.').'</div>';
 	}
 	?>
 	</div>
@@ -121,7 +121,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="col-sm-6">
    <div class="box box-danger">
 	<div class="box-header with-border">
-		<h3 class="box-title"><i class="fa fa-pie-chart"></i> Paid/Unpaid Amount</h3>
+		<h3 class="box-title"><i class="fa fa-pie-chart"></i> <?php echo Yii::t('fees', 'Paid/Unpaid Amount'); ?></h3>
 		<div class="box-tools pull-right">
 			<button class="btn btn-danger btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		</div>
@@ -182,7 +182,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			],
 		]);
 	} else {
-		echo '<div class="alert alert-danger">No results found.</div>';
+		echo '<div class="alert alert-danger">'.Yii::t('fees', 'No results found.').'</div>';
 	}
 	?>
 	</div>
@@ -198,7 +198,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="col-md-12">
    <div class="box box-warning">
 	<div class="box-header with-border">
-		<h3 class="box-title"><i class="fa fa-bar-chart"></i> Individual Category Wise Fees Collection </h3>
+		<h3 class="box-title"><i class="fa fa-bar-chart"></i> <?php echo Yii::t('fees', 'Individual Category Wise Fees Collection'); ?> </h3>
 		<div class="box-tools pull-right">
 			<button class="btn btn-warning btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 		</div>
@@ -243,7 +243,7 @@ $this->params['breadcrumbs'][] = $this->title;
 		    ],
 		]);
 	} else {
-		echo '<div class="alert alert-danger">No results found.</div>';
+		echo '<div class="alert alert-danger">'.Yii::t('fees', 'No results found.').'</div>';
 	}  
 ?>
 	</div>
@@ -257,7 +257,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="col-md-12">
 	<div class="box box-primary">
 		<div class="box-header with-border">
-			<h3 class="box-title">Recently Fees Transaction</h3>
+			<h3 class="box-title"><?php echo Yii::t('fees', 'Recently Fees Transaction'); ?></h3>
 			<div class="box-tools pull-right">
 				<button class="btn btn-primary btn-sm" data-widget="collapse"><i class="fa fa-minus"></i></button>
 				<button class="btn btn-primary btn-sm" title="Remove" data-toggle="tooltip" data-widget="remove"><i class="fa fa-times"></i></button>
@@ -267,13 +267,13 @@ $this->params['breadcrumbs'][] = $this->title;
 			<table class="table no-margin">
 				<thead>
 					<tr>
-						<th>Sr.No</th>
-						<th>Student ID</th>
-						<th>Student Name</th>
-						<th>Receipt No.</th>
-						<th>Fees Category</th>
-						<th>Amount</th>
-						<th>Transaction Date</th>
+						<th><?php echo Yii::t('fees', 'Sr.No'); ?></th>
+						<th><?php echo Yii::t('fees', 'Student ID'); ?></th>
+						<th><?php echo Yii::t('fees', 'Student Name'); ?></th>
+						<th><?php echo Yii::t('fees', 'Receipt No.'); ?></th>
+						<th><?php echo Yii::t('fees', 'Fees Category'); ?></th>
+						<th><?php echo Yii::t('fees', 'Amount'); ?></th>
+						<th><?php echo Yii::t('fees', 'Transaction Date'); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -291,7 +291,7 @@ $this->params['breadcrumbs'][] = $this->title;
 				<?php endforeach; ?>
 				<?php else :?>
 					<tr>
-						<td colspan="7" class="text-danger text-center"><h4>No results found.</h4></td>
+						<td colspan="7" class="text-danger text-center"><h4><?php echo Yii::t('fees', 'No results found.'); ?></h4></td>
 					</tr>
 				<?php endif; ?>
 
@@ -299,7 +299,7 @@ $this->params['breadcrumbs'][] = $this->title;
 			</table>
 		</div>
 		<div class="box-footer clearfix">
-			<?php echo Html::a('Collect Fees', ['fees-payment-transaction/collect'], ['class'=>'btn btn-sm btn-primary btn-flat pull-left']); ?>
+			<?php echo Html::a(Yii::t('fees','Collect Fees'), ['fees-payment-transaction/collect'], ['class'=>'btn btn-sm btn-primary btn-flat pull-left']); ?>
 		</div>
 	</div>	
 	
