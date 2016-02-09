@@ -88,18 +88,18 @@ which need to go following step to done:
 
 
 DEMO/SAMPLE DATABASE USERS DETAILS 
-----------------------------------
-### ADMIN USER
-Username : admin
-Password : admin
+---------------------------------- 
 
-### EMPLOYEE USER
-Username : employee
-Password : employee
+###### ADMIN USER
+- **Username** : admin **Password** : admin
 
-### STUDENT USER
-Username : student
-Password : student
+###### EMPLOYEE USER
+**Username** : employee
+**Password** : employee
+
+##### STUDENT USER
+**Username** : student
+**Password** : student
 
 
 **NOTE:**
