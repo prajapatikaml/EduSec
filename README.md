@@ -97,7 +97,7 @@ DEMO/SAMPLE DATABASE USERS DETAILS
 - STUDENT USER
 	- **Username** : student **Password** : student
 
-**NOTE:**
+**NOTE**
 ---------- 
 If you any error/display blank page in browse before installing application.you should be able to access the application through the following URL to check EduSec requirement it satisfies or not:
 ~~~
@@ -107,23 +107,25 @@ http://localhost/edusec/edusec-requirements.php
 Change log 
 ----------
 
-# EduSec 4.2.5 #
+> ### EduSec 4.2.5
 Point release 4.2.5: 26/11/2015
 In EduSec 4.2.5 Arabic language with RTL support.
 
-# EduSec 4.2.4 #
+> ### EduSec 4.2.4
 Point release 4.2.4: 17/11/2015
 In EduSec 4.2.4 Arabic language is added.
 
-# EduSec 4.2.3 #
+
+> ### EduSec 4.2.3
 Point release 4.2.3: 07/11/2015
 In EduSec 4.2.3 Spanish - Latin American language & new feature bulk student importation feature is added.
 
-# EduSec 4.2.2 #
+
+> ### EduSec 4.2.2
 Point release 4.2.2: 20/10/2015
 EduSec 4.2.2 support Multiple Languages. Right now English, French, Hindi & Gujarati language supported & few bugs resolved
 
-# EduSec 4.2.1 #
+> ### EduSec 4.2.1
 Point release 4.2.1: 04/10/2015
 
 # EduSec 4.2.0 #
