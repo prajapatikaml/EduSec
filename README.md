@@ -108,13 +108,12 @@ Change log
 ----------
 
 > ### EduSec 4.2.5
-Point release 4.2.5: 26/11/2015
-In EduSec 4.2.5 Arabic language with RTL support.
+    * Point release 4.2.5: 26/11/2015
+    * In EduSec 4.2.5 Arabic language with RTL support.
 
 > ### EduSec 4.2.4
-Point release 4.2.4: 17/11/2015
-In EduSec 4.2.4 Arabic language is added.
-
+> Point release 4.2.4: 17/11/2015
+> In EduSec 4.2.4 Arabic language is added.
 
 > ### EduSec 4.2.3
 Point release 4.2.3: 07/11/2015
