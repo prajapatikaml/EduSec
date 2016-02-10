@@ -90,17 +90,12 @@ which need to go following step to done:
 DEMO/SAMPLE DATABASE USERS DETAILS 
 ---------------------------------- 
 
-###### ADMIN USER
-- **Username** : admin **Password** : admin
-
-###### EMPLOYEE USER
-**Username** : employee
-**Password** : employee
-
-##### STUDENT USER
-**Username** : student
-**Password** : student
-
+- ADMIN USER
+	- **Username** : admin **Password** : admin
+- EMPLOYEE USER
+	- **Username** : employee **Password** : employee
+- STUDENT USER
+	- **Username** : student **Password** : student
 
 **NOTE:**
 ---------- 
